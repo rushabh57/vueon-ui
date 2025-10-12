@@ -1,31 +1,65 @@
 <template>
-  <div class="space-y-4 p-8">
-    <!-- Buttons -->
-    <div class="space-x-2">
-      <MyButton>Default</MyButton>
-      <MyButton variant="destructive">Destructive</MyButton>
-      <MyButton variant="outline">Outline</MyButton>
-      <MyButton variant="secondary">Secondary</MyButton>
-      <MyButton variant="ghost">Ghost</MyButton>
-      <MyButton variant="link">Link</MyButton>
-      <MyButton size="sm">Small</MyButton>
-      <MyButton size="lg">Large</MyButton>
+  <div class="p-6 space-y-6 max-w-lg mx-auto">
+    <!-- Avatar -->
+    <Avatar src="" fallbackText="Rushabh jain" size="md" ring />
+
+    <!-- Normal Input (no label) -->
+    <Input placeholder="Normal input" />
+
+    <!-- File input with label -->
+    <div class="grid w-full items-center gap-1">
+      <Label for="picture">Picture</Label>
+      <Input id="picture" type="file" />
     </div>
 
-    <!-- Inputs -->
-    <div class="space-y-2">
-      <MyInput placeholder="Default input" />
-      <MyInput variant="outline" placeholder="Outlined input" />
-      <MyInput variant="ghost" placeholder="Ghost input" />
-      <MyInput error="Invalid email" placeholder="Error input" />
-      <MyInput disabled placeholder="Disabled input" />
-      <MyInput size="sm" placeholder="Small input" />
-      <MyInput size="lg" placeholder="Large input" />
+    <!-- Disabled file input -->
+    <div class="grid w-full items-center gap-1">
+      <Label for="disabledFile">Disabled File</Label>
+      <Input id="disabledFile" type="file" disabled />
     </div>
+
+    <!-- Inputs with stages -->
+    <Input stage="error" placeholder="Error input" message="Invalid data" />
+    <Input stage="success" placeholder="Correct input" message="All good!" />
+    <Input stage="warning" placeholder="Warning input" message="Check carefully" />
+
+    <!-- Accordion Section -->
+    <Accordion type="single" collapsible>
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Is it accessible?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It adheres to the WAI-ARIA design pattern.
+        </AccordionContent>
+      </AccordionItem>
+
+      <AccordionItem value="item-2">
+        <AccordionTrigger>Can I style it?</AccordionTrigger>
+        <AccordionContent>
+          Absolutely. You can customize it however you want.
+        </AccordionContent>
+      </AccordionItem>
+
+      <AccordionItem value="item-3">
+        <AccordionTrigger>Can it be animated?</AccordionTrigger>
+        <AccordionContent>
+          Yes! You can add smooth slide animations with Tailwind or Vue transitions.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
   </div>
 </template>
 
 <script setup lang="ts">
-import MyButton from "./components/Button/Button.vue";
-import MyInput from "./components/Input/Input.vue";
+import Avatar from "./components/Avatar/Avatar.vue";
+import Input from "./components/Input/Input.vue";
+import Label from "./components/Label/Label.vue";
+
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent
+} from "./components/Accordion";
+
+
 </script>
