@@ -1,5 +1,5 @@
 <template>
-    <label
+    <Label
       :class="[
         'block mb-1.5 text-sm font-medium transition-colors',
         disabled
@@ -8,10 +8,11 @@
       ]"
     >
       <slot />
-    </label>
+</Label>
   </template>
   
   <script setup lang="ts">
+  import { Label } from 'reka-ui'
   const props = defineProps<{
     disabled?: boolean;
   }>();

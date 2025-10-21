@@ -1,0 +1,49 @@
+{
+  "hash": "30f7f8bd",
+  "configHash": "a3da60ab",
+  "lockfileHash": "b8deec68",
+  "browserHash": "c1e4fa78",
+  "optimized": {
+    "vue": {
+      "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "file": "vue.js",
+      "fileHash": "b0981ece",
+      "needsInterop": false
+    },
+    "vitepress > @vue/devtools-api": {
+      "src": "../../../../node_modules/@vue/devtools-api/dist/index.js",
+      "file": "vitepress___@vue_devtools-api.js",
+      "fileHash": "0e530680",
+      "needsInterop": false
+    },
+    "vitepress > @vueuse/core": {
+      "src": "../../../../node_modules/@vueuse/core/index.mjs",
+      "file": "vitepress___@vueuse_core.js",
+      "fileHash": "1931cf33",
+      "needsInterop": false
+    },
+    "reka-ui": {
+      "src": "../../../../node_modules/reka-ui/dist/index.js",
+      "file": "reka-ui.js",
+      "fileHash": "41966a5c",
+      "needsInterop": false
+    },
+    "class-variance-authority": {
+      "src": "../../../../node_modules/class-variance-authority/dist/index.mjs",
+      "file": "class-variance-authority.js",
+      "fileHash": "8de77d0c",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-N63WLGTQ": {
+      "file": "chunk-N63WLGTQ.js"
+    },
+    "chunk-DVMRJXPY": {
+      "file": "chunk-DVMRJXPY.js"
+    },
+    "chunk-OYQD7GAK": {
+      "file": "chunk-OYQD7GAK.js"
+    }
+  }
+}

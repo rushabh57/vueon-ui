@@ -11,13 +11,13 @@ import { ChevronDown } from "lucide-vue-next";
       justify-between  py-4
       text-left text-sm font-medium
       hover:bg-gray-50 cursor-pointer
-      t transition-all bg-green-500 "
+      t transition-all "
     >
       <slot />
 
 
       
-      <div class="AccordionChevron bg-red-500 transition-transform 
+      <div class="AccordionChevron transition-transform 
           data-[state=open]:rotate-180" >
           <ChevronDown class="
           w-4 h-4 

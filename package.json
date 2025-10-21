@@ -1,16 +1,20 @@
 {
   "name": "vueon-ui",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.14",
     "class-variance-authority": "^0.7.1",
+    "commander": "^14.0.1",
+    "inquirer": "^12.10.0",
     "lucide-vue-next": "^0.545.0",
     "reka-ui": "^2.5.1",
     "tailwindcss": "^4.1.14",
@@ -23,5 +27,27 @@
     "typescript": "~5.9.3",
     "vite": "^7.1.7",
     "vue-tsc": "^3.1.0"
-  }
+  },
+  "description": "This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rushabh57/vueon-ui.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rushabh57/vueon-ui/issues"
+  },
+  "bin": "./index.js",
+  "files": [
+    "bin",
+    "index.js",
+    "src"
+  ],
+  "homepage": "https://github.com/rushabh57/vueon-ui#readme"
 }

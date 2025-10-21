@@ -1,0 +1,3 @@
+#!/usr/bin/env node
+// bin/vueon-ui
+import '../cli.js';

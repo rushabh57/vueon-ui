@@ -1,14 +1,15 @@
 /* src/components/Accordion/styles.css */
 .AccordionContent {
     overflow: hidden;
+    --animation-time:150ms;
   }
   
   .AccordionContent[data-state="open"] {
-    animation: slideDown 300ms linear forwards;
+    animation: slideDown var(--animation-time) linear forwards;
   }
   
   .AccordionContent[data-state="closed"] {
-    animation: slideUp 300ms linear forwards;
+    animation: slideUp var(--animation-time) linear forwards;
   }
   
   @keyframes slideDown {
