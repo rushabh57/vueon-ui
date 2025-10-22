@@ -64,20 +64,27 @@
 // };
 
 
-// src/theme/variants.ts
+
+// theme/variants.ts
 import { cva } from "class-variance-authority";
 
 export const variants = cva(
-  "inline-flex cursor-pointer text-sm w-fit font-medium items-center justify-center transition-colors focus:outline-none rounded-lg disabled:opacity-50 disabled:pointer-events-none focus:ring-1 focus:outline-transparent",
+  "",
   {
     variants: {
       variant: {
-        default: "bg-color-primary text-color-primary-foreground hover:bg-color-primary/90",
-        destructive: "bg-color-destructive text-color-destructive-foreground hover:bg-color-destructive/90",
-        outline: "border border-color-border bg-color-background hover:bg-color-accent hover:text-color-accent-foreground",
-        secondary: "bg-color-secondary text-color-secondary-foreground hover:bg-color-secondary/80",
-        ghost: "hover:bg-color-accent hover:text-color-accent-foreground",
-        link: "text-color-primary underline-offset-4 hover:underline",
+        default:
+          "bg-primary text-primary-foreground hover:bg-primary/90",
+        destructive:
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline:
+          "border border-border bg-background hover:bg-accent hover:text-accent-foreground",
+        secondary:
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost:
+          "hover:bg-accent hover:text-accent-foreground",
+        link:
+          "text-primary underline-offset-4 hover:underline",
       },
       size: {
         sm: "h-8 px-3 py-1.5 text-sm",

@@ -7,6 +7,12 @@ Learn more about the recommended Project Setup and IDE Support in the [Vue Docs 
 
 
 <!-- use it -->
+
+
 # npx vueon-ui init
 (choose theme and all)
 # npm vueon-ui add Button
+
+
+
+commands
