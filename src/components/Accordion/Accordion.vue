@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { AccordionRoot } from "reka-ui";
+import "./style.css"
 
 const props = defineProps({
   type: { type: String as () => "single" | "multiple", default: "single" },

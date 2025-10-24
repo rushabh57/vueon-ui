@@ -38,3 +38,5 @@
   .AccordionTrigger[data-state="open"] .AccordionChevron {
     transform: rotate(180deg);
   }
+
+  

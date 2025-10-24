@@ -1,0 +1,207 @@
+<template>
+ <div class="p-8 space-y-10 max-w-2xl mx-auto">
+
+<!-- Input & Label Section -->
+<section class="border rounded-xl p-6 shadow-sm">
+  <h2 class="text-lg font-semibold mb-4">⌨️ Input & Label</h2>
+
+  <!-- Normal input -->
+  <Input placeholder="Normal input" />
+
+  <!-- Reactive Validation Example -->
+  <div class="mt-6 space-y-2">
+    <Input
+      v-model="email"
+      placeholder="Email"
+      :stage="emailStage"
+      :stageMessage="emailMessage"
+    />
+
+    <Input
+      v-model="password"
+      type="password"
+      placeholder="Password"
+      :stage="passwordStage"
+      :stageMessage="passwordMessage"
+    />
+
+    <button
+      class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+      @click="validateForm"
+    >
+      Submit
+    </button>
+  </div>
+</section>
+
+</div>
+
+  <div class="p-8 space-y-10 max-w-2xl mx-auto">
+
+   
+    <!-- Button Section -->
+    <section class="border rounded-xl p-6 shadow-sm">
+      <h2 class="text-lg font-semibold mb-4">🔘 Buttons</h2>
+      <div class="flex flex-wrap gap-4">
+        <Button>Default</Button>
+        <Button variant="outline">Outline</Button>
+        <Button variant="secondary">Secondary</Button>
+        <Button variant="destructive">Destructive</Button>
+        <Button variant="ghost">Ghost</Button>
+        <Button variant="link">Link</Button>
+        <Button size="sm">Small</Button>
+        <Button size="md">Medium</Button>
+        <Button size="lg">Large</Button>
+        <Button size="icon">Icon</Button>
+      </div>
+    </section>
+
+    <!-- Avatar Section -->
+    <section class="border rounded-xl p-6 shadow-sm">
+      <h2 class="text-lg font-semibold mb-4">🧍 Avatar</h2>
+      <div class="flex items-center space-x-4">
+        <Avatar src="" fallbackText="Rushabh jain" size="md" ring />
+        <Avatar src="" fallbackText="RJ" size="sm" />
+        <Avatar src="" fallbackText="A" size="lg" />
+      </div>
+    </section>
+
+    <!-- Input & Label Section -->
+    <section class="border rounded-xl p-6 shadow-sm">
+      <h2 class="text-lg font-semibold mb-4">⌨️ Input & Label</h2>
+
+      <Input placeholder="Normal input" />
+
+      <div class="grid w-full items-center gap-1 mt-4">
+        <Label for="picture">Picture</Label>
+        <Input id="picture" type="file" />
+      </div>
+
+      <div class="grid w-full items-center gap-1 mt-4">
+        <Label for="disabledFile">Disabled File</Label>
+        <Input id="disabledFile" type="file" disabled />
+
+
+      
+
+      </div>
+
+      <div class="mt-4 space-y-2">
+        <!-- Custom messages -->
+        <Input stage="error" placeholder="Error input" stageMessage="Invalid data" />
+        <Input stage="success" placeholder="Success input" stageMessage="All good!" />
+        <Input stage="warning" placeholder="Warning input" stageMessage="Check carefully" />
+      </div>
+
+
+
+
+    </section>
+
+    <!-- Accordion Section -->
+    <section class="border rounded-xl p-6 shadow-sm">
+      <h2 class="text-lg font-semibold mb-4">📂 Accordion</h2>
+
+      <Accordion type="single" collapsible>
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Is it accessible?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It adheres to the WAI-ARIA design pattern.
+          </AccordionContent>
+        </AccordionItem>
+
+        <AccordionItem value="item-2">
+          <AccordionTrigger>Can I style it?</AccordionTrigger>
+          <AccordionContent>
+            Absolutely. You can customize it however you want.
+          </AccordionContent>
+        </AccordionItem>
+
+        <AccordionItem value="item-3">
+          <AccordionTrigger>Can it be animated?</AccordionTrigger>
+          <AccordionContent>
+            Yes! You can add smooth slide animations with Tailwind or Vue transitions.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </section>
+
+    <!-- Switch Section -->
+    <section class="border rounded-xl p-6 shadow-sm">
+      <h2 class="text-lg font-semibold mb-4">🎚️ Switch</h2>
+
+      <!-- Simple Switch -->
+      <div class="flex items-center space-x-3 mb-4">
+        <Switch id="notifications" />
+        <Label for="notifications">Enable Notifications</Label>
+      </div>
+
+      <!-- Switch with Label + Description -->
+      <div class="flex items-center justify-between border p-4 rounded-md">
+        <div>
+          <Label for="airplaneMode" class="text-sm font-medium text-gray-900">
+            Airplane Mode
+          </Label>
+          <p class="text-sm text-gray-500">Disables Wi-Fi and cellular connection</p>
+        </div>
+        <Switch id="airplaneMode" />
+      </div>
+    </section>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { ref, watch } from "vue";
+import Button from "./components/Button/Button.vue";
+import Avatar from "./components/Avatar/Avatar.vue";
+import Input from "./components/Input/Input.vue";
+import Label from "./components/Label/Label.vue";
+import Switch from "./components/Switch/Switch.vue";
+
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "./components/Accordion";
+
+
+
+
+
+const email = ref("");
+const password = ref("");
+
+const emailStage = ref<"error" | "success" | undefined>();
+const emailMessage = ref("");
+
+const passwordStage = ref<"error" | "success" | undefined>();
+const passwordMessage = ref("");
+
+// Live validation using watch
+watch(email, (val) => {
+  if (!val) {
+    emailStage.value = undefined;
+    emailMessage.value = "";
+  } else if (!val.includes("@")) {
+    emailStage.value = "error";
+    emailMessage.value = "Invalid email address";
+  } else {
+    emailStage.value = "success";
+    emailMessage.value = "Looks good!";
+  }
+});
+
+watch(password, (val) => {
+  if (!val) {
+    passwordStage.value = undefined;
+    passwordMessage.value = "";
+  } else if (val.length < 6) {
+    passwordStage.value = "error";
+    passwordMessage.value = "Password too short";
+  } else {
+    passwordStage.value = "success";
+    passwordMessage.value = "Strong password!";
+  }
+});
+</script>
