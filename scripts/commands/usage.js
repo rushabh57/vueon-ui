@@ -35,7 +35,6 @@ export default function registerUsageCommand(program) {
       }
     ]
 
-    // 🧩 Let user pick a command interactively
     const { chosenCommand } = await inquirer.prompt([
       {
         type: "list",

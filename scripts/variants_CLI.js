@@ -2,7 +2,6 @@ import fs from "fs";
 import path from "path";
 
 const themeDir = path.resolve("src/theme");
-// --- Done message (❖ symbol + green color gradient-style) ---
 const green = "\x1b[32m";
 const reset = "\x1b[0m";
 

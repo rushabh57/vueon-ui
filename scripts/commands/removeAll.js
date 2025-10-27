@@ -35,7 +35,7 @@ program
       ]);
 
       if (!confirm) {
-        console.log("✋ Operation cancelled.");
+        console.log("X Operation cancelled.");
         return;
       }
 
@@ -43,10 +43,10 @@ program
       installed.forEach((component) => {
         const targetPath = path.join(uiDir, component);
         fs.rmSync(targetPath, { recursive: true, force: true });
-        console.log(`🗑 Removed: ${component}`);
+        console.log(`␡ Removed: ${component}`);
       });
 
-      console.log("\n✅ All Vueon UI components removed successfully.\n");
+      console.log("\n✓ All Vueon UI components removed successfully.\n");
     });
 
 }
