@@ -51,6 +51,7 @@
   "files": [
     "bin",
     "index.js",
+    "scripts",
     "src"
   ],
   "homepage": "https://github.com/rushabh57/vueon-ui#readme"

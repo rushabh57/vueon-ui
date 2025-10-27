@@ -1,0 +1,57 @@
+{
+    "components": {
+      "Accordion": {
+        "path": "src/components/ui/Accordion.vue",
+        "description": "Collapsible content container for organizing sections."
+      },
+      "AlertDialog": {
+        "path": "src/components/ui/AlertDialog.vue",
+        "description": "A dialog that interrupts the user with important information."
+      },
+      "Avatar": {
+        "path": "src/components/ui/Avatar.vue",
+        "description": "Displays user profile image or initials."
+      },
+      "Badge": {
+        "path": "src/components/ui/Badge.vue",
+        "description": "A small status indicator or tag label."
+      },
+      "Button": {
+        "path": "src/components/ui/Button.vue",
+        "description": "Primary button component with variants and sizes."
+      },
+      "Input": {
+        "path": "src/components/ui/Input.vue",
+        "description": "Text input field component."
+      },
+      "Label": {
+        "path": "src/components/ui/Label.vue",
+        "description": "Accessible label for input fields."
+      },
+      "Select": {
+        "path": "src/components/ui/Select.vue",
+        "description": "Custom select dropdown component."
+      },
+      "Separator": {
+        "path": "src/components/ui/Separator.vue",
+        "description": "Visual divider for grouping sections."
+      },
+      "Switch": {
+        "path": "src/components/ui/Switch.vue",
+        "description": "Toggle switch input component."
+      },
+      "Tooltip": {
+        "path": "src/components/ui/Tooltip.vue",
+        "description": "Displays extra information when hovering."
+      },
+      "wrappers": {
+        "path": "src/components/ui/wrappers.vue",
+        "description": "Wrapper utility for consistent spacing/layout."
+      }
+    },
+    "theme": {
+      "path": "src/theme/variant.ts",
+      "description": "Globalized theme variant utilities used by all components."
+    }
+  }
+  
