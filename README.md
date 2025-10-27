@@ -14,6 +14,7 @@ npx vueon-ui init
 
 
 npx vueon-ui add Button
+choose: one component or morethan 2 as some goes too remove command
 
 | Command                        | Description                                                        |
 | ------------------------------ | ------------------------------------------------------------------ |
@@ -43,3 +44,7 @@ npx vueon-ui pick
 
 Vueon-UI is under active development.
 Expect frequent updates, UI polish, and new component releases as it grows. 🌱
+
+
+
+THANK YOU

@@ -1,10 +1,11 @@
 {
   "name": "vueon-ui",
-  "version": "0.0.1",
+  "version": "0.0.9",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc -b && vite build",
+"build": "esbuild index.js --bundle --platform=node --format=esm --external:node:* --external:chalk --external:inquirer --external:commander --external:yoctocolors-cjs --outfile=dist/index.js"
+,
     "preview": "vite preview"
   },
   "dependencies": {
@@ -25,6 +26,7 @@
     "@types/node": "^24.6.0",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/tsconfig": "^0.8.1",
+    "esbuild": "^0.25.11",
     "shiki": "^3.13.0",
     "typescript": "~5.9.3",
     "vite": "^7.1.7",
@@ -32,28 +34,32 @@
     "vue-tsc": "^3.1.0",
     "vuepress-plugin-md-enhance": "^2.0.0-rc.95"
   },
- 
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
+  "main": "dist/index.js",
+  "bin": {
+    "vueon-ui": "./dist/index.js"
   },
+  "files": [
+    "dist",
+    "scripts",
+    "src"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rushabh57/vueon-ui.git"
   },
-  "keywords": ["vue", "ui", "components", "vite", "cli", "vueon-ui"],
+  "keywords": [
+    "vue",
+    "ui",
+    "components",
+    "vite",
+    "cli",
+    "vueon-ui"
+  ],
   "author": "Rushabh Jain",
   "description": "Vueon-UI — A growing Vue 3 component library and CLI toolkit. (Not stable, still growing)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/rushabh57/vueon-ui/issues"
   },
-  "bin": "./index.js",
-  "files": [
-    "bin",
-    "index.js",
-    "scripts",
-    "src"
-  ],
   "homepage": "https://github.com/rushabh57/vueon-ui#readme"
 }
