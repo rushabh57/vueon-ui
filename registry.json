@@ -1,51 +1,51 @@
 {
     "components": {
       "Accordion": {
-        "path": "src/components/ui/Accordion.vue",
+        "path": "src/components/Accordion/Accordion.vue",
         "description": "Collapsible content container for organizing sections."
       },
       "AlertDialog": {
-        "path": "src/components/ui/AlertDialog.vue",
+        "path": "src/components/AlertDialog/AlertDialog.vue",
         "description": "A dialog that interrupts the user with important information."
       },
       "Avatar": {
-        "path": "src/components/ui/Avatar.vue",
+        "path": "src/components/Avatar/Avatar.vue",
         "description": "Displays user profile image or initials."
       },
       "Badge": {
-        "path": "src/components/ui/Badge.vue",
+        "path": "src/components/Badge/Badge.vue",
         "description": "A small status indicator or tag label."
       },
       "Button": {
-        "path": "src/components/ui/Button.vue",
+        "path": "src/components/Button/Button.vue",
         "description": "Primary button component with variants and sizes."
       },
       "Input": {
-        "path": "src/components/ui/Input.vue",
+        "path": "src/components/Input/Input.vue",
         "description": "Text input field component."
       },
       "Label": {
-        "path": "src/components/ui/Label.vue",
+        "path": "src/components/Label/Label.vue",
         "description": "Accessible label for input fields."
       },
       "Select": {
-        "path": "src/components/ui/Select.vue",
+        "path": "src/components/Select/Select.vue",
         "description": "Custom select dropdown component."
       },
       "Separator": {
-        "path": "src/components/ui/Separator.vue",
+        "path": "src/components/Separator/Separator.vue",
         "description": "Visual divider for grouping sections."
       },
       "Switch": {
-        "path": "src/components/ui/Switch.vue",
+        "path": "src/components/Switch/Switch.vue",
         "description": "Toggle switch input component."
       },
       "Tooltip": {
-        "path": "src/components/ui/Tooltip.vue",
+        "path": "src/components/Tooltip/Tooltip.vue",
         "description": "Displays extra information when hovering."
       },
       "wrappers": {
-        "path": "src/components/ui/wrappers.vue",
+        "path": "src/components/wrappers/wrappers.vue",
         "description": "Wrapper utility for consistent spacing/layout."
       }
     },
