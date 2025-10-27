@@ -32,7 +32,7 @@
     "vue-tsc": "^3.1.0",
     "vuepress-plugin-md-enhance": "^2.0.0-rc.95"
   },
-  "description": "This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.",
+ 
   "main": "index.js",
   "directories": {
     "doc": "docs"
@@ -41,9 +41,10 @@
     "type": "git",
     "url": "git+https://github.com/rushabh57/vueon-ui.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["vue", "ui", "components", "vite", "cli", "vueon-ui"],
+  "author": "Rushabh Jain",
+  "description": "Vueon-UI — A growing Vue 3 component library and CLI toolkit. (Not stable, still growing)",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/rushabh57/vueon-ui/issues"
   },
