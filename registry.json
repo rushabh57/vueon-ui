@@ -44,10 +44,23 @@
         "path": "src/components/Tooltip/Tooltip.vue",
         "description": "Displays extra information when hovering."
       },
-      "wrappers": {
-        "path": "src/components/wrappers/wrappers.vue",
-        "description": "Wrapper utility for consistent spacing/layout."
+      "Toggle": {
+        "path": "src/components/Toggle/Toggle.vue",
+        "description": "A two-state button that can be pressed or unpressed."
+      },
+      "Collapsible": {
+        "path": "src/components/Collapsible/Collapsible.vue",
+        "description": "Reveals or hides content with smooth animation."
+      },
+      "Dialog": {
+        "path": "src/components/Dialog/Dialog.vue",
+        "description": "Displays an overlay or modal for user interactions."
+      },
+      "AspectRatio": {
+        "path": "src/components/AspectRatio/AspectRatio.vue",
+        "description": "Maintains a consistent width-to-height ratio for its content."
       }
+    
     },
     "theme": {
       "path": "src/theme/variant.ts",
