@@ -154,10 +154,20 @@ import DialogHeader from "./components/Dialog/DialogHeader.vue";
 import DialogTitle from "./components/Dialog/DialogTitle.vue";
 import DialogDescription from "./components/Dialog/DialogDescription.vue";
 import DialogFooter from "./components/Dialog/DialogFooter.vue";
+import Toggle from "./components/Toggle/Toggle.vue";
+import { Bookmark } from "lucide-vue-next";
 </script>
 
 <template>
 
+
+<Toggle
+    aria-label="Toggle bookmark"
+    class=" border data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-blue-500 data-[state=on]:*:[svg]:stroke-blue-500"
+  >
+    <Bookmark class="mr-2 h-4 w-4" />
+    Bookmark
+  </Toggle>
 
 <div class="w-[300px]  text-sm">
   <Collapsible>
