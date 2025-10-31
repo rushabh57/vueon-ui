@@ -116,6 +116,8 @@ const selectedFruit = ref('')
 </template> -->
 
 
+
+
 <script setup lang="ts">
 import {
   AlertDialog,
@@ -139,10 +141,60 @@ import {
   SelectGroup,
   SelectItem,
 } from "@/components/Select/"
+import AspectRatio from "./components/AspectRatio/AspectRatio.vue";
+import {  
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent
+  } from "./components/Collapsible";
+import Dialog from "./components/Dialog/Dialog.vue";
+import DialogTrigger from "./components/Dialog/DialogTrigger.vue";
+import DialogContent from "./components/Dialog/DialogContent.vue";
+import DialogHeader from "./components/Dialog/DialogHeader.vue";
+import DialogTitle from "./components/Dialog/DialogTitle.vue";
+import DialogDescription from "./components/Dialog/DialogDescription.vue";
+import DialogFooter from "./components/Dialog/DialogFooter.vue";
 </script>
 
 <template>
+
+
+<div class="w-[300px]  text-sm">
+  <Collapsible>
+    <CollapsibleTrigger>@peduarte starred 3 repositories</CollapsibleTrigger>
+
+    <div
+      class="mt-2 p-2 border rounded-md bg-background shadow-sm text-muted-foreground"
+    >
+      @radix-ui/primitives
+    </div>
+
+    <CollapsibleContent>
+      <div class="mt-2 p-2 border rounded-md bg-background shadow-sm text-muted-foreground">
+        @vuejs/core
+      </div>
+      <div class="mt-2 p-2 border rounded-md bg-background shadow-sm text-muted-foreground">
+        @reka-ui/primitives
+      </div>
+    </CollapsibleContent>
+  </Collapsible>
+</div>
+
+
+
  <!-- <div class="px-0 py-4 border w-fit">  -->
+  <div class="w-full sm:w-[300px] overflow-hidden rounded-lg shadow-sm">
+    <AspectRatio :ratio="1">
+      <img
+        class="h-full w-full object-cover"
+        src="https://images.unsplash.com/photo-1498855926480-d98e83099315?w=300&dpr=2&q=80"
+        alt="Landscape photograph by Tobias Tullius"
+      >
+    </AspectRatio>
+  </div>
+
+
+    
 <Button>defauot\</Button>
 <Button variant="destructive">defauot\</Button>
 <Button variant="ghost">defauot\</Button>
@@ -168,6 +220,24 @@ import {
       </SelectContent>
     </SelectRoot>
   <!-- </div> -->
+
+  <div class="flex items-center justify-center min-h-screen">
+    <Dialog>
+      <DialogTrigger>Open</DialogTrigger>
+      <DialogContent>
+      <DialogHeader>
+        <DialogTitle>Are you absolutely sure?</DialogTitle>
+        <DialogDescription>
+          This action cannot be undone.
+        </DialogDescription>
+      </DialogHeader>
+      <DialogFooter>
+        <Button variant="default">Cancel</Button>
+        <Button variant="destructive">Confirm</Button>
+      </DialogFooter>
+    </DialogContent>
+  </Dialog>
+</div>
 
 
   <div class="flex items-center justify-center min-h-screen">

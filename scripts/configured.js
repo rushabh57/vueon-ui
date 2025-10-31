@@ -13,14 +13,6 @@ function isLaravelVueProject() {
   );
 }
 
-// 🟣 Choose correct base path for components
-// const componentBasePath = isLaravelVueProject()
-//   ? path.join(process.cwd(), "resources/js/components/ui")
-//   : path.join(process.cwd(), "src/components/ui");
-
-// // 🟢 Debug output
-// console.log(`- Detected project type: ${isLaravelVueProject() ? "Happy Laravel" : "Standard Vue App"}`);
-// console.log(`- Component base path: ${componentBasePath}\n`);
 
 function isAstroProject() {
   return (
@@ -74,7 +66,7 @@ export async function configureProject(answers, success) {
 
   console.log(`⬢ Installing dependencies...`);
   execSync(
-    "npm install -D tailwindcss @tailwindcss/vite autoprefixer reka-ui class-variance-authority typescript lucide-vue-next --no-audit --no-fund",
+    "npm install -D tailwindcss @tailwindcss/vite autoprefixer reka-ui class-variance-authority typescript lucide-vue-next vueon-ui --no-audit --no-fund",
     { stdio: "inherit" }
   );
 
