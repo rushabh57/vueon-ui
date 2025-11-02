@@ -179,9 +179,205 @@ const showEmail = ref(true)
 const showNotifications = ref(false)
 const color = ref("blue")
 
+
+
+
+import {
+  Menubar,
+  MenubarMenu,
+  MenubarTrigger,
+  MenubarContent,
+  MenubarItem,
+  MenubarLabel,
+  MenubarSeparator,
+  MenubarCheckboxItem,
+  MenubarItemIndicator,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarSub,
+  MenubarSubTrigger,
+  MenubarSubContent,
+  MenubarArrow
+} from './components/Menubar'
+import { Check, Circle , ChevronRight } from 'lucide-vue-next'
+
+
+import {
+  NavigationMenuRoot,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
+  NavigationMenuIndicator,
+  NavigationMenuViewport,
+} from '@/components/NavigationMenu'
+
+
+const items = [
+  {
+    title: 'Documentation',
+    desc: 'Find in-depth information about Vueon UI features and API.',
+  },
+  {
+    title: 'Components',
+    desc: 'Explore reusable and accessible UI components.',
+  },
+  {
+    title: 'Themes',
+    desc: 'Learn how to customize appearance with your theme.',
+  },
+]
 </script>
 
 <template>
+
+<div class="min-h-screen flex flex-col items-center justify-center bg-background text-foreground">
+    <NavigationMenuRoot>
+      <NavigationMenuList>
+        <!-- Menu Item 1 -->
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Learn</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <div class="grid gap-2 p-4 w-[300px]">
+              <NavigationMenuLink
+                v-for="(item, i) in items"
+                :key="i"
+                class="block rounded-md p-2 hover:bg-accent hover:text-accent-foreground"
+              >
+                <div class="text-sm font-medium">{{ item.title }}</div>
+                <p class="text-xs text-muted-foreground">{{ item.desc }}</p>
+              </NavigationMenuLink>
+            </div>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+
+      
+
+        <!-- Menu Item 3 -->
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>More</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <div class="p-4 grid gap-2">
+              <NavigationMenuLink
+                href="#about"
+                class="block rounded-md p-2 hover:bg-accent hover:text-accent-foreground"
+              >
+                About
+              </NavigationMenuLink>
+              <NavigationMenuLink
+                href="#contact"
+                class="block rounded-md p-2 hover:bg-accent hover:text-accent-foreground"
+              >
+                Contact
+              </NavigationMenuLink>
+            </div>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+
+
+          <!-- Menu Item 2 -->
+        <NavigationMenuItem>
+          <NavigationMenuLink
+            href="#"
+            class="inline-flex h-10 items-center rounded-md bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
+          >
+            Playground
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+
+        <NavigationMenuIndicator />
+      </NavigationMenuList>
+
+      <NavigationMenuViewport />
+    </NavigationMenuRoot>
+  </div>
+  <div class="flex min-h-screen items-center justify-center bg-background text-foreground">
+    <Menubar>
+      <!-- File Menu -->
+      <MenubarMenu>
+        <MenubarTrigger>File</MenubarTrigger>
+        <MenubarContent>
+          <MenubarLabel>File</MenubarLabel>
+          <MenubarItem>New File</MenubarItem>
+          <MenubarItem>Open...</MenubarItem>
+          <MenubarItem>Save</MenubarItem>
+          <MenubarSeparator />
+          <MenubarSub>
+            <MenubarSubTrigger>
+              Export
+              <ChevronRight class="ml-auto h-4 w-4" />
+            </MenubarSubTrigger>
+            <MenubarSubContent>
+              <MenubarItem>PDF</MenubarItem>
+              <MenubarItem>DOCX</MenubarItem>
+              <MenubarItem>TXT</MenubarItem>
+            </MenubarSubContent>
+          </MenubarSub>
+          <MenubarSeparator />
+          <MenubarItem>Exit</MenubarItem>
+          <MenubarArrow />
+        </MenubarContent>
+      </MenubarMenu>
+
+      <!-- Edit Menu -->
+      <MenubarMenu>
+        <MenubarTrigger>Edit</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem>Undo</MenubarItem>
+          <MenubarItem>Redo</MenubarItem>
+          <MenubarSeparator />
+          <MenubarItem>Cut</MenubarItem>
+          <MenubarItem>Copy</MenubarItem>
+          <MenubarItem>Paste</MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+
+      <!-- View Menu -->
+      <MenubarMenu>
+        <MenubarTrigger>View</MenubarTrigger>
+        <MenubarContent>
+            <MenubarCheckboxItem  v-model:checked="toolbar">
+                        <MenubarItemIndicator><Circle class="h-2 w-2" /></MenubarItemIndicator>
+
+            Show Toolbar
+           </MenubarCheckboxItem>
+
+
+          <MenubarSeparator />
+          <MenubarLabel>Theme</MenubarLabel>
+          <MenubarRadioGroup v-model="theme">
+            <MenubarRadioItem value="light">
+              <MenubarItemIndicator iconview="check" />
+                            Light
+            </MenubarRadioItem>
+            <MenubarRadioItem value="dark">
+              <MenubarItemIndicator iconview="circle" />
+
+              Dark
+            </MenubarRadioItem>
+            <MenubarRadioItem value="system">
+              <MenubarItemIndicator iconview="minus" />
+
+              <!-- <MenubarItemIndicator><Circle class="h-2 w-2" /></MenubarItemIndicator> -->
+              System
+            </MenubarRadioItem>
+          </MenubarRadioGroup>
+        </MenubarContent>
+      </MenubarMenu>
+
+      <!-- Help Menu -->
+      <MenubarMenu>
+        <MenubarTrigger>Help</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem>Documentation</MenubarItem>
+          <MenubarItem>Keyboard Shortcuts</MenubarItem>
+          <MenubarSeparator />
+          <MenubarItem>About</MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
+  </div>
  <div class="min-h-screen flex items-center justify-center bg-background text-foreground">
     <DropdownMenu>
       <DropdownTrigger>Open</DropdownTrigger>

@@ -67,6 +67,14 @@
       "Tooltip": {
         "path": "src/components/Tooltip/Tooltip.vue",
         "description": "Displays extra information when hovering."
+      },
+      "Menubar": {
+        "path": "src/components/Menubar/Menubar.vue",
+        "description": "Displays Menubar."
+      },
+      "NavigationMenu" : {
+        "path": "src/components/NavigationMenu/NavigationMenu.vue",
+        "description": "Displays NavigationMenu."
       }
 
 
