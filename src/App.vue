@@ -240,11 +240,49 @@ import {
   PaginationPrev,
   PaginationEllipsis
 } from "@/components/Pagination"  
+import {
+  HoverCard,
+  HoverCardTrigger,
+  HoverCardPortal,
+  HoverCardContent,
+  HoverCardArrow
+} from "@/components/HoverCard"
 
 
 </script>
 
 <template>
+<div class="min-h-screen flex items-center justify-center bg-background text-foreground">
+    <HoverCard>
+      <HoverCardTrigger>
+        <Button >
+          @vueonui
+        </Button>
+      </HoverCardTrigger>
+
+      <HoverCardPortal>
+        <HoverCardContent class="flex flex-col space-y-2">
+          <div class="flex items-center space-x-2">
+            <img
+              src="https://avatars.githubusercontent.com/u/000000?v=4"
+              alt="avatar"
+              class="h-10 w-10 rounded-full"
+            />
+            <div>
+              <p class="text-sm font-medium">@vueonui</p>
+              <p class="text-xs text-muted-foreground">Vue + Shadcn inspired UI</p>
+            </div>
+          </div>
+          <p class="text-sm text-muted-foreground">
+            Modern headless components built with Reka UI.
+          </p>
+          <HoverCardArrow />
+        </HoverCardContent>
+      </HoverCardPortal>
+    </HoverCard>
+  </div>
+
+
  <div class="flex items-center justify-center min-h-screen bg-background text-foreground">
 
   <PaginationRoot
@@ -279,52 +317,6 @@ import {
     </PaginationList>
   </PaginationRoot>
 
-<!-- <PaginationRoot >
-    <PaginationList class="flex items-center gap-1">
-      <PaginationFirst
-        class="px-2 py-1 border rounded-md disabled:opacity-50"
-        :disabled="currentPage === 1"
-        @click="currentPage = 1"
-      >
-        «
-      </PaginationFirst>
-
-      <PaginationPrev
-        class="px-2 py-1 border rounded-md disabled:opacity-50"
-        :disabled="currentPage === 1"
-        @click="prevPage"
-      >
-        ‹
-      </PaginationPrev>
-
-      <template v-for="(page, index) in items1" :key="index">
-        <PaginationListItem
-          :value="page.value"
-          :data-selected="currentPage === page.value ? 'true' : null"
-          @click="currentPage = page.value"
-          class="flex h-9 w-9 items-center justify-center rounded-md border text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground data-[selected]:bg-accent data-[selected]:text-accent-foreground"
-        >
-          {{ page.value }}
-        </PaginationListItem>
-      </template>
-
-      <PaginationNext
-        class="px-2 py-1 border rounded-md disabled:opacity-50"
-        :disabled="currentPage === totalPages"
-        @click="nextPage"
-      >
-        ›
-      </PaginationNext>
-
-      <PaginationLast
-        class="px-2 py-1 border rounded-md disabled:opacity-50"
-        :disabled="currentPage === totalPages"
-        @click="currentPage = totalPages"
-      >
-        »
-      </PaginationLast>
-    </PaginationList>
-  </PaginationRoot> -->
 
   </div>
 

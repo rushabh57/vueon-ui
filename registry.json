@@ -79,7 +79,10 @@
       "Pagination" : {
         "path": "src/components/Pagination/Pagination.vue",
         "description": "Displays Pagination."
-
+      },
+      "HoverCard" : {
+        "path": "src/components/HoverCard/HoverCard.vue",
+        "description": "Displays HoverCard."
       }
 
 
