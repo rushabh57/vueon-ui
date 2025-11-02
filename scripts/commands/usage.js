@@ -1,54 +1,82 @@
-import inquirer from "inquirer";
+import inquirer from "inquirer"
 import chalk from "chalk"
 
 export default function registerUsageCommand(program) {
-
   program
-  .command("usage [command]")
-  .description("ℹ  Shows how to use a Vueon UI command")
-  .action(async () => {
-    const commands = [
-      {
-        name: "add",
-        usage: "vueon-ui add <component>",
-        description: "Adds a specific Vueon UI component (e.g. Button, Input)."
-      },
-      {
-        name: "remove",
-        usage: "vueon-ui remove <component>",
-        description: "Removes a previously added Vueon UI component."
-      },
-      {
-        name: "list",
-        usage: "vueon-ui list",
-        description: "Lists all available Vueon UI components."
-      },
-      {
-        name: "add-all",
-        usage: "vueon-ui add-all",
-        description: "Adds all Vueon UI components at once."
-      },
-      {
-        name: "usage",
-        usage: "vueon-ui usage",
-        description: "Shows interactive help menu for Vueon UI commands."
-      }
-    ]
+    .command("usage [command]")
+    .description("ℹ  Show how to use Vueon UI CLI commands")
+    .action(async () => {
+      const commands = [
+        {
+          name: "init",
+          usage: "npx vueon-ui init",
+          description: "Initialize Vueon UI in your current project."
+        },
+        {
+          name: "add",
+          usage: "npx vueon-ui add <component>",
+          description: "Add a specific Vueon UI component (e.g. Button, Input)."
+        },
+        {
+          name: "remove",
+          usage: "npx vueon-ui remove <component>",
+          description: "Remove a previously added Vueon UI component."
+        },
+        {
+          name: "list",
+          usage: "npx vueon-ui list",
+          description: "List all available Vueon UI components."
+        },
+        {
+          name: "add-all",
+          usage: "npx vueon-ui add-all",
+          description: "Add all Vueon UI components at once."
+        },
+        {
+          name: "remove-all",
+          usage: "npx vueon-ui remove-all",
+          description: "Remove all Vueon UI components at once."
+        },
+        {
+          name: "version",
+          usage: "npx vueon-ui version",
+          description: "Display CLI and core library versions."
+        },
+        {
+          name: "reset",
+          usage: "npx vueon-ui reset",
+          description: "Reset vueon-ui to default state."
+        },
+        {
+          name: "usage",
+          usage: "npx vueon-ui usage",
+          description: "Show this interactive usage guide."
+        },
+        {
+          name: "pick",
+          usage: "npx vueon-ui pick",
+          description: "Show's all components and interactivly choose component."
+        },
+        {
+          name: "sync",
+          usage: "npx vueon-ui sync",
+          description: "Just like update but it experimental."
+        },
+      ]
 
-    const { chosenCommand } = await inquirer.prompt([
-      {
-        type: "list",
-        name: "chosenCommand",
-        message: "Select a command to view its details:",
-        choices: commands.map(cmd => cmd.name)
-      }
-    ])
+      const { chosenCommand } = await inquirer.prompt([
+        {
+          type: "list",
+          name: "chosenCommand",
+          message: chalk.bold("Select a command to view details:"),
+          choices: commands.map(cmd => cmd.name)
+        }
+      ])
 
-    const cmd = commands.find(c => c.name === chosenCommand)
+      const cmd = commands.find(c => c.name === chosenCommand)
 
-    console.log(`\n${chalk.bold.cyan("Command name:")} ${cmd.name}`)
-    console.log(`${chalk.bold.green("Usage:")} ${cmd.usage}`)
-    console.log(`${chalk.bold.yellow("Description:")} ${cmd.description}\n`)
-  })
-
+      console.log("\n" + chalk.cyan("▣ Command: ") + chalk.bold(cmd.name))
+      console.log(chalk.green("↳ Usage: ") + chalk.white(cmd.usage))
+      console.log(chalk.yellow("↳ Description: ") + chalk.white(cmd.description) + "\n")
+    })
 }

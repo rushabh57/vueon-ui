@@ -7,7 +7,6 @@ export default function registerVersionCommand(program) {
     .command("version")
     .description("Show Vueon UI CLI and Core library versions")
     .action(() => {
-      // 🔹 From templatesDir, go up twice to reach vueon-ui/package.json
       const cliPkgPath = path.resolve(templatesDir, "../../vueon-ui/package.json");
       const projectPkgPath = path.resolve(process.cwd(), "package.json");
 
@@ -25,7 +24,7 @@ export default function registerVersionCommand(program) {
       }
 
       console.log(`
-🧱 Vueon UI Version Info
+▣ Vueon UI Version Info
 ──────────────────────────
 CLI Version:    v${cliVersion}
 Core Library:   ${coreVersion}

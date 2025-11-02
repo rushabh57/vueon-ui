@@ -34,7 +34,7 @@ export async function syncComponents() {
   }
 
   console.log(
-    chalk.cyanBright(`\n🔄 Syncing ${localComponents.length} installed components...\n`)
+    chalk.cyanBright(`\n↻ Syncing ${localComponents.length} installed components...\n`)
   );
 
   let updated = 0;
