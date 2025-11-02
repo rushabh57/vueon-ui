@@ -75,6 +75,11 @@
       "NavigationMenu" : {
         "path": "src/components/NavigationMenu/NavigationMenu.vue",
         "description": "Displays NavigationMenu."
+      },
+      "Pagination" : {
+        "path": "src/components/Pagination/Pagination.vue",
+        "description": "Displays Pagination."
+
       }
 
 

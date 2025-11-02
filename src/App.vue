@@ -173,7 +173,7 @@ import {
   DropdownSubContent,
   DropdownArrow,
 } from "@/components/Dropdown"
-import { ref } from "vue"
+import { computed, ref } from "vue"
 
 const showEmail = ref(true)
 const showNotifications = ref(false)
@@ -228,9 +228,105 @@ const items = [
     desc: 'Learn how to customize appearance with your theme.',
   },
 ]
+
+
+import {
+  PaginationRoot,
+  PaginationList,
+  PaginationListItem,
+  PaginationFirst,
+  PaginationLast,
+  PaginationNext,
+  PaginationPrev,
+  PaginationEllipsis
+} from "@/components/Pagination"  
+
+
 </script>
 
 <template>
+ <div class="flex items-center justify-center min-h-screen bg-background text-foreground">
+
+  <PaginationRoot
+    :total="100"
+    :items-per-page="10"
+    :sibling-count="1"
+    show-edges
+  >
+    <PaginationList v-slot="{ items }" class="flex items-center gap-1">
+      <PaginationFirst />
+      <PaginationPrev />
+      <template v-for="(page, index) in items" :key="index">
+        <PaginationListItem
+          v-if="page.type === 'page'"
+          :value="page.value"
+          class="flex h-9 w-9 items-center justify-center rounded-md border text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground data-[selected]:bg-accent data-[selected]:text-accent-foreground"
+        >
+          {{ page.value }}
+        </PaginationListItem>
+        <PaginationEllipsis
+        
+        v-else
+        :index="index"
+        class="flex h-9 w-9 items-center justify-center"
+        :hidden-pages="[4,5,6,7,8,9]" 
+        >
+          …
+        </PaginationEllipsis>
+      </template>
+      <PaginationNext />
+      <PaginationLast />
+    </PaginationList>
+  </PaginationRoot>
+
+<!-- <PaginationRoot >
+    <PaginationList class="flex items-center gap-1">
+      <PaginationFirst
+        class="px-2 py-1 border rounded-md disabled:opacity-50"
+        :disabled="currentPage === 1"
+        @click="currentPage = 1"
+      >
+        «
+      </PaginationFirst>
+
+      <PaginationPrev
+        class="px-2 py-1 border rounded-md disabled:opacity-50"
+        :disabled="currentPage === 1"
+        @click="prevPage"
+      >
+        ‹
+      </PaginationPrev>
+
+      <template v-for="(page, index) in items1" :key="index">
+        <PaginationListItem
+          :value="page.value"
+          :data-selected="currentPage === page.value ? 'true' : null"
+          @click="currentPage = page.value"
+          class="flex h-9 w-9 items-center justify-center rounded-md border text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground data-[selected]:bg-accent data-[selected]:text-accent-foreground"
+        >
+          {{ page.value }}
+        </PaginationListItem>
+      </template>
+
+      <PaginationNext
+        class="px-2 py-1 border rounded-md disabled:opacity-50"
+        :disabled="currentPage === totalPages"
+        @click="nextPage"
+      >
+        ›
+      </PaginationNext>
+
+      <PaginationLast
+        class="px-2 py-1 border rounded-md disabled:opacity-50"
+        :disabled="currentPage === totalPages"
+        @click="currentPage = totalPages"
+      >
+        »
+      </PaginationLast>
+    </PaginationList>
+  </PaginationRoot> -->
+
+  </div>
 
 <div class="min-h-screen flex flex-col items-center justify-center bg-background text-foreground">
     <NavigationMenuRoot>
