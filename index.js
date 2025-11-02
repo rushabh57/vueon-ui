@@ -1,10 +1,8 @@
 #!/usr/bin/env node
 import { Command } from "commander";
 import inquirer from "inquirer";
-
 import { configureProject } from "./scripts/configured.js";
 import { registerCommands } from "./scripts/cmd.js";
-
 
 const program = new Command();
 
@@ -16,43 +14,58 @@ program
 program
   .command("init")
   .description("Initialize Vueon UI in your project")
-  .action(async () => {
+  .option("--fast-install", "Quick install with default settings")
+  .action(async (options) => {
     console.log("\n──────────────────────────────────────────────\n");
     console.log("\n◇ Setting up Vueon UI...\n");
 
-    const answers = await inquirer.prompt([
-      {
-        type: "list",
-        name: "theme",
-        message: "Choose a theme:",
-        choices: ["zinc", "slate", "stone", "gray", "neutral"],
-      },
-      {
-        type: "list",
-        name: "jsConfigSetup",
-        message: "Setup jsconfig.json:",
-        choices: [
-          { name: "Auto (️️⚠ will override existing file)", value: "auto" },
-          { name: "Manual (see docs: https://ui.vueon.com)", value: "manual" },
-        ],
-      },
-      {
-        type: "list",
-        name: "jsConfigAppSetup",
-        message: "Setup jsconfig.app.json:",
-        choices: ["auto", "manual"],
-        default: "auto"
-      },
-      {
-        type: "list",
-        name: "viteConfigSetup",
-        message: "Setup vite.config.js:",
-        choices: [
-          { name: "Auto (️️⚠ will override existing file)", value: "auto" },
-          { name: "Manual (see docs: https://ui.vueon.com)", value: "manual" },
-        ],
-      },
-    ]);
+    let answers;
+
+    if (options.fastInstall) {
+      // Default values for fast install
+      answers = {
+        theme: "zinc",
+        jsConfigSetup: "auto",
+        jsConfigAppSetup: "auto",
+        viteConfigSetup: "auto",
+      };
+      console.log("⚡ Fast install mode enabled — skipping prompts.");
+    } else {
+      // Normal prompt install
+      answers = await inquirer.prompt([
+        {
+          type: "list",
+          name: "theme",
+          message: "Choose a theme:",
+          choices: ["zinc", "slate", "stone", "gray", "neutral"],
+        },
+        {
+          type: "list",
+          name: "jsConfigSetup",
+          message: "Setup jsconfig.json:",
+          choices: [
+            { name: "Auto (⚠ overrides existing file)", value: "auto" },
+            { name: "Manual (see docs: https://ui.vueon.com)", value: "manual" },
+          ],
+        },
+        {
+          type: "list",
+          name: "jsConfigAppSetup",
+          message: "Setup jsconfig.app.json:",
+          choices: ["auto", "manual"],
+          default: "auto",
+        },
+        {
+          type: "list",
+          name: "viteConfigSetup",
+          message: "Setup vite.config.js:",
+          choices: [
+            { name: "Auto (⚠ overrides existing file)", value: "auto" },
+            { name: "Manual (see docs: https://ui.vueon.com)", value: "manual" },
+          ],
+        },
+      ]);
+    }
 
     const green = "\x1b[32m";
     const reset = "\x1b[0m";
@@ -61,7 +74,5 @@ program
     await configureProject(answers, success);
   });
 
-
 registerCommands(program);
-
 program.parse(process.argv);
