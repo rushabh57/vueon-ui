@@ -12,6 +12,10 @@
         "path": "src/components/Avatar/Avatar.vue",
         "description": "Displays user profile image or initials."
       },
+      "AspectRatio": {
+        "path": "src/components/AspectRatio/AspectRatio.vue",
+        "description": "Maintains a consistent width-to-height ratio for its content."
+      },
       "Badge": {
         "path": "src/components/Badge/Badge.vue",
         "description": "A small status indicator or tag label."
@@ -19,6 +23,22 @@
       "Button": {
         "path": "src/components/Button/Button.vue",
         "description": "Primary button component with variants and sizes."
+      },
+      "Checkbox": {
+        "path": "src/components/Checkbox/Checkbox.vue",
+        "description": "Checkbox normal."
+      },
+      "Collapsible": {
+        "path": "src/components/Collapsible/Collapsible.vue",
+        "description": "Reveals or hides content with smooth animation."
+      },
+      "Dialog": {
+        "path": "src/components/Dialog/Dialog.vue",
+        "description": "Displays an overlay or modal for user interactions."
+      },
+      "Dropdown": {
+        "path": "src/components/Dropdown/Dropdown.vue",
+        "description": "Displays an overlay or Dropdown for user interactions."
       },
       "Input": {
         "path": "src/components/Input/Input.vue",
@@ -40,27 +60,17 @@
         "path": "src/components/Switch/Switch.vue",
         "description": "Toggle switch input component."
       },
-      "Tooltip": {
-        "path": "src/components/Tooltip/Tooltip.vue",
-        "description": "Displays extra information when hovering."
-      },
       "Toggle": {
         "path": "src/components/Toggle/Toggle.vue",
         "description": "A two-state button that can be pressed or unpressed."
       },
-      "Collapsible": {
-        "path": "src/components/Collapsible/Collapsible.vue",
-        "description": "Reveals or hides content with smooth animation."
-      },
-      "Dialog": {
-        "path": "src/components/Dialog/Dialog.vue",
-        "description": "Displays an overlay or modal for user interactions."
-      },
-      "AspectRatio": {
-        "path": "src/components/AspectRatio/AspectRatio.vue",
-        "description": "Maintains a consistent width-to-height ratio for its content."
+      "Tooltip": {
+        "path": "src/components/Tooltip/Tooltip.vue",
+        "description": "Displays extra information when hovering."
       }
-    
+
+
+
     },
     "theme": {
       "path": "src/theme/variant.ts",

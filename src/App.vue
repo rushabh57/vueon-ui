@@ -156,9 +156,112 @@ import DialogDescription from "./components/Dialog/DialogDescription.vue";
 import DialogFooter from "./components/Dialog/DialogFooter.vue";
 import Toggle from "./components/Toggle/Toggle.vue";
 import { Bookmark } from "lucide-vue-next";
+import Label from "./components/Label/Label.vue";
+import { Checkbox, CheckboxGroup } from '@/components/Checkbox'
+import {
+  DropdownMenu,
+  DropdownTrigger,
+  DropdownContent,
+  DropdownLabel,
+  DropdownSeparator,
+  DropdownItem,
+  DropdownCheckboxItem,
+  DropdownRadioGroup,
+  DropdownRadioItem,
+  DropdownSub,
+  DropdownSubTrigger,
+  DropdownSubContent,
+  DropdownArrow,
+} from "@/components/Dropdown"
+import { ref } from "vue"
+
+const showEmail = ref(true)
+const showNotifications = ref(false)
+const color = ref("blue")
+
 </script>
 
 <template>
+ <div class="min-h-screen flex items-center justify-center bg-background text-foreground">
+    <DropdownMenu>
+      <DropdownTrigger>Open</DropdownTrigger>
+      <DropdownContent>
+        <DropdownLabel>My Account</DropdownLabel>
+        <DropdownSeparator />
+        <DropdownItem>Profile</DropdownItem>
+        <DropdownItem>Billing</DropdownItem>
+        <DropdownItem>Team</DropdownItem>
+        <DropdownItem>Subscription</DropdownItem>
+        <DropdownArrow />
+      </DropdownContent>
+    </DropdownMenu>
+  </div>
+
+
+  <div class="min-h-screen flex items-center justify-center bg-background text-foreground">
+    <DropdownMenu>
+      <DropdownTrigger>Open Menu</DropdownTrigger>
+      <DropdownContent>
+        <DropdownLabel>Account</DropdownLabel>
+        <DropdownSeparator />
+
+        <DropdownItem>Profile</DropdownItem>
+        <DropdownItem>Billing</DropdownItem>
+        <DropdownItem>Settings</DropdownItem>
+
+        <DropdownSeparator />
+
+        <!-- ✅ Checkbox group -->
+        <DropdownLabel>Preferences</DropdownLabel>
+        <DropdownCheckboxItem v-model="showEmail">Show Email</DropdownCheckboxItem>
+        <DropdownCheckboxItem v-model="showNotifications">Notifications</DropdownCheckboxItem>
+
+        <DropdownSeparator />
+
+        <!-- ✅ Radio group -->
+        <DropdownLabel>Theme Color</DropdownLabel>
+        <DropdownRadioGroup v-model="color">
+          <DropdownRadioItem value="blue">Blue</DropdownRadioItem>
+          <DropdownRadioItem value="green">Green</DropdownRadioItem>
+          <DropdownRadioItem value="red">Red</DropdownRadioItem>
+        </DropdownRadioGroup>
+
+        <DropdownSeparator />
+
+        <!-- ✅ Submenu -->
+        <DropdownSub>
+          <DropdownSubTrigger>More Options</DropdownSubTrigger>
+          <DropdownSubContent>
+            <DropdownItem>Invite User</DropdownItem>
+            <DropdownItem>New Workspace</DropdownItem>
+            <DropdownItem>API Keys</DropdownItem>
+            <DropdownArrow />
+          </DropdownSubContent>
+        </DropdownSub>
+
+        <DropdownArrow />
+      </DropdownContent>
+    </DropdownMenu>
+  </div>
+
+
+ <div class="flex items-center space-x-2">
+    <Checkbox id="terms" />
+    <Label for="terms" class="text-sm font-medium">Accept terms</Label>
+  </div>
+
+  <CheckboxGroup v-model="fruits">
+    <div class="flex items-center space-x-2">
+      <Checkbox value="apple" />
+      <Label>Apple</Label>
+    </div>
+    <div class="flex items-center space-x-2">
+      <Checkbox value="banana" />
+      <Label>Banana</Label>
+    </div>
+  </CheckboxGroup>
+
+
 
 
 <Toggle
