@@ -248,10 +248,261 @@ import {
   HoverCardArrow
 } from "@/components/HoverCard"
 
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverPortal,
+  PopoverContent,
+  PopoverClose,
+  PopoverArrow,
+} from "@/components/Popover"
+
+
+
+
+import {
+  ScrollAreaRoot,
+  ScrollAreaViewport,
+  ScrollAreaScrollbar,
+  ScrollAreaThumb,
+  ScrollAreaCorner
+} from '@/components/ScrollArea'
+
+
+import { SplitterGroup, SplitterPanel, SplitterResizeHandle } from "./components/Splitter";
+
+
+
+import {
+  Stepper,
+  StepperItem,
+  StepperTrigger,
+  StepperIndicator,
+  StepperTitle,
+  StepperDescription,
+  StepperSeparator
+} from "./components/Stepper";
+
+
+const steps = [
+  {
+    step: 1,
+    title: "Account",
+    description: "Set up your profile",
+    icon: "radix-icons:person",
+  },
+  {
+    step: 2,
+    title: "Billing",
+    description: "Add your payment info",
+    icon: "radix-icons:credit-card",
+  },
+  {
+    step: 3,
+    title: "Confirm",
+    description: "Review and confirm",
+    icon: "radix-icons:check",
+  },
+]
+
+
+import { 
+  Tabs, 
+  TabsList, 
+  TabsTrigger, 
+  TabsContent , 
+  TabsIndicator} from "@/components/Tabs";
+import Input from "@/components/Input";
+import OtpField from "@/components/OtpField/OtpField.vue";
+
+import Calendar from "./components/Calendar/Calendar.vue";
+
+
+const otp = ref("");
 
 </script>
 
 <template>
+    <div class="min-h-screen flex items-center justify-center bg-muted/30">
+     <!-- Single Date Picker -->
+  <!-- <Calendar mode="ran  ge" /> -->
+
+<!-- Range Picker -->
+<Calendar mode="range" :number-of-months="2" />
+    </div>
+  <div class="min-h-screen flex flex-col items-center justify-center bg-background text-foreground p-6">
+    <h1 class="text-2xl font-semibold mb-6">OTP Verification</h1>
+
+    <OtpField v-model="otp" :length="6" />
+
+    <p class="mt-4 text-sm text-muted-foreground">
+      Entered OTP: <span class="font-medium text-primary">{{ otp }}</span>
+    </p>
+  </div>
+  <div class="p-10 flex flex-col gap-4 max-w-sm">
+    <Input label="Name" type="text" placeholder="Enter name" />
+    <Input type="date" label="Pick a Date" v-model="dateValue" />
+<Input type="time" label="Set Time" v-model="timeValue" />
+<Input type="datepicker" label="Calendar Picker" v-model="calendarValue" />
+
+  </div>
+
+<div class="min-h-screen flex items-center justify-center bg-background text-foreground">
+  <Tabs default-value="account" class="w-[400px]">
+    <TabsList>
+      <TabsIndicator />
+      <TabsTrigger value="account">Account</TabsTrigger>
+      <TabsTrigger value="password">Password</TabsTrigger>
+    </TabsList>
+
+    <TabsContent value="account">
+      <p class="mt-2 text-sm text-muted-foreground">Manage your account settings here.</p>
+    </TabsContent>
+
+    <TabsContent value="password">
+      <p class="mt-2 text-sm text-muted-foreground">Change your password here.</p>
+    </TabsContent>
+  </Tabs>
+</div>
+
+<div class="min-h-screen flex items-center justify-center bg-background text-foreground">
+    <Stepper
+      orientation="horizontal"
+      :default-value="1"
+      class="flex gap-6 w-full max-w-3xl"
+    >
+      <StepperItem
+        v-for="item in steps"
+        :key="item.step"
+        :step="item.step"
+        class="flex items-center gap-3 cursor-pointer group relative"
+      >
+        <!-- Step circle -->
+        <StepperTrigger>
+          <StepperIndicator>{{ item.step }}</StepperIndicator>
+
+        </StepperTrigger>
+
+        <!-- Step text -->
+        <div class="flex flex-col items-start">
+          <StepperTitle
+            class="text-sm font-semibold transition-colors
+                   group-data-[state=active]:text-primary"
+          >
+            {{ item.title }}
+          </StepperTitle>
+          <StepperDescription class="text-xs text-muted-foreground">
+            {{ item.description }}
+          </StepperDescription>
+        </div>
+
+        <!-- Separator -->
+        <StepperSeparator
+          v-if="item.step !== steps[steps.length - 1].step"
+          class="w-12 h-[1px] bg-border mx-3"
+        />
+      </StepperItem>
+    </Stepper>
+  </div>
+
+
+<div class="w-full h-64 px-8 md:px-16 text-green9 font-semibold text-sm">
+    <SplitterGroup
+      id="splitter-group-1"
+      direction="horizontal"
+    >
+      <SplitterPanel
+        id="splitter-group-1-panel-1"
+        class="bg-white"
+      >
+        Panel A
+      </SplitterPanel>
+      <SplitterResizeHandle
+        id="splitter-group-1-resize-handle-1"
+        class="w-0.5"
+      />
+      <SplitterPanel
+        id="splitter-group-1-panel-2"
+      >
+        <SplitterGroup
+          id="splitter-group-2"
+          direction="vertical"
+        >
+          <SplitterPanel
+            id="splitter-group-2-panel-1"
+            class="bg-white"
+          >
+            Panel B
+          </SplitterPanel>
+          <SplitterResizeHandle
+            id="splitter-group-2-resize-handle-1"
+            class="h-0.5"
+          />
+          <SplitterPanel
+            id="splitter-group-2-panel-2"
+            class="bg-white "
+          >
+            Panel C
+          </SplitterPanel>
+        </SplitterGroup>
+      </SplitterPanel>
+    </SplitterGroup>
+  </div>
+
+  <div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <ScrollAreaRoot class="h-[250px] w-[300px] border rounded-lg bg-white shadow">
+      <ScrollAreaViewport>
+        <div class="p-4 space-y-2">
+          <p v-for="i in 40" :key="i" class="text-sm text-gray-700">
+            Scrollable content line {{ i }}
+          </p>
+        </div>
+      </ScrollAreaViewport>
+
+      <!-- Vertical scrollbar -->
+      <ScrollAreaScrollbar orientation="vertical">
+        <ScrollAreaThumb />
+      </ScrollAreaScrollbar>
+
+      <!-- Horizontal scrollbar -->
+      <ScrollAreaScrollbar orientation="horizontal">
+        <ScrollAreaThumb />
+      </ScrollAreaScrollbar>
+
+      <ScrollAreaCorner />
+    </ScrollAreaRoot>
+  </div>
+
+<div class="min-h-screen flex items-center justify-center bg-background text-foreground">
+    <Popover>
+      <PopoverTrigger>
+        <button
+          class="px-4 py-2 rounded-md border text-sm font-medium hover:bg-accent hover:text-accent-foreground"
+        >
+          Open Popover
+        </button>
+      </PopoverTrigger>
+
+      <PopoverPortal>
+        <PopoverContent class="relative flex flex-col space-y-2">
+          <h3 class="text-sm font-semibold">Popover Title</h3>
+          <p class="text-sm text-muted-foreground">
+            This is a Shadcn-style Popover built with Vueon-UI.
+          </p>
+          <PopoverClose>
+            <button
+              class="self-end mt-2 px-3 py-1 text-sm rounded-md border hover:bg-accent hover:text-accent-foreground"
+            >
+              Close
+            </button>
+          </PopoverClose>
+          <PopoverArrow />
+        </PopoverContent>
+      </PopoverPortal>
+    </Popover>
+  </div>
+
+
 <div class="min-h-screen flex items-center justify-center bg-background text-foreground">
     <HoverCard>
       <HoverCardTrigger>

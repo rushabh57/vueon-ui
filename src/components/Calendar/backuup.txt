@@ -1,0 +1,179 @@
+<script setup lang="ts">
+import type { DateValue } from "@internationalized/date";
+import { CalendarDate } from "@internationalized/date";
+import { ChevronLeft, ChevronRight } from "lucide-vue-next";
+import CalendarGridCustom from "./CalendarGrid.vue";
+
+import {
+  CalendarRoot,
+  CalendarHeader,
+  CalendarPrev,
+  CalendarNext,
+  CalendarHeading,
+  CalendarGrid,
+  CalendarGridHead,
+  CalendarGridBody,
+  CalendarGridRow,
+  CalendarHeadCell,
+  CalendarCell,
+  CalendarCellTrigger,
+  RangeCalendarRoot,
+  RangeCalendarHeader,
+  RangeCalendarPrev,
+  RangeCalendarNext,
+  RangeCalendarHeading,
+  RangeCalendarGrid,
+  RangeCalendarGridHead,
+  RangeCalendarGridBody,
+  RangeCalendarGridRow,
+  RangeCalendarHeadCell,
+  RangeCalendarCell,
+  RangeCalendarCellTrigger,
+} from "reka-ui";
+
+const props = defineProps({
+  mode: { type: String as () => "single" | "range", default: "single" },
+  numberOfMonths: { type: Number, default: 1 },
+  fixedWeeks: { type: Boolean, default: false },
+});
+
+// unavailable date example
+const isDateUnavailable = (date: DateValue) => date.day === 17 || date.day === 18;
+
+// default date
+const defaultDate = new CalendarDate(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate());
+</script>
+
+<template>
+  <div class="flex items-start justify-center p-6">
+    <!-- RANGE CALENDAR -->
+    <RangeCalendarRoot
+      v-if="mode === 'range'"
+      v-slot="{ weekDays, grid }"
+      :default-value="defaultDate"
+      :is-date-unavailable="isDateUnavailable"
+      :fixed-weeks="fixedWeeks"
+      :number-of-months="numberOfMonths"
+      class="rounded-xl bg-white p-4 shadow-sm border"
+    >
+      <RangeCalendarHeader class="flex items-center justify-between">
+        <RangeCalendarPrev class="inline-flex items-center justify-center text-black rounded-md w-8 h-8 hover:bg-stone-50">
+          <ChevronLeft/>
+        </RangeCalendarPrev>
+        <RangeCalendarHeading class="text-sm text-black font-medium" />
+        <RangeCalendarNext class="inline-flex items-center justify-center text-black rounded-md w-8 h-8 hover:bg-stone-50">
+          <ChevronRight/>
+        </RangeCalendarNext>
+      </RangeCalendarHeader>
+
+      <div class="flex flex-col gap-4 pt-4 sm:flex-row sm:space-x-4">
+        <RangeCalendarGrid
+          v-for="month in grid"
+          :key="month.value.toString()"
+          class="w-full border-collapse select-none space-y-1"
+        >
+          <RangeCalendarGridHead>
+            <RangeCalendarGridRow class="mb-1 grid w-full grid-cols-7">
+              <RangeCalendarHeadCell
+                v-for="day in weekDays"
+                :key="day"
+                class="rounded-md text-xs text-muted-foreground text-center"
+              >
+                {{ day }}
+              </RangeCalendarHeadCell>
+            </RangeCalendarGridRow>
+          </RangeCalendarGridHead>
+
+          <RangeCalendarGridBody class="grid">
+            <RangeCalendarGridRow
+              v-for="(weekDates, i) in month.rows"
+              :key="i"
+              class="grid grid-cols-7 gap-1"
+            >
+              <RangeCalendarCell
+                v-for="dateVal in weekDates"
+                :key="dateVal.toString()"
+                :date="dateVal"
+              >
+                <RangeCalendarCellTrigger
+                  :day="dateVal"
+                  :month="month.value"
+                  class="relative flex items-center justify-center rounded-full w-9 h-9 text-sm text-black
+                         data-[outside-view]:text-black/30 data-[selected]:!bg-green-600 data-[selected]:text-white
+                         hover:bg-green-100 data-[highlighted]:bg-green-100 data-[unavailable]:pointer-events-none data-[unavailable]:text-black/30 data-[unavailable]:line-through"
+                >
+                  {{ dateVal.day }}
+                </RangeCalendarCellTrigger>
+              </RangeCalendarCell>
+            </RangeCalendarGridRow>
+          </RangeCalendarGridBody>
+        </RangeCalendarGrid>
+      </div>
+    </RangeCalendarRoot>
+
+    <!-- SINGLE CALENDAR -->
+    <CalendarRoot
+      v-else
+      v-slot="{ weekDays, grid }"
+      :default-value="defaultDate"
+      :is-date-unavailable="isDateUnavailable"
+      :fixed-weeks="fixedWeeks"
+      :number-of-months="numberOfMonths"
+      class="rounded-xl bg-white p-4 shadow-sm border"
+    >
+      <CalendarHeader class="flex items-center justify-between">
+        <CalendarPrev class="inline-flex items-center justify-center text-black rounded-md w-8 h-8 hover:bg-stone-50">
+          <Icon icon="radix-icons:chevron-left" class="w-4 h-4" />
+        </CalendarPrev>
+        <CalendarHeading class="text-sm text-black font-medium" />
+        <CalendarNext class="inline-flex items-center justify-center text-black rounded-md w-8 h-8 hover:bg-stone-50">
+          <Icon icon="radix-icons:chevron-right" class="w-4 h-4" />
+        </CalendarNext>
+      </CalendarHeader>
+
+      <div class="flex flex-col gap-4 pt-4 sm:flex-row sm:space-x-4">
+        <CalendarGrid
+          v-for="month in grid"
+          :key="month.value.toString()"
+          class="w-full border-collapse select-none space-y-1"
+        >
+          <CalendarGridHead>
+            <CalendarGridRow class="mb-1 grid w-full grid-cols-7">
+              <CalendarHeadCell
+                v-for="day in weekDays"
+                :key="day"
+                class="rounded-md text-xs text-muted-foreground text-center"
+              >
+                {{ day }}
+              </CalendarHeadCell>
+            </CalendarGridRow>
+          </CalendarGridHead>
+
+          <CalendarGridBody class="grid">
+            <CalendarGridRow
+              v-for="(weekDates, i) in month.rows"
+              :key="i"
+              class="grid grid-cols-7 gap-1"
+            >
+              <CalendarCell
+                v-for="dateVal in weekDates"
+                :key="dateVal.toString()"
+                :date="dateVal"
+              >
+                <CalendarCellTrigger
+                  :day="dateVal"
+                  :month="month.value"
+                  class="relative flex items-center justify-center rounded-full w-9 h-9 text-sm text-black
+                         data-[outside-view]:text-black/30 data-[selected]:!bg-green-600 data-[selected]:text-white
+                         hover:bg-green-100 data-[highlighted]:bg-green-100 data-[unavailable]:pointer-events-none data-[unavailable]:text-black/30 data-[unavailable]:line-through"
+                >
+                  {{ dateVal.day }}
+                </CalendarCellTrigger>
+              </CalendarCell>
+            </CalendarGridRow>
+          </CalendarGridBody>
+        </CalendarGrid>
+      </div>
+    </CalendarRoot>
+  </div>
+</template>

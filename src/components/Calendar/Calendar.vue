@@ -1,0 +1,135 @@
+<script setup lang="ts">
+import { ref } from "vue";
+import type { DateValue } from "@internationalized/date";
+import { CalendarDate } from "@internationalized/date";
+import { ChevronLeft, ChevronRight } from "lucide-vue-next";
+import CalendarGridCustom from "./CalendarGrid.vue";
+
+import {
+  CalendarRoot,
+  CalendarHeader,
+  CalendarPrev,
+  CalendarNext,
+  CalendarHeading,
+  RangeCalendarRoot,
+  RangeCalendarHeader,
+  RangeCalendarPrev,
+  RangeCalendarNext,
+  RangeCalendarHeading,
+} from "reka-ui";
+
+const props = defineProps({
+  mode: { type: String as () => "single" | "range", default: "single" },
+  numberOfMonths: { type: Number, default: 1 },
+  fixedWeeks: { type: Boolean, default: false },
+});
+
+const selectedRange = ref<Date[]>([]);
+const onSelectDate = (date: Date) => {
+  if (props.mode === "single") selectedRange.value = [date];
+  else if (selectedRange.value.length < 2) selectedRange.value.push(date);
+  else selectedRange.value = [date];
+};
+
+// disable example dates
+const isDateUnavailable = (date: DateValue) => date.day === 17 || date.day === 18;
+
+// default visible date
+const defaultDate = new CalendarDate(
+  new Date().getFullYear(),
+  new Date().getMonth() + 1,
+  new Date().getDate()
+);
+
+
+const selectedRange = ref([null, null])
+
+function handleSelect(date) {
+  const [start, end] = selectedRange.value
+  if (!start || (start && end)) {
+    selectedRange.value = [date, null]   // first click
+  } else {
+    selectedRange.value = [start, date]  // second click
+  }
+}
+</script>
+
+<template>
+  <div class="flex items-start justify-center p-6">
+    <!-- RANGE CALENDAR -->
+    <RangeCalendarRoot
+      v-if="mode === 'range'"
+      v-slot="{ weekDays, grid }"
+      :default-value="defaultDate"
+      :is-date-unavailable="isDateUnavailable"
+      :fixed-weeks="fixedWeeks"
+      :number-of-months="numberOfMonths"
+      class="rounded-xl bg-white p-4 shadow-sm border"
+    >
+      <RangeCalendarHeader class="flex items-center justify-between">
+        <RangeCalendarPrev
+          class="inline-flex items-center justify-center text-black rounded-md w-8 h-8 hover:bg-stone-50"
+        >
+          <ChevronLeft />
+        </RangeCalendarPrev>
+        <RangeCalendarHeading class="text-sm text-black font-medium" />
+        <RangeCalendarNext
+          class="inline-flex items-center justify-center text-black rounded-md w-8 h-8 hover:bg-stone-50"
+        >
+          <ChevronRight />
+        </RangeCalendarNext>
+      </RangeCalendarHeader>
+
+      <div class="flex flex-col gap-4 pt-4 sm:flex-row sm:space-x-4">
+        <CalendarGridCustom
+          v-for="month in grid"
+          :key="month.value.toString()"
+          :current-month="month.value.month"
+          :current-year="month.value.year"
+          :selected-range="selectedRange"
+          :week-days="weekDays"
+          @select="onSelectDate"
+        />
+      </div>
+    </RangeCalendarRoot>
+
+    <!-- SINGLE CALENDAR -->
+    <CalendarRoot
+      v-else
+      v-slot="{ weekDays, grid }"
+      :default-value="defaultDate"
+      :is-date-unavailable="isDateUnavailable"
+      :fixed-weeks="fixedWeeks"
+      :number-of-months="numberOfMonths"
+      class="rounded-xl bg-white p-4 shadow-sm border"
+    >
+      <CalendarHeader class="flex items-center justify-between">
+        <CalendarPrev
+          class="inline-flex items-center justify-center text-black rounded-md w-8 h-8 hover:bg-stone-50"
+        >
+          <ChevronLeft />
+        </CalendarPrev>
+        <CalendarHeading class="text-sm text-black font-medium" />
+        <CalendarNext
+          class="inline-flex items-center justify-center text-black rounded-md w-8 h-8 hover:bg-stone-50"
+        >
+          <ChevronRight />
+        </CalendarNext>
+      </CalendarHeader>
+
+      <div class="flex flex-col gap-4 pt-4 sm:flex-row sm:space-x-4">
+        <CalendarGridCustom
+          v-for="month in grid"
+          :key="month.value.toString()"
+          :current-month="month.value.month"
+          :current-year="month.value.year"
+          :selected-range="selectedRange"
+          :week-days="weekDays"
+          @select="onSelectDate"
+          @select-date="handleSelect"
+          :show-month-heading="numberOfMonths > 1"
+        />
+      </div>
+    </CalendarRoot>
+  </div>
+</template>

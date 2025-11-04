@@ -83,7 +83,28 @@
       "HoverCard" : {
         "path": "src/components/HoverCard/HoverCard.vue",
         "description": "Displays HoverCard."
+      },
+      "Popover" : {
+        "path": "src/components/Popover/Popover.vue",
+        "description": "Displays Popover."
+      },
+      "ScrollArea" : {
+        "path": "src/components/ScrollArea/ScrollArea.vue",
+        "description": "Displays ScrollArea."
+      },
+      "Tabs" : {
+        "path": "src/components/Tabs/Tabs.vue",
+        "description": "Displays Tabs."
+      },
+      "OtpField" : {
+        "path": "src/components/OtpField/OtpField.vue",
+        "description": "Displays OtpField."
+      },
+      "Splitter" : {
+        "path": "src/components/Splitter/Splitter.vue",
+        "description": "Displays Splitter."
       }
+      
 
 
 
