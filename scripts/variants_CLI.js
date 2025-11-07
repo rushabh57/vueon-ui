@@ -1,7 +1,10 @@
 import fs from "fs";
 import path from "path";
 
-const themeDir = path.resolve("src/theme");
+// const themeDir = path.resolve("src/theme");
+const themeDir = fs.existsSync("resources/js")
+  ? path.resolve("resources/js/theme")
+  : path.resolve("src/theme");
 const green = "\x1b[32m";
 const reset = "\x1b[0m";
 
