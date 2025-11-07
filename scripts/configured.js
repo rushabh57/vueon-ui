@@ -32,6 +32,7 @@ switch (true) {
   case isLaravelVueProject():
     projectType = "laravel";
     componentBasePath = path.join(process.cwd(), "resources/js/components/ui");
+    
     break;
 
   case isAstroProject():

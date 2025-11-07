@@ -5,6 +5,9 @@ import { THEMES_OKLCH, SHARED_TOKENS } from "./tokens/token.js";
   // ✓ Detect user's CSS file
 export function detectCSSFile() {
     const candidates = [
+      "resources/js/style.css",
+      "resources/js/index.css",
+      "resources/js/main.css",
       "src/style.css",
       "src/index.css", 
       "src/main.css", 
@@ -16,7 +19,14 @@ export function detectCSSFile() {
         return file;
       }
     }
-    return "src/style.css"; // default
+     // ✅ smart default
+    // check if Laravel structure exists
+    if (fs.existsSync("resources/js") || fs.existsSync("resources/css")) {
+      return "resources/js/style.css";
+    }
+    // otherwise assume Vite/Vue project
+    return "src/style.css";
+    // return "src/style.css"; // default
   }
 
 // export { detectCSSFile };
