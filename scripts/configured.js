@@ -226,6 +226,7 @@
 import fs from "fs";
 import { execSync } from "child_process";
 import path from "path";
+import { writeThemeCSS } from "./theme-setup.js";
 
 export async function configureProject(theme = "zinc" , answers, success) {
     // Import getPaths dynamically inside function
