@@ -1,16 +1,26 @@
 import fs from "fs";
 import path from "path";
+import { getPaths } from "../src/utils/paths"; // framework-aware paths
 
-// const themeDir = path.resolve("src/theme");
-const themeDir = fs.existsSync("resources/js")
-  ? path.resolve("resources/js/theme")
-  : path.resolve("src/theme");
+const { themePath } = getPaths();
+// const themePath = path.resolve("src/theme");
+// const themePath = fs.existsSync("resources/js")
+//   ? path.resolve("resources/js/theme")
+//   : path.resolve("src/theme");
+
+
+// const cwd = process.cwd();
+// const laravelPath = path.join(cwd, "resources/js");
+// const themePath = fs.existsSync(laravelPath)
+//   ? path.join(laravelPath, "theme")
+//   : path.join(cwd, "src/theme");
+
 const green = "\x1b[32m";
 const reset = "\x1b[0m";
 
-if (!fs.existsSync(themeDir)) {
-  fs.mkdirSync(themeDir, { recursive: true });
-  console.log(`${green}✓ Created src/theme folder ${reset}`);
+if (!fs.existsSync(themePath)) {
+  fs.mkdirSync(themePath, { recursive: true });
+  console.log(`${green}✓ Created ${themePath} folder${reset}`);
 }
 
 // ---- variants.ts ----
@@ -40,8 +50,9 @@ export const variants = cva("", {
 export type Variant = VariantProps<typeof variants>["variant"];
 `;
 
-fs.writeFileSync(path.join(themeDir, "variants.ts"), variantsContent);
-console.log(`${green}✓ Created src/theme/variants.ts ${reset}`);
+fs.writeFileSync(path.join(themePath, "variants.ts"), variantsContent);
+console.log(`${green}✓ Created ${themePath}/variants.ts ${reset}`);
+// console.log(`${green}✓ Created src/theme/variants.ts ${reset}`);
 
 // ---- stages.ts ----
 const stagesContent = `import { CheckIcon, LucideAlertTriangle, XIcon } from "lucide-vue-next";
@@ -68,13 +79,15 @@ export const stages = {
 };
 `;
 
-fs.writeFileSync(path.join(themeDir, "stages.ts"), stagesContent);
-console.log(`${green}✓ Created src/theme/stages.ts ${reset}`);
+fs.writeFileSync(path.join(themePath, "stages.ts"), stagesContent);
+console.log(`${green}✓ Created ${themePath}/stages.ts ${reset}`);
+// console.log(`${green}✓ Created src/theme/stages.ts ${reset}`);
 
 // ---- index.ts ----
 const indexContent = `export * from "./variants";
 export * from "./stages";
 `;
-fs.writeFileSync(path.join(themeDir, "index.ts"), indexContent);
-console.log(`${green}✓ Created src/theme/index.ts ${reset}`);
+fs.writeFileSync(path.join(themePath, "index.ts"), indexContent);
+console.log(`${green}✓ Created ${themePath}/index.ts ${reset}`);
+// console.log(`${green}✓ Created src/theme/index.ts ${reset}`);
 

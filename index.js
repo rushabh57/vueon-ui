@@ -3,13 +3,20 @@ import { Command } from "commander";
 import inquirer from "inquirer";
 import { configureProject } from "./scripts/configured.js";
 import { registerCommands } from "./scripts/cmd.js";
+import { detectFramework } from "./src/utils/paths.js";
+
 
 const program = new Command();
+
 
 program
   .name("vueon-ui")
   .description("A CLI for adding Vue + Reka + Tailwind components to your project.")
   .version("1.0.0");
+
+
+const framework = detectFramework();
+
 
 program
   .command("init")
@@ -71,8 +78,14 @@ program
     const reset = "\x1b[0m";
     const success = (msg) => console.log(`${green}✓ ${msg}${reset}`);
 
-    await configureProject(answers, success);
+    // await configureProject(answers, success);
+      // Pass detected framework explicitly
+      // await configureProject({ ...answers, framework }, success);
+      await configureProject(answers.theme, { ...answers, framework }, success);
+
+
   });
 
-registerCommands(program);
+// registerCommands(program);
+registerCommands(program, framework);
 program.parse(process.argv);

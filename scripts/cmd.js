@@ -11,8 +11,8 @@ import registerUpdateCommand from "./commands/update.js";
 import registerResetCommand from "./commands/reset.js";
 import registerVersionCommand from "./commands/version.js";
 
-export function registerCommands(program) {
-  registerAddCommand(program);
+export function registerCommands(program , framework) {
+  registerAddCommand(program, framework);
   registerRemoveCommand(program);
   registerAddAllCommand(program);
   registerRemoveAllCommand(program);
