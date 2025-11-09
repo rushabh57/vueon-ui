@@ -5,12 +5,14 @@ import { THEMES_OKLCH, SHARED_TOKENS } from "./tokens/token.js";
   // ✓ Detect user's CSS file
 export function detectCSSFile() {
     const candidates = [
-      "resources/js/style.css",
-      "resources/js/index.css",
-      "resources/js/main.css",
+      "resources/css/style.css",
+      "resources/css/index.css",
+      "resources/css/main.css",
+      "resources/css/app.css",
       "src/style.css",
       "src/index.css", 
       "src/main.css", 
+      "src/app.css", 
       "style.css", 
       "index.css"
     ];
