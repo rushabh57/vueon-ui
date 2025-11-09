@@ -262,7 +262,7 @@ export async function configureProject(theme = "zinc" , answers, success) {
 
   console.log("Installing dependencies...");
   execSync(
-    `npm install -D ${tailwindPkg} @tailwindcss/vite autoprefixer reka-ui class-variance-authority typescript lucide-vue-next vueon-ui --no-audit --no-fund`,
+    `npm install -D ${tailwindPkg} @tailwindcss/vite autoprefixer reka-ui class-variance-authority typescript lucide-vue-next vueon-ui@latest --no-audit --no-fund`,
     { stdio: "inherit" }
   );
 

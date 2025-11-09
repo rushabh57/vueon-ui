@@ -10,9 +10,11 @@ import registerUpdateCommand from "./commands/update.js";
 // import registerSyncCommand from "./commands/sync.js";
 import registerResetCommand from "./commands/reset.js";
 import registerVersionCommand from "./commands/version.js";
+import registerClinicCommand from "./commands/clinic.js"
 
 export function registerCommands(program , framework) {
   registerAddCommand(program, framework);
+  registerClinicCommand(program);
   registerRemoveCommand(program);
   registerAddAllCommand(program);
   registerRemoveAllCommand(program);
@@ -20,7 +22,7 @@ export function registerCommands(program , framework) {
   registerPickCommand(program);
   registerListCommand(program);
   registerUpdateCommand(program);
-  // registerSyncCommand(program);
+  // syncComponents(program);
   registerResetCommand(program);
   registerVersionCommand(program);
 }
