@@ -100,6 +100,34 @@
         "path": "src/components/OtpField/OtpField.vue",
         "description": "Displays OtpField."
       },
+      "DateField" : {
+        "path": "src/components/DateField/DateField.vue",
+        "description": "Displays DateField."
+      },
+      "NumberField" : {
+        "path": "src/components/NumberField/NumberField.vue",
+        "description": "Displays NumberField."
+      },
+      "TimeField" : {
+        "path": "src/components/TimeField/TimeField.vue",
+        "description": "Displays TimeField."
+      },
+      "GroupDateField" : {
+        "path": "src/components/GroupDateField/GroupDateField.vue",
+        "description": "Displays GroupDateField."
+      },
+      "ComboBox" : {
+        "path": "src/components/ComboBox/ComboBox.vue",
+        "description": "Displays ComboBox."
+      },
+      "Kbd" : {
+        "path": "src/components/Kbd/Kbd.vue",
+        "description": "Displays Kbd."
+      },
+      "Skeleton" : {
+        "path": "src/components/Skeleton/Skeleton.vue",
+        "description": "Displays Skeleton."
+      },
       "Splitter" : {
         "path": "src/components/Splitter/Splitter.vue",
         "description": "Displays Splitter."

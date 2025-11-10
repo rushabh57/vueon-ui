@@ -1,0 +1,226 @@
+<script setup lang="ts">
+import { ref, watch } from 'vue'
+import {
+  DateRangePickerRoot,
+  DateRangePickerField,
+  DateRangePickerInput,
+  DateRangePickerContent,
+  DateRangePickerCalendar,
+  DateRangePickerArrow,
+  DateRangePickerGrid,
+  DateRangePickerGridBody,
+  DateRangePickerGridHead,
+  DateRangePickerGridRow,
+  DateRangePickerHeadCell,
+  DateRangePickerCell,
+  DateRangePickerCellTrigger,
+  DateRangePickerHeader,
+  DateRangePickerHeading,
+  DateRangePickerPrev,
+  DateRangePickerNext,
+  DateRangePickerTrigger,
+  Label
+} from 'reka-ui'
+import { CalendarIcon, Minus } from 'lucide-vue-next'
+import { Button } from '@/components/Button';
+
+const props = defineProps<{
+  label?: string
+  id?: string
+  withPopup?: boolean
+  months?: number // number of months to show
+  isDateUnavailable?: (date: { day: number; month: number; year: number }) => boolean
+}>()
+
+const selectedRange = ref<{ start: Date | null; end: Date | null }>({
+  start: null,
+  end: null
+})
+
+// Close popup when range is fully selected
+watch(selectedRange, (range) => {
+  if (props.withPopup && range.start && range.end) return
+})
+</script>
+
+<template>
+  <div class="flex flex-col gap-2 w-full relative">
+    <!-- Label -->
+    <Label
+      v-if="props.label"
+      :for="props.id ?? 'date-range-picker'"
+      class="text-sm font-medium text-foreground dark:text-card-foreground"
+    >
+      {{ props.label }}
+    </Label>
+
+    <DateRangePickerRoot
+      :id="props.id ?? 'date-range-picker'"
+      :is-date-unavailable="props.isDateUnavailable"
+    >
+      <!-- Field -->
+      <DateRangePickerField
+        v-slot="{ segments }"
+        class="flex items-center justify-between rounded-lg border border-border bg-card w-full px-2 py-1.5 shadow-sm text-foreground dark:text-card-foreground focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 transition-colors duration-200"
+      >
+        <div class="flex gap-1">
+          <!-- Start Segment -->
+          <template v-for="segment in segments.start" :key="segment.part">
+            <DateRangePickerInput
+              :part="segment.part"
+              type="start"
+              class="
+              px-1 py-0.75 
+              rounded 
+              focus:outline-none 
+              focus:ring-2 
+              focus:ring-ring 
+              focus:ring-offset-1 placeholder:text-muted-foreground dark:placeholder:text-muted-foreground text-foreground 
+              dark:text-card-foreground 
+              leading-7.5
+              transition-shadow duration-150"
+            >
+              {{ segment.value }}
+            </DateRangePickerInput>
+          </template>
+
+          <Button variant="ghost" class="mx-2 text-primary">
+            <Minus class="text-xs h-full" />
+          </Button>
+
+          <!-- End Segment -->
+          <template v-for="segment in segments.end" :key="segment.part">
+            <DateRangePickerInput
+              :part="segment.part"
+              type="end"
+              class="px-1 py-0.75 rounded focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1 placeholder:text-muted-foreground dark:placeholder:text-muted-foreground text-foreground dark:text-card-foreground 
+              leading-7.5 transition-shadow duration-150"
+            >
+              {{ segment.value }}
+            </DateRangePickerInput>
+          </template>
+        </div>
+
+        <Button variant="ghost" class="ml-1">
+
+            <!-- Optional Trigger -->
+            <DateRangePickerTrigger v-if="props.withPopup" >
+                <CalendarIcon class="w-5 h-5" />
+            </DateRangePickerTrigger>
+        </Button>
+      </DateRangePickerField>
+
+      <!-- Popup Content -->
+      <DateRangePickerContent
+        v-if="props.withPopup"
+        :side-offset="4"
+        class="rounded-xl bg-card border shadow-lg will-change-[transform,opacity] data-[state=open]:animate-slideDownAndFade"
+      >
+        <DateRangePickerArrow class="fill-card stroke-border" />
+        <DateRangePickerCalendar v-slot="{ weekDays, grid }" class="p-4">
+          <!-- Header -->
+          <DateRangePickerHeader class="flex items-center justify-between mb-2">
+            <DateRangePickerPrev class="flex items-center justify-center w-8 h-8 rounded-md hover:bg-secondary/10 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1">
+              <Icon icon="radix-icons:chevron-left" class="w-4 h-4" />
+            </DateRangePickerPrev>
+
+            <DateRangePickerHeading class="text-sm font-medium text-foreground dark:text-card-foreground" />
+
+            <DateRangePickerNext class="flex items-center justify-center w-8 h-8 rounded-md hover:bg-secondary/10 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1">
+              <Icon icon="radix-icons:chevron-right" class="w-4 h-4" />
+            </DateRangePickerNext>
+          </DateRangePickerHeader>
+
+          <!-- Dynamic Months -->
+          <div :class="`grid grid-cols-1 gap-2 sm:grid-cols-${props.months || 1}`">
+            <DateRangePickerGrid
+              v-for="month in grid"
+              :key="month.value.toString()"
+              class="w-full border-collapse select-none space-y-1"
+            >
+              <DateRangePickerGridHead>
+                <DateRangePickerGridRow class="mb-1 flex w-full justify-between">
+                  <DateRangePickerHeadCell
+                    v-for="day in weekDays"
+                    :key="day"
+                    class="w-8 text-xs font-normal text-muted-foreground"
+                  >
+                    {{ day }}
+                  </DateRangePickerHeadCell>
+                </DateRangePickerGridRow>
+              </DateRangePickerGridHead>
+
+              <DateRangePickerGridBody>
+                <DateRangePickerGridRow
+                  v-for="(weekDates, index) in month.rows"
+                  :key="`week-${index}`"
+                  class="flex w-full justify-between"
+                >
+                  <DateRangePickerCell
+                    v-for="weekDate in weekDates"
+                    :key="weekDate.toString()"
+                    :date="weekDate"
+                  >
+                    
+                  <DateRangePickerCellTrigger
+  :day="weekDate"
+  :month="month.value"
+  class="
+    flex items-center justify-center w-8 h-8 text-sm rounded-md outline-none
+    transition-all select-none cursor-pointer
+    hover:bg-secondary/10
+
+    data-[today]:bg-primary-foreground/90
+    data-[today]:border-input
+
+    data-[outside-view]:text-muted-foreground
+    data-[outside-view]:opacity-50
+    data-[outside-view]:pointer-events-none
+
+    data-[outside-visible-view]:opacity-40
+
+    data-[disabled]:opacity-40
+    data-[disabled]:cursor-not-allowed
+
+    data-[unavailable]:text-destructive/60
+    data-[in-range][data-unavailable]:bg-destructive/40
+    data-[in-range][data-unavailable]:text-destructive-foreground
+
+    data-[selected]:bg-primary
+    data-[selected]:text-primary-foreground
+
+    data-[range-start]:bg-primary/60
+    data-[range-start]:text-primary-foreground
+
+    data-[range-end]:bg-primary/60
+    data-[range-end]:text-primary-foreground
+
+    data-[in-range]:bg-primary/30
+    data-[today=true]:data-[selected]:text-primary-foreground 
+    data-[in-range]:text-primary-foreground
+    data-[in-range]:rounded-none
+    data-[in-range]:shadow-[inset_4px_0_0_theme(colors.primary),inset_-4px_0_0_theme(colors.primary)]
+
+    data-[selection-start]:border-2 border-primary
+    data-[selection-end]:border-2 border-primary
+
+    data-[highlighted]:bg-primary/20
+    data-[highlighted]:rounded-none
+    data-[highlighted-start]:rounded-l-md
+    data-[highlighted-end]:rounded-r-md
+
+    data-[focused]:ring-2
+    data-[focused]:ring-ring
+  "
+/>
+
+                  </DateRangePickerCell>
+                </DateRangePickerGridRow>
+              </DateRangePickerGridBody>
+            </DateRangePickerGrid>
+          </div>
+        </DateRangePickerCalendar>
+      </DateRangePickerContent>
+    </DateRangePickerRoot>
+  </div>
+</template>

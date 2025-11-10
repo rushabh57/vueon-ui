@@ -316,13 +316,131 @@ import Input from "@/components/Input";
 import OtpField from "@/components/OtpField/OtpField.vue";
 
 import Calendar from "./components/Calendar/Calendar.vue";
+import DateField from "./components/DateField";
+import GroupDateField from "./GroupDateField/GroupDateField.vue";
+import TimeField from "./components/TimeField";
+import NumberField from "./components/NumberField";
+import ComboBox from "./components/ComboBox/ComboBox.vue";
+import {KbdGroup , Kbd} from "./components/Kbd";
+import { Slider } from "./components/Slider";
+import { Skeleton, SkeletonCircle, SkeletonText } from "./components/Skeleton";
 
 
 const otp = ref("");
 
+
+// / Single date
+const birthday = ref<Date | null>(null);
+
+// Range date
+const vacation = ref<[Date | null, Date | null]>([null, null]);
+
+
+const foodOptions = [
+  {
+    name: 'Fruit',
+    children: [
+      { name: 'Apple' },
+      { name: 'Banana' },
+      { name: 'Orange' },
+      { name: 'Grapes' }
+    ]
+  },
+  {
+    name: 'Vegetable',
+    children: [
+      { name: 'Carrot' },
+      { name: 'Spinach' },
+      { name: 'Potato' },
+    ]
+  }
+]
+
+const selectedFood = ref('')
+
+
+const sliderValue = ref([50])
 </script>
 
 <template>
+
+<Skeleton class="h-6 w-32" />
+<Skeleton class="h-4 w-full mt-2" />
+<SkeletonText :lines="4" class="w-full" />
+<SkeletonCircle size="w-12 h-12" class="mx-auto" />
+
+
+
+    <div class="w-[60%] min-h-screen  flex flex-col items-center justify-center p-6 gap-10">
+    <Slider
+      v-model="sliderValue"
+      :max="100"
+      :step="1"
+      class="w-full"
+    />
+
+    <p>Value: {{ sliderValue }}</p>
+
+    <Slider 
+  v-model="sliderValue"
+  :trackColor="'bg-gray-300'"
+  :rangeColor="'bg-green-500'"
+  class="w-[60%]"
+/>
+
+<Slider 
+  v-model="sliderValue"
+  :trackColor="'bg-blue-200'"
+  :rangeColor="'bg-blue-600'"
+  class="w-full"
+/>
+  </div>
+      <div class="min-h-screen  flex flex-col items-center justify-center p-6">
+
+        <KbdGroup>
+          <Kbd>Ctrl</Kbd>
+          <Kbd>K</Kbd>
+          </KbdGroup>
+        </div>
+    <div class="p-6 flex flex-col gap-4">
+    <ComboBox
+      v-model="selectedFood"
+      :options="foodOptions"
+      placeholder="Select a food"
+    />
+    <p class="text-sm text-stone-700">Selected: {{ selectedFood }}</p>
+  </div>
+    <div class="min-h-screen  flex flex-col items-center justify-center p-6">
+      <div class="p-6 flex flex-col gap-6">
+    <NumberField />
+  </div>
+    <!-- TimeField -->
+    <TimeField />
+
+    <!-- You can also add other components like DateRangePicker here -->
+  </div>
+
+ <div class="p-6 w-fit">
+    <!-- Example: Range Date Picker with Popup and 2 months visible -->
+    <GroupDateField
+      label="Booking Dates"
+      id="booking-dates"
+      :withPopup="true"
+      :months="2"
+      :isDateUnavailable="unavailableDate"
+    />
+  </div>
+<div class="p-6 min-h-screen flex items-center justify-center">
+  
+
+    <DateField
+    withPopup
+      label="Birthday"
+      :is-date-unavailable="date => date.day === 19"
+    />
+  </div>
+
+
     <div class="min-h-screen flex items-center justify-center bg-muted/30">
      <!-- Single Date Picker -->
   <!-- <Calendar mode="single"  /> -->
