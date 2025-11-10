@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import type { DateValue } from "@internationalized/date";
 import { CalendarDate } from "@internationalized/date";
-import { ChevronLeft, ChevronRight } from "lucide-vue-next";
+import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-vue-next";
 import CalendarGridCustom from "./CalendarGrid.vue";
 
 import {
@@ -22,35 +22,51 @@ const props = defineProps({
   mode: { type: String as () => "single" | "range", default: "single" },
   numberOfMonths: { type: Number, default: 1 },
   fixedWeeks: { type: Boolean, default: false },
+  disableYearNav: { type: Boolean, default: false },
+  swipe: { type: Boolean, default: false },
+  unavailableDates: { type: Array as () => Date[], default: () => [] }
+
 });
 
-const selectedRange = ref<Date[]>([]);
+// Range or single selection
+const selectedRange = ref<(Date | null)[]>([null, null]);
+
+// On selecting a date from grid
 const onSelectDate = (date: Date) => {
-  if (props.mode === "single") selectedRange.value = [date];
-  else if (selectedRange.value.length < 2) selectedRange.value.push(date);
-  else selectedRange.value = [date];
+  if (props.mode === "single") {
+    selectedRange.value = [date];
+  } else {
+    const [start, end] = selectedRange.value;
+    if (!start || (start && end)) {
+      selectedRange.value = [date, null];
+    } else {
+      // Automatically sort start/end
+      if (date < start) selectedRange.value = [date, start];
+      else selectedRange.value = [start, date];
+    }
+  }
 };
 
-// disable example dates
+// Disable specific example dates
 const isDateUnavailable = (date: DateValue) => date.day === 17 || date.day === 18;
 
-// default visible date
+// Default visible date
 const defaultDate = new CalendarDate(
   new Date().getFullYear(),
   new Date().getMonth() + 1,
   new Date().getDate()
 );
 
+// Optional separate handler for DateValue (if needed by CalendarGridCustom)
+function handleSelect(date: DateValue) {
+  const jsDate = new Date(date.toString());
+  onSelectDate(jsDate);
+}
 
-const selectedRange = ref([null, null])
-
-function handleSelect(date) {
-  const [start, end] = selectedRange.value
-  if (!start || (start && end)) {
-    selectedRange.value = [date, null]   // first click
-  } else {
-    selectedRange.value = [start, date]  // second click
-  }
+// Paging (year navigation)
+function pagingFunc(date: DateValue, sign: -1 | 1) {
+  if (sign === -1) return date.subtract({ years: 1 });
+  return date.add({ years: 1 });
 }
 </script>
 
@@ -64,19 +80,34 @@ function handleSelect(date) {
       :is-date-unavailable="isDateUnavailable"
       :fixed-weeks="fixedWeeks"
       :number-of-months="numberOfMonths"
-      class="rounded-xl bg-white p-4 shadow-sm border"
+      class="
+        rounded-xl bg-background p-4 shadow-sm border 
+        transition-all 
+        data-[readonly]:opacity-50 data-[readonly]:cursor-not-allowed data-[readonly]:text-muted-foreground
+        data-[disabled]:opacity-40 data-[disabled]:cursor-not-allowed
+      "
     >
       <RangeCalendarHeader class="flex items-center justify-between">
         <RangeCalendarPrev
-          class="inline-flex items-center justify-center text-black rounded-md w-8 h-8 hover:bg-stone-50"
+          class="inline-flex items-center justify-center text-primary rounded-md p-2 w-8 h-8 hover:bg-muted"
+          :prev-page="(date: DateValue) => pagingFunc(date, -1)"
+          v-if="!props.disableYearNav"
         >
+          <ChevronsLeft />
+        </RangeCalendarPrev>
+        <RangeCalendarPrev class="inline-flex items-center justify-center text-primary rounded-md p-2 w-8 h-8 hover:bg-muted">
           <ChevronLeft />
         </RangeCalendarPrev>
         <RangeCalendarHeading class="text-sm text-black font-medium" />
-        <RangeCalendarNext
-          class="inline-flex items-center justify-center text-black rounded-md w-8 h-8 hover:bg-stone-50"
-        >
+        <RangeCalendarNext class="inline-flex items-center justify-center text-primary rounded-md p-2 w-8 h-8 hover:bg-muted">
           <ChevronRight />
+        </RangeCalendarNext>
+        <RangeCalendarNext
+          class="inline-flex items-center justify-center text-primary rounded-md p-2 w-8 h-8 hover:bg-muted"
+          :next-page="(date: DateValue) => pagingFunc(date, 1)"
+          v-if="!props.disableYearNav"
+        >
+          <ChevronsRight />
         </RangeCalendarNext>
       </RangeCalendarHeader>
 
@@ -88,6 +119,7 @@ function handleSelect(date) {
           :current-year="month.value.year"
           :selected-range="selectedRange"
           :week-days="weekDays"
+          :unavailable-dates="props.unavailableDates"
           @select="onSelectDate"
         />
       </div>
@@ -104,15 +136,11 @@ function handleSelect(date) {
       class="rounded-xl bg-white p-4 shadow-sm border"
     >
       <CalendarHeader class="flex items-center justify-between">
-        <CalendarPrev
-          class="inline-flex items-center justify-center text-black rounded-md w-8 h-8 hover:bg-stone-50"
-        >
+        <CalendarPrev class="inline-flex items-center justify-center text-black rounded-md w-8 h-8 hover:bg-stone-50">
           <ChevronLeft />
         </CalendarPrev>
         <CalendarHeading class="text-sm text-black font-medium" />
-        <CalendarNext
-          class="inline-flex items-center justify-center text-black rounded-md w-8 h-8 hover:bg-stone-50"
-        >
+        <CalendarNext class="inline-flex items-center justify-center text-black rounded-md w-8 h-8 hover:bg-stone-50">
           <ChevronRight />
         </CalendarNext>
       </CalendarHeader>
@@ -127,8 +155,9 @@ function handleSelect(date) {
           :week-days="weekDays"
           @select="onSelectDate"
           @select-date="handleSelect"
+          :unavailable-dates="props.unavailableDates"
           :show-month-heading="numberOfMonths > 1"
-        />
+          />
       </div>
     </CalendarRoot>
   </div>

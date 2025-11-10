@@ -325,10 +325,18 @@ const otp = ref("");
 <template>
     <div class="min-h-screen flex items-center justify-center bg-muted/30">
      <!-- Single Date Picker -->
-  <!-- <Calendar mode="ran  ge" /> -->
+  <!-- <Calendar mode="single"  /> -->
+  <Calendar
+  swipe
+  mode="range"
+  :disable-year-nav="true"
+  :unavailable-dates="[new Date(2025,10,1), new Date(2025,10,15)]" 
+/>
+  <!-- <Calendar swipe  mode="range"  :disable-year-nav="true"      /> -->
+
 
 <!-- Range Picker -->
-<Calendar mode="range" :number-of-months="2" />
+<!-- <Calendar mode="range" :number-of-months="2" /> -->
     </div>
   <div class="min-h-screen flex flex-col items-center justify-center bg-background text-foreground p-6">
     <h1 class="text-2xl font-semibold mb-6">OTP Verification</h1>
@@ -341,9 +349,9 @@ const otp = ref("");
   </div>
   <div class="p-10 flex flex-col gap-4 max-w-sm">
     <Input label="Name" type="text" placeholder="Enter name" />
-    <Input type="date" label="Pick a Date" v-model="dateValue" />
-<Input type="time" label="Set Time" v-model="timeValue" />
-<Input type="datepicker" label="Calendar Picker" v-model="calendarValue" />
+    <Input type="date" label="Pick a Date" />
+<Input type="time" label="Set Time"  />
+<Input type="datepicker" label="Calendar Picker"  />
 
   </div>
 
