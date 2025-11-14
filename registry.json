@@ -16,6 +16,10 @@
         "path": "src/components/AspectRatio/AspectRatio.vue",
         "description": "Maintains a consistent width-to-height ratio for its content."
       },
+      "Breadcrumb": {
+        "path": "src/components/Breadcrumb/Breadcrumb.vue",
+        "description": "A small status indicator or tag label."
+      },
       "Badge": {
         "path": "src/components/Badge/Badge.vue",
         "description": "A small status indicator or tag label."
@@ -30,6 +34,14 @@
       },
       "Collapsible": {
         "path": "src/components/Collapsible/Collapsible.vue",
+        "description": "Reveals or hides content with smooth animation."
+      },
+      "Carousel": {
+        "path": "src/components/Carousel/Carousel.vue",
+        "description": "Reveals or hides content with smooth animation."
+      },
+      "Card": {
+        "path": "src/components/Card/Card.vue",
         "description": "Reveals or hides content with smooth animation."
       },
       "Dialog": {
@@ -120,6 +132,10 @@
         "path": "src/components/ComboBox/ComboBox.vue",
         "description": "Displays ComboBox."
       },
+      "Drawer" : {
+        "path": "src/components/Drawer/Drawer.vue",
+        "description": "Displays Drawer."
+      },
       "Kbd" : {
         "path": "src/components/Kbd/Kbd.vue",
         "description": "Displays Kbd."
@@ -128,9 +144,21 @@
         "path": "src/components/Skeleton/Skeleton.vue",
         "description": "Displays Skeleton."
       },
+      "Sheet" : {
+        "path": "src/components/Sheet/Sheet.vue",
+        "description": "Displays Sheet."
+      },
+      "Progress" : {
+        "path": "src/components/Progress/Progress.vue",
+        "description": "Displays Progress."
+      },
       "Splitter" : {
         "path": "src/components/Splitter/Splitter.vue",
         "description": "Displays Splitter."
+      },
+      "RadioGroup" : {
+        "path": "src/components/RadioGroup/RadioGroup.vue",
+        "description": "Displays RadioGroup."
       }
       
 

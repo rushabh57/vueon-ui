@@ -156,7 +156,7 @@ import DialogDescription from "./components/Dialog/DialogDescription.vue";
 import DialogFooter from "./components/Dialog/DialogFooter.vue";
 import Toggle from "./components/Toggle/Toggle.vue";
 import { Bookmark } from "lucide-vue-next";
-import Label from "./components/Label/Label.vue";
+import Label from "./components/Label";
 import { Checkbox, CheckboxGroup } from '@/components/Checkbox'
 import {
   DropdownMenu,
@@ -323,7 +323,24 @@ import NumberField from "./components/NumberField";
 import ComboBox from "./components/ComboBox/ComboBox.vue";
 import {KbdGroup , Kbd} from "./components/Kbd";
 import { Slider } from "./components/Slider";
-import { Skeleton, SkeletonCircle, SkeletonText } from "./components/Skeleton";
+import { Skeleton, SkeletonCircle, SkeletonGroup, SkeletonText } from "./components/Skeleton";
+import { RadioGroup, RadioGroupItem } from "./components/RadioGroup";
+import { 
+  Sheet, 
+  SheetClose, 
+  SheetContent, 
+  SheetDescription, 
+  SheetFooter, 
+  SheetHeader, 
+  SheetTitle, 
+  SheetTrigger 
+} from "./components/Sheet";
+import { Progress } from "./components/Progress";
+import { Drawer, DrawerTrigger, DrawerContent,  DrawerHeader, DrawerFooter, DrawerTitle, DrawerDescription , DrawerClose , DrawerOverlay } 
+from './components/Drawer'
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrev } from "./components/Carousel";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./components/Card";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "./components/Breadcrumb";
 
 
 const otp = ref("");
@@ -360,18 +377,193 @@ const selectedFood = ref('')
 
 
 const sliderValue = ref([50])
+const selected = ref("a")
+
+const open = ref(false)
+const goal = ref(350)
+
+function adjust(amount: number) {
+  goal.value = Math.max(200, Math.min(400, goal.value + amount))
+}
+
+
+
 </script>
 
 <template>
+    <div class="h-screen flex items-center justify-center bg-gray-100">
+      <Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink to="/">Home</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbLink to="/category">Category</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbPage>Current Page</BreadcrumbPage>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>
 
-<Skeleton class="h-6 w-32" />
-<Skeleton class="h-4 w-full mt-2" />
-<SkeletonText :lines="4" class="w-full" />
-<SkeletonCircle size="w-12 h-12" class="mx-auto" />
+
+</div>
 
 
+    <div class="h-screen flex items-center justify-center bg-gray-100">
+  <Card className="w-80">
+  <CardHeader>
+    <CardTitle>Profile Card</CardTitle>
+    <CardDescription>Frontend Developer</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>Passionate about creating responsive web apps with Vue and Tailwind.</p>
+  </CardContent>
+  <CardFooter>
+    <Button >Follow</Button>
+  </CardFooter>
+</Card>
+</div>
+
+  <div class="h-screen flex items-center justify-center bg-gray-100">
+    <div class="w-92">
+<!-- :autoplay="true" -->
+    <Carousel :loop="true"  :show-dots="false">
+    <CarouselItem>
+      <div class="p-4 text-center">
+        <h3 class="text-lg font-bold">Slide 1</h3>
+        <p>Content for slide 1</p>
+      </div>
+    </CarouselItem>
+    <CarouselItem>
+      <div class="p-4 text-center">
+        <h3 class="text-lg font-bold">Slide 2</h3>
+        <p>Content for slide 2</p>
+      </div>
+    </CarouselItem>
+    <CarouselItem>
+      <div class="p-4 text-center">
+        <h3 class="text-lg font-bold">Slide 3</h3>
+        <p>Content for slide 3</p>
+      </div>
+    </CarouselItem>
+    <CarouselItem>
+      <div class="p-4 text-center">
+        <h3 class="text-lg font-bold">Slide 4</h3>
+        <p>Content for slide 4</p>
+      </div>
+    </CarouselItem>
+    <CarouselItem>
+      <div class="p-4 text-center">
+        <h3 class="text-lg font-bold">Slide 5</h3>
+        <p>Content for slide 5</p>
+      </div>
+    </CarouselItem>
+
+    <!-- Prev / Next buttons -->
+    <template #prev>
+      <CarouselPrev />
+    </template>
+    <template #next>
+      <CarouselNext />
+    </template>
+  </Carousel>
+</div>
+
+
+  </div>
+
+<div class="h-screen flex items-center justify-center bg-gray-100">
+  
+  <!-- Drawer -->
+  <Drawer>
+      <!-- Trigger Button -->
+      <DrawerTrigger>Open Drawer</DrawerTrigger>
+      <!-- <DrawerOverlay /> -->
+
+      <DrawerContent>
+        <DrawerHeader>
+          <DrawerTitle>My Drawer</DrawerTitle>
+          <DrawerDescription>Drag me or close with the button below</DrawerDescription>
+        </DrawerHeader>
+
+        <div class="p-4">
+          <p class="text-gray-700">This is the drawer content. You can put anything here: forms, buttons, images, etc.</p>
+        </div>
+
+        <DrawerFooter>
+          <DrawerClose>Close Drawer</DrawerClose>
+        </DrawerFooter>
+      </DrawerContent>
+    </Drawer>
+  </div>
+
+ <div class="w-[60%] mx-auto min-h-screen  flex flex-col items-center justify-center p-6 gap-10">
+
+  <Progress value="60" class="mt-4" />
+  <Progress :value="60" class="mt-4" />
+
+  <Sheet>
+  <SheetTrigger>
+    <Button >
+      Open Sheet
+    </Button>
+  </SheetTrigger>
+
+<SheetContent side="right">
+    <SheetHeader>
+      <SheetTitle>Menu</SheetTitle>
+      <SheetDescription>
+        Example sheet description text
+      </SheetDescription>
+    </SheetHeader>
+
+    <div class="p-4">
+      <p>This is sheet content</p>
+    </div>
+
+    <SheetFooter>
+      <Button variant="link">
+        Save
+      </Button>
+    </SheetFooter>
+
+    <SheetClose />
+  </SheetContent>
+</Sheet>
+
+
+</div>
 
     <div class="w-[60%] min-h-screen  flex flex-col items-center justify-center p-6 gap-10">
+      <RadioGroup v-model="selected">
+    <div class="flex items-center gap-3">
+      <RadioGroupItem id="r1" value="a" />
+      <Label for="r1">Default</Label>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <RadioGroupItem id="r2" value="b" />
+      <Label for="r2">Option B</Label>
+    </div>
+  </RadioGroup>
+</div>
+
+<div class="border bg-red-500 p-2 flex gap-1.5 w-[300px]">
+  <div >
+    <SkeletonCircle size="w-12 h-12" class="mx-auto" />
+  </div>
+  <div class="flex-1">
+    <Skeleton class="h-6 w-32 mb-2" />
+    <SkeletonText :lines="2" class="w-full" />
+  </div>
+</div>
+
+
+
+    <div class="w-[90%] mx-auto min-h-screen  flex flex-col items-center justify-center p-6 gap-10">
     <Slider
       v-model="sliderValue"
       :max="100"
@@ -379,19 +571,20 @@ const sliderValue = ref([50])
       class="w-full"
     />
 
-    <p>Value: {{ sliderValue }}</p>
 
     <Slider 
   v-model="sliderValue"
-  :trackColor="'bg-gray-300'"
-  :rangeColor="'bg-green-500'"
+   trackColor="bg-gray-200"
+  rangeColor="bg-green-500"
+  thumbClass="bg-yellow-300 border-red-500"
   class="w-[60%]"
 />
 
 <Slider 
   v-model="sliderValue"
-  :trackColor="'bg-blue-200'"
-  :rangeColor="'bg-blue-600'"
+  thumbClass="border-blue-500 bg-blue-300 "
+  trackColor="bg-blue-200"
+  rangeColor="bg-blue-600"
   class="w-full"
 />
   </div>

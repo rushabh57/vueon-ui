@@ -7,20 +7,16 @@ const props = defineProps<{
   max?: number
   step?: number
   class?: string
-  trackColor?: string   // unfilled track
-  rangeColor?: string   // filled progress
+  trackColor?: string
+  rangeColor?: string
+  thumbClass?: string        // 🔥 NEW
 }>()
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: number[] | number): void
 }>()
 
-const value = ref(props.modelValue || [50])
-
-const updateValue = (val: number[] | number) => {
-  value.value = val
-  emit('update:modelValue', val)
-}
+const value = ref(props.modelValue ?? [50])
 </script>
 
 <template>
@@ -28,18 +24,43 @@ const updateValue = (val: number[] | number) => {
     v-model="value"
     :max="props.max || 100"
     :step="props.step || 1"
-    :class="['relative flex items-center select-none touch-none', props.class]"
+    :class="[
+      'relative flex w-full touch-none select-none items-center',
+      props.class
+    ]"
   >
     <!-- Track -->
-    <SliderTrack :class="`relative grow h-2 rounded-full overflow-hidden ${props.trackColor || 'bg-stone-500/30'}`">
-      <!-- Filled range -->
-      <SliderRange :class="`absolute h-full rounded-full ${props.rangeColor || 'bg-primary'}`" />
+    <SliderTrack 
+      :class="[
+        'relative h-2 w-full grow overflow-hidden rounded-full',
+        props.trackColor || 'bg-secondary'
+      ]"
+    >
+      <!-- Filled Range -->
+      <SliderRange 
+        :class="[
+          'absolute h-full rounded-full',
+          props.rangeColor || 'bg-primary'
+        ]"
+      />
     </SliderTrack>
 
     <!-- Thumb -->
     <SliderThumb
-      class="block w-6 h-6 bg-white rounded-full shadow-sm hover:bg-stone-50 focus:outline-none focus:ring-2 focus:ring-grass9"
-      aria-label="Slider thumb"
-    />
+  :class="[
+    'block h-5 w-5 rounded-full border-2 bg-background \
+     ring-offset-background transition-colors \
+     focus-visible:outline-none focus-visible:ring-2 \
+     focus-visible:ring-ring focus-visible:ring-offset-2 \
+     disabled:pointer-events-none disabled:opacity-50',
+
+    // ⚠️ Only add a *default* border if dev doesn't override
+    props.thumbClass ? '' : 'border-primary',
+
+    // 👇 Let dev override anything
+    props.thumbClass
+  ]"
+/>
+
   </SliderRoot>
 </template>

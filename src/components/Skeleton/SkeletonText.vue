@@ -1,12 +1,18 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
+import { defineProps, computed } from 'vue'
 
 const props = defineProps<{
-  lines?: number
+  lines?: number | string
   class?: string
 }>()
 
-const linesArray = Array.from({ length: props.lines || 3 })
+// convert string → number so both `lines="2"` and `:lines="2"` work
+const linesCount = computed(() => Number(props.lines) || 3)
+
+// use this instead of props.lines
+const linesArray = computed(() =>
+  Array.from({ length: linesCount.value })
+)
 </script>
 
 <template>
