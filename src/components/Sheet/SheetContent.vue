@@ -18,18 +18,13 @@ const sideClass: Record<string, string> = {
 <template>
   <SheetPortal>
     <DialogOverlay
-    class="fixed inset-0 bg-black/80 z-40
-             ease-in-out
-             data-[state=open]:opacity-100
-             data-[state=closed]:opacity-0
-             duration-500 transition-opacity"
+    class="fixed inset-0 z-50 bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
+
   />
 
     <DialogContent
       :class="[
-        'fixed z-50 gap-4 bg-background p-6 shadow-lg transition ease-in-out',
-        'data-[state=open]:animate-in data-[state=closed]:animate-out',
-        'data-[state=open]:duration-500 data-[state=closed]:duration-300',
+        'fixed z-50 gap-4 bg-background p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500',
         sideClass[props.side || 'right'],
         props.class
       ]"
