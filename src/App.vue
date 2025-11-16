@@ -155,7 +155,7 @@ import DialogTitle from "./components/Dialog/DialogTitle.vue";
 import DialogDescription from "./components/Dialog/DialogDescription.vue";
 import DialogFooter from "./components/Dialog/DialogFooter.vue";
 import Toggle from "./components/Toggle/Toggle.vue";
-import { Bookmark } from "lucide-vue-next";
+import { Bookmark, CircleIcon, Loader, Loader2Icon, RabbitIcon, RefreshCwIcon } from "lucide-vue-next";
 import Label from "./components/Label";
 import { Checkbox, CheckboxGroup } from '@/components/Checkbox'
 import {
@@ -341,6 +341,7 @@ from './components/Drawer'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrev } from "./components/Carousel";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./components/Card";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "./components/Breadcrumb";
+import { Spinner } from "./components/Spinner";
 
 
 const otp = ref("");
@@ -391,6 +392,17 @@ function adjust(amount: number) {
 </script>
 
 <template>
+    <div class="h-screen gap-9 flex items-center justify-center bg-gray-100">
+      <Spinner /> <!-- default md gray -->
+      <Spinner :loader="RabbitIcon" size="md" animation="bounce" /> <!-- bounce -->
+      <Spinner :loader="CircleIcon" size="md" animation="pulse" /> <!-- bounce -->
+
+<Spinner size="lg"  /> <!-- large blue spinner -->
+
+<Spinner :loader="Loader2Icon" size="sm" variant="accent" /> <!-- small pink spinner -->
+
+<Spinner size="md" variant="secondary">Loading data...</Spinner> <!-- visible label -->
+    </div>
     <div class="h-screen flex items-center justify-center bg-gray-100">
       <Breadcrumb>
   <BreadcrumbList>

@@ -90,7 +90,15 @@ export function getPaths(root = rootDir) {
   }
 
 // ── Template source folder ───────────────────────
-export const templatesDir = path.join(__dirname, "../../src/components");
+export let templatesDir = path.join(__dirname, "../../src/components");
+
+// Override with node_modules if it exists
+const nodeModulesComponents = path.join(process.cwd(), "node_modules", "vueon-ui", "src", "components");
+if (fs.existsSync(nodeModulesComponents)) {
+  templatesDir = nodeModulesComponents;
+}
+
+
 
 // ── Export helper values ─────────────────────────
 export { __dirname, __filename };

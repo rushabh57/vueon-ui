@@ -46,8 +46,9 @@ export function detectCSSFile() {
     const lightVars = { ...t.light, ...SHARED_TOKENS };
     const darkVars = { ...t.dark };
 
-    return `/* src/style.css */
+    return `/* styles */
 @import "tailwindcss";
+@import "tw-animate-css";
 
 :root {
 ${toCSSVars(lightVars)}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.vueon.com/schema.json",
+  "framework": "vue-vite",
+  "paths": {
+    "components": "C:\\Users\\ppbha\\OneDrive\\Desktop\\vueon-ui-parent\\vueon-ui\\docs\\src\\components\\ui",
+    "css": "C:\\Users\\ppbha\\OneDrive\\Desktop\\vueon-ui-parent\\vueon-ui\\docs\\src\\"
+  },
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "C:\\Users\\ppbha\\OneDrive\\Desktop\\vueon-ui-parent\\vueon-ui\\docs\\src\\/index.css",
+    "baseColor": "zinc"
+  },
+  "aliases": {
+    "components": "@/components",
+    "ui": "@/ui",
+    "lib": "@/lib"
+  },
+  "iconLibrary": "lucide"
+}
