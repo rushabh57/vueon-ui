@@ -25,12 +25,12 @@ export default function registerAddCommand(program) {
     .description("Add one or more Vueon UI components")
     .action(async (components) => {
       const { framework, componentPath: uiRoot, cssPath, themePath } = getPaths();
-      console.log(chalk.blue("DEBUG: framework detected →", framework));     
+      // console.log(chalk.blue("DEBUG: framework detected →", framework));     
       components = components.map(name => name.charAt(0).toUpperCase() + name.slice(1));
-      console.log(chalk.blue("DEBUG: componentPath →", uiRoot));
-      console.log(chalk.blue("DEBUG: cssPath →", cssPath));
-      console.log(chalk.blue("DEBUG: themePath →", themePath));
-      console.log("Component base path:", uiRoot);
+      // console.log(chalk.blue("DEBUG: componentPath →", uiRoot));
+      // console.log(chalk.blue("DEBUG: cssPath →", cssPath));
+      // console.log(chalk.blue("DEBUG: themePath →", themePath));
+      // console.log("Component base path:", uiRoot);
 
       let available = [];
 
@@ -49,7 +49,7 @@ export default function registerAddCommand(program) {
           const data = await response.json();
           available = data.filter(item => item.type === "dir").map(item => item.name);
         } catch {
-          console.log(chalk.red("✘ No components found."));
+          console.log(`${red}✘ No components found.`);
           return;
         }
       }
@@ -67,20 +67,20 @@ export default function registerAddCommand(program) {
       }
 
       if (components.length === 0) {
-        console.log(chalk.yellow("No components selected."));
+        console.log(`${red}No components selected.`);
         return;
       }
 
       for (const component of components) {
         if (!available.includes(component)) {
-          console.log(chalk.yellow(`⚠ Skipped unknown component: ${component}`));
+          console.log(`${yellow}⚠ Skipped unknown component: ${component}`);
           continue;
         }
 
         const destDir = path.join(uiRoot, component);
         // --- 2. Skip if component already exists ---
         if (fs.existsSync(destDir)) {
-          console.log(chalk.yellow(`⚠ Component "${component}" already exists in project.`));
+          console.log(`${yellow}⚠ Component "${component}" already exists in project.`);
           continue;
         }
         fs.mkdirSync(destDir, { recursive: true });
@@ -92,7 +92,7 @@ export default function registerAddCommand(program) {
         const srcDir = path.join(templatesDir, component);
         if (fs.existsSync(srcDir)) {
           copyRecursive(srcDir, destDir);
-          console.log(chalk.green(`✓ Added ${component}`));
+          console.log(`${green}✓ Added ${component}`);
           continue;
         }
 
@@ -106,12 +106,12 @@ export default function registerAddCommand(program) {
               fs.writeFileSync(path.join(destDir, file.name), content);
             }
           }
-          console.log(chalk.green(`✓ Added ${component}`));
+          console.log(`${greed}✓ Added ${component}`);
         } catch {
-          console.log(chalk.red(`✘ Failed to add ${component}`));
+          console.log(`${red}✘ Failed to add ${component}`);
         }
       }
 
-      console.log(chalk.cyanBright("\n✦ Components added successfully!"));
+      console.log(`${cyan}\n✦ Components added successfully!"`);
     });
 }

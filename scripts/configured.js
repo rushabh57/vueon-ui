@@ -3,13 +3,13 @@ import fs from "fs";
 import { execSync } from "child_process";
 import path from "path";
 import { writeThemeCSS } from "./theme-setup.js";
+import { red, green, yellow, blue, cyan, reset } from "./tokens/colors.js";
 
 export async function configureProject(theme = "zinc" , answers, success) {
   const { getPaths } = await import("../src/utils/paths.js");
   const { framework, componentPath, cssPath, themePath , awesomeName } = getPaths();
-  const green = "\x1b[32m";
-  const yellow = "\x1b[33m";
-  const reset = "\x1b[0m";
+  
+
 
   fs.mkdirSync(componentPath, { recursive: true });
 
@@ -17,8 +17,8 @@ export async function configureProject(theme = "zinc" , answers, success) {
 
   await import("./variants_CLI.js"); 
 
-  console.log(`\nframework: ${green} ${awesomeName.toLowerCase()} ${reset}\n`);
-  console.log(`\nDetected framework: ${green} ${framework.toLowerCase()}${reset}\n`);
+  console.log(`\nframework: ${blue} ${awesomeName.toLowerCase()} ${reset}\n`);
+  // console.log(`\nDetected framework: ${green} ${framework.toLowerCase()}${reset}\n`);
 
   // Tailwind detection
   const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));

@@ -2,8 +2,12 @@ import fs from "fs";
 import path from "path";
 import chalk from "chalk";
 import { getPaths, templatesDir } from "../../src/utils/paths.js";
+import { red, green, yellow, blue, cyan, reset } from "../tokens/colors.js";
+
 
 const GITHUB_API_URL = "https://api.github.com/repos/rushabh57/vueon-ui/contents/src/components";
+
+
 
 export default function registerAddAllCommand(program) {
   program
@@ -11,10 +15,10 @@ export default function registerAddAllCommand(program) {
     .description("Add all available Vueon UI components (local first, remote fallback)")
     .action(async () => {
       const { framework, componentPath: uiRoot, cssPath, themePath } = getPaths();
-      console.log(chalk.blue("DEBUG: framework detected →", framework));
-      console.log(chalk.blue("DEBUG: componentPath →", uiRoot));
-      console.log(chalk.blue("DEBUG: cssPath →", cssPath));
-      console.log(chalk.blue("DEBUG: themePath →", themePath));
+      // console.log(chalk.blue("DEBUG: framework detected →", framework));
+      // console.log(chalk.blue("DEBUG: componentPath →", uiRoot));
+      // console.log(chalk.blue("DEBUG: cssPath →", cssPath));
+      // console.log(chalk.blue("DEBUG: themePath →", themePath));
 
       let components = [];
 
@@ -36,7 +40,7 @@ export default function registerAddAllCommand(program) {
       }
 
       if (components.length === 0) {
-        console.log(chalk.red("✘ No components available to add."));
+        console.log(`${red}✘ No components available to add.`);
         return;
       }
 
@@ -44,13 +48,13 @@ export default function registerAddAllCommand(program) {
       components = components.map(name => name.charAt(0).toUpperCase() + name.slice(1));
 
       fs.mkdirSync(uiRoot, { recursive: true });
-      console.log(chalk.cyanBright(`\n⬢ Adding ${components.length} Vueon UI components...\n`));
+      console.log(`${cyan}\n⬢ Adding ${components.length} Vueon UI components...\n`);
 
       for (const component of components) {
         const destDir = path.join(uiRoot, component);
 
         if (fs.existsSync(destDir)) {
-          console.log(chalk.yellow(`⚠ Component "${component}" already exists.`));
+          console.log(`${yellow}⚠ Component "${component}" already exists.`);
           continue;
         }
 
@@ -82,11 +86,11 @@ export default function registerAddAllCommand(program) {
 
         console.log(
           added
-            ? chalk.green(`✓ Added ${component}`)
-            : chalk.red(`✘ Failed to add ${component}`)
+            ? `${green}✓ Added ${component}`
+            : `${red}✘ Failed to add ${component}`
         );
       }
 
-      console.log(chalk.cyanBright(`\n✦ All Vueon UI components processed.\n`));
+      console.log(`${cyan}\n✦ All Vueon UI components processed.\n`);
     });
 }
