@@ -1,77 +1,156 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
+import { computed } from "vue"
+import { useRoute } from "vue-router"
+import CodeTabs from "../../components/CodeTabs.vue"
+import DocsNavigation from "../../components/DocsNavigation.vue"
 
-const props = defineProps<{ framework?: string }>()
+// Dynamic route: /docs/installation/:framework
+const route = useRoute()
+const framework = route.params.framework
 
-// You can map framework slugs to titles or instructions
-const frameworkInfo = {
-  'vite-vue': {
-    title: 'Vite + Vue',
-    description: 'The recommended setup for Vueon UI.',
-    code: `npm create vite@latest myapp -- --template vue
-cd myapp
-npm install vueon-ui`
+// Framework data
+const frameworks = {
+  // ------------------------------
+  // Vite + Vue
+  // ------------------------------
+  "vite-vue": {
+    title: "Vite + Vue",
+    create: [
+      { label: "npm", code: `npm create vite@latest vueon-app -- --template vue\ncd vueon-app` },
+      { label: "pnpm", code: `pnpm create vite vueon-app --template vue\ncd vueon-app` },
+      { label: "yarn", code: `yarn create vite vueon-app --template vue\ncd vueon-app` },
+      { label: "bun", code: `bun create vite vueon-app --template vue\ncd vueon-app` },
+    ],
+    init: [
+      { label: "npm", code: `npx vueon-ui init` },
+      { label: "pnpm", code: `pnpm dlx vueon-ui init` },
+      { label: "yarn", code: `yarn dlx vueon-ui init` },
+      { label: "bun", code: `bunx vueon-ui init` },
+    ]
   },
-  'vue3': {
-    title: 'Vue 3',
-    description: 'Add Vueon UI to any Vue 3 project.',
-    code: `npm install vueon-ui`
+
+  // ------------------------------
+  // Vue 3 Standalone
+  // ------------------------------
+  vue3: {
+    title: "Vue 3",
+    create: [
+      { label: "npm", code: `npm create vue@latest vueon-app\ncd vueon-app` },
+      { label: "pnpm", code: `pnpm create vue@latest vueon-app\ncd vueon-app` },
+      { label: "yarn", code: `yarn create vue@latest vueon-app\ncd vueon-app` },
+      { label: "bun", code: `bun create vue@latest vueon-app\ncd vueon-app` },
+    ],
+    init: [
+      { label: "npm", code: `npm install vueon-ui` },
+      { label: "pnpm", code: `pnpm add vueon-ui` },
+      { label: "yarn", code: `yarn add vueon-ui` },
+      { label: "bun", code: `bun add vueon-ui` },
+    ]
   },
-  'nuxt': {
-    title: 'Nuxt',
-    description: 'Works perfectly with Nuxt 3.',
-    code: `npx nuxi init myapp
-cd myapp
-npm install vueon-ui`
+
+  // ------------------------------
+  // Nuxt 3
+  // ------------------------------
+  nuxt: {
+    title: "Nuxt 3",
+    create: [
+      { label: "npm", code: `npx nuxi init vueon-app\ncd vueon-app` },
+      { label: "yarn", code: `yarn dlx nuxi init vueon-app\ncd vueon-app` },
+      { label: "pnpm", code: `pnpm dlx nuxi init vueon-app\ncd vueon-app` },
+      { label: "bun", code: `bunx nuxi init vueon-app\ncd vueon-app` },
+    ],
+    init: [
+      { label: "npm", code: `npm install vueon-ui` },
+      { label: "pnpm", code: `pnpm add vueon-ui` },
+      { label: "yarn", code: `yarn add vueon-ui` },
+      { label: "bun", code: `bun add vueon-ui` },
+    ]
   },
-  'laravel': {
-    title: 'Laravel + Vite',
-    description: 'Install Vueon UI inside your Laravel Vite setup.',
-    code: `composer create-project laravel/laravel myapp
-npm install vue vueon-ui`
+
+  // ------------------------------
+  // Laravel + Vue
+  // ------------------------------
+  laravel: {
+    title: "Laravel",
+    create: [
+      
+    ],
+    init: [
+      { label: "npm", code: `npx vueon-ui init` },
+      { label: "pnpm", code: `pnpm dlx vueon-ui init` },
+      { label: "yarn", code: `yarn dlx vueon-ui init` },
+      { label: "bun", code: `bunx vueon-ui init` },
+    ]
   },
-  'astro': {
-    title: 'Astro',
-    description: 'Using Astro with Vue support.',
-    code: `npm create astro@latest
-npm install @astrojs/vue vueon-ui`
-  }
+
+  // ------------------------------
+  // Astro + Vue
+  // ------------------------------
+  astro: {
+    title: "Astro + Vue",
+    create: [
+      { label: "npm", code: `npm create astro@latest vueon-app\ncd vueon-app` },
+      { label: "pnpm", code: `pnpm create astro@latest vueon-app\ncd vueon-app` },
+      { label: "yarn", code: `yarn create astro@latest vueon-app\ncd vueon-app` },
+      { label: "bun", code: `bun create astro@latest vueon-app\ncd vueon-app` },
+    ],
+    init: [
+      { label: "npm", code: `npx vueon-ui init` },
+      { label: "pnpm", code: `pnpm dlx vueon-ui init` },
+      { label: "yarn", code: `yarn dlx vueon-ui init` },
+      { label: "bun", code: `bunx vueon-ui init` },
+    ]
+  },
 }
 
-const currentFramework = props.framework || ''
-const info = frameworkInfo[currentFramework]
+
+// Selected framework info
+const info = computed(() => frameworks[framework] ?? null)
+
+// Add command
+const addCommand = `npx vueon-ui add Button`
+
+// Usage example (SAFE — escapes </template>)
+const usageExample =`
+`
+
 </script>
 
 <template>
-  <div class="space-y-8">
-    <h1 class="text-3xl font-bold">Installation</h1>
+  <DocsNavigation
+    :prev="{ title: 'Installation', path: '/docs/installation' }"
+    :next="undefined"
+  />
 
-    <p v-if="!info" class="text-muted-foreground">
-      Choose your framework below to install Vueon UI.
-    </p>
+  <div class="space-y-10">
+    <h1 class="text-3xl font-bold">{{ info?.title }} Installation</h1>
 
-    <p v-else class="text-muted-foreground">
-      You selected <strong>{{ info.title }}</strong> installation.
-    </p>
-
-    <!-- Show dynamic card if framework is selected -->
-    <div v-if="info" class="border rounded-lg p-5 hover:shadow transition">
-      <h2 class="text-xl font-semibold">{{ info.title }}</h2>
-      <p class="text-sm text-muted-foreground mt-2">{{ info.description }}</p>
-      <pre class="bg-muted p-4 rounded text-sm mt-4">{{ info.code }}</pre>
+    <!-- Create project (if exists) -->
+    <div v-if="info?.create?.length">
+      <h2 class="text-xl font-bold">Create Project</h2>
+      
+        <!-- If framework is laravel → show single block -->
+        <div v-if="framework === 'laravel'">
+          <pre class="bg-muted p-4 rounded">
+      laravel new example-app
+      cd example-app
+          </pre>
+        </div>
+      <CodeTabs :tabs="info.create" />
     </div>
 
-    <!-- Grid of all frameworks if no framework selected -->
-    <div v-else class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <router-link
-        v-for="(f, slug) in frameworkInfo"
-        :key="slug"
-        :to="`/docs/installation/${slug}`"
-        class="border rounded-lg p-5 hover:shadow transition block"
-      >
-        <h2 class="text-xl font-semibold">{{ f.title }}</h2>
-        <p class="text-sm text-muted-foreground mt-2">{{ f.description }}</p>
-      </router-link>
+    <!-- Init -->
+    <div>
+      <h2 class="text-xl font-bold">Initialize Vueon UI</h2>
+      <CodeTabs :tabs="info.init" />
     </div>
+
+    <!-- Add component -->
+    <h2 class="text-xl font-bold">Add Component</h2>
+    <pre class="bg-muted p-4 rounded">{{ addCommand }}</pre>
+
+    <!-- Usage -->
+    <h3 class="text-lg font-semibold mt-4">Usage</h3>
+    <pre class="bg-muted p-4 rounded overflow-auto">{{ usageExample }}</pre>
   </div>
 </template>

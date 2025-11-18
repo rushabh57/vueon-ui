@@ -1,6 +1,6 @@
 {
   "name": "vueon-ui",
-  "version": "0.0.26",
+  "version": "0.0.28.3",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -43,9 +43,7 @@
     "vueon-ui": "./dist/index.js"
   },
   "files": [
-    "dist",
-    "scripts",
-    "src"
+    "dist"
   ],
   "repository": {
     "type": "git",

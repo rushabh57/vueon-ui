@@ -13,13 +13,10 @@ export function detectFramework(root = rootDir) {
   const pkg = has("package.json")
     ? JSON.parse(fs.readFileSync(pkgPath, "utf8"))
     : {};
-
     console.log("DEBUG: package.json dependencies:", pkg.dependencies);
   console.log("DEBUG: package.json devDependencies:", pkg.devDependencies);
   console.log("DEBUG: vite config exists:", has("vite.config.js"));
-
   if (has("artisan")) return "laravel";
-
   if (
     (has("vite.config.js") ||
       has("vite.config.ts") ||
@@ -27,7 +24,6 @@ export function detectFramework(root = rootDir) {
     pkg.dependencies?.vue
   )
     return "vue-vite";
-
   if (
     has("astro.config.mjs") ||
     has("astro.config.js") ||
@@ -43,10 +39,17 @@ export function detectFramework(root = rootDir) {
 
 // ── Resolve paths ────────────────────────────────
 export function getPaths(root = rootDir) {
+    const awesomeNames = {
+      laravel: "lovly laravel",
+      "vue-vite": "v8 vue + vite",
+      astro: "awesome astro",
+      vue: "classic vue",
+      unknown: "Unknown spy"
+    };
     const framework = detectFramework(root);
     let componentPath, cssPath, themePath;
 
-    console.log("DEBUG: Detected framework:", framework);
+    // console.log("DEBUG: Detected framework:", framework);
 
   
     switch (framework) {
@@ -79,14 +82,14 @@ export function getPaths(root = rootDir) {
             cssPath = path.join(root, "default/path/styles");
             themePath = path.join(root, "default/path/theme");
             break;
-    }
-
-    
+    }   
   console.log("DEBUG: componentPath:", componentPath);
   console.log("DEBUG: cssPath:", cssPath);
   console.log("DEBUG: themePath:", themePath);
+
+    const awesomeName = awesomeNames[framework] || framework;
   
-    return { framework, componentPath, cssPath, themePath };
+    return { framework, awesomeName, componentPath, cssPath, themePath };
   }
 
 // ── Template source folder ───────────────────────

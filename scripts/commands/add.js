@@ -25,9 +25,8 @@ export default function registerAddCommand(program) {
     .description("Add one or more Vueon UI components")
     .action(async (components) => {
       const { framework, componentPath: uiRoot, cssPath, themePath } = getPaths();
-      console.log(chalk.blue("DEBUG: framework detected →", framework));      // const { componentPath: uiRoot } = getPaths(); // dynamic current path
+      console.log(chalk.blue("DEBUG: framework detected →", framework));     
       components = components.map(name => name.charAt(0).toUpperCase() + name.slice(1));
-
       console.log(chalk.blue("DEBUG: componentPath →", uiRoot));
       console.log(chalk.blue("DEBUG: cssPath →", cssPath));
       console.log(chalk.blue("DEBUG: themePath →", themePath));

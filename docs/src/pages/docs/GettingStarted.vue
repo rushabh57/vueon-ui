@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import DocsNavigation from '../../components/DocsNavigation.vue';
+import { Kbd } from '../../components/ui/Kbd';
 
 </script>
 
@@ -18,17 +19,24 @@ import DocsNavigation from '../../components/DocsNavigation.vue';
 
   
         <p class="text-lg text-muted-foreground">
-          VueON UI is an open-code, modern component system for Vue 3 — powered by Tailwind v4, 
+          VueON UI is an open-code, modern component system for Vue 3 — powered by Tailwind v4,
           Reka primitives, and a flexible design foundation.  
-          You get full control over your components with elegance, accessibility, 
+          You get full control over your components with elegance, accessibility,
           and predictable composition.
         </p>
-  
+
         <p class="text-muted-foreground">
           VueON UI is <strong>not</strong> a traditional UI library.  
           It is a system to build <strong>your own</strong> component library —  
-          with clean defaults, open code, and a consistent developer experience.
+          with clean defaults, open code, globalized variants, and a consistent developer experience.
         </p>
+
+        <p class="text-muted-foreground">
+          With the powerful VueON CLI — famously known for its <Kbd>pick</Kbd><Kbd>cmd</Kbd> experience —  
+          you can scaffold components, generate blocks, manage themes, and boost your workflow
+          with fast, predictable commands.
+        </p>
+
       </div>
   
       <hr class="border-border" />

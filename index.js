@@ -51,7 +51,7 @@ program
           name: "jsConfigSetup",
           message: "Setup jsconfig.json:",
           choices: [
-            { name: "Auto (⚠ overrides existing file)", value: "auto" },
+            { name: "auto (⚠ overrides existing file)", value: "auto" },
             { name: "Manual (see docs: https://ui.vueon.com)", value: "manual" },
           ],
         },
@@ -67,7 +67,7 @@ program
           name: "viteConfigSetup",
           message: "Setup vite.config.js:",
           choices: [
-            { name: "Auto (⚠ overrides existing file)", value: "auto" },
+            { name: "auto (⚠ overrides existing file)", value: "auto" },
             { name: "Manual (see docs: https://ui.vueon.com)", value: "manual" },
           ],
         },
