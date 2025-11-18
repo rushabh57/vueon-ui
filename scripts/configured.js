@@ -66,25 +66,34 @@ export async function configureProject(theme = "zinc" , answers, success) {
   writeThemeCSS(theme,success);
 
   // vite.config.js
-  const vitePath = path.join(process.cwd(), "vite.config.js");
-  if (!fs.existsSync(vitePath)) {
-    fs.writeFileSync(
-      vitePath,
-      `import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import tailwindcss from '@tailwindcss/vite'
-import path from 'path'
+//   const vitePath = path.join(process.cwd(), "vite.config.js");
+//   if (!fs.existsSync(vitePath)) {
+//     fs.writeFileSync(
+//       vitePath,
+//       `import { defineConfig } from 'vite'
+// import vue from '@vitejs/plugin-vue'
+// import tailwindcss from '@tailwindcss/vite'
+// import path from 'path'
 
-export default defineConfig({
-  plugins: [vue(), tailwindcss()],
-  resolve: { alias: { '@': path.resolve(__dirname, './src') } }
-})`
-    );
-    console.log(`${green}✔ Created vite.config.js${reset}`);
-  } else {
-    console.log(`${yellow}⚠ vite.config.js exists — skipped.${reset}`);
-  }
+// export default defineConfig({
+//   plugins: [vue(), tailwindcss()],
+//   resolve: { alias: { '@': path.resolve(__dirname, './src') } }
+// })`
+//     );
+//     console.log(`${green}✔ Created vite.config.js${reset}`);
+//   } else {
+//     console.log(`${yellow}⚠ vite.config.js exists — skipped.${reset}`);
+//   }
 
+    // Vite config detection
+    const viteJsPath = path.join(process.cwd(), "vite.config.js");
+    const viteTsPath = path.join(process.cwd(), "vite.config.ts");
+
+    if (fs.existsSync(viteJsPath) || fs.existsSync(viteTsPath)) {
+      console.log(`${yellow}⚠ Vite config detected — please update it manually following the docs.${reset}`);
+    } else {
+      console.log(`${yellow}⚠ No Vite config detected. If your framework uses Vite, create vite.config.js manually as per the docs.${reset}`);
+    }
   // jsconfig.json
   fs.writeFileSync(
     "jsconfig.json",
