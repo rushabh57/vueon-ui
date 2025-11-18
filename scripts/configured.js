@@ -17,9 +17,8 @@ export async function configureProject(theme = "zinc" , answers, success) {
 
   await import("./variants_CLI.js"); 
 
-  console.log(`\nframework:${blue}${awesomeName.toLowerCase()} ${reset}\n`);
+    console.log(`\nframework:${blue}${awesomeName.toLowerCase()} ${reset}\n`);
   // console.log(`\nDetected framework: ${green} ${framework.toLowerCase()}${reset}\n`);
-
   // Tailwind detection
   const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
   const tailwindVersion =
@@ -28,7 +27,6 @@ export async function configureProject(theme = "zinc" , answers, success) {
     tailwindVersion && tailwindVersion.match(/\d+/)?.[0] < 4
       ? "tailwindcss@^3"
       : "tailwindcss@latest";
-
   console.log("⬢ Installing dependencies...");
   execSync(
       `npm install -D vueon-ui@latest typescript @tailwindcss/vite ${tailwindPkg} autoprefixer reka-ui class-variance-authority lucide-vue-next tw-animate tw-animate-css --no-audit --no-fund`,

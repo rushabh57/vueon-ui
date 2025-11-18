@@ -1,8 +1,7 @@
 import fs from "fs";
 import path from "path";
-import chalk from "chalk";
 import { getPaths, templatesDir } from "../../src/utils/paths.js";
-import { red, green, yellow, blue, cyan, reset } from "../tokens/colors.js";
+import { red, green, yellow, blue, cyan,  cyanBright, reset } from "../tokens/colors.js";
 
 
 const GITHUB_API_URL = "https://api.github.com/repos/rushabh57/vueon-ui/contents/src/components";
@@ -40,7 +39,7 @@ export default function registerAddAllCommand(program) {
       }
 
       if (components.length === 0) {
-        console.log(`${red}✘ No components available to add.`);
+        console.log(`${red}✖ No components available to add.`);
         return;
       }
 
@@ -87,10 +86,10 @@ export default function registerAddAllCommand(program) {
         console.log(
           added
             ? `${green}✓ Added ${component}`
-            : `${red}✘ Failed to add ${component}`
+            : `${red}✖ Failed to add ${component}`
         );
       }
 
-      console.log(`${cyan}\n✦ All Vueon UI components processed.\n`);
+      console.log(`\n${cyanBright}✦ All Vueon UI components processed.\n`);
     });
 }

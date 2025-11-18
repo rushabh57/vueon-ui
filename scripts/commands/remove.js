@@ -1,8 +1,9 @@
 import inquirer from "inquirer";
 import fs from "fs";
 import path from "path";
-import chalk from "chalk";
 import { getPaths, templatesDir } from "../../src/utils/paths.js";
+import { red, green, yellow, blue, cyan,  cyanBright, reset } from "../tokens/colors.js";
+
 
 export default function registerRemoveCommand(program) {
   program
@@ -11,10 +12,10 @@ export default function registerRemoveCommand(program) {
     .action(async (components) => {
       // Detect framework and paths
       const { framework, componentPath: uiRoot, cssPath, themePath } = getPaths();
-      // console.log(chalk.blue("DEBUG: framework detected →", framework));
-      // console.log(chalk.blue("DEBUG: componentPath →", uiRoot));
-      // console.log(chalk.blue("DEBUG: cssPath →", cssPath));
-      // console.log(chalk.blue("DEBUG: themePath →", themePath));
+      // console.log("DEBUG: framework detected →", framework);
+      // console.log("DEBUG: componentPath →", uiRoot);
+      // console.log("DEBUG: cssPath →", cssPath);
+      // console.log("DEBUG: themePath →", themePath);
       // console.log("Component base path:", uiRoot);
 
       // Capitalize first letter of component names
@@ -22,7 +23,7 @@ export default function registerRemoveCommand(program) {
 
       // Check if components folder exists
       if (!fs.existsSync(uiRoot)) {
-        console.error(chalk.red(`✘ No UI components found in ${uiRoot}`));
+        console.error(`${red}✘ No UI components found in ${uiRoot}`);
         return;
       }
 
@@ -32,7 +33,7 @@ export default function registerRemoveCommand(program) {
       );
 
       if (!installed.length) {
-        console.log(chalk.yellow("✘ No components to remove."));
+        console.log(`${red}✘ No components to remove.`);
         return;
       }
 
@@ -50,7 +51,7 @@ export default function registerRemoveCommand(program) {
       }
 
       if (!components.length) {
-        console.log(chalk.yellow("✘ No components selected for removal."));
+        console.log(`${cyan}✘ No components selected for removal.`);
         return;
       }
 
@@ -58,14 +59,14 @@ export default function registerRemoveCommand(program) {
       for (const component of components) {
         const targetPath = path.join(uiRoot, component);
         if (!installed.includes(component)) {
-          console.log(chalk.yellow(`⚠ Component "${component}" not found in project.`));
+          console.log(`${yellow}⚠ Component "${component}" not found in project.`);
           continue;
         }
 
         fs.rmSync(targetPath, { recursive: true, force: true });
-        console.log(chalk.green(`🗑 Removed component: ${component}`));
+        console.log(`${red}🗑 Removed component: ${component}`);
       }
 
-      console.log(chalk.cyanBright("\n✓ Finished removing selected components.\n"));
+      console.log(`${cyanBright}\n✓ Finished removing selected components.\n`);
     });
 }

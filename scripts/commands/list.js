@@ -1,7 +1,8 @@
 import fs from "fs";
 import path from "path";
-import chalk from "chalk";
 import { getPaths, templatesDir } from "../../src/utils/paths.js";
+import { red, green, yellow, blue, cyan,  cyanBright, reset } from "../tokens/colors.js";
+
 
 const REGISTRY_URL = "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/registry.json";
 
@@ -11,10 +12,10 @@ export default function registerListCommand(program) {
     .description("List all available Vueon UI components")
     .action(async () => {
       const { framework, componentPath: uiRoot, cssPath, themePath } = getPaths();
-      // console.log(chalk.blue("DEBUG: framework detected →", framework));
-      // console.log(chalk.blue("DEBUG: componentPath →", uiRoot));
-      // console.log(chalk.blue("DEBUG: cssPath →", cssPath));
-      // console.log(chalk.blue("DEBUG: themePath →", themePath));
+      // console.log("DEBUG: framework detected →", framework);
+      // console.log("DEBUG: componentPath →", uiRoot);
+      // console.log("DEBUG: cssPath →", cssPath);
+      // console.log("DEBUG: themePath →", themePath);
       let components = [];
 
       if (fs.existsSync(templatesDir)) {
@@ -32,14 +33,14 @@ export default function registerListCommand(program) {
       }
 
       if (components.length > 0) {
-        console.log(chalk.bold.cyan("\n┌─ Available Components ───────────────┐"));
+        console.log(`${cyanBright}\n┌─ Available Components ───────────────┐`);
         components.forEach((name, i) => {
           const prefix = i === components.length - 1 ? "└─" : "├─";
-          console.log(chalk.green(`${prefix} ${name.charAt(0).toUpperCase() + name.slice(1)}`));
+          console.log(`${green}${prefix} ${name.charAt(0).toUpperCase() + name.slice(1)}`);
         });
-        console.log(chalk.bold.cyan("└──────────────────────────────────────┘\n"));
+        console.log(`${cyanBright}└──────────────────────────────────────┘\n`);
       } else {
-        console.log(chalk.red("✗ No components available."));
+        console.log(`${red}✖ No components available.`);
       }
     });
 }

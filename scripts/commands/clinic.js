@@ -1,9 +1,9 @@
 import inquirer from "inquirer";
 import fs from "fs";
 import path from "path";
-import chalk from "chalk";
 import { getPaths } from "../../src/utils/paths.js";
 import { execSync } from "child_process";
+import { red, green, yellow, blue, cyan,  cyanBright, reset } from "../tokens/colors.js";
 
 export default function registerClinicCommand(program) {
   program
@@ -31,19 +31,19 @@ export default function registerClinicCommand(program) {
       ]);
 
       if (!selectedSections.length) {
-        console.log(chalk.yellow("⚠ No sections selected."));
+        console.log(`${yellow}⚠ No sections selected.`);
         return;
       }
 
       // ---------- Project Info ----------
       if (selectedSections.includes("Project Info")) {
-        console.log(chalk.bold.cyan("\n┌─ Project Info ───────────────┐"));
+        console.log(`${cyanBright}\n┌─ Project Info ───────────────┐`);
         const projectName = fs.existsSync(projectPkgPath)
           ? JSON.parse(fs.readFileSync(projectPkgPath, "utf8")).name
           : "unknown";
 
-        console.log(chalk.green(`├─ Project Name: ${projectName}`));
-        console.log(chalk.green(`├─ Framework: ${framework}`));
+        console.log(`${cyan}├─ Project Name: ${projectName}`);
+        console.log(`${cyan}├─ Framework: ${framework}`);
 
         let coreVersion = "not installed";
         if (fs.existsSync(projectPkgPath)) {
@@ -53,26 +53,26 @@ export default function registerClinicCommand(program) {
             pkg.devDependencies?.["vueon-ui"] ||
             "not found";
         }
-        console.log(chalk.green(`└─ Vueon UI Core: ${coreVersion}`));
+        console.log(`${green}└─ Vueon UI Core: ${coreVersion}`);
       }
 
       // ---------- Components Status ----------
       if (selectedSections.includes("Components Status")) {
-        console.log(chalk.bold.cyan("\n┌─ Components Status ──────────┐"));
+        console.log(`${yellow}\n┌─ Components Status ──────────┐`);
 
         if (!fs.existsSync(uiDir)) {
-          console.log(chalk.yellow("⚠ No src/ui folder found."));
+          console.log(`${yellow}⚠ No src/ui folder found.`);
         } else {
           const installed = fs
             .readdirSync(uiDir)
             .filter((f) => fs.lstatSync(path.join(uiDir, f)).isDirectory());
 
           if (!installed.length) {
-            console.log(chalk.yellow("⚠ No components installed."));
+            console.log(`${yellow}⚠ No components installed.`);
           } else {
             installed.forEach((comp, i) => {
               const prefix = i === installed.length - 1 ? "└─" : "├─";
-              console.log(chalk.green(`${prefix} ${comp}`));
+              console.log(`${green}${prefix} ${comp}`);
             });
           }
         }
@@ -80,35 +80,35 @@ export default function registerClinicCommand(program) {
 
       // ---------- Environment Check ----------
       if (selectedSections.includes("Environment Check")) {
-        console.log(chalk.bold.cyan("\n┌─ Environment Check ──────────┐"));
+        console.log(`${cyanBright}\n┌─ Environment Check ──────────┐`);
         try {
           const nodeVersion = execSync("node -v").toString().trim();
-          console.log(chalk.green(`├─ Node Version: ${nodeVersion}`));
+          console.log(`${cyan}├─ Node Version: ${nodeVersion}`);
         } catch {
-          console.log(chalk.red("├─ Node not found"));
+          console.log(`${red}├─ Node not found`);
         }
 
         try {
           const npmVersion = execSync("npm -v").toString().trim();
-          console.log(chalk.green(`├─ NPM Version: ${npmVersion}`));
+          console.log(`${cyan}├─ NPM Version: ${npmVersion}`);
         } catch {
-          console.log(chalk.red("├─ NPM not found"));
+          console.log(`${red}├─ NPM not found`);
         }
 
         const viteConfig = path.join(process.cwd(), "vite.config.js");
         const webpackConfig = path.join(process.cwd(), "webpack.config.js");
         if (fs.existsSync(viteConfig)) {
-          console.log(chalk.green("└─ Vite config detected"));
+          console.log(`${cyan}└─ Vite config detected`);
         } else if (fs.existsSync(webpackConfig)) {
-          console.log(chalk.green("└─ Webpack config detected"));
+          console.log(`${cyan}└─ Webpack config detected`);
         } else {
-          console.log(chalk.yellow("└─ No build config found (Vite/Webpack)"));
+          console.log(`${yellow}└─ No build config found (Vite/Webpack)`);
         }
       }
 
       // ---------- Advanced Checks ----------
       if (selectedSections.includes("Advanced Checks")) {
-        console.log(chalk.bold.cyan("\n┌─ Advanced Checks ────────────┐"));
+        console.log(`${cyanBright}\n┌─ Advanced Checks ────────────┐`);
 
         // Check Vue alias (@) in tsconfig or jsconfig
         const tsConfigPath = path.join(process.cwd(), "tsconfig.json");
@@ -118,20 +118,20 @@ export default function registerClinicCommand(program) {
           const configPath = fs.existsSync(tsConfigPath) ? tsConfigPath : jsConfigPath;
           const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
           if (config.compilerOptions?.paths?.["@/*"]) {
-            console.log(chalk.green("├─ '@/*' alias correctly set"));
+            console.log(`${cyan}├─ '@/*' alias correctly set`);
             aliasFound = true;
           }
         }
         if (!aliasFound) {
-          console.log(chalk.yellow("├─ '@/*' alias not set in tsconfig.json/jsconfig.json"));
+          console.log(`${yellow}├─ '@/*' alias not set in tsconfig.json/jsconfig.json`);
         }
 
         // Check Vue package
         try {
           execSync("node -e \"require('vue')\"");
-          console.log(chalk.green("├─ Vue detected"));
+          console.log(`${cyan}├─ Vue detected`);
         } catch {
-          console.log(chalk.red("├─ Vue not installed or path resolution failed"));
+          console.log(`${red}├─ Vue not installed or path resolution failed`);
         }
 
         // Check installed components vs vueon-ui package
@@ -142,12 +142,12 @@ export default function registerClinicCommand(program) {
 
           local.forEach((comp) => {
             if (!pkgComp.includes(comp)) {
-              console.log(chalk.yellow(`├─ Component '${comp}' does not match vueon-ui package`));
+              console.log(`${yellow}├─ Component '${comp}' does not match vueon-ui package`);
             }
           });
         }
       }
 
-      console.log(chalk.cyanBright("\n✔ Doctor check completed.\n"));
+      console.log(`${green}\n✔ Doctor check completed.\n`);
     });
 }

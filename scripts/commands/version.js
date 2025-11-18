@@ -24,10 +24,10 @@ export default function registerVersionCommand(program) {
       }
 
       console.log(`
-▣ Vueon UI Version Info
-──────────────────────────
-CLI Version:    v${cliVersion}
-Core Library:   ${coreVersion}
+┌─ Vueon UI Version Info
+├───────────────────────────
+├─ CLI Version:    v${cliVersion}
+├─ Core Library:   ${coreVersion}
 `);
     });
 }

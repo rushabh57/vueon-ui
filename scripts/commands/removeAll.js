@@ -1,8 +1,9 @@
 import inquirer from "inquirer";
 import fs from "fs";
 import path from "path";
-import chalk from "chalk";
 import { getPaths } from "../../src/utils/paths.js";
+import { red, green, yellow, blue, cyan,  cyanBright, reset } from "../tokens/colors.js";
+
 
 export default function registerRemoveAllCommand(program) {
   program
@@ -10,13 +11,13 @@ export default function registerRemoveAllCommand(program) {
     .description("Remove all Vueon UI components from your project")
     .action(async () => {
       const { framework, componentPath: uiRoot, cssPath, themePath } = getPaths();
-      // console.log(chalk.blue("DEBUG: framework detected →", framework));
-      // console.log(chalk.blue("DEBUG: componentPath →", uiRoot));
-      // console.log(chalk.blue("DEBUG: cssPath →", cssPath));
-      // console.log(chalk.blue("DEBUG: themePath →", themePath));
+      // console.log("DEBUG: framework detected →", framework);
+      // console.log("DEBUG: componentPath →", uiRoot);
+      // console.log("DEBUG: cssPath →", cssPath);
+      // console.log("DEBUG: themePath →", themePath);
 
       if (!fs.existsSync(uiRoot)) {
-        console.log(chalk.yellow(`⚠ No components found in ${uiRoot} to remove.`));
+        console.log(`${yellow}⚠ No components found in ${uiRoot} to remove.`);
         return;
       }
 
@@ -25,7 +26,7 @@ export default function registerRemoveAllCommand(program) {
       );
 
       if (!installed.length) {
-        console.log(chalk.yellow("⚠ No installed components found to remove."));
+        console.log(`${yellow}⚠ No installed components found to remove.`);
         return;
       }
 
@@ -46,9 +47,9 @@ export default function registerRemoveAllCommand(program) {
       for (const component of installed) {
         const targetPath = path.join(uiRoot, component);
         fs.rmSync(targetPath, { recursive: true, force: true });
-        console.log(chalk.green(`␡ Removed: ${component}`));
+        console.log(`${red}🗑 Removed: ${component}`);
       }
 
-      console.log(chalk.cyanBright("\n✓ All Vueon UI components removed successfully.\n"));
+      console.log(`\n${cyanBright}✓ All Vueon UI components removed successfully.\n`);
     });
 }

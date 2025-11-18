@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import chalk from "chalk";
 import { getPaths, templatesDir } from "../../src/utils/paths.js";
-import { red, green, yellow, blue, cyan, reset } from "../tokens/colors.js";
+import { red, green, yellow, blue, cyan,  cyanBright, reset } from "../tokens/colors.js";
 
 
 const GITHUB_API_URL = "https://api.github.com/repos/rushabh57/vueon-ui/contents/src/components";
@@ -114,6 +114,6 @@ export default function registerAddCommand(program) {
         }
       }
 
-      console.log(`${cyan}\n✦ Components added successfully!"`);
+      console.log(`\n${cyanBright}✦ Components added successfully!"`);
     });
 }

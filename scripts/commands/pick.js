@@ -1,8 +1,8 @@
 import inquirer from "inquirer";
 import fs from "fs";
 import path from "path";
-import chalk from "chalk";
 import { getPaths, templatesDir } from "../../src/utils/paths.js";
+import { red, green, yellow, blue, cyan,  cyanBright, reset } from "../tokens/colors.js";
 
 const GITHUB_API_URL = "https://api.github.com/repos/rushabh57/vueon-ui/contents/src/components";
 
@@ -12,10 +12,10 @@ export default function registerPickCommand(program) {
     .description("Select multiple Vueon UI components to add (local first, remote fallback)")
     .action(async () => {
       const { framework, componentPath: uiRoot, cssPath, themePath } = getPaths();
-      // console.log(chalk.blue("DEBUG: framework detected →", framework));
-      // console.log(chalk.blue("DEBUG: componentPath →", uiRoot));
-      // console.log(chalk.blue("DEBUG: cssPath →", cssPath));
-      // console.log(chalk.blue("DEBUG: themePath →", themePath));
+      // console.log("DEBUG: framework detected →", framework);
+      // console.log("DEBUG: componentPath →", uiRoot);
+      // console.log("DEBUG: cssPath →", cssPath);
+      // console.log("DEBUG: themePath →", themePath);
       let components = [];
       if (fs.existsSync(templatesDir)) {
         components = fs.readdirSync(templatesDir)
@@ -33,7 +33,7 @@ export default function registerPickCommand(program) {
       }
 
       if (components.length === 0) {
-        console.log(chalk.red("✘ No components available."));
+        console.log(`${red}✖ No components available.`);
         return;
       }
 
@@ -48,20 +48,20 @@ export default function registerPickCommand(program) {
       ]);
 
       if (!selected.length) {
-        console.log(chalk.yellow("⚠ No components selected."));
+        console.log(`${yellow}⚠ No components selected.`);
         return;
       }
 
       fs.mkdirSync(uiRoot, { recursive: true });
 
-      console.log(chalk.cyanBright(`\n⬢ Adding ${selected.length} selected components...\n`));
+      console.log(`${cyanBright}\n⬢ Adding ${selected.length} selected components...\n`);
 
       for (let component of selected) {
         component = component.charAt(0).toUpperCase() + component.slice(1);
         const destDir = path.join(uiRoot, component);
 
         if (fs.existsSync(destDir)) {
-          console.log(chalk.yellow(`⚠ Component "${component}" already exists in project.`));
+          console.log(`${yellow}⚠ Component "${component}" already exists in project.`);
           continue;
         }
 
@@ -90,11 +90,11 @@ export default function registerPickCommand(program) {
 
         console.log(
           added
-            ? chalk.green(`✓ Added ${component}`)
-            : chalk.red(`✘ Failed to add ${component}`)
+            ? `${green}✓ Added ${component}`
+            : `${red}✖ Failed to add ${component}`
         );
       }
 
-      console.log(chalk.cyanBright(`\n🎯 Selected components added successfully!\n`));
+      console.log(`\n${cyanBright}🎯 Selected components added successfully!\n`);
     });
 }

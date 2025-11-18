@@ -1,19 +1,20 @@
-import chalk from "chalk";
 import fs from "fs";
 import path from "path";
 import { getPaths } from "../../src/utils/paths.js";
+import { red, green, yellow, blue, cyan,  cyanBright, reset } from "../tokens/colors.js";
+
 
 const GITHUB_API_URL = "https://api.github.com/repos/rushabh57/vueon-ui/contents/src/components";
 
 export async function syncComponents() {
   const { framework, componentPath: uiRoot } = getPaths();
-  // console.log(chalk.blue("DEBUG: framework detected →", framework));
-  // console.log(chalk.blue("DEBUG: componentPath →", uiRoot));
+  // console.log("DEBUG: framework detected →", framework);
+  // console.log("DEBUG: componentPath →", uiRoot);
 
   const pkgDir = path.join(process.cwd(), "node_modules", "vueon-ui", "src", "components");
 
   if (!fs.existsSync(uiRoot)) {
-    console.log(chalk.yellow("⚠ No components found locally to sync."));
+    console.log(`${yellow}⚠ No components found locally to sync.`);
     return;
   }
 
@@ -22,11 +23,11 @@ export async function syncComponents() {
   );
 
   if (!localComponents.length) {
-    console.log(chalk.yellow("⚠ No installed components found to sync."));
+    console.log(`${yellow}⚠ No installed components found to sync.`);
     return;
   }
 
-  console.log(chalk.cyanBright(`\n↻ Syncing ${localComponents.length} installed components...\n`));
+  console.log(`${cyanBright}\n↻ Syncing ${localComponents.length} installed components...\n`);
 
   let updated = 0;
 
@@ -44,7 +45,7 @@ export async function syncComponents() {
         fs.copyFileSync(path.join(pkgCompDir, file), path.join(localDir, file));
       });
       fs.writeFileSync(metaFile, "local-sync");
-      console.log(chalk.green(`✓ Synced locally: ${name}`));
+      console.log(`${green}✓ Synced locally: ${name}`);
       synced = true;
       updated++;
     }
@@ -62,17 +63,17 @@ export async function syncComponents() {
         }
 
         fs.writeFileSync(metaFile, "github-sync");
-        console.log(chalk.yellow(`↻ Synced from GitHub: ${name}`));
+        console.log(`${cyan}↻ Synced from GitHub: ${name}`);
         updated++;
       } catch (err) {
-        console.log(chalk.red(`✘ Failed to sync ${name}: ${err.message}`));
+        console.log(`${red}✘ Failed to sync ${name}: ${err.message}`);
       }
     }
   }
 
   console.log(
     updated === 0
-      ? chalk.green("\n✓ All components are already up to date.\n")
-      : chalk.cyanBright(`\n✔ Synced ${updated} installed component(s).\n`)
+      ? `${green}\n✓ All components are already up to date.\n`
+      : `${cyanBright}\n✔ Synced ${updated} installed component(s).\n`
   );
 }

@@ -1,5 +1,6 @@
 import inquirer from "inquirer"
-import chalk from "chalk"
+import { red, green, yellow, blue, cyan , cyanBright, reset } from "../tokens/colors.js";
+
 
 export default function registerUsageCommand(program) {
   program
@@ -68,15 +69,15 @@ export default function registerUsageCommand(program) {
         {
           type: "list",
           name: "chosenCommand",
-          message: chalk.bold("Select a command to view details:"),
+          message: "Select a command to view details:",
           choices: commands.map(cmd => cmd.name)
         }
       ])
 
       const cmd = commands.find(c => c.name === chosenCommand)
 
-      console.log("\n" + chalk.cyan("▣ Command: ") + chalk.bold(cmd.name))
-      console.log(chalk.green("↳ Usage: ") + chalk.white(cmd.usage))
-      console.log(chalk.yellow("↳ Description: ") + chalk.white(cmd.description) + "\n")
+      console.log("\n" + `${cyanBright}┌─ Command: ` + cmd.name)
+      console.log(`${cyan}├─ Usage: ` + cmd.usage)
+      console.log(`${cyan}├─ Description: ` + cmd.description + "\n")
     })
 }
