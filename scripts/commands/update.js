@@ -15,13 +15,13 @@ export default function registerUpdateCommand(program) {
       // console.log("DEBUG: cssPath →", cssPath);
       // console.log("DEBUG: themePath →", themePath);
 
-      console.log(`${cyanBright}\n↻ Checking for updates...`);
+      console.log(`${cyanBright}\n↻ Checking for updates...${reset}`);
 
       try {
         execSync("npm install vueon-ui@latest -D", { stdio: "inherit" });
-        console.log(`${green}✓ Vueon UI successfully updated to latest version!\n`);
+        console.log(`${green}✓ Vueon UI successfully updated to latest version!\n${reset}`);
       } catch (err) {
-        console.log(`${red}✘ Failed to update Vueon UI:`, err.message);
+        console.log(`${red}✘ Failed to update Vueon UI:${reset}`, err.message);
       }
     });
 }

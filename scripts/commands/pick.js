@@ -33,7 +33,7 @@ export default function registerPickCommand(program) {
       }
 
       if (components.length === 0) {
-        console.log(`${red}✖ No components available.`);
+        console.log(`${red}✖ No components available.${reset}`);
         return;
       }
 
@@ -48,20 +48,20 @@ export default function registerPickCommand(program) {
       ]);
 
       if (!selected.length) {
-        console.log(`${yellow}⚠ No components selected.`);
+        console.log(`${yellow}⚠ No components selected.${reset}`);
         return;
       }
 
       fs.mkdirSync(uiRoot, { recursive: true });
 
-      console.log(`${cyanBright}\n⬢ Adding ${selected.length} selected components...\n`);
+      console.log(`${cyanBright}\n⬢ Adding ${selected.length} selected components...\n${reset}`);;
 
       for (let component of selected) {
         component = component.charAt(0).toUpperCase() + component.slice(1);
         const destDir = path.join(uiRoot, component);
 
         if (fs.existsSync(destDir)) {
-          console.log(`${yellow}⚠ Component "${component}" already exists in project.`);
+          console.log(`${yellow}⚠ Component "${component}" already exists in project.${reset}`);
           continue;
         }
 
@@ -90,11 +90,11 @@ export default function registerPickCommand(program) {
 
         console.log(
           added
-            ? `${green}✓ Added ${component}`
-            : `${red}✖ Failed to add ${component}`
+            ? `${green}✓ Added ${component}${reset}`
+            : `${red}✖ Failed to add ${component}${reset}`
         );
       }
 
-      console.log(`\n${cyanBright}🎯 Selected components added successfully!\n`);
+      console.log(`\n${cyanBright}🎯 Selected components added successfully!\n${reset}`);
     });
 }

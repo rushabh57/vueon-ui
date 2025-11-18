@@ -33,14 +33,14 @@ export default function registerListCommand(program) {
       }
 
       if (components.length > 0) {
-        console.log(`${cyanBright}\n┌─ Available Components ───────────────┐`);
+        console.log(`${cyanBright}\n┌─ Available Components ───────────────┐${reset}`);
         components.forEach((name, i) => {
           const prefix = i === components.length - 1 ? "└─" : "├─";
-          console.log(`${green}${prefix} ${name.charAt(0).toUpperCase() + name.slice(1)}`);
+          console.log(`${green}${prefix} ${name.charAt(0).toUpperCase() + name.slice(1)}${reset}`);
         });
-        console.log(`${cyanBright}└──────────────────────────────────────┘\n`);
+        console.log(`${cyanBright}└──────────────────────────────────────┘\n${reset}`);
       } else {
-        console.log(`${red}✖ No components available.`);
+        console.log(`${red}✖ No components available.${reset}`);
       }
     });
 }

@@ -76,8 +76,8 @@ export default function registerUsageCommand(program) {
 
       const cmd = commands.find(c => c.name === chosenCommand)
 
-      console.log("\n" + `${cyanBright}┌─ Command: ` + cmd.name)
-      console.log(`${cyan}├─ Usage: ` + cmd.usage)
-      console.log(`${cyan}├─ Description: ` + cmd.description + "\n")
+      console.log("\n" + `${cyanBright}┌─ Command: ${reset}` + cmd.name)
+      console.log(`${cyan}├─ Usage: ${reset}` + cmd.usage)
+      console.log(`${cyan}├─ Description: ${reset}` + cmd.description + "\n")
     })
 }

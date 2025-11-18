@@ -51,7 +51,7 @@ export default function registerAddCommand(program) {
           const data = await response.json();
           available = data.filter(item => item.type === "dir").map(item => item.name);
         } catch {
-          console.log(`${red}✘ No components found.`);
+          console.log(`${red}✘ No components found.${reset}`);
           return;
         }
       }
@@ -69,20 +69,20 @@ export default function registerAddCommand(program) {
       }
 
       if (components.length === 0) {
-        console.log(`${red}No components selected.`);
+        console.log(`${red}No components selected.${reset}`);
         return;
       }
 
       for (const component of components) {
         if (!available.includes(component)) {
-          console.log(`${yellow}⚠ Skipped unknown component: ${component}`);
+          console.log(`${yellow}⚠ Skipped unknown component: ${component}${reset}`);
           continue;
         }
 
         const destDir = path.join(uiRoot, component);
         // --- 2. Skip if component already exists ---
         if (fs.existsSync(destDir)) {
-          console.log(`${yellow}⚠ Component "${component}" already exists in project.`);
+          console.log(`${yellow}⚠ Component "${component}" already exists in project.${reset}`);
           continue;
         }
         fs.mkdirSync(destDir, { recursive: true });
@@ -94,7 +94,7 @@ export default function registerAddCommand(program) {
         const srcDir = path.join(templatesDir, component);
         if (fs.existsSync(srcDir)) {
           copyRecursive(srcDir, destDir);
-          console.log(`${green}✓ Added ${component}`);
+          console.log(`${green}✓ Added ${component}${reset}`);
           continue;
         }
 
@@ -108,12 +108,12 @@ export default function registerAddCommand(program) {
               fs.writeFileSync(path.join(destDir, file.name), content);
             }
           }
-          console.log(`${green}✓ Added ${component}`);
+          console.log(`${green}✓ Added ${component}${reset}`);
         } catch {
-          console.log(`${red}✘ Failed to add ${component}`);
+          console.log(`${red}✘ Failed to add ${component}${reset}`);
         }
       }
 
-      console.log(`\n${cyanBright}✦ Components added successfully!"`);
+      console.log(`\n${cyanBright}✦ Components added successfully!"${reset}`);
     });
 }

@@ -31,7 +31,7 @@ export default function registerClinicCommand(program) {
       ]);
 
       if (!selectedSections.length) {
-        console.log(`${yellow}⚠ No sections selected.`);
+        console.log(`${yellow}⚠ No sections selected.${reset}`);
         return;
       }
 
@@ -42,8 +42,8 @@ export default function registerClinicCommand(program) {
           ? JSON.parse(fs.readFileSync(projectPkgPath, "utf8")).name
           : "unknown";
 
-        console.log(`${cyan}├─ Project Name: ${projectName}`);
-        console.log(`${cyan}├─ Framework: ${framework}`);
+        console.log(`${cyan}├─ Project Name: ${projectName}${reset}`);
+        console.log(`${cyan}├─ Framework: ${framework}${reset}`);
 
         let coreVersion = "not installed";
         if (fs.existsSync(projectPkgPath)) {
@@ -53,26 +53,26 @@ export default function registerClinicCommand(program) {
             pkg.devDependencies?.["vueon-ui"] ||
             "not found";
         }
-        console.log(`${green}└─ Vueon UI Core: ${coreVersion}`);
+        console.log(`${green}└─ Vueon UI Core: ${coreVersion}${reset}`);
       }
 
       // ---------- Components Status ----------
       if (selectedSections.includes("Components Status")) {
-        console.log(`${yellow}\n┌─ Components Status ──────────┐`);
+        console.log(`${yellow}\n┌─ Components Status ──────────┐${reset}`);
 
         if (!fs.existsSync(uiDir)) {
-          console.log(`${yellow}⚠ No src/ui folder found.`);
+          console.log(`${yellow}⚠ No src/ui folder found.${reset}`);
         } else {
           const installed = fs
             .readdirSync(uiDir)
             .filter((f) => fs.lstatSync(path.join(uiDir, f)).isDirectory());
 
           if (!installed.length) {
-            console.log(`${yellow}⚠ No components installed.`);
+            console.log(`${yellow}⚠ No components installed.${reset}`);
           } else {
             installed.forEach((comp, i) => {
               const prefix = i === installed.length - 1 ? "└─" : "├─";
-              console.log(`${green}${prefix} ${comp}`);
+              console.log(`${green}${prefix} ${comp}${reset}`);
             });
           }
         }
@@ -80,35 +80,35 @@ export default function registerClinicCommand(program) {
 
       // ---------- Environment Check ----------
       if (selectedSections.includes("Environment Check")) {
-        console.log(`${cyanBright}\n┌─ Environment Check ──────────┐`);
+        console.log(`${cyanBright}\n┌─ Environment Check ──────────┐${reset}`);
         try {
           const nodeVersion = execSync("node -v").toString().trim();
-          console.log(`${cyan}├─ Node Version: ${nodeVersion}`);
+          console.log(`${cyan}├─ Node Version: ${nodeVersion}${reset}`);
         } catch {
-          console.log(`${red}├─ Node not found`);
+          console.log(`${red}├─ Node not found${reset}`);
         }
 
         try {
           const npmVersion = execSync("npm -v").toString().trim();
-          console.log(`${cyan}├─ NPM Version: ${npmVersion}`);
+          console.log(`${cyan}├─ NPM Version: ${npmVersion}${reset}`);
         } catch {
-          console.log(`${red}├─ NPM not found`);
+          console.log(`${red}├─ NPM not found${reset}`);
         }
 
         const viteConfig = path.join(process.cwd(), "vite.config.js");
         const webpackConfig = path.join(process.cwd(), "webpack.config.js");
         if (fs.existsSync(viteConfig)) {
-          console.log(`${cyan}└─ Vite config detected`);
+          console.log(`${cyan}└─ Vite config detected${reset}`);
         } else if (fs.existsSync(webpackConfig)) {
-          console.log(`${cyan}└─ Webpack config detected`);
+          console.log(`${cyan}└─ Webpack config detected${reset}`);
         } else {
-          console.log(`${yellow}└─ No build config found (Vite/Webpack)`);
+          console.log(`${yellow}└─ No build config found (Vite/Webpack)${reset}`);
         }
       }
 
       // ---------- Advanced Checks ----------
       if (selectedSections.includes("Advanced Checks")) {
-        console.log(`${cyanBright}\n┌─ Advanced Checks ────────────┐`);
+        console.log(`${cyanBright}\n┌─ Advanced Checks ────────────┐${reset}`);
 
         // Check Vue alias (@) in tsconfig or jsconfig
         const tsConfigPath = path.join(process.cwd(), "tsconfig.json");
@@ -118,20 +118,20 @@ export default function registerClinicCommand(program) {
           const configPath = fs.existsSync(tsConfigPath) ? tsConfigPath : jsConfigPath;
           const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
           if (config.compilerOptions?.paths?.["@/*"]) {
-            console.log(`${cyan}├─ '@/*' alias correctly set`);
+            console.log(`${cyan}├─ '@/*' alias correctly set${reset}`);
             aliasFound = true;
           }
         }
         if (!aliasFound) {
-          console.log(`${yellow}├─ '@/*' alias not set in tsconfig.json/jsconfig.json`);
+          console.log(`${yellow}├─ '@/*' alias not set in tsconfig.json/jsconfig.json${reset}`);
         }
 
         // Check Vue package
         try {
           execSync("node -e \"require('vue')\"");
-          console.log(`${cyan}├─ Vue detected`);
+          console.log(`${cyan}├─ Vue detected${reset}`);
         } catch {
-          console.log(`${red}├─ Vue not installed or path resolution failed`);
+          console.log(`${red}├─ Vue not installed or path resolution failed${reset}`);
         }
 
         // Check installed components vs vueon-ui package
@@ -142,12 +142,12 @@ export default function registerClinicCommand(program) {
 
           local.forEach((comp) => {
             if (!pkgComp.includes(comp)) {
-              console.log(`${yellow}├─ Component '${comp}' does not match vueon-ui package`);
+              console.log(`${yellow}├─ Component '${comp}' does not match vueon-ui package${reset}`);
             }
           });
         }
       }
 
-      console.log(`${green}\n✔ Doctor check completed.\n`);
+      console.log(`${green}\n✔ Doctor check completed.\n${reset}`);
     });
 }

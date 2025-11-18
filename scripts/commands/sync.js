@@ -14,7 +14,7 @@ export async function syncComponents() {
   const pkgDir = path.join(process.cwd(), "node_modules", "vueon-ui", "src", "components");
 
   if (!fs.existsSync(uiRoot)) {
-    console.log(`${yellow}⚠ No components found locally to sync.`);
+    console.log(`${yellow}⚠ No components found locally to sync.${reset}`);
     return;
   }
 
@@ -23,11 +23,11 @@ export async function syncComponents() {
   );
 
   if (!localComponents.length) {
-    console.log(`${yellow}⚠ No installed components found to sync.`);
+    console.log(`${yellow}⚠ No installed components found to sync.${reset}`);
     return;
   }
 
-  console.log(`${cyanBright}\n↻ Syncing ${localComponents.length} installed components...\n`);
+  console.log(`${cyanBright}\n↻ Syncing ${localComponents.length} installed components...\n${reset}`);
 
   let updated = 0;
 
@@ -45,7 +45,7 @@ export async function syncComponents() {
         fs.copyFileSync(path.join(pkgCompDir, file), path.join(localDir, file));
       });
       fs.writeFileSync(metaFile, "local-sync");
-      console.log(`${green}✓ Synced locally: ${name}`);
+      console.log(`${green}✓ Synced locally: ${name}${reset}`);
       synced = true;
       updated++;
     }
@@ -63,17 +63,17 @@ export async function syncComponents() {
         }
 
         fs.writeFileSync(metaFile, "github-sync");
-        console.log(`${cyan}↻ Synced from GitHub: ${name}`);
+        console.log(`${cyan}↻ Synced from GitHub: ${name}${reset}`);
         updated++;
       } catch (err) {
-        console.log(`${red}✘ Failed to sync ${name}: ${err.message}`);
+        console.log(`${red}✘ Failed to sync ${name}: ${err.message}${reset}`);
       }
     }
   }
 
   console.log(
     updated === 0
-      ? `${green}\n✓ All components are already up to date.\n`
-      : `${cyanBright}\n✔ Synced ${updated} installed component(s).\n`
+      ? `${green}\n✓ All components are already up to date.\n${reset}`
+      : `${cyanBright}\n✔ Synced ${updated} installed component(s).\n${reset}`
   );
 }

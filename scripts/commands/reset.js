@@ -19,7 +19,7 @@ export default function registerResetCommand(program) {
       const pkgUiDir = path.join(process.cwd(), "node_modules", "vueon-ui", "src", "components");
 
       if (!fs.existsSync(uiRoot)) {
-        console.log(`${yellow}⚠ No components folder found.`);
+        console.log(`${yellow}⚠ No components folder found.${reset}`);
         return;
       }
 
@@ -28,7 +28,7 @@ export default function registerResetCommand(program) {
       );
 
       if (!installed.length) {
-        console.log(`${yellow}⚠ No installed components found to reset.`);
+        console.log(`${yellow}⚠ No installed components found to reset.${reset}`);
         return;
       }
 
@@ -43,12 +43,12 @@ export default function registerResetCommand(program) {
         ]);
 
         if (!confirm) {
-          console.log(`${red}✖ Operation cancelled.`);
+          console.log(`${red}✖ Operation cancelled.${reset}`);
           return;
         }
       }
 
-      console.log(`\n${cyanBright}↻ Resetting ${installed.length} installed components...\n`);
+      console.log(`\n${cyanBright}↻ Resetting ${installed.length} installed components...\n${reset}`);
 
       let resetCount = 0;
 
@@ -57,7 +57,7 @@ export default function registerResetCommand(program) {
         const pkgCompDir = path.join(pkgUiDir, name);
 
         if (!fs.existsSync(pkgCompDir)) {
-          console.log(`${yellow}✖ Skipped ${name}: not found in vueon-ui/src/components`);
+          console.log(`${yellow}✖ Skipped ${name}: not found in vueon-ui/src/components${reset}`);
           continue;
         }
 
@@ -69,10 +69,10 @@ export default function registerResetCommand(program) {
           fs.copyFileSync(path.join(pkgCompDir, file), path.join(localDir, file));
         }
 
-        console.log(`${green}✓ Reset: ${name}`);
+        console.log(`${green}✓ Reset: ${name}${reset}`);
         resetCount++;
       }
 
-      console.log(`\n${cyanBright}✔ Successfully reset ${resetCount} component(s).\n`);
+      console.log(`\n${cyanBright}✔ Successfully reset ${resetCount} component(s).\n${reset}`);
     });
 }

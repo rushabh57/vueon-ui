@@ -23,7 +23,7 @@ export default function registerRemoveCommand(program) {
 
       // Check if components folder exists
       if (!fs.existsSync(uiRoot)) {
-        console.error(`${red}✘ No UI components found in ${uiRoot}`);
+        console.error(`${red}✘ No UI components found in ${uiRoot}${reset}`);
         return;
       }
 
@@ -33,7 +33,7 @@ export default function registerRemoveCommand(program) {
       );
 
       if (!installed.length) {
-        console.log(`${red}✘ No components to remove.`);
+        console.log(`${red}✘ No components to remove.${reset}`);
         return;
       }
 
@@ -51,7 +51,7 @@ export default function registerRemoveCommand(program) {
       }
 
       if (!components.length) {
-        console.log(`${cyan}✘ No components selected for removal.`);
+        console.log(`${cyan}✘ No components selected for removal.${reset}`);
         return;
       }
 
@@ -59,14 +59,14 @@ export default function registerRemoveCommand(program) {
       for (const component of components) {
         const targetPath = path.join(uiRoot, component);
         if (!installed.includes(component)) {
-          console.log(`${yellow}⚠ Component "${component}" not found in project.`);
+          console.log(`${yellow}⚠ Component "${component}" not found in project.${reset}`);
           continue;
         }
 
         fs.rmSync(targetPath, { recursive: true, force: true });
-        console.log(`${red}🗑 Removed component: ${component}`);
+        console.log(`${red}🗑 Removed component: ${component}${reset}`);
       }
 
-      console.log(`${cyanBright}\n✓ Finished removing selected components.\n`);
+      console.log(`${cyanBright}\n✓ Finished removing selected components.\n${reset}`);
     });
 }

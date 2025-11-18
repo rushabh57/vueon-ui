@@ -17,7 +17,7 @@ export default function registerRemoveAllCommand(program) {
       // console.log("DEBUG: themePath →", themePath);
 
       if (!fs.existsSync(uiRoot)) {
-        console.log(`${yellow}⚠ No components found in ${uiRoot} to remove.`);
+        console.log(`${yellow}⚠ No components found in ${uiRoot} to remove.${reset}`);
         return;
       }
 
@@ -26,7 +26,7 @@ export default function registerRemoveAllCommand(program) {
       );
 
       if (!installed.length) {
-        console.log(`${yellow}⚠ No installed components found to remove.`);
+        console.log(`${yellow}⚠ No installed components found to remove.${reset}`);
         return;
       }
 
@@ -34,22 +34,22 @@ export default function registerRemoveAllCommand(program) {
         {
           type: "confirm",
           name: "confirm",
-          message: `This will remove all ${installed.length} components from ${uiRoot}. Continue?`,
+          message: `This will remove all ${installed.length} components from \n ${uiRoot}. \n Continue?`,
           default: false
         }
       ]);
 
       if (!confirm) {
-        console.log("X Operation cancelled.");
+        console.log(`${red}X Operation cancelled.${reset}`);
         return;
       }
 
       for (const component of installed) {
         const targetPath = path.join(uiRoot, component);
         fs.rmSync(targetPath, { recursive: true, force: true });
-        console.log(`${red}🗑 Removed: ${component}`);
+        console.log(`${red}🗑 Removed: ${component}${reset}`);
       }
 
-      console.log(`\n${cyanBright}✓ All Vueon UI components removed successfully.\n`);
+      console.log(`\n${cyanBright}✓ All Vueon UI components removed successfully.\n${reset}`);
     });
 }

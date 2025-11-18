@@ -39,7 +39,7 @@ export default function registerAddAllCommand(program) {
       }
 
       if (components.length === 0) {
-        console.log(`${red}✖ No components available to add.`);
+        console.log(`${red}✖ No components available to add.${reset}`);
         return;
       }
 
@@ -47,13 +47,13 @@ export default function registerAddAllCommand(program) {
       components = components.map(name => name.charAt(0).toUpperCase() + name.slice(1));
 
       fs.mkdirSync(uiRoot, { recursive: true });
-      console.log(`${cyan}\n⬢ Adding ${components.length} Vueon UI components...\n`);
+      console.log(`${cyan}\n⬢ Adding ${components.length} Vueon UI components...\n${reset}`);
 
       for (const component of components) {
         const destDir = path.join(uiRoot, component);
 
         if (fs.existsSync(destDir)) {
-          console.log(`${yellow}⚠ Component "${component}" already exists.`);
+          console.log(`${yellow}⚠ Component "${component}" already exists.${reset}`);
           continue;
         }
 
@@ -85,11 +85,11 @@ export default function registerAddAllCommand(program) {
 
         console.log(
           added
-            ? `${green}✓ Added ${component}`
-            : `${red}✖ Failed to add ${component}`
+            ? `${green}✓ Added ${component}${reset}`
+            : `${red}✖ Failed to add ${component}${reset}`
         );
       }
 
-      console.log(`\n${cyanBright}✦ All Vueon UI components processed.\n`);
+      console.log(`\n${cyanBright}✦ All Vueon UI components processed.\n${reset}`);
     });
 }
