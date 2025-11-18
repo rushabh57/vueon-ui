@@ -17,7 +17,7 @@ export async function configureProject(theme = "zinc" , answers, success) {
 
   await import("./variants_CLI.js"); 
 
-  console.log(`\nframework: ${blue} ${awesomeName.toLowerCase()} ${reset}\n`);
+  console.log(`\nframework:${blue}${awesomeName.toLowerCase()} ${reset}\n`);
   // console.log(`\nDetected framework: ${green} ${framework.toLowerCase()}${reset}\n`);
 
   // Tailwind detection

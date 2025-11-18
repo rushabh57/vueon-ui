@@ -3,6 +3,8 @@ import fs from "fs";
 import path from "path";
 import chalk from "chalk";
 import { getPaths, templatesDir } from "../../src/utils/paths.js";
+import { red, green, yellow, blue, cyan, reset } from "../tokens/colors.js";
+
 
 const GITHUB_API_URL = "https://api.github.com/repos/rushabh57/vueon-ui/contents/src/components";
 
@@ -106,7 +108,7 @@ export default function registerAddCommand(program) {
               fs.writeFileSync(path.join(destDir, file.name), content);
             }
           }
-          console.log(`${greed}✓ Added ${component}`);
+          console.log(`${green}✓ Added ${component}`);
         } catch {
           console.log(`${red}✘ Failed to add ${component}`);
         }
