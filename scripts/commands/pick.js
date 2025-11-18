@@ -95,6 +95,6 @@ export default function registerPickCommand(program) {
         );
       }
 
-      console.log(`\n${cyanBright}🎯 Selected components added successfully!\n${reset}`);
+      console.log(`\n${cyanBright}✶ Selected components added successfully!\n${reset}`);
     });
 }
