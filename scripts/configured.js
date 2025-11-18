@@ -12,10 +12,8 @@ export async function configureProject(theme = "zinc" , answers, success) {
   const reset = "\x1b[0m";
 
   fs.mkdirSync(componentPath, { recursive: true });
-  // console.log(`Components folder → ${componentPath}`);
 
   fs.mkdirSync(cssPath, { recursive: true });
-  // console.log(`CSS folder → ${cssPath}`);
 
   await import("./variants_CLI.js"); 
 
@@ -37,7 +35,6 @@ export async function configureProject(theme = "zinc" , answers, success) {
     { stdio: "inherit" }
   );
 
-  // `npm install -D ${tailwindPkg} @tailwindcss/vite   autoprefixer reka-ui class-variance-authority typescript lucide-vue-next vueon-ui@latest  tw-animate tw-animate-css --no-audit --no-fund`,
   // components.json
   const config = {
     $schema: "https://ui.vueon.com/schema.json",
@@ -65,35 +62,16 @@ export async function configureProject(theme = "zinc" , answers, success) {
 
   writeThemeCSS(theme,success);
 
-  // vite.config.js
-//   const vitePath = path.join(process.cwd(), "vite.config.js");
-//   if (!fs.existsSync(vitePath)) {
-//     fs.writeFileSync(
-//       vitePath,
-//       `import { defineConfig } from 'vite'
-// import vue from '@vitejs/plugin-vue'
-// import tailwindcss from '@tailwindcss/vite'
-// import path from 'path'
+    // vite.config.js
+    // // Vite config detection
+    // const viteJsPath = path.join(process.cwd(), "vite.config.js");
+    // const viteTsPath = path.join(process.cwd(), "vite.config.ts");
 
-// export default defineConfig({
-//   plugins: [vue(), tailwindcss()],
-//   resolve: { alias: { '@': path.resolve(__dirname, './src') } }
-// })`
-//     );
-//     console.log(`${green}✔ Created vite.config.js${reset}`);
-//   } else {
-//     console.log(`${yellow}⚠ vite.config.js exists — skipped.${reset}`);
-//   }
-
-    // Vite config detection
-    const viteJsPath = path.join(process.cwd(), "vite.config.js");
-    const viteTsPath = path.join(process.cwd(), "vite.config.ts");
-
-    if (fs.existsSync(viteJsPath) || fs.existsSync(viteTsPath)) {
-      console.log(`${yellow}⚠ Vite config detected — please update it manually following the docs.${reset}`);
-    } else {
-      console.log(`${yellow}⚠ No Vite config detected. If your framework uses Vite, create vite.config.js manually as per the docs.${reset}`);
-    }
+    // if (fs.existsSync(viteJsPath) || fs.existsSync(viteTsPath)) {
+    //   console.log(`${yellow}⚠ Vite config detected — please update it manually following the docs.${reset}`);
+    // } else {
+    //   console.log(`${yellow}⚠ No Vite config detected. If your framework uses Vite, create vite.config.js manually as per the docs.${reset}`);
+    // }
   // jsconfig.json
   fs.writeFileSync(
     "jsconfig.json",
@@ -118,6 +96,3 @@ export async function configureProject(theme = "zinc" , answers, success) {
   console.log(`try: npx vueon-ui add Button`);
 }
 
-
-// const { componentPath } = getPaths();
-// export const componentBasePath = componentPath;
