@@ -155,7 +155,7 @@ import DialogTitle from "./components/Dialog/DialogTitle.vue";
 import DialogDescription from "./components/Dialog/DialogDescription.vue";
 import DialogFooter from "./components/Dialog/DialogFooter.vue";
 import Toggle from "./components/Toggle/Toggle.vue";
-import { Bookmark, CircleIcon, Loader, Loader2Icon, RabbitIcon, RefreshCwIcon } from "lucide-vue-next";
+import { Bookmark, CircleIcon, FileIcon, FolderGitIcon, FolderIcon, Loader, Loader2Icon, RabbitIcon, RefreshCwIcon } from "lucide-vue-next";
 import Label from "./components/Label";
 import { Checkbox, CheckboxGroup } from '@/components/Checkbox'
 import {
@@ -317,7 +317,7 @@ import OtpField from "@/components/OtpField/OtpField.vue";
 
 import Calendar from "./components/Calendar/Calendar.vue";
 import DateField from "./components/DateField";
-import GroupDateField from "./GroupDateField/GroupDateField.vue";
+import GroupDateField from "./components/GroupDateField/GroupDateField.vue";
 import TimeField from "./components/TimeField";
 import NumberField from "./components/NumberField";
 import ComboBox from "./components/ComboBox/ComboBox.vue";
@@ -388,10 +388,174 @@ function adjust(amount: number) {
 }
 
 
+import { Alert, AlertTitle, AlertDescription } from "@/components/Alert"
+import { TriangleAlert } from "lucide-vue-next"
+
+
+import Toolbar from "@/components/Toolbar/Toolbar.vue"
+import { TreeRoot, TreeItem, TreeVirtualizer } from "./components/Tree";
+
+const formatting = ref([])
+const align = ref("left")
+
+
+//
+
+// import { TreeRoot, TreeItem } from "reka-ui"
+
+const itemss = [
+  {
+    title: 'composables',
+    icon: 'lucide:folder',
+    children: [
+      { title: 'useAuth.ts', icon: 'vscode-icons:file-type-typescript' },
+      { title: 'useUser.ts', icon: 'vscode-icons:file-type-typescript' },
+    ],
+  },
+  {
+    title: 'react',
+    icon: 'lucide:folder',
+    children: [
+      { title: 'useAuth.ts', icon: 'vscode-icons:file-type-typescript' },
+      { title: 'useUser.ts', icon: 'vscode-icons:file-type-typescript' },
+    ],
+  },
+  {
+    title: 'components',
+    icon: 'lucide:folder',
+    children: [
+      {
+        title: 'Home',
+        icon: 'lucide:folder',
+        children: [
+          { title: 'Card.vue', icon: 'vscode-icons:file-type-vue' },
+          { title: 'Button.vue', icon: 'vscode-icons:file-type-vue' },
+        ],
+      },
+    ],
+  },
+  { title: 'app.vue', icon: 'vscode-icons:file-type-vue' },
+  { title: 'nuxt.config.ts', icon: 'vscode-icons:file-type-nuxt' },
+]
+
+
+
+const defaultExpanded = ['Home']
 
 </script>
 
 <template>
+  <div class="h-screen flex items-center justify-center bg-gray-100 p-4">
+    <TreeRoot title="yay" :items="itemss" :get-key="item => item.title">
+  <template v-slot:default="{ flattenItems }">
+    <TreeItem
+      v-for="item in flattenItems"
+      :key="item.title"
+      :item="item"
+      :level="0"
+      :style="{ 'padding-left': `${item.level - 0.5}rem` }"
+    >
+     
+    </TreeItem>
+  </template>
+</TreeRoot>
+
+
+
+
+
+
+
+
+
+
+    <!-- <TreeRoot :items="itemss" :default-expanded="['Home']">
+    <template #default="{ flattenItems }">
+      <TreeItem
+        v-for="item in flattenItems"
+        :key="item._id"
+        :item="item"
+        :style="{ 'padding-left': `${item.level - 0.5}rem` }"
+      >
+        <template #default="{ item }">
+          <div class="flex items-center space-x-2">
+ 
+            <FolderIcon />
+            <span>{{ item.value.title }}</span>
+          </div>
+        </template>
+      </TreeItem>
+    </template>
+  </TreeRoot> -->
+    <!-- <TreeRoot
+    v-slot="{ flattenItems }"
+    class="list-none select-none w-56 bg-white text-stone-700 rounded-lg border shadow-sm p-2 text-sm font-medium"
+    :items="itemss"
+    :get-key="(item) => item.title"
+    :default-expanded="['components']"
+  >
+    <h2 class="font-semibold text-sm text-stone-400 px-2 pt-1 pb-3">
+      Directory Structure
+    </h2>
+    <TreeItem
+      v-for="item in flattenItems"
+      v-slot="{ isExpanded }"
+      :key="item._id"
+      :style="{ 'padding-left': `${item.level - 0.5}rem` }"
+      v-bind="item.bind"
+      class="flex items-center py-1 px-2 my-0.5 rounded outline-none focus:ring-grass8 focus:ring-2 data-[selected]:bg-grass4"
+    >
+      <template v-if="item.hasChildren">
+       <FolderGitIcon/>
+      </template>
+      <FileIcon/>
+      <div class="pl-2">
+        {{ item.value.title }}
+      </div>
+    </TreeItem>
+  </TreeRoot> -->
+  </div>
+
+
+<div class="h-screen gap-4 flex flex-col items-center justify-center bg-gray-500">
+  <Tree>
+  <TreeItem title="Home" />
+  <TreeItem title="Downloads" />
+  <TreeItem title="Desktop" />
+</Tree>
+</div>
+  
+  <div class="h-screen gap-4 flex flex-col items-center justify-center bg-gray-500">
+    <Toolbar v-model="formatting" v-model:align="align" />
+  
+  <p class="mt-4">
+    Formatting active: {{ formatting }}
+    <br />
+    Alignment: {{ align }}
+  </p>
+  </div>  
+    <div class="h-screen gap-4 flex flex-col items-center justify-center bg-gray-500">
+      <div>
+        <Alert variant="destructive">
+          <TriangleAlert class="size-4" />
+          <AlertTitle>Error</AlertTitle>
+          <AlertDescription>
+            Something went wrong. Please try again later.
+          </AlertDescription>
+        </Alert>
+      </div>
+      <div>
+        <Alert >
+          <TriangleAlert class="size-4" />
+          <AlertTitle>Error</AlertTitle>
+          <AlertDescription>
+            Something went wrong. Please try again later.
+          </AlertDescription>
+        </Alert>
+      </div>
+
+    </div>
+
     <div class="h-screen gap-9 flex items-center justify-center bg-gray-100">
       <Spinner /> <!-- default md gray -->
       <Spinner :loader="RabbitIcon" size="md" animation="bounce" /> <!-- bounce -->
@@ -655,11 +819,11 @@ function adjust(amount: number) {
   :disable-year-nav="true"
   :unavailable-dates="[new Date(2025,10,1), new Date(2025,10,15)]" 
 />
-  <!-- <Calendar swipe  mode="range"  :disable-year-nav="true"      /> -->
+  <Calendar swipe  mode="range"  :disable-year-nav="true"      />
 
 
 <!-- Range Picker -->
-<!-- <Calendar mode="range" :number-of-months="2" /> -->
+<Calendar mode="range" :number-of-months="2" />
     </div>
   <div class="min-h-screen flex flex-col items-center justify-center bg-background text-foreground p-6">
     <h1 class="text-2xl font-semibold mb-6">OTP Verification</h1>

@@ -43,7 +43,7 @@ const generatedId = computed(() => {
     <Label
       v-if="props.label"
       :for="generatedId"
-      class="text-sm font-medium text-stone-700 dark:text-white"
+      class="text-sm font-medium text-secondary-forground dark:text-white"
     >
       {{ props.label }}
     </Label>

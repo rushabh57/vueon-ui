@@ -45,7 +45,7 @@ export async function syncComponents() {
         fs.copyFileSync(path.join(pkgCompDir, file), path.join(localDir, file));
       });
       fs.writeFileSync(metaFile, "local-sync");
-      console.log(`${green}✓ Synced locally: ${name}${reset}`);
+      console.log(`${green}✔ Synced locally: ${name}${reset}`);
       synced = true;
       updated++;
     }
@@ -73,7 +73,7 @@ export async function syncComponents() {
 
   console.log(
     updated === 0
-      ? `${green}\n✓ All components are already up to date.\n${reset}`
+      ? `${green}\n✔ All components are already up to date.\n${reset}`
       : `${cyanBright}\n✔ Synced ${updated} installed component(s).\n${reset}`
   );
 }

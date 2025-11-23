@@ -7,7 +7,7 @@ import { Label, TimeFieldInput, TimeFieldRoot } from 'reka-ui'
     <!-- Label -->
     <Label
       for="birthday"
-      class="text-sm font-medium text-stone-700 dark:text-white"
+      class="text-sm font-medium text-secondary-foreground dark:text-white"
     >
       Birthday
     </Label>
@@ -17,7 +17,7 @@ import { Label, TimeFieldInput, TimeFieldRoot } from 'reka-ui'
       id="birthday"
       v-slot="{ segments }"
       class="
-       flex items-center justify-between rounded-lg border border-border bg-card w-fit px-2 py-1.5 shadow-sm text-foreground dark:text-card-foreground focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 transition-colors duration-200 
+       flex h-10 items-center justify-between rounded-lg border border-border bg-card w-fit px-1 py-1.5 shadow-sm text-foreground dark:text-card-foreground focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 transition-colors duration-200 
       "
     >
       <template v-for="item in segments" :key="item.part">
@@ -25,7 +25,7 @@ import { Label, TimeFieldInput, TimeFieldRoot } from 'reka-ui'
         <TimeFieldInput
           v-if="item.part === 'literal'"
           :part="item.part"
-          class="p-1  rounded focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1 placeholder:text-muted-foreground dark:placeholder:text-muted-foreground text-foreground dark:text-card-foreground transition-shadow duration-150"
+          class="  rounded focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1 placeholder:text-muted-foreground dark:placeholder:text-muted-foreground text-foreground dark:text-card-foreground transition-shadow duration-150"
         >
           {{ item.value }}
         </TimeFieldInput>

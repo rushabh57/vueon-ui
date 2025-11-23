@@ -94,7 +94,7 @@ export default function registerAddCommand(program) {
         const srcDir = path.join(templatesDir, component);
         if (fs.existsSync(srcDir)) {
           copyRecursive(srcDir, destDir);
-          console.log(`${green}✓ Added ${component}${reset}`);
+          console.log(`${green}✔ Added ${component}${reset}`);
           continue;
         }
 
@@ -108,12 +108,12 @@ export default function registerAddCommand(program) {
               fs.writeFileSync(path.join(destDir, file.name), content);
             }
           }
-          console.log(`${green}✓ Added ${component}${reset}`);
+          console.log(`${green}✔ Added ${component}${reset}`);
         } catch {
           console.log(`${red}✘ Failed to add ${component}${reset}`);
         }
       }
 
-      console.log(`\n${cyanBright}✦ Components added successfully!"${reset}`);
+      console.log(`\n${cyanBright}✦ Components added successfully!${reset}`);
     });
 }

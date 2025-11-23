@@ -1,0 +1,13 @@
+<script>
+import { Spinner } from "./components/Spinner";
+</script>
+
+<template>
+  <div class="h-screen gap-9 flex items-center justify-center bg-gray-100">
+    <Spinner />
+    <Spinner :loader="RabbitIcon" size="md" animation="bounce" />
+    <Spinner :loader="CircleIcon" size="md" animation="pulse" />
+    <Spinner size="lg" />
+    <Spinner :loader="Loader2Icon" size="sm" variant="accent" />
+  </div>
+</template>

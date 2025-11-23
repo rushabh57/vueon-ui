@@ -42,7 +42,7 @@ export default function registerPickCommand(program) {
           type: "checkbox",
           name: "selected",
           message: "Select components to add:",
-          symbols: { checked: "-", unchecked: "✓" },
+          symbols: { checked: "-", unchecked: "✔" },
           choices: components
         }
       ]);
@@ -90,7 +90,7 @@ export default function registerPickCommand(program) {
 
         console.log(
           added
-            ? `${green}✓ Added ${component}${reset}`
+            ? `${green}✔ Added ${component}${reset}`
             : `${red}✖ Failed to add ${component}${reset}`
         );
       }

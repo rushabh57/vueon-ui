@@ -41,7 +41,7 @@
 <script setup lang="ts">
 import { ref, computed, watch, defineEmits } from "vue";
 import Label from "../Label/Label.vue";
-import { variants, stages } from "@/theme";
+import { variants, stages } from "../../theme";
 
 const props = defineProps<{
   variant?: keyof typeof variants;
@@ -69,7 +69,7 @@ const sizes = {
 };
 
 const baseClass = `
-flex w-full rounded-md border bg-background px-3 py-2 text-base
+flex w-full rounded-md border border-input bg-background px-3 py-2 text-base
 ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground
 placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
 disabled:cursor-not-allowed disabled:opacity-50

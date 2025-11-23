@@ -6,5 +6,5 @@ import LiveDemo from '../components/sections/LiveDemo.vue';
 
 <template>
       <HeroSection/>
-      <LiveDemo/>
+      <LiveDemo />
 </template>

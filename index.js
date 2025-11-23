@@ -34,7 +34,7 @@
           jsConfigAppSetup: "auto",
           viteConfigSetup: "auto",
         };
-        console.log("⚡ Fast install mode enabled — skipping prompts.");
+        console.log("🗲 Fast install mode enabled — skipping prompts.");
       } else {
         // Normal prompt install
         answers = await inquirer.prompt([
@@ -76,7 +76,7 @@
       // Tip about Vite
       const yellow = "\x1b[33m";
       console.log(`${yellow}tip:`)
-      console.log(`${yellow}⚠ If your project uses Vite, configure vite.config.js manually following the docs: https://ui.vueon.com/docs/setup${reset}`);
+      console.log(`${yellow}⚠ If your project uses Vite, \n configure vite.config.js manually following the docs: https://ui.vueon.com/docs/setup${reset}`);
     });
 
   // registerCommands(program);

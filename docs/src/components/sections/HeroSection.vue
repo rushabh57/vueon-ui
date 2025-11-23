@@ -19,11 +19,11 @@
   
       <!-- CTA -->
       <div class="mt-8 flex items-center justify-center gap-4 flex-wrap">
-        <Button variant="default" >
+        <Button>
           <router-link to="/docs">Get Started</router-link>
         </Button>
   
-        <Button variant="outline" >
+        <Button  variant="link" >
           <router-link to="/features">Features</router-link>
         </Button>
   

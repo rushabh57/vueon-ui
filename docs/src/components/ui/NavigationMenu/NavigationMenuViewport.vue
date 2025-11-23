@@ -14,7 +14,7 @@ defineProps({
         relative mt-0
         h-[var(--reka-navigation-menu-viewport-height)]  
         overflow-hidden rounded-md 
-        border bg-popover text-popover-foreground 
+        border border-input bg-popover text-popover-foreground 
         shadow-lg 
         data-[state=open]:animate-in 
         data-[state=closed]:animate-out 

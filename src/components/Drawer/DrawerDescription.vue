@@ -1,6 +1,5 @@
 <template>
-    <p class="text-sm text-gray-500">
-      <slot />
-    </p>
-  </template>
-  
+  <p class="text-sm text-secondary-foreground">
+    <slot />
+  </p>
+</template>

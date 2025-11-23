@@ -21,7 +21,7 @@ import {
   DateRangePickerTrigger,
   Label
 } from 'reka-ui'
-import { CalendarIcon, Minus } from 'lucide-vue-next'
+import { CalendarIcon, ChevronLeft, ChevronRight, Minus } from 'lucide-vue-next'
 import { Button } from '@/components/Button';
 
 const props = defineProps<{
@@ -61,7 +61,7 @@ watch(selectedRange, (range) => {
       <!-- Field -->
       <DateRangePickerField
         v-slot="{ segments }"
-        class="flex items-center justify-between rounded-lg border border-border bg-card w-full px-2 py-1.5 shadow-sm text-foreground dark:text-card-foreground focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 transition-colors duration-200"
+        class="h-10 flex items-center justify-between rounded-lg border border-border bg-card w-full px-2 py-1.5 shadow-sm text-foreground dark:text-card-foreground focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 transition-colors duration-200"
       >
         <div class="flex gap-1">
           <!-- Start Segment -->
@@ -114,20 +114,23 @@ watch(selectedRange, (range) => {
       <DateRangePickerContent
         v-if="props.withPopup"
         :side-offset="4"
-        class="rounded-xl bg-card border shadow-lg will-change-[transform,opacity] data-[state=open]:animate-slideDownAndFade"
+        class="         data-[state=open]:animate-in data-[state=closed]:animate-out
+         data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0
+         data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95
+         mt-1 rounded-xl border border-input bg-card shadow-lg will-change-[transform,opacity] data-[state=open]:animate-slideDownAndFade"
       >
         <DateRangePickerArrow class="fill-card stroke-border" />
         <DateRangePickerCalendar v-slot="{ weekDays, grid }" class="p-4">
           <!-- Header -->
           <DateRangePickerHeader class="flex items-center justify-between mb-2">
             <DateRangePickerPrev class="flex items-center justify-center w-8 h-8 rounded-md hover:bg-secondary/10 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1">
-              <Icon icon="radix-icons:chevron-left" class="w-4 h-4" />
+              <ChevronLeft class="w-4 h-4 " />
             </DateRangePickerPrev>
 
             <DateRangePickerHeading class="text-sm font-medium text-foreground dark:text-card-foreground" />
 
             <DateRangePickerNext class="flex items-center justify-center w-8 h-8 rounded-md hover:bg-secondary/10 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1">
-              <Icon icon="radix-icons:chevron-right" class="w-4 h-4" />
+              <ChevronRight class="w-4 h-4" />
             </DateRangePickerNext>
           </DateRangePickerHeader>
 
@@ -165,52 +168,37 @@ watch(selectedRange, (range) => {
                   <DateRangePickerCellTrigger
   :day="weekDate"
   :month="month.value"
-  class="
-    flex items-center justify-center w-8 h-8 text-sm rounded-md outline-none
-    transition-all select-none cursor-pointer
-    hover:bg-secondary/10
-
-    data-[today]:bg-primary-foreground/90
-    data-[today]:border-input
-
-    data-[outside-view]:text-muted-foreground
-    data-[outside-view]:opacity-50
-    data-[outside-view]:pointer-events-none
-
-    data-[outside-visible-view]:opacity-40
-
-    data-[disabled]:opacity-40
-    data-[disabled]:cursor-not-allowed
-
-    data-[unavailable]:text-destructive/60
-    data-[in-range][data-unavailable]:bg-destructive/40
-    data-[in-range][data-unavailable]:text-destructive-foreground
-
-    data-[selected]:bg-primary
-    data-[selected]:text-primary-foreground
-
-    data-[range-start]:bg-primary/60
-    data-[range-start]:text-primary-foreground
-
-    data-[range-end]:bg-primary/60
-    data-[range-end]:text-primary-foreground
-
-    data-[in-range]:bg-primary/30
-    data-[today=true]:data-[selected]:text-primary-foreground 
-    data-[in-range]:text-primary-foreground
-    data-[in-range]:rounded-none
-    data-[in-range]:shadow-[inset_4px_0_0_theme(colors.primary),inset_-4px_0_0_theme(colors.primary)]
-
-    data-[selection-start]:border-2 border-primary
-    data-[selection-end]:border-2 border-primary
-
-    data-[highlighted]:bg-primary/20
-    data-[highlighted]:rounded-none
-    data-[highlighted-start]:rounded-l-md
-    data-[highlighted-end]:rounded-r-md
-
-    data-[focused]:ring-2
-    data-[focused]:ring-ring
+  class="transition-all flex items-center justify-center w-8 h-8 text-sm rounded-md outline-none hover:bg-secondary/10 
+      data-[today]:bg-primary-foreground/90 
+          data-[today]:border-input
+          data-[outside-view]:text-muted-foreground 
+          data-[outside-view]:opacity-50 
+          data-[outside-view]:pointer-events-none
+          data-[unavailable]:text-destructive/60 
+          data-[unavailable]:line-through
+          data-[in-range][data-unavailable]:bg-destructive/40
+          data-[in-range][data-unavailable]:text-destructive-foreground
+          data-[disabled]:opacity-40 
+          data-[disabled]:cursor-not-allowed
+          data-[selected]:bg-primary 
+          data-[selected]:text-primary-foreground 
+          data-[today=true]:data-[selected]:bg-primary 
+          data-[today]:data-[selected]:bg-primary
+          data-[in-range=true]:data-[today=true]:border-transparent
+          data-[in-range=true]:data-[unavailable=true]:bg-destructive/40
+          data-[in-range=true]:data-[unavailable=true]:text-destructive-foreground
+          data-[range-start]:rounded-md
+          data-[range-start]:bg-primary 
+          data-[range-start]:text-primary-foreground 
+          data-[in-range]:bg-accent 
+          data-[in-range]:text-accent-foreground 
+          data-[in-range]:rounded-none 
+          data-[in-range]:shadow-[inset_4px_0_0_theme(colors.accent),inset_-4px_0_0_theme(colors.accent)]
+          data-[range-end]:rounded-md
+          data-[range-end]:bg-primary 
+          data-[range-end]:text-primary-foreground
+          data-[focused]:ring-2 
+          data-[focused]:ring-ring
   "
 />
 

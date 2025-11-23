@@ -19,7 +19,7 @@ export default function registerUpdateCommand(program) {
 
       try {
         execSync("npm install vueon-ui@latest -D", { stdio: "inherit" });
-        console.log(`${green}✓ Vueon UI successfully updated to latest version!\n${reset}`);
+        console.log(`${green}✔ Vueon UI successfully updated to latest version!\n${reset}`);
       } catch (err) {
         console.log(`${red}✘ Failed to update Vueon UI:${reset}`, err.message);
       }

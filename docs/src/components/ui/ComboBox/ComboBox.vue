@@ -37,7 +37,7 @@ const onSelect = (value: string) => {
 <template>
 <ComboboxRoot class="relative min-w-42 w-fit">
   <ComboboxAnchor
-    class="w-full inline-flex items-center justify-between rounded-lg border px-3 text-xs leading-none h-[35px] gap-2 bg-card text-primary hover:bg-muted shadow-sm  focus:shadow-md outline-none"
+    class="w-full inline-flex items-center justify-between rounded-lg border border-input px-3 text-xs leading-none h-[35px] gap-2 bg-card text-primary hover:bg-muted shadow-sm  focus:shadow-md outline-none "
   >
     <ComboboxInput
       class="!bg-transparent outline-none text-primary h-full selection:bg-muted placeholder-muted w-full"
@@ -49,7 +49,7 @@ const onSelect = (value: string) => {
   </ComboboxAnchor>
 
   <ComboboxContent
-    class="absolute z-10 w-full mt-1 bg-card overflow-hidden rounded-lg shadow-sm border will-change-[opacity,transform] 
+    class="transition-all absolute z-10 w-full mt-1 bg-card overflow-hidden rounded-lg shadow-sm border border-border will-change-[opacity,transform] 
     data-[state=open]:animate-in 
              data-[state=closed]:animate-out
              data-[state=closed]:fade-out-0 
@@ -63,7 +63,7 @@ const onSelect = (value: string) => {
     "
   >
     <ComboboxViewport class="p-1">
-      <ComboboxEmpty class="text-stone-500 text-xs font-medium text-center py-2">
+      <ComboboxEmpty class="text-secondary-foreground text-xs font-medium text-center py-2">
         No results
       </ComboboxEmpty>
 

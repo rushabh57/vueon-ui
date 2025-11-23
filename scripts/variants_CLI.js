@@ -16,10 +16,9 @@ const { themePath } = getPaths();
 //   ? path.join(laravelPath, "theme")
 //   : path.join(cwd, "src/theme");
 
-
 if (!fs.existsSync(themePath)) {
   fs.mkdirSync(themePath, { recursive: true });
-  console.log(`${green}✓ Created ${themePath} folder${reset}`);
+  console.log(`${green}✔ Created  theme folder${reset}\n`);
 }
 
 // ---- variants.ts ----
@@ -50,8 +49,8 @@ export type Variant = VariantProps<typeof variants>["variant"];
 `;
 
 fs.writeFileSync(path.join(themePath, "variants.ts"), variantsContent);
-console.log(`${green}✓ Created variants.ts ${reset}`);
-// console.log(`${green}✓ Created src/theme/variants.ts ${reset}`);
+console.log(`${green}├─ ✔ Created variants.ts ${reset}`);
+// console.log(`${green}✔ Created src/theme/variants.ts ${reset}`);
 
 // ---- stages.ts ----
 const stagesContent = `import { CheckIcon, LucideAlertTriangle, XIcon } from "lucide-vue-next";
@@ -79,14 +78,14 @@ export const stages = {
 `;
 
 fs.writeFileSync(path.join(themePath, "stages.ts"), stagesContent);
-console.log(`${green}✓ Created stages.ts ${reset}`);
-// console.log(`${green}✓ Created src/theme/stages.ts ${reset}`);
+console.log(`${green}├─ ✔ Created stages.ts ${reset}`);
+// console.log(`${green}✔ Created src/theme/stages.ts ${reset}`);
 
 // ---- index.ts ----
 const indexContent = `export * from "./variants";
 export * from "./stages";
 `;
 fs.writeFileSync(path.join(themePath, "index.ts"), indexContent);
-console.log(`${green}✓ Created index.ts ${reset}`);
-// console.log(`${green}✓ Created src/theme/index.ts ${reset}`);
+console.log(`${green}├─ ✔ Created index.ts ${reset}`);
+// console.log(`${green}✔ Created src/theme/index.ts ${reset}`);
 

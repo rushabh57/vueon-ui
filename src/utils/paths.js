@@ -13,9 +13,9 @@ export function detectFramework(root = rootDir) {
   const pkg = has("package.json")
     ? JSON.parse(fs.readFileSync(pkgPath, "utf8"))
     : {};
-    console.log("DEBUG: package.json dependencies:", pkg.dependencies);
-  console.log("DEBUG: package.json devDependencies:", pkg.devDependencies);
-  console.log("DEBUG: vite config exists:", has("vite.config.js"));
+  //   console.log("DEBUG: package.json dependencies:", pkg.dependencies);
+  // console.log("DEBUG: package.json devDependencies:", pkg.devDependencies);
+  // console.log("DEBUG: vite config exists:", has("vite.config.js"));
   if (has("artisan")) return "laravel";
   if (
     (has("vite.config.js") ||
@@ -83,9 +83,9 @@ export function getPaths(root = rootDir) {
             themePath = path.join(root, "default/path/theme");
             break;
     }   
-  console.log("DEBUG: componentPath:", componentPath);
-  console.log("DEBUG: cssPath:", cssPath);
-  console.log("DEBUG: themePath:", themePath);
+  // console.log("DEBUG: componentPath:", componentPath);
+  // console.log("DEBUG: cssPath:", cssPath);
+  // console.log("DEBUG: themePath:", themePath);
 
     const awesomeName = awesomeNames[framework] || framework;
   

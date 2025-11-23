@@ -1,10 +1,10 @@
 <template>
-    <button
-      class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+    <div
+      class=""
       @click="drawer.openDrawer"
     >
       <slot>Open Drawer</slot>
-    </button>
+    </div>
   </template>
   
   <script setup>

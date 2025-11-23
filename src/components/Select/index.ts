@@ -7,6 +7,7 @@ import SelectItem from './SelectItem.vue'
 import SelectSeparator from './SelectSeparator.vue'
 import SelectScrollUpButton from './SelectScrollUpButton.vue'
 import SelectScrollDownButton from './SelectScrollDownButton.vue'
+import { SelectViewport , SelectPortal } from 'reka-ui'
 
 export {
   SelectRoot,
@@ -17,5 +18,7 @@ export {
   SelectItem,
   SelectSeparator,
   SelectScrollUpButton,
+  SelectViewport,
+  SelectPortal,
   SelectScrollDownButton,
 }

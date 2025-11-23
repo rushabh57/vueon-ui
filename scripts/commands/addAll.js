@@ -85,7 +85,7 @@ export default function registerAddAllCommand(program) {
 
         console.log(
           added
-            ? `${green}✓ Added ${component}${reset}`
+            ? `${green}✔ Added ${component}${reset}`
             : `${red}✖ Failed to add ${component}${reset}`
         );
       }

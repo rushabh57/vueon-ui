@@ -15,7 +15,7 @@ const fixOffset = (pos: any) => {
     <SelectContent
     side="bottom"
     position="popper"
-    class="data-[side=bottom]:translate-y-.05 relative z-50 max-h-[--reka-select-content-available-height] min-w-[8rem] overflow-y-auto overflow-x-hidden rounded-md border
+    class="data-[side=bottom]:translate-y-.05 relative z-50  min-w-[8rem]  overflow-x-hidden rounded-md border border-input mt-1
              bg-popover text-popover-foreground shadow-md 
              data-[state=open]:animate-in 
              data-[state=closed]:animate-out
@@ -32,7 +32,7 @@ const fixOffset = (pos: any) => {
     >
       <SelectScrollUpButton />
       <SelectViewport 
-      class="p-1"
+      class="p-[5px] max-h-48 overflow-y-auto scroll-smooth"
       style="
         width: var(--reka-select-trigger-width);
         min-width: var(--reka-select-trigger-width);

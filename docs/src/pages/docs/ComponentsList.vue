@@ -5,17 +5,31 @@ import DocsNavigation from "../../components/DocsNavigation.vue"
 
 interface ComponentItem {
   path: string
-  description: string
+  description: string,
+  status: string
 }
+const getStatusColor = (status: string) => {
+  switch (status) {
+    case "stable":
+      return "bg-green-500 text-white"
+    case "experimental":
+      return "bg-blue-500 text-white"
+    case "rookie":
+      return "bg-yellow-500 text-black"
+    default:
+      return "bg-gray-300 text-black"
+  }
+}
+
 
 const components = Object.entries(registry.components) as [string, ComponentItem][]
 </script>
 
 <template>
-     <DocsNavigation
+    <DocsNavigation
     :prev="{ title: 'Cli', path: '/docs/cli' }"
     :next="{ title: undefined, path: undefined }"
-/> 
+    /> 
   <div class="">
     <h1 class="text-3xl font-bold mb-6">UI Components</h1>
 
@@ -26,7 +40,18 @@ const components = Object.entries(registry.components) as [string, ComponentItem
         :to="{ name: 'doc-components-list-items', params: { items: name } }"
         class="border border-input rounded-lg p-4 hover:shadow-lg transition-shadow block"
       >
-        <h2 class="font-semibold text-lg mb-2">{{ name }}</h2>
+      <div class="flex items-center justify-start gap-1">
+
+        <h2 class="font-semibold text-lg ">{{ name }}</h2>
+        <span
+          :class="[
+            'w-1.5 h-1.5 rounded-full block',
+            getStatusColor(item.status)
+          ]"
+        ></span>
+
+      </div>
+
         <p class="text-sm text-muted-foreground mb-2">{{ item.description }}</p>
       </router-link>
     </div>

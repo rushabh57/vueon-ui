@@ -33,7 +33,7 @@ defineProps({
   <RekaPaginationListItem
     :value="value"
     :class="[
-      'flex h-9 w-9 items-center justify-center rounded-md border text-sm font-medium transition-colors',
+      'flex h-9 w-9 items-center justify-center rounded-md border border-input text-sm font-medium transition-colors',
       'hover:bg-accent hover:text-accent-foreground focus:outline-none',
       'data-[selected]:bg-accent data-[selected]:text-accent-foreground',
       $props.class

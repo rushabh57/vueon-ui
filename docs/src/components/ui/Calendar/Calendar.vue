@@ -81,7 +81,7 @@ function pagingFunc(date: DateValue, sign: -1 | 1) {
       :fixed-weeks="fixedWeeks"
       :number-of-months="numberOfMonths"
       class="
-        rounded-xl bg-background p-4 shadow-sm border 
+        rounded-xl bg-background p-4 shadow-sm border border-border
         transition-all 
         data-[readonly]:opacity-50 data-[readonly]:cursor-not-allowed data-[readonly]:text-muted-foreground
         data-[disabled]:opacity-40 data-[disabled]:cursor-not-allowed
@@ -133,7 +133,7 @@ function pagingFunc(date: DateValue, sign: -1 | 1) {
       :is-date-unavailable="isDateUnavailable"
       :fixed-weeks="fixedWeeks"
       :number-of-months="numberOfMonths"
-      class="rounded-xl bg-white p-4 shadow-sm border"
+      class="rounded-xl bg-white p-4 shadow-sm border border-border"
     >
       <CalendarHeader class="flex items-center justify-between">
         <CalendarPrev class="inline-flex items-center justify-center text-black rounded-md w-8 h-8 hover:bg-stone-50">

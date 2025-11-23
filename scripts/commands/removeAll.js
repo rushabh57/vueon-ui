@@ -50,6 +50,6 @@ export default function registerRemoveAllCommand(program) {
         console.log(`${red}🗑 Removed: ${component}${reset}`);
       }
 
-      console.log(`\n${cyanBright}✓ All Vueon UI components removed successfully.\n${reset}`);
+      console.log(`\n${cyanBright}✔ All Vueon UI components removed successfully.\n${reset}`);
     });
 }

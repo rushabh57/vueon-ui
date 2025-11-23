@@ -131,23 +131,23 @@
       <h2 class="text-lg font-semibold mb-4">🎚️ Switch</h2>
 
       <!-- Simple Switch -->
-      <div class="flex items-center space-x-3 mb-4">
-        <Switch id="notifications" />
-        <Label for="notifications">Enable Notifications</Label>
-      </div>
-
-      <!-- Switch with Label + Description -->
-      <div class="flex items-center justify-between border p-4 rounded-md">
-        <div>
-          <Label for="airplaneMode" class="text-sm font-medium text-gray-900">
-            Airplane Mode
-          </Label>
-          <p class="text-sm text-gray-500">Disables Wi-Fi and cellular connection</p>
+        <div class="flex items-center space-x-3 mb-4">
+          <Switch id="notifications" />
+          <Label for="notifications">Enable Notifications</Label>
         </div>
-        <Switch id="airplaneMode" />
-      </div>
-    </section>
-  </div>
+
+        <!-- Switch with Label + Description -->
+        <div class="flex items-center justify-between border p-4 rounded-md">
+          <div>
+            <Label for="airplaneMode" class="text-sm font-medium text-gray-900">
+              Airplane Mode
+            </Label>
+            <p class="text-sm text-gray-500">Disables Wi-Fi and cellular connection</p>
+          </div>
+          <Switch id="airplaneMode" />
+        </div>
+      </section>
+    </div>
 </template>
 
 <script setup lang="ts">

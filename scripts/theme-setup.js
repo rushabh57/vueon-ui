@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { THEMES_OKLCH, SHARED_TOKENS } from "./tokens/token.js";
 
-  // ✓ Detect user's CSS file
+  // ✔ Detect user's CSS file
 export function detectCSSFile() {
     const candidates = [
       "resources/css/style.css",

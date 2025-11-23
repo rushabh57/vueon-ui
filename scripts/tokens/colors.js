@@ -1,4 +1,4 @@
-export const red = "\x1b[38;5;196m";       
+export const red = "\x1b[38;5;9m";       
 export const green = "\x1b[32m";      
 export const yellow = "\x1b[38;5;11m";    
 export const blue = "\x1b[38;5;26m";       

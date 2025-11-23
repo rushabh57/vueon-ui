@@ -1,0 +1,58 @@
+<script setup>
+import { TreeItem } from 'reka-ui'
+import { FileIcon, FolderIcon, FolderOpenIcon } from 'lucide-vue-next'
+import { computed } from 'vue'
+import { Transition } from 'vue'
+
+// Props
+const props = defineProps({
+  item: { type: Object, required: true },
+  level: { type: Number, default: 0 }, // for indentation
+  style: { type: Object, default: () => ({}) }
+})
+
+// Computed class for TreeItem header
+const itemClasses = computed(() => {
+  return [
+    'flex flex-col rounded outline-none focus:ring-2 focus:ring-grass8 cursor-pointer select-none',
+  ].join(' ')
+})
+
+// Computed padding-left for child indentation
+const indentStyle = computed(() => ({
+  paddingLeft: `${props.level * 1.5}rem` // 1.5rem per level
+}))
+</script>
+<!-- v-bind="props.item.bind || {}" -->
+<template>
+<TreeItem v-bind="bind || {}"  v-slot="{ isExpanded }" :style="style" :class="itemClasses">
+  <div class="flex items-center space-x-2 py-1" :style="indentStyle">
+    <component
+      v-if="props.item.hasChildren"
+      :is="isExpanded ? FolderOpenIcon : FolderIcon"
+    />
+    <!-- File Icon -->
+    <template v-else>
+      <FileIcon />
+    </template>
+
+    <!-- Item title -->
+    <div>{{ props.item.value?.title || props.item.title }}</div>
+  </div>
+
+  <!-- Children with slide accordion -->
+  <Transition
+    enter-active-class="transition-all duration-300 ease-out"
+    leave-active-class="transition-all duration-300 ease-in"
+    enter-from-class="max-h-0 opacity-0"
+    enter-to-class="max-h-[1000px] opacity-100"
+    leave-from-class="max-h-[1000px] opacity-100"
+    leave-to-class="max-h-0 opacity-0"
+  >
+    <div v-if="isExpanded" class="overflow-hidden">
+      <slot />
+    </div>
+  </Transition>
+</TreeItem>
+
+</template>

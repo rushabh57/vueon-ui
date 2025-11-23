@@ -11,7 +11,7 @@ defineProps({
   <PaginationPrev
     aria-label="Go to previous page"
     :class="[
-      'flex h-9 items-center justify-center rounded-md border px-3 text-sm font-medium gap-1 hover:bg-accent hover:text-accent-foreground',
+      'flex h-9 items-center justify-center rounded-md border border-input px-3 text-sm font-medium gap-1 hover:bg-accent hover:text-accent-foreground',
       $props.class
     ]"
   >

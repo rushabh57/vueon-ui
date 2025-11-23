@@ -69,7 +69,7 @@ export default function registerResetCommand(program) {
           fs.copyFileSync(path.join(pkgCompDir, file), path.join(localDir, file));
         }
 
-        console.log(`${green}✓ Reset: ${name}${reset}`);
+        console.log(`${green}✔ Reset: ${name}${reset}`);
         resetCount++;
       }
 

@@ -21,11 +21,12 @@ const isActive = ref(false); // triggers animation
 const side = props.side ?? "top";
 const offset = props.sideOffset ?? 6;
 
+
 const contentClasses = computed(() => [
   "z-50 overflow-hidden rounded-md border border-input bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md",
-  isActive.value ? "animate-in fade-in-0 zoom-in-95" : "animate-out fade-out-0 zoom-out-95",
-  "animate-in fade-in-0 zoom-in-95",
-  "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
+  isActive.value
+    ? "animate-in fade-in-0 zoom-in-95"
+    : "animate-out fade-out-0 zoom-out-95",
   "data-[side=bottom]:slide-in-from-top-2",
   "data-[side=left]:slide-in-from-right-2",
   "data-[side=right]:slide-in-from-left-2",
@@ -36,26 +37,22 @@ const contentClasses = computed(() => [
 let hoverTimeout: number | null = null;
 
 function openTooltip() {
-  hoverTimeout && clearTimeout(hoverTimeout);
+  if (hoverTimeout) clearTimeout(hoverTimeout);
   isVisible.value = true;
-  nextTick(() => {
-    hoverTimeout = window.setTimeout(() => {
-      isActive.value = true;
-    }, 10); // small delay to allow mounting
-  });
+  isActive.value = true; // instantly show + animate
 }
 
 function closeTooltip() {
-  hoverTimeout && clearTimeout(hoverTimeout);
+  if (hoverTimeout) clearTimeout(hoverTimeout);
   isActive.value = false;
   hoverTimeout = window.setTimeout(() => {
     isVisible.value = false;
-  }, 150); // match animation duration
+  }, 150);
 }
 </script>
 
 <template>
-  <RekaTooltipProvider>
+  <RekaTooltipProvider  :delayDuration="0">
     <RekaTooltipRoot>
       <RekaTooltipTrigger
         @mouseenter="openTooltip"

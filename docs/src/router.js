@@ -13,6 +13,7 @@ import Installationframework from './pages/docs/Installationframework.vue'
 import CLI from './pages/docs/CLI.vue'
 import ComponentsList from './pages/docs/ComponentsList.vue'
 import ComponentsDetail from './components/ComponentsDetail.vue'
+import Indicator from './pages/docs/Indicator.vue'
 
 const routes = [
   {
@@ -32,10 +33,16 @@ const routes = [
     component: DocsLayout,
     children: [
       {
+        path: 'components-indicators',
+        name: 'components-indicators',
+        component: Indicator
+      },
+      {
         path: '',
         name: 'docs',
         component: GettingStarted
       },
+    
       {
         path: 'installation',
         name: 'docs-installation',
@@ -63,6 +70,7 @@ const routes = [
         name: 'docs-cli',
         component: CLI
       },
+
       {
         path: 'theming',
         name: 'docs-theming',

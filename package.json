@@ -1,6 +1,6 @@
 {
   "name": "vueon-ui",
-  "version": "0.0.28.10",
+  "version": "0.0.28.16",
   "type": "module",
   "scripts": {
     "dev": "vite",

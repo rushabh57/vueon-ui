@@ -59,7 +59,7 @@ watch(selectedDate, () => {
     >
       <DatePickerField
         v-slot="{ segments }"
-        class="flex items-center justify-between rounded-lg border border-border bg-card w-fit px-2 py-1.5 shadow-sm text-foreground dark:text-card-foreground focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 transition-colors duration-200 "
+        class="flex items-center justify-between rounded-lg border border-border bg-card w-fit px-1 py-1.5 shadow-sm text-foreground dark:text-card-foreground focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 transition-colors duration-200 h-10 "
       >
         <div class="flex gap-1">
           <template v-for="segment in segments" :key="segment.part">
@@ -74,7 +74,7 @@ watch(selectedDate, () => {
             <DatePickerInput
               v-else
               :part="segment.part"
-              class="px-1 py-0.75  rounded focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1 placeholder:text-muted-foreground dark:placeholder:text-muted-foreground text-foreground dark:text-card-foreground transition-shadow duration-150"
+              class="p-0.75  rounded focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1 placeholder:text-muted-foreground dark:placeholder:text-muted-foreground text-foreground dark:text-card-foreground transition-shadow duration-150"
             >
               {{ segment.value }}
             </DatePickerInput>
@@ -97,7 +97,11 @@ watch(selectedDate, () => {
       <DatePickerContent
         v-if="props.withPopup"
         :side-offset="4"
-        class="mt-1 rounded-xl border bg-card shadow-lg will-change-[transform,opacity] data-[state=open]:animate-slideDownAndFade"
+        class=" 
+         data-[state=open]:animate-in data-[state=closed]:animate-out
+         data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0
+         data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95
+         mt-1 rounded-xl border border-input bg-card shadow-lg will-change-[transform,opacity] data-[state=open]:animate-slideDownAndFade"
       >
         <DatePickerArrow class="fill-card stroke-border" />
         <DatePickerCalendar v-slot="{ weekDays, grid }" class="p-4">
@@ -144,7 +148,7 @@ watch(selectedDate, () => {
                     <DatePickerCellTrigger
                       :day="weekDate"
                       :month="month.value"
-                      class="flex items-center justify-center w-8 h-8 text-sm rounded-md outline-none hover:bg-secondary/10 
+                      class="transition-all flex items-center justify-center w-8 h-8 text-sm rounded-md outline-none hover:bg-secondary/10 
                          data-[today]:bg-primary-foreground/90 
           data-[today]:border-input
           data-[outside-view]:text-muted-foreground 
@@ -154,7 +158,8 @@ watch(selectedDate, () => {
           data-[disabled]:opacity-40 
           data-[disabled]:cursor-not-allowed
           data-[selected]:bg-primary 
-          data-[selected]:text-primary-foreground 
+          data-[selected]:text-primary-foreground
+          data-[selected]:data-[today]:bg-primary
           data-[focused]:ring-ring
                       "
                     />

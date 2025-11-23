@@ -67,6 +67,6 @@ export default function registerRemoveCommand(program) {
         console.log(`${red}🗑 Removed component: ${component}${reset}`);
       }
 
-      console.log(`${cyanBright}\n✓ Finished removing selected components.\n${reset}`);
+      // console.log(`${cyanBright}\n✔ Finished removing selected components.\n${reset}`);
     });
 }

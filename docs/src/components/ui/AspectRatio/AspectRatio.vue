@@ -30,7 +30,7 @@ const aspectClasses = computed(() =>
     "flex",
     "items-center",
     "justify-center",
-    "border",
+    "border", "border-input",
     "shadow-sm",
     props.class
   ].join(" ")

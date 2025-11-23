@@ -3,207 +3,297 @@
     "Accordion": {
       "path": "src/components/Accordion/Accordion.vue",
       "description": "Collapsible content container for organizing sections.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Accordion/Accordion.vue"
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Accordion/Accordion.vue",
+      "status": "stable"
     },
     "AlertDialog": {
       "path": "src/components/AlertDialog/AlertDialog.vue",
       "description": "A dialog that interrupts the user with important information.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/AlertDialog/AlertDialog.vue"
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/AlertDialog/AlertDialog.vue",
+      "status": "stable"
     },
-    "Avatar": {
-      "path": "src/components/Avatar/Avatar.vue",
-      "description": "Displays user profile image or initials.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Avatar/Avatar.vue"
+    "Alert": {
+      "path": "src/components/Alert/Alert.vue",
+      "description": "Encapsulates a piece of UI with its structure, style, and behavior for reuse.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Alert/Alert.vue",
+      "status": "stable"
     },
     "AspectRatio": {
       "path": "src/components/AspectRatio/AspectRatio.vue",
       "description": "Maintains a consistent width-to-height ratio for its content.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/AspectRatio/AspectRatio.vue"
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/AspectRatio/AspectRatio.vue",
+      "status": "stable"
     },
-    "Breadcrumb": {
-      "path": "src/components/Breadcrumb/Breadcrumb.vue",
-      "description": "A small status indicator or tag label.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Breadcrumb/Breadcrumb.vue"
+    "Avatar": {
+      "path": "src/components/Avatar/Avatar.vue",
+      "description": "Displays user profile image or initials.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Avatar/Avatar.vue",
+      "status": "stable"
     },
     "Badge": {
       "path": "src/components/Badge/Badge.vue",
       "description": "A small status indicator or tag label.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Badge/Badge.vue"
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Badge/Badge.vue",
+      "status": "rookie"
+    },
+    "Breadcrumb": {
+      "path": "src/components/Breadcrumb/Breadcrumb.vue",
+      "description": "A small status indicator or tag label.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Breadcrumb/Breadcrumb.vue",
+      "status": "rookie"
     },
     "Button": {
       "path": "src/components/Button/Button.vue",
       "description": "Primary button component with variants and sizes.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Button/Button.vue"
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Button/Button.vue",
+      "status": "stable"
     },
-    "Checkbox": {
-      "path": "src/components/Checkbox/Checkbox.vue",
-      "description": "Checkbox normal.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Checkbox/Checkbox.vue"
-    },
-    "Collapsible": {
-      "path": "src/components/Collapsible/Collapsible.vue",
-      "description": "Reveals or hides content with smooth animation.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Collapsible/Collapsible.vue"
-    },
-    "Carousel": {
-      "path": "src/components/Carousel/Carousel.vue",
-      "description": "Reveals or hides content with smooth animation.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Carousel/Carousel.vue"
+    "Calendar": {
+      "path": "src/components/Calendar/Calendar.vue",
+      "description": "Displays a calendar for date selection.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Calendar/Calendar.vue",
+      "status": "experimental"
     },
     "Card": {
       "path": "src/components/Card/Card.vue",
       "description": "Reveals or hides content with smooth animation.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Card/Card.vue"
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Card/Card.vue",
+      "status": "stable"
+    },
+    "Carousel": {
+      "path": "src/components/Carousel/Carousel.vue",
+      "description": "Reveals or hides content with smooth animation.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Carousel/Carousel.vue",
+      "status": "experimental"
+    },
+    "Checkbox": {
+      "path": "src/components/Checkbox/Checkbox.vue",
+      "description": "Checkbox normal.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Checkbox/Checkbox.vue",
+      "status": "stable"
+    },
+    "Collapsible": {
+      "path": "src/components/Collapsible/Collapsible.vue",
+      "description": "Reveals or hides content with smooth animation.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Collapsible/Collapsible.vue",
+      "status": "stable"
+    },
+    "ComboBox": {
+      "path": "src/components/ComboBox/ComboBox.vue",
+      "description": "ComboBox allows users to select a single value from a list of options. It supports v-model binding.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/ComboBox/ComboBox.vue",
+      "status": "experimental"
+    },
+    "DateField": {
+      "path": "src/components/DateField/DateField.vue",
+      "description": "Input for selecting a single date.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/DateField/DateField.vue",
+      "status": "rookie"
     },
     "Dialog": {
       "path": "src/components/Dialog/Dialog.vue",
       "description": "Displays an overlay or modal for user interactions.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Dialog/Dialog.vue"
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Dialog/Dialog.vue",
+      "status": "stable"
+    },
+    "Drawer": {
+      "path": "src/components/Drawer/Drawer.vue",
+      "description": "Drawer component allows sliding panels from left, right, top, or bottom. It can contain any content: forms, images, or buttons.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Drawer/Drawer.vue",
+      "status": "stable"
     },
     "Dropdown": {
       "path": "src/components/Dropdown/Dropdown.vue",
       "description": "Displays an overlay or Dropdown for user interactions.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Dropdown/Dropdown.vue"
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Dropdown/Dropdown.vue",
+      "status": "stable"
+    },
+    "GroupDateField": {
+      "path": "src/components/GroupDateField/GroupDateField.vue",
+      "description": "nput for selecting grouped dates or ranges.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/GroupDateField/GroupDateField.vue",
+      "status": "rookie"
+    },
+    "HoverCard": {
+      "path": "src/components/HoverCard/HoverCard.vue",
+      "description": "Shows extra info when hovering over content.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/HoverCard/HoverCard.vue",
+      "status": "experimental"
     },
     "Input": {
       "path": "src/components/Input/Input.vue",
       "description": "Text input field component.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Input/Input.vue"
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Input/Input.vue",
+      "status": "stable"
+    },
+    "Kbd": {
+      "path": "src/components/Kbd/Kbd.vue",
+      "description": "Use Kbd to display individual keyboard keys, and KbdGroup to group multiple keys together.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Kbd/Kbd.vue",
+      "status": "rookie"
     },
     "Label": {
       "path": "src/components/Label/Label.vue",
       "description": "Accessible label for input fields.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Label/Label.vue"
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Label/Label.vue",
+      "status": "stable"
     },
-    "Select": {
-      "path": "src/components/Select/Select.vue",
-      "description": "Custom select dropdown component.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Select/Select.vue"
+    "Menubar": {
+      "path": "src/components/Menubar/Menubar.vue",
+      "description": "Horizontal menu for navigation.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Menubar/Menubar.vue",
+      "status": "experimental"
+    },
+    "NavigationMenu": {
+      "path": "src/components/NavigationMenu/NavigationMenu.vue",
+      "description": "Multi-level or dropdown navigation menu.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/NavigationMenu/NavigationMenu.vue",
+      "status": "experimental"
+    },
+    "NumberField": {
+      "path": "src/components/NumberField/NumberField.vue",
+      "description": "Input for numeric values.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/NumberField/NumberField.vue",
+      "status": "rookie"
+    },
+    "OtpField": {
+      "path": "src/components/OtpField/OtpField.vue",
+      "description": "Input for one-time password (OTP) codes.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/OtpField/OtpField.vue",
+      "status": "rookie"
+    },
+    "Pagination": {
+      "path": "src/components/Pagination/Pagination.vue",
+      "description": "Navigate through pages of content.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Pagination/Pagination.vue",
+      "status": "stable"
+    },
+    "Popover": {
+      "path": "src/components/Popover/Popover.vue",
+      "description": "Displays a floating content box on click/hover.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Popover/Popover.vue",
+      "status": "stable"
+    },
+    "Progress": {
+      "path": "src/components/Progress/Progress.vue",
+      "description": "Progress components show a horizontal bar representing completion percentage visually.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Progress/Progress.vue",
+      "status": "stable"
+    },
+    "RadioGroup": {
+      "path": "src/components/RadioGroup/RadioGroup.vue",
+      "description": "Lets users pick one option from a set of mutually exclusive choices.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/RadioGroup/RadioGroup.vue",
+      "status": "stable"
     },
     "Separator": {
       "path": "src/components/Separator/Separator.vue",
-      "description": "Visual divider for grouping sections.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Separator/Separator.vue"
+      "description": "A thin line used to visually divide content or sections within layouts.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Separator/Separator.vue",
+      "status": "stable"
+    },
+    "Sheet": {
+      "path": "src/components/Sheet/Sheet.vue",
+      "description": "Sheet components show a sliding panel from a side of the screen to display extra content like menus.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Sheet/Sheet.vue",
+      "status": "stable"
+    },
+    "Skeleton": {
+      "path": "src/components/Skeleton/Skeleton.vue",
+      "description": "Placeholder UI for loading content.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Skeleton/Skeleton.vue",
+      "status": "stable"
+    },
+    "Select": {
+      "path": "src/components/Select/Select.vue",
+      "description": "Lets users choose a value from a dropdown list.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Select/Select.vue",
+      "status": "stable"
+    },
+    "Slider": {
+      "path": "src/components/Slider/Slider.vue",
+      "description": "Interactive slider for selecting numeric values.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Slider/Slider.vue",
+      "status": "stable"
+    },
+    "Spinner": {
+      "path": "src/components/Spinner/Spinner.vue",
+      "description": "Shows loading spinner animation.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Spinner/Spinner.vue",
+      "status": "rookie"
+    },
+    "Splitter": {
+      "path": "src/components/Splitter/Splitter.vue",
+      "description": "Divides layout into resizable sections.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Splitter/Splitter.vue",
+      "status": "stable"
+    },
+    "Stepper": {
+      "path": "src/components/Stepper/Stepper.vue",
+      "description": "Step-by-step navigation component.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Stepper/Stepper.vue",
+      "status": "experimental"
+    },
+    "ScrollArea": {
+      "path": "src/components/ScrollArea/ScrollArea.vue",
+      "description": "Provides a scrollable container for overflowing content.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/ScrollArea/ScrollArea.vue",
+      "status": "experimental"
     },
     "Switch": {
       "path": "src/components/Switch/Switch.vue",
       "description": "Toggle switch input component.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Switch/Switch.vue"
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Switch/Switch.vue",
+      "status": "stable"
+    },
+    "Tabs": {
+      "path": "src/components/Tabs/Tabs.vue",
+      "description": "Switch between multiple content panels.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Tabs/Tabs.vue",
+      "status": "stable"
+    },
+    "TimeField": {
+      "path": "src/components/TimeField/TimeField.vue",
+      "description": "Input for selecting time values.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/TimeField/TimeField.vue",
+      "status": "rookie"
+    },
+    "Toaster": {
+      "path": "src/components/Toaster/Toaster.vue",
+      "description": "Shows a brief, temporary message to inform the user of an action or status.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Toaster/Toaster.vue",
+      "status": "experimental"
     },
     "Toggle": {
       "path": "src/components/Toggle/Toggle.vue",
       "description": "A two-state button that can be pressed or unpressed.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Toggle/Toggle.vue"
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Toggle/Toggle.vue",
+      "status": "stable"
     },
     "Tooltip": {
       "path": "src/components/Tooltip/Tooltip.vue",
       "description": "Displays extra information when hovering.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Tooltip/Tooltip.vue"
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Tooltip/Tooltip.vue",
+      "status": "stable"
     },
-    "Menubar": {
-      "path": "src/components/Menubar/Menubar.vue",
-      "description": "Displays Menubar.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Menubar/Menubar.vue"
+    "Toolbar": {
+      "path": "src/components/Toolbar/Toolbar.vue",
+      "description": "Displays a horizontal bar of buttons or controls for user actions.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Toolbar/Toolbar.vue",
+      "status": "stable"
     },
-    "NavigationMenu": {
-      "path": "src/components/NavigationMenu/NavigationMenu.vue",
-      "description": "Displays NavigationMenu.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/NavigationMenu/NavigationMenu.vue"
-    },
-    "Pagination": {
-      "path": "src/components/Pagination/Pagination.vue",
-      "description": "Displays Pagination.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Pagination/Pagination.vue"
-    },
-    "HoverCard": {
-      "path": "src/components/HoverCard/HoverCard.vue",
-      "description": "Displays HoverCard.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/HoverCard/HoverCard.vue"
-    },
-    "Popover": {
-      "path": "src/components/Popover/Popover.vue",
-      "description": "Displays Popover.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Popover/Popover.vue"
-    },
-    "ScrollArea": {
-      "path": "src/components/ScrollArea/ScrollArea.vue",
-      "description": "Displays ScrollArea.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/ScrollArea/ScrollArea.vue"
-    },
-    "Tabs": {
-      "path": "src/components/Tabs/Tabs.vue",
-      "description": "Displays Tabs.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Tabs/Tabs.vue"
-    },
-    "OtpField": {
-      "path": "src/components/OtpField/OtpField.vue",
-      "description": "Displays OtpField.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/OtpField/OtpField.vue"
-    },
-    "DateField": {
-      "path": "src/components/DateField/DateField.vue",
-      "description": "Displays DateField.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/DateField/DateField.vue"
-    },
-    "NumberField": {
-      "path": "src/components/NumberField/NumberField.vue",
-      "description": "Displays NumberField.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/NumberField/NumberField.vue"
-    },
-    "TimeField": {
-      "path": "src/components/TimeField/TimeField.vue",
-      "description": "Displays TimeField.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/TimeField/TimeField.vue"
-    },
-    "GroupDateField": {
-      "path": "src/components/GroupDateField/GroupDateField.vue",
-      "description": "Displays GroupDateField.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/GroupDateField/GroupDateField.vue"
-    },
-    "ComboBox": {
-      "path": "src/components/ComboBox/ComboBox.vue",
-      "description": "Displays ComboBox.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/ComboBox/ComboBox.vue"
-    },
-    "Drawer": {
-      "path": "src/components/Drawer/Drawer.vue",
-      "description": "Displays Drawer.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Drawer/Drawer.vue"
-    },
-    "Kbd": {
-      "path": "src/components/Kbd/Kbd.vue",
-      "description": "Displays Kbd.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Kbd/Kbd.vue"
-    },
-    "Skeleton": {
-      "path": "src/components/Skeleton/Skeleton.vue",
-      "description": "Displays Skeleton.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Skeleton/Skeleton.vue"
-    },
-    "Sheet": {
-      "path": "src/components/Sheet/Sheet.vue",
-      "description": "Displays Sheet.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Sheet/Sheet.vue"
-    },
-    "Progress": {
-      "path": "src/components/Progress/Progress.vue",
-      "description": "Displays Progress.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Progress/Progress.vue"
-    },
-    "Splitter": {
-      "path": "src/components/Splitter/Splitter.vue",
-      "description": "Displays Splitter.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Splitter/Splitter.vue"
-    },
-    "RadioGroup": {
-      "path": "src/components/RadioGroup/RadioGroup.vue",
-      "description": "Displays RadioGroup.",
-      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/RadioGroup/RadioGroup.vue"
+    "Tree": {
+      "path": "src/components/Tree/Tree.vue",
+      "description": "Displays hierarchical, expandable/collapsible lists.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Tree/Tree.vue",
+      "status": "experimental"
     }
   },
+  "countComponents": 47,
   "theme": {
     "path": "src/theme/variant.ts",
     "description": "Globalized theme variant utilities used by all components.",
-    "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/theme/variant.ts"
+    "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/theme/variant.ts",
+    "status": "stable"
   }
 }
