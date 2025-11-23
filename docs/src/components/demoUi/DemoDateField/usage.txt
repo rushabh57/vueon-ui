@@ -1,0 +1,11 @@
+<script>
+import DateField from "@/components/ui/DateField";
+</script>
+
+<template>
+  <DateField
+    withPopup
+    label="Birthday"
+    :is-date-unavailable="date => date.day === 19"
+  />
+</template>

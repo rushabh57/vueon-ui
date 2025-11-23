@@ -1,0 +1,38 @@
+<script lang="ts">
+import Input from "@/components/ui/Input";
+import { ref } from "vue";
+
+const email = ref("");
+const password = ref("");
+const emailStage = ref("default");
+const emailMessage = ref("");
+const passwordStage = ref("default");
+const passwordMessage = ref("");
+
+const validateForm = () => {
+  if (!email.value.includes("@")) {
+    emailStage.value = "error";
+    emailMessage.value = "Invalid email address";
+  } else {
+    emailStage.value = "success";
+    emailMessage.value = "Looks good!";
+  }
+
+  if (password.value.length < 6) {
+    passwordStage.value = "error";
+    passwordMessage.value = "Password too short";
+  } else {
+    passwordStage.value = "success";
+    passwordMessage.value = "Strong password!";
+  }
+};
+</script>
+
+<template>
+  <Input label="Name" type="text" placeholder="Enter name" />
+  <Input type="date" label="Pick a Date" />
+
+  <Input v-model="email" placeholder="Email" :stage="emailStage" :stageMessage="emailMessage" />
+  <Input v-model="password" type="password" placeholder="Password" :stage="passwordStage" :stageMessage="passwordMessage" />
+  <button @click="validateForm">Submit</button>
+</template>

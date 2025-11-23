@@ -1,0 +1,8 @@
+<script> 
+import { Badge } from "@/components/ui/Badge" 
+</script>
+  <template>
+    <Badge variants="secondary | outline | destructive ">
+          Badge
+    </Badge> 
+  </template>

@@ -1,0 +1,13 @@
+<script>
+import AspectRatio from "@/components/ui/AspectRatio"
+</script>
+
+<template>
+  <AspectRatio :ratio="1">
+    <img
+      class="h-full w-full object-cover"
+      src="..."
+      alt="Landscape photograph by Tobias Tullius"
+    />
+  </AspectRatio>
+</template>

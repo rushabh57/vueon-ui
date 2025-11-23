@@ -14,19 +14,11 @@ const addTabs = [
   { label: "bun", code: `bunx vueon-ui add Checkbox` },
 ];
 
-// example 1 — single checkbox
-const exampleSingle =
-`<scr` + `ipt setup lang="ts">
-import { Checkbox } from "@/components/ui/Checkbox"
-import Label from "@/components/ui/Label"
-</scr` + `ipt>
+import usageRaw from "./usage.txt?raw";
+import { ref } from "vue"
+const usageExample = ref(usageRaw);
 
-<template>
-  <div class="flex items-center space-x-2">
-    <Checkbox id="terms" />
-    <Label for="terms">Accept terms</Label>
-  </div>
-</template>`;
+
 
 
 </script>
@@ -49,7 +41,7 @@ import Label from "@/components/ui/Label"
         </div>
 
     <div>
-        <CodeBlock filename="src/App.vue" :code="exampleSingle" />
+        <CodeBlock filename="src/App.vue" :code="usageExample" />
     </div>
 
 

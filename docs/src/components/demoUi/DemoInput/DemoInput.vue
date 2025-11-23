@@ -7,6 +7,9 @@ import CodeTabs from "../../CodeTabs.vue";
 import Input from "../../ui/Input";
 import { Button } from "../../ui/Button";
 
+import usageRaw from "./usage.txt?raw";
+const usageExample = ref(usageRaw);
+
 // Reactive form fields
 const email = ref("");
 const password = ref("");
@@ -48,46 +51,7 @@ const addTabs = [
   { label: "bun", code: `bunx vueon-ui add Input` },
 ];
 
-// Usage example (escaped <script>)
-const usageExample =
-`<scr` + `ipt lang="ts">
-import Input from "@/components/ui/Input";
-import { ref } from "vue";
 
-const email = ref("");
-const password = ref("");
-const emailStage = ref("default");
-const emailMessage = ref("");
-const passwordStage = ref("default");
-const passwordMessage = ref("");
-
-const validateForm = () => {
-  if (!email.value.includes("@")) {
-    emailStage.value = "error";
-    emailMessage.value = "Invalid email address";
-  } else {
-    emailStage.value = "success";
-    emailMessage.value = "Looks good!";
-  }
-
-  if (password.value.length < 6) {
-    passwordStage.value = "error";
-    passwordMessage.value = "Password too short";
-  } else {
-    passwordStage.value = "success";
-    passwordMessage.value = "Strong password!";
-  }
-};
-</scr` + `ipt>
-
-<template>
-  <Input label="Name" type="text" placeholder="Enter name" />
-  <Input type="date" label="Pick a Date" />
-
-  <Input v-model="email" placeholder="Email" :stage="emailStage" :stageMessage="emailMessage" />
-  <Input v-model="password" type="password" placeholder="Password" :stage="passwordStage" :stageMessage="passwordMessage" />
-  <button @click="validateForm">Submit</button>
-</template>`;
 </script>
 
 <template>
@@ -123,6 +87,6 @@ const validateForm = () => {
 
     <!-- USAGE -->
     <h2 class="text-2xl font-bold">Usage</h2>
-    <CodeBlock filename="src/App.vue" :code="usageExample" />
+    <CodeBlock :highlightLines="[35,36]" filename="src/App.vue" :code="usageExample" />
   </div>
 </template>

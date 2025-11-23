@@ -1,0 +1,25 @@
+<script>
+import { Checkbox } from "@/components/ui/Checkbox"
+import Label from "@/components/ui/Label"
+</scr` + `ipt>
+
+<template>
+  <div class="flex items-center space-x-2">
+    <Checkbox id="terms" />
+    <Label for="terms">Accept terms</Label>
+  </div>
+</template>
+
+
+// with group
+ <CheckboxGroup v-model="fruits">
+    <div class="flex items-center space-x-2">
+      <Checkbox value="apple" />
+      <Label>Apple</Label>
+    </div>
+
+    <div class="flex items-center space-x-2">
+      <Checkbox value="banana" />
+      <Label>Banana</Label>
+    </div>
+</CheckboxGroup>

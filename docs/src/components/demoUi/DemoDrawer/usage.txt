@@ -1,0 +1,42 @@
+<script setup lang="ts">
+import { 
+  Drawer, 
+  DrawerTrigger, 
+  DrawerContent,  
+  DrawerHeader, 
+  DrawerFooter, 
+  DrawerTitle, 
+  DrawerDescription, 
+  DrawerClose, 
+  DrawerOverlay 
+} from '@/components/ui/Drawer'
+import { Button } from '@/components/ui/Button';
+</script>
+
+<template>
+      <!-- Live Example -->
+      <Drawer>
+        <!-- Trigger Button -->
+        <DrawerTrigger >
+            <Button>
+                Open Drawer
+            </Button>
+        </DrawerTrigger>
+        <DrawerContent>
+          <DrawerHeader>
+            <DrawerTitle>My Drawer</DrawerTitle>
+            <DrawerDescription>Drag me or close with the button below</DrawerDescription>
+          </DrawerHeader>
+
+          <div class="p-4">
+              This is the drawer content. You can put anything here: forms, buttons, images, etc.
+          </div>
+
+          <DrawerFooter>
+            <DrawerClose>
+              Close Drawer
+            </DrawerClose>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+</template>

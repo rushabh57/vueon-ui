@@ -13,30 +13,11 @@ const addTabs = [
   { label: "bun", code: `bunx vueon-ui add Avatar` },
 ];
 
-// usage example
-const usageExample =
-`<script>
-import Avatar from "@/components/ui/Avatar"
-</scr` + `ipt>
-
-<template>
-  <div class="flex items-center gap-4">
-    <Avatar src="" fallbackText="Rushabh Jain" size="md" ring />
-    <Avatar src="" fallbackText="RJ" size="sm" />
-    <Avatar src="" fallbackText="A" size="lg" />
-  </div>
-</template>`;
-
-const withRingExample = `
-<script>
-import Avatar from "@/components/ui/Avatar"
-</scr` + `ipt>
-
-<template>
-  <div class="flex items-center gap-4">
-    <Avatar src="" fallbackText="Rushabh Jain" size="md" ring />
-  </div>
-</template>`;
+import usageRaw from "./usage.txt?raw";
+import withringRaw from "./witring.txt?raw"
+import { ref } from "vue";
+const usageCode = ref(usageRaw);
+const withRingExample = ref(withringRaw);
 </script>
 
 <template>
@@ -57,12 +38,8 @@ import Avatar from "@/components/ui/Avatar"
 
     <CodeBlock 
       filename="src/App.vue" 
-      :code="usageExample"
-      :indent="[
-        [9, 22],
-        [10,42],
-        [12,62], [13,62], [14,62]
-      ]"
+      :code="usageCode"
+     
     />
 
     <div>
@@ -77,11 +54,7 @@ import Avatar from "@/components/ui/Avatar"
     class="mt-1" 
       filename="src/App.vue" 
       :code="withRingExample"
-      :indent="[
-        [9, 22],
-        [10,42],
-        [12,62], [13,62], [14,62]
-      ]"
+      :highlightLines="[7]"
     />
 
     </div>
@@ -102,11 +75,7 @@ import Avatar from "@/components/ui/Avatar"
     class="mt-1" 
       filename="src/App.vue" 
       :code="withRingExample"
-      :indent="[
-        [9, 22],
-        [10,42],
-        [12,62], [13,62], [14,62]
-      ]"
+      :highlightLines="[7]"
     />
 
     </div>

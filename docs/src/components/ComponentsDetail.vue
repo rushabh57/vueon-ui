@@ -51,6 +51,8 @@ import DemoSlider from "./demoUi/DemoSlider/DemoSlider.vue"
 import DemoSpinner from "./demoUi/DemoSpinner/DemoSpinner.vue"
 import DemoStepper from "./demoUi/DemoStepper/DemoStepper.vue"
 import DemoCalendar from "./demoUi/DemoCalendar/DemoCalendar.vue"
+import DemoAlert from "./demoUi/DemoAlert/DemoAlert.vue"
+import DemoTree from "./demoUi/DemoTree/DemoTree.vue"
 
 const demoComponents: Record<string, any> = {
   Accordion: DemoAccordion,
@@ -96,7 +98,9 @@ const demoComponents: Record<string, any> = {
   Slider: DemoSlider,
   Spinner: DemoSpinner,
   Stepper: DemoStepper,
-  Calendar: DemoCalendar
+  Calendar: DemoCalendar,
+  Alert: DemoAlert,
+  Tree: DemoTree
 }
 
 const route = useRoute()

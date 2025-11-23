@@ -1,0 +1,9 @@
+<script>
+import Avatar from "@/components/ui/Avatar"
+</script>
+
+<template>
+  <div class="flex items-center gap-4">
+    <Avatar src="" fallbackText="Rushabh Jain" size="md" ring />
+  </div>
+</template>

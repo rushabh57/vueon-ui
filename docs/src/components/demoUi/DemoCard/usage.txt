@@ -1,0 +1,28 @@
+<script lang="ts">
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter
+} from "@/components/ui/Card"
+import { Button } from "@/components/ui/Button"
+</script>
+
+<template>
+  <Card class="w-80">
+    <CardHeader>
+      <CardTitle>Profile Card</CardTitle>
+      <CardDescription>Frontend Developer</CardDescription>
+    </CardHeader>
+
+    <CardContent>
+      <p>Passionate about creating responsive web apps with Vue and Tailwind.</p>
+    </CardContent>
+
+    <CardFooter>
+      <Button>Follow</Button>
+    </CardFooter>
+  </Card>
+</template>

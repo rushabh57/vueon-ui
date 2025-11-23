@@ -10,6 +10,11 @@ const installTabs = [
   { label: 'pnpm', code: `pnpx vueon-ui add Kbd` },
   { label: 'bun', code: `bun vueon-ui add Kbd` },
 ]
+
+import usageRaw from "./usage.txt?raw";
+import CodeBlock from "../../CodeBlock.vue";
+const usageExample = ref(usageRaw);
+
 </script>
 
 <template>
@@ -33,6 +38,8 @@ const installTabs = [
       <h2 class="text-2xl font-bold mb-2">Installation</h2>
       <CodeTabs :tabs="installTabs" />
     </section>
+
+    <CodeBlock   filename="src/App.vue" :code="usageExample" />
 
     <!-- Props -->
     <section>

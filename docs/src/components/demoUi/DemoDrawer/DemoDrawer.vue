@@ -12,14 +12,20 @@ import {
   DrawerOverlay 
 } from '../../ui/Drawer'
 import { Button } from '../../ui/Button';
+import CodeBlock from '../../CodeBlock.vue';
 
 // Installation tabs
 const installTabs = [
-  { label: 'npm', code: `npm install your-drawer-package` },
-  { label: 'yarn', code: `yarn add your-drawer-package` },
-  { label: 'pnpm', code: `pnpm add your-drawer-package` },
-  { label: 'bun', code: `bun add your-drawer-package` },
+  { label: 'npm', code: `npx vueon-ui add drawer` },
+  { label: 'yarn', code: `yarn vueon-ui add drawer` },
+  { label: 'pnpm', code: `pnpx vueon-ui add drawer` },
+  { label: 'bun', code: `bun vueon-ui add drawer` },
 ]
+
+import usageRaw from "./usage.txt?raw";
+import CodeTabs from '../../CodeTabs.vue';
+const usageExample = ref(usageRaw);
+
 </script>
 
 <template>
@@ -35,10 +41,6 @@ const installTabs = [
                 Open Drawer
             </Button>
         </DrawerTrigger>
-
-        <!-- Optional Overlay -->
-        <!-- <DrawerOverlay /> -->
-
         <DrawerContent>
           <DrawerHeader>
             <DrawerTitle>My Drawer</DrawerTitle>
@@ -62,6 +64,14 @@ const installTabs = [
     <section>
       <h2 class="text-2xl font-bold mb-2">Installation</h2>
       <CodeTabs :tabs="installTabs" />
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold mb-2">Usage</h2>
+      <CodeBlock
+      filename="src/App.vue"
+      :code="usageExample"
+    />
     </section>
 
     <!-- Props -->

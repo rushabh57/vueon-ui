@@ -19,52 +19,11 @@ const addTabs = [
   { label: "bun", code: `bunx vueon-ui add Carousel` },
 ];
 
-// SAFE USAGE EXAMPLE (fully escaped <script>)
-const usageExample = `
-<scr` + `ipt>
-import {
-  Carousel,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrev
-} from "@/components/ui/Carousel";
-</scr` + `ipt>
 
-<template>
-  <div class="w-96">
-    <Carousel :loop="true" :show-dots="false">
-      <CarouselItem>
-        <div class="p-4 text-center">
-          <h3 class="text-lg font-bold">Slide 1</h3>
-          <p>Content for slide 1</p>
-        </div>
-      </CarouselItem>
+import usageRaw from "./usage.txt?raw";
+import { ref } from "vue"
+const usageExample = ref(usageRaw);
 
-      <CarouselItem>
-        <div class="p-4 text-center">
-          <h3 class="text-lg font-bold">Slide 2</h3>
-          <p>Content for slide 2</p>
-        </div>
-      </CarouselItem>
-
-      <CarouselItem>
-        <div class="p-4 text-center">
-          <h3 class="text-lg font-bold">Slide 3</h3>
-          <p>Content for slide 3</p>
-        </div>
-      </CarouselItem>
-
-      <template #prev>
-        <CarouselPrev />
-      </template>
-
-      <template #next>
-        <CarouselNext />
-      </template>
-    </Carousel>
-  </div>
-</template>
-`;
 </script>
 
 <template>

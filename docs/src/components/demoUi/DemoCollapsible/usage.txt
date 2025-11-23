@@ -1,0 +1,28 @@
+<script>
+import {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent
+} from "@/components/ui/Collapsible"
+</script>
+
+<template>
+  <Collapsible>
+    <CollapsibleTrigger>
+      @peduarte starred 3 repositories
+    </CollapsibleTrigger>
+
+    <div class="mt-2 p-2 border rounded-md bg-background shadow-sm text-muted-foreground">
+      @radix-ui/primitives
+    </div>
+
+    <CollapsibleContent>
+      <div class="mt-2 p-2 border rounded-md bg-background shadow-sm text-muted-foreground">
+        @vuejs/core
+      </div>
+      <div class="mt-2 p-2 border rounded-md bg-background shadow-sm text-muted-foreground">
+        @reka-ui/primitives
+      </div>
+    </CollapsibleContent>
+  </Collapsible>
+</template>

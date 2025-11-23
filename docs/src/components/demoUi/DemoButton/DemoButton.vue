@@ -12,15 +12,10 @@ const addTabs = [
   { label: "bun", code: `bunx vueon-ui add Button` },
 ]
 
-const usageExample = `
-<script> 
-import { Button } from "@/components/ui/Button" 
-</scr` + `ipt>
-  <template>
-    <Button>
-          button
-    </Button> 
-  </template> `;
+import usageRaw from "./usage.txt?raw";
+import { ref } from "vue";
+const usageExample = ref(usageRaw);
+
 
 
 </script>
@@ -40,6 +35,7 @@ import { Button } from "@/components/ui/Button"
     <CodeBlock
         filename="src/App.vue"
         :code="usageExample"
+        :highlight-lines="[5,9]"
       />
 
     <!-- Default Buttons -->

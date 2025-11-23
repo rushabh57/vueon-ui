@@ -34,6 +34,10 @@ const installTabs = [
   { label: 'pnpm', code: `pnpm add ComboBox` },
   { label: 'bun', code: `bun add ComboBox` },
 ]
+import usageRaw from "./usage.txt?raw";
+import CodeBlock from '../../CodeBlock.vue'
+const usageExample = ref(usageRaw);
+
 </script>
 
 <template>
@@ -59,6 +63,9 @@ const installTabs = [
       <h2 class="text-2xl font-bold mb-2">Installation</h2>
       <CodeTabs :tabs="installTabs" />
     </section>
+
+    <CodeBlock filename="src/App.vue" :code="usageExample" />
+
 
     <!-- Props -->
     <section>

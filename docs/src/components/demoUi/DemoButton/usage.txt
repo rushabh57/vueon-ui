@@ -1,0 +1,12 @@
+<script> 
+import { Button } from "@/components/ui/Button" 
+</script>
+  <template>
+    <Button variant="default | outline | secondary| destructive | ghost" >
+          button
+    </Button> 
+
+    <Button size="icon | sm | md | lg >
+          button
+    </Button> 
+  </template>

@@ -22,6 +22,11 @@ import {
 
 import { Button } from "../../ui/Button";
 
+
+import usageRaw from "./usage.txt?raw";
+import { ref } from "vue";
+const usageExample = ref(usageRaw);
+
 // installation tabs
 const addTabs = [
   { label: "npm", code: `npx vueon-ui add Dropdown` },
@@ -31,40 +36,6 @@ const addTabs = [
 ];
 
 
-const usageExample =
-`<scr` + `ipt lang="ts">
-import {
-  DropdownMenu,
-  DropdownTrigger,
-  DropdownContent,
-  DropdownLabel,
-  DropdownSeparator,
-  DropdownItem,
-  DropdownArrow
-} from "@/components/ui/Dropdown";
-
-import { Button } from "@/components/ui/Button";
-</scr` + `ipt>
-
-<template>
-  <DropdownMenu>
-    <DropdownTrigger>
-      <Button>Open</Button>
-    </DropdownTrigger>
-
-    <DropdownContent>
-      <DropdownLabel>My Account</DropdownLabel>
-      <DropdownSeparator />
-
-      <DropdownItem>Profile</DropdownItem>
-      <DropdownItem>Billing</DropdownItem>
-      <DropdownItem>Team</DropdownItem>
-      <DropdownItem>Subscription</DropdownItem>
-
-      <DropdownArrow />
-    </DropdownContent>
-  </DropdownMenu>
-</template>`;
 
 
 </script>

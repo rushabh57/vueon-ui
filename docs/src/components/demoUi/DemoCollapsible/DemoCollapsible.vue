@@ -10,6 +10,9 @@ import {
 
 import { ref } from "vue";
 
+import usageRaw from "./usage.txt?raw";
+const usageExample = ref(usageRaw);
+
 // installation tabs
 const addTabs = [
   { label: "npm", code: `npx vueon-ui add Collapsible` },
@@ -18,58 +21,7 @@ const addTabs = [
   { label: "bun", code: `bunx vueon-ui add Collapsible` },
 ];
 
-// example 1 — basic collapsible
-const exampleBasic =
-`<script>
-import {
-  Collapsible,
-  CollapsibleTrigger,
-  CollapsibleContent
-} from "@/components/ui/Collapsible"
-</scr` + `ipt>
 
-<template>
-  <Collapsible>
-    <CollapsibleTrigger>
-      What is VueON UI?
-    </CollapsibleTrigger>
-
-    <CollapsibleContent>
-      VueON UI is an open-code component system for Vue 3.
-    </CollapsibleContent>
-  </Collapsible>
-</template>`;
-
-// example 2 — more detailed content
-const exampleDetailed =
-`<script>
-import {
-  Collapsible,
-  CollapsibleTrigger,
-  CollapsibleContent
-} from "@/components/ui/Collapsible"
-</scr` + `ipt>
-
-<template>
-  <Collapsible>
-    <CollapsibleTrigger>
-      @peduarte starred 3 repositories
-    </CollapsibleTrigger>
-
-    <div class="mt-2 p-2 border rounded-md bg-background shadow-sm text-muted-foreground">
-      @radix-ui/primitives
-    </div>
-
-    <CollapsibleContent>
-      <div class="mt-2 p-2 border rounded-md bg-background shadow-sm text-muted-foreground">
-        @vuejs/core
-      </div>
-      <div class="mt-2 p-2 border rounded-md bg-background shadow-sm text-muted-foreground">
-        @reka-ui/primitives
-      </div>
-    </CollapsibleContent>
-  </Collapsible>
-</template>`;
 </script>
 
 <template>
@@ -91,7 +43,7 @@ import {
     </section>
 
     <!-- Code for basic example -->
-    <CodeBlock filename="src/App.vue" :code="exampleBasic" />
+    <CodeBlock filename="src/App.vue" :code="usageExample" />
 
     <!-- Installation -->
     <h2 class="text-2xl font-bold">Installation</h2>
@@ -126,8 +78,6 @@ import {
       </div>
     </section>
 
-    <!-- Code for detailed example -->
-    <CodeBlock filename="src/App.vue" :code="exampleDetailed" />
 
   </div>
 </template>

@@ -1,0 +1,14 @@
+import { 
+Alert, 
+AlertTitle, 
+AlertDescription 
+} from "@/components/ui/Alert"
+import { TriangleAlert } from "lucide-vue-next"
+
+<Alert variant="default | estructive">
+    <TriangleAlert class="size-4" />
+    <AlertTitle>Notice</AlertTitle>
+    <AlertDescription>
+        This is a normal alert message.
+    </AlertDescription>
+</Alert>

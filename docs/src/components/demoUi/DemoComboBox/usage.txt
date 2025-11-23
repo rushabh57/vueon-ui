@@ -1,0 +1,37 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+import ComboBox from '../../ui/ComboBox/ComboBox.vue'
+
+// Selected value
+const selectedFood = ref('')
+
+// Options array
+const foodOptions = [
+  {
+    name: 'Fruit',
+    children: [
+      { name: 'Apple' },
+      { name: 'Banana' },
+      { name: 'Orange' },
+      { name: 'Grapes' }
+    ]
+  },
+  {
+    name: 'Vegetable',
+    children: [
+      { name: 'Carrot' },
+      { name: 'Spinach' },
+      { name: 'Potato' },
+    ]
+  }
+]
+
+</ script>
+<template>
+<ComboBox
+    v-model="selectedFood"
+    :options="foodOptions"
+    placeholder="Select a food"
+/>
+
+</template>

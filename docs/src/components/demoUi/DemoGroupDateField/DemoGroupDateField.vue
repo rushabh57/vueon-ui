@@ -16,22 +16,11 @@ const addTabs = [
   { label: "bun", code: `bunx vueon-ui add GroupDateField` },
 ];
 
-// Usage example
-const usageExample = `<script>
-import GroupDateField from "@/components/ui/GroupDateField/GroupDateField.vue";
+import usageRaw from "./usage.txt?raw";
+import { ref } from "vue";
+const usageExample = ref(usageRaw);
 
-const unavailableDate = (date) => date.day === 19;
-</scr` + `ipt>
 
-<template>
-  <GroupDateField
-    label="Booking Dates"
-    id="booking-dates"
-    :withPopup="true"
-    :months="2"
-    :isDateUnavailable="unavailableDate"
-  />
-</template>`;
 </script>
 
 <template>

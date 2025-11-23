@@ -1,0 +1,25 @@
+<script setup lang="ts">
+import { Calendar } from "@components/ui/Calendar"
+
+const unavailableDates = [new Date(2025, 10, 1), new Date(2025, 10, 15)]
+</script>
+<template>
+ <Calendar />
+
+ <Calendar
+   mode="range"
+   :disable-year-nav="true"
+   :unavailable-dates="unavailableDates"
+  />
+
+  <Calendar 
+    mode="range" 
+    :number-of-months="2" 
+    :disable-year-nav="true"
+  />
+
+   <Calendar 
+   mode="range" 
+   :number-of-months="2" 
+   />
+</ template>

@@ -17,48 +17,9 @@ const addTabs = [
   { label: "bun", code: `bunx vueon-ui add Checkbox` },
 ];
 
-// example 1 — single checkbox
-const exampleSingle =
-`<script>
-import { Checkbox } from "@/components/ui/Checkbox"
-import Label from "@/components/ui/Label"
-</scr` + `ipt>
+import usageRaw from "./usage.txt?raw";
+const usageExample = ref(usageRaw);
 
-<template>
-  <div class="flex items-center space-x-2">
-    <Checkbox id="terms" />
-    <Label for="terms">Accept terms</Label>
-  </div>
-</template>`;
-
-// example 2 — checkbox group
-const exampleGroup =
-`<script>
-import { Checkbox, CheckboxGroup } from "@/components/ui/Checkbox"
-import Label from "@/components/ui/Label"
-
-export default {
-  data() {
-    return {
-      fruits: ["apple"]
-    }
-  }
-}
-</scr` + `ipt>
-
-<template>
-  <CheckboxGroup v-model="fruits">
-    <div class="flex items-center space-x-2">
-      <Checkbox value="apple" />
-      <Label>Apple</Label>
-    </div>
-
-    <div class="flex items-center space-x-2">
-      <Checkbox value="banana" />
-      <Label>Banana</Label>
-    </div>
-  </CheckboxGroup>
-</template>`;
 </script>
 
 <template>
@@ -75,7 +36,7 @@ export default {
     </section>
 
     <!-- CodeBlock for single checkbox -->
-    <CodeBlock filename="src/App.vue" :code="exampleSingle" />
+    <CodeBlock filename="src/App.vue" :code="usageExample" />
   <!-- Installation -->
   <h2 class="text-2xl font-bold">Installation</h2>
     <CodeTabs :tabs="addTabs" />
@@ -99,7 +60,7 @@ export default {
     </section>
 
     <!-- CodeBlock for group -->
-    <CodeBlock filename="src/App.vue" :code="exampleGroup" />
+    <CodeBlock filename="src/App.vue" :code="usageExample" />
 
   
   </div>

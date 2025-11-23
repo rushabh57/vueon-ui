@@ -13,21 +13,13 @@ const addTabs = [
   { label: "bun", code: `bunx vueon-ui add AspectRatio` },
 ];
 
-// usage example
-const usageExample =
-`<script>
-import AspectRatio from "@/components/ui/AspectRatio"
-</scr` + `ipt>
 
-<template>
-  <AspectRatio :ratio="1">
-    <img
-      class="h-full w-full object-cover"
-      src="..."
-      alt="Landscape photograph by Tobias Tullius"
-    />
-  </AspectRatio>
-</template>`;
+
+import usageRaw from "./usage.txt?raw";
+import { ref } from "vue";
+const usageCode = ref(usageRaw);
+
+
 </script>
 
 <template>
@@ -53,12 +45,7 @@ import AspectRatio from "@/components/ui/AspectRatio"
 
     <CodeBlock
       filename="src/App.vue"
-      :code="usageExample"
-      :indent="[
-        [6, 22],
-        [7, 42], [8,42] , [9,42] , [10,42], 
-        [11,42], [12,22] 
-      ]"
+      :code="usageCode"
     />
   </div>
 </template>

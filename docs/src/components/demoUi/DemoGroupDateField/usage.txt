@@ -1,0 +1,15 @@
+<script>
+import GroupDateField from "@/components/ui/GroupDateField/GroupDateField.vue";
+
+const unavailableDate = (date) => date.day === 19;
+</script>
+
+<template>
+  <GroupDateField
+    label="Booking Dates"
+    id="booking-dates"
+    :withPopup="true"
+    :months="2"
+    :isDateUnavailable="unavailableDate"
+  />
+</template>

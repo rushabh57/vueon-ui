@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { MessageSquare } from "lucide-vue-next"
-
 import CodeBlock from "../../CodeBlock.vue"
 import CodeTabs from "../../CodeTabs.vue"
 
@@ -24,42 +22,10 @@ const addTabs = [
   { label: "bun", code: `bunx vueon-ui add Dialog` },
 ]
 
-const usageExample =
-`<scr` + `ipt lang="ts">
-import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter
-} from "@/components/ui/Dialog"
+import usageRaw from "./usage.txt?raw";
+import { ref } from "vue";
+const usageExample = ref(usageRaw);
 
-import { Button } from "@/components/ui/Button"
-</scr` + `ipt>
-
-<template>
-  <Dialog>
-    <DialogTrigger>
-      <Button>Open Dialog</Button>
-    </DialogTrigger>
-
-    <DialogContent>
-      <DialogHeader>
-        <DialogTitle>Are you absolutely sure?</DialogTitle>
-        <DialogDescription>
-          This action cannot be undone.
-        </DialogDescription>
-      </DialogHeader>
-
-      <DialogFooter>
-        <Button variant="default">Cancel</Button>
-        <Button variant="destructive">Confirm</Button>
-      </DialogFooter>
-    </DialogContent>
-  </Dialog>
-</template>`;
 </script>
 
 <template>

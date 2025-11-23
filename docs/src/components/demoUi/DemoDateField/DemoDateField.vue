@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import CodeBlock from "../../CodeBlock.vue";
 import CodeTabs from "../../CodeTabs.vue";
 import DateField from "../../ui/DateField/DateField.vue";
@@ -11,18 +12,10 @@ const addTabs = [
   { label: "bun", code: `bunx vueon-ui add DateField` },
 ];
 
-// Usage example
-const usageExample = `<script>
-import DateField from "@/components/ui/DateField";
-</scr` + `ipt>
+import usageRaw from "./usage.txt?raw";
+const usageExample = ref(usageRaw);
 
-<template>
-  <DateField
-    withPopup
-    label="Birthday"
-    :is-date-unavailable="date => date.day === 19"
-  />
-</template>`;
+
 </script>
 
 <template>
@@ -46,7 +39,6 @@ import DateField from "@/components/ui/DateField";
     <CodeBlock
       filename="src/App.vue"
       :code="usageExample"
-      :indent="[[9,20],[11,60]]"
     />
 
     <!-- Props -->

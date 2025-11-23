@@ -21,47 +21,9 @@ const addTabs = [
   { label: "bun", code: `bunx vueon-ui add HoverCard` },
 ];
 
-// Usage example
-const usageExample = `<script>
-import {
-  HoverCard,
-  HoverCardTrigger,
-  HoverCardPortal,
-  HoverCardContent,
-  HoverCardArrow
-} from "@vueon/components/HoverCard";
-import Button from "@vueon/components/ui/Button";
-</scr` + `ipt>
-
-<template>
-  <HoverCard>
-    <HoverCardTrigger>
-      <Button>
-        @vueonui
-      </Button>
-    </HoverCardTrigger>
-
-    <HoverCardPortal>
-      <HoverCardContent class="flex flex-col space-y-2">
-        <div class="flex items-center space-x-2">
-          <img
-            src="https://avatars.githubusercontent.com/u/000000?v=4"
-            alt="avatar"
-            class="h-10 w-10 rounded-full"
-          />
-          <div>
-            <p class="text-sm font-medium">@vueonui</p>
-            <p class="text-xs text-muted-foreground">Vue + Shadcn inspired UI</p>
-          </div>
-        </div>
-        <p class="text-sm text-muted-foreground">
-          Modern headless components built with Reka UI.
-        </p>
-        <HoverCardArrow />
-      </HoverCardContent>
-    </HoverCardPortal>
-  </HoverCard>
-</template>`;
+import usageRaw from "./usage.txt?raw";
+import { ref } from "vue";
+const usageExample = ref(usageRaw);
 </script>
 
 <template>

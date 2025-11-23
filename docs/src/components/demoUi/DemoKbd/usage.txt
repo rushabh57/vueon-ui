@@ -1,0 +1,10 @@
+<script setup lang="ts">
+import { Kbd, KbdGroup } from '@/components/ui/Kbd'
+</script>
+
+<template>
+    <KbdGroup>
+        <Kbd>Ctrl</Kbd>
+        <Kbd>K</Kbd>
+    </KbdGroup>
+</template>

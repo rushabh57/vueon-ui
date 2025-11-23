@@ -10,7 +10,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "../../ui/Breadcrumb";
+} from "@/components/ui/Breadcrumb";
 
 // installation tabs
 const addTabs = [
@@ -20,40 +20,10 @@ const addTabs = [
   { label: "bun", code: `bunx vueon-ui add Breadcrumb` },
 ];
 
-// usage example
-const usageExample =
-`<script>
-import {  
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator 
-} from "@/components/ui/Breadcrumb"
-</scr` + `ipt>
+import usageRaw from "./usage.txt?raw";
+import { ref } from "vue";
+const usageExample =  ref(usageRaw); 
 
-<template>
-  <Breadcrumb>
-    <BreadcrumbList>
-      <BreadcrumbItem>
-        <BreadcrumbLink to="/">Home</BreadcrumbLink>
-      </BreadcrumbItem>
-
-      <BreadcrumbSeparator />
-
-      <BreadcrumbItem>
-        <BreadcrumbLink to="/category">Category</BreadcrumbLink>
-      </BreadcrumbItem>
-
-      <BreadcrumbSeparator />
-
-      <BreadcrumbItem>
-        <BreadcrumbPage>Current Page</BreadcrumbPage>
-      </BreadcrumbItem>
-    </BreadcrumbList>
-  </Breadcrumb>
-</template>`;
 </script>
 
 <template>
@@ -92,9 +62,7 @@ import {
     <CodeBlock
       filename="src/App.vue"
       :code="usageExample"
-      :indent="[
-       
-      ]"
+
     />
   </div>
 </template>

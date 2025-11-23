@@ -15,6 +15,11 @@ import {
 
 import { Button } from "../../ui/Button"
 
+
+import usageRaw from "./usage.txt?raw";
+import { ref } from "vue"
+const usageExample = ref(usageRaw);
+
 // installation tabs
 const addTabs = [
   { label: "npm", code: `npx vueon-ui add Card` },
@@ -23,35 +28,7 @@ const addTabs = [
   { label: "bun", code: `bunx vueon-ui add Card` },
 ]
 
-const usageExample =
-`<scr` + `ipt lang="ts">
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter
-} from "@/components/ui/Card"
-import { Button } from "@/components/ui/Button"
-</scr` + `ipt>
 
-<template>
-  <Card class="w-80">
-    <CardHeader>
-      <CardTitle>Profile Card</CardTitle>
-      <CardDescription>Frontend Developer</CardDescription>
-    </CardHeader>
-
-    <CardContent>
-      <p>Passionate about creating responsive web apps with Vue and Tailwind.</p>
-    </CardContent>
-
-    <CardFooter>
-      <Button>Follow</Button>
-    </CardFooter>
-  </Card>
-</template>`;
 
 </script>
 

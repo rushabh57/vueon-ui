@@ -14,6 +14,12 @@ const installTabs = [
 
 // Example data
 const unavailableDates = [new Date(2025, 10, 1), new Date(2025, 10, 15)]
+
+
+import usageRaw from "./usage.txt?raw";
+import CodeBlock from '../../CodeBlock.vue'
+const usageExample = ref(usageRaw);
+
 </script>
 
 <template>
@@ -32,6 +38,12 @@ const unavailableDates = [new Date(2025, 10, 1), new Date(2025, 10, 15)]
         <Calendar />
       </div>
     </section>
+
+    <CodeBlock
+        filename="src/App.vue"
+        :code="usageExample"
+        :highlight-lines="[10,11,17]"
+      />
 
    </div>
 

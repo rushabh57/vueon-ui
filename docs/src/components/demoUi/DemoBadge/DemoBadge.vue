@@ -12,14 +12,11 @@ const addTabs = [
   { label: "bun", code: `bunx vueon-ui add Badge` },
 ]
 
-const usageExample = `<script> 
-import { Badge } from "@/components/ui/Badge" 
-</scr` + `ipt>
-  <template>
-    <Badge>
-          Badge
-    </Badge> 
-  </template>`
+
+import usageRaw from "./usage.txt?raw";
+import { ref } from "vue";
+const usageExample = ref(usageRaw);
+
 </script>
 
 <template>
@@ -34,7 +31,7 @@ import { Badge } from "@/components/ui/Badge"
     <CodeTabs :tabs="addTabs" />
 
     <h2 class="text-2xl font-bold">Usage</h2>
-    <CodeBlock filename="src/App.vue" :code="usageExample" />
+    <CodeBlock :highlight-lines="[5]" filename="src/App.vue" :code="usageExample" />
 
     <div class="space-y-6">
 
@@ -64,7 +61,7 @@ import { Badge } from "@/components/ui/Badge"
       </div>
 
       <div>
-        <h3 class="text-xl font-bold">wit icon badge</h3>
+        <h3 class="text-xl font-bold">with icon badge</h3>
 
         <section class="border border-input h-40 w-full rounded-lg flex items-center justify-center gap-4">
           <Badge variant="default"> 

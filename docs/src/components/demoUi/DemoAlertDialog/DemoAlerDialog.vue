@@ -16,6 +16,7 @@ import {
   AlertDialogAction,
 } from "../../ui/AlertDialog";
 
+import { ref } from "vue";
 // installation tabs
 const addTabs = [
   { label: "npm", code: `npx vueon-ui add AlertDialog` },
@@ -24,45 +25,10 @@ const addTabs = [
   { label: "bun", code: `bunx vueon-ui add AlertDialog` },
 ];
 
-// usage example
-const usageExample =
-  `<script>
-import { 
-  AlertDialog,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogHeader,
-  AlertDialogFooter,
-  AlertDialogTitle,
-  AlertDialogDescription,
-  AlertDialogCancel,
-  AlertDialogAction
-} from "@/components/ui/AlertDialog"
-import { Button } from "@/components/ui/Button"
-</scr` +
-  `ipt>
+import usageRaw from "./usage.txt?raw";
+const usageCode = ref(usageRaw);
 
-<template>
-  <AlertDialog>
-    <AlertDialogTrigger>
-      <Button variant="outline">Show Dialog</Button>
-    </AlertDialogTrigger>
 
-    <AlertDialogContent>
-      <AlertDialogHeader>
-        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-        <AlertDialogDescription>
-          This action cannot be undone. It will permanently delete your account.
-        </AlertDialogDescription>
-      </AlertDialogHeader>
-
-      <AlertDialogFooter>
-        <AlertDialogCancel>Cancel</AlertDialogCancel>
-        <AlertDialogAction>Continue</AlertDialogAction>
-      </AlertDialogFooter>
-    </AlertDialogContent>
-  </AlertDialog>
-</template>`;
 </script>
 
 <template>
@@ -99,7 +65,7 @@ import { Button } from "@/components/ui/Button"
     <!-- You can adjust indentation the same way as Accordion demo -->
     <CodeBlock
       filename="src/App.vue"
-      :code="usageExample"
+      :code="usageCode"
     />
   </div>
 </template>

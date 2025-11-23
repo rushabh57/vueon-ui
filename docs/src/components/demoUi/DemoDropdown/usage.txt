@@ -1,0 +1,33 @@
+<script lang="ts">
+import {
+  DropdownMenu,
+  DropdownTrigger,
+  DropdownContent,
+  DropdownLabel,
+  DropdownSeparator,
+  DropdownItem,
+  DropdownArrow
+} from "@/components/ui/Dropdown";
+
+import { Button } from "@/components/ui/Button";
+</script>
+
+<template>
+  <DropdownMenu>
+    <DropdownTrigger>
+      <Button>Open</Button>
+    </DropdownTrigger>
+
+    <DropdownContent>
+      <DropdownLabel>My Account</DropdownLabel>
+      <DropdownSeparator />
+
+      <DropdownItem>Profile</DropdownItem>
+      <DropdownItem>Billing</DropdownItem>
+      <DropdownItem>Team</DropdownItem>
+      <DropdownItem>Subscription</DropdownItem>
+
+      <DropdownArrow />
+    </DropdownContent>
+  </DropdownMenu>
+</template>
