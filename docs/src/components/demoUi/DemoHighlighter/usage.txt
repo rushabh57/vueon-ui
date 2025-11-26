@@ -1,0 +1,15 @@
+<script setup lang="ts">
+import { Highlighter } from "@/components/ui/Highlighter";
+import { Badge } from "@/components/ui/Badge";
+</script>
+
+<template>
+  <main class="space-y-10">
+      <section class="border border-border rounded-t-md p-10 flex gap-4 items-center justify-center bg-background">
+        <Highlighter>Default highlight</Highlighter>
+        <Highlighter variant="informative">Info</Highlighter>
+        <Highlighter variant="positive" mode="bordered">Success</Highlighter>
+        <Highlighter variant="caution" mode="subtle">Warning</Highlighter>
+      </section>
+  </main>
+</template>

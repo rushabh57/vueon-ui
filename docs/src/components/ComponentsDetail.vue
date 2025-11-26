@@ -54,6 +54,9 @@ import DemoCalendar from "./demoUi/DemoCalendar/DemoCalendar.vue"
 import DemoAlert from "./demoUi/DemoAlert/DemoAlert.vue"
 import DemoTree from "./demoUi/DemoTree/DemoTree.vue"
 import DemoToolbar from "./demoUi/DemoToolbar/DemoToolbar.vue"
+import DemoSpeedDial from "./demoUi/DemoSpeedDial/DemoSpeedDial.vue"
+import DemoIndicator from "./demoUi/DemoIndicator/Indicator.vue"
+import DemoHighlighter from "./demoUi/DemoHighlighter/DemoHighlighter.vue"
 
 const demoComponents: Record<string, any> = {
   Accordion: DemoAccordion,
@@ -102,7 +105,10 @@ const demoComponents: Record<string, any> = {
   Stepper: DemoStepper,
   Calendar: DemoCalendar,
   Alert: DemoAlert,
-  Tree: DemoTree
+  Tree: DemoTree,
+  SpeedDial: DemoSpeedDial,
+  Indicator: DemoIndicator,
+  Highlighter: DemoHighlighter
 }
 
 const route = useRoute()

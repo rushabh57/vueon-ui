@@ -1,0 +1,24 @@
+<script setup lang="ts">
+import { Button } from "@/components/ui/Button";
+import { Indicator } from "@/components/ui/Indicator";
+</script>
+
+<template>
+  <main class="space-y-10">
+        <Indicator variant="destructive" rounded position="top-right" size="sm">
+          <Button>Messages</Button>
+          <template #indicator>12</template>
+        </Indicator>
+
+        <Indicator variant="positive" rounded position="bottom-center" size="md">
+          <img src="./VUEONUI_LOGO.png" class="w-12 h-12 rounded-full" />
+          <template #indicator>!</template>
+        </Indicator>
+
+        <Indicator variant="informative" rounded position="center" size="lg">
+          <div class="w-16 h-16 bg-gray-200"></div>
+          <template #indicator>3</template>
+        </Indicator>
+      </section>
+  </main >
+</template>

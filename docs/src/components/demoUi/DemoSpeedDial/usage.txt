@@ -1,0 +1,15 @@
+<script setup lang="ts">
+import { PlusIcon } from "lucide-vue-next";
+import { SpeedDial } from "@/components/ui/SpeedDial";
+
+</script>
+
+<template>
+        <SpeedDial 
+        :mainIcon="PlusIcon" 
+        :plusToCross="true" 
+        direction="up" 
+        variant="default" 
+        tooltipPlacement="left" 
+        :actions="[{ icon: PlusIcon, label: 'Add' }]" />
+</template>
