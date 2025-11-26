@@ -1,80 +1,147 @@
 <script setup lang="ts">
+import { ref } from "vue";
+
 import CodeBlock from "../../CodeBlock.vue";
 import CodeTabs from "../../CodeTabs.vue";
 
-// Import OtpField component
 import OtpField from "../../ui/OtpField/OtpField.vue";
-import { ref } from "vue";
 
-// State
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../../ui/Accordion";
+import { Badge } from "../../ui/Badge";
+
+// STATE
 const otp = ref("");
 
-// Installation tabs
-const addTabs = [
+// INSTALL TABS
+const installTabs = [
   { label: "npm", code: `npx vueon-ui add OtpField` },
   { label: "pnpm", code: `pnpm dlx vueon-ui add OtpField` },
   { label: "yarn", code: `yarn dlx vueon-ui add OtpField` },
   { label: "bun", code: `bunx vueon-ui add OtpField` },
 ];
 
-// Usage example
-const usageExample = `<script>
-import { ref } from "vue";
-import OtpField from "@vueon/components/OtpField";
-const otp = ref("");
-</scr` + `ipt>
+// USAGE
+import usageRaw from "./usage.txt?raw";
+const usageExample = ref(usageRaw);
 
-<template>
-  <h1 class="text-2xl font-semibold mb-6">OTP Verification</h1>
-
-  <OtpField v-model="otp" :length="6" />
-
-  <p class="mt-4 text-sm text-muted-foreground">
-    Entered OTP: <span class="font-medium text-primary">{{ otp }}</span>
-  </p>
-</template>`;
+// PROPS DATA
+const otpProps = [
+  {
+    component: "OtpField",
+    props: [
+      {
+        name: "v-model",
+        type: "string",
+        required: true,
+        default: "—",
+        description: "Two-way bound OTP value."
+      },
+      {
+        name: "length",
+        type: "number",
+        required: false,
+        default: "6",
+        description: "Number of OTP input boxes."
+      },
+      {
+        name: "class",
+        type: "string",
+        required: false,
+        default: "—",
+        description: "Custom classes for styling."
+      }
+    ]
+  }
+];
 </script>
 
 <template>
-  <div class="space-y-6">
+  <main class="space-y-10">
 
-    <!-- Preview -->
-   
-    <section class="border border-input rounded-lg p-4 flex flex-col items-center">
-      <h1 class="text-2xl font-semibold mb-4">OTP Verification</h1>
+    <!-- PREVIEW -->
+    <div>
+      <section
+        class="border border-border rounded-t-md min-h-[200px] p-6 flex flex-col items-center justify-center bg-background"
+      >
+        <h1 class="text-2xl font-semibold mb-4">OTP Verification</h1>
 
-      <OtpField v-model="otp" :length="6" />
+        <OtpField v-model="otp" :length="6" />
 
-      <p class="mt-4 text-sm text-muted-foreground">
-        Entered OTP: <span class="font-medium text-primary">{{ otp }}</span>
-      </p>
+        <p class="mt-4 text-sm text-muted-foreground">
+          Entered OTP:
+          <span class="font-medium text-primary">{{ otp }}</span>
+        </p>
+      </section>
+
+      <section class="border border-border border-t-0 rounded-b-md">
+        <CodeBlock
+          class="rounded-none border-0"
+          :hideheading="true"
+          :code="`<OtpField v-model='otp' :length='6' />`"
+        />
+      </section>
+    </div>
+
+    <!-- INSTALLATION -->
+    <section>
+      <h2 id="installation" class="text-2xl font-bold mb-0.5">Installation</h2>
+      <CodeTabs :tabs="installTabs" />
     </section>
 
-    <!-- Installation -->
-    <h2 class="text-2xl font-bold">Installation</h2>
-    <CodeTabs :tabs="addTabs" />
+    <!-- USAGE -->
+    <section>
+      <h2 id="usage" class="text-2xl font-bold mb-0.5">Usage</h2>
+      <CodeBlock filename="src/App.vue" :code="usageExample" />
+    </section>
 
-    <!-- Usage -->
-    <h2 class="text-2xl font-bold">Usage</h2>
-    <CodeBlock
-      filename="src/App.vue"
-      :code="usageExample"
-      :indent="[[7, 22], [9, 48]]"
-    />
+    <!-- PROPS -->
+    <section>
+      <h2 id="props" class="text-2xl font-bold mb-0.5">Props</h2>
 
-    <!-- Props -->
-    <h2 class="text-2xl font-bold">Props</h2>
-    <ul class="list-disc pl-5 space-y-1 text-sm">
-      <li><b>v-model</b> — bound OTP value</li>
-      <li><b>length</b> — number of OTP input boxes</li>
-      <li><b>class</b> — custom class for styling</li>
-    </ul>
+      <Accordion type="single" collapsible>
+        <AccordionItem
+          v-for="component in otpProps"
+          :key="component.component"
+          :value="component.component"
+        >
+          <AccordionTrigger>
+            &lt;{{ component.component }} /&gt; Props
+          </AccordionTrigger>
 
-    <!-- Events -->
-    <h2 class="text-2xl font-bold">Events</h2>
-    <ul class="list-disc pl-5 space-y-1 text-sm">
-      <li><b>update:modelValue</b> — emitted when OTP changes</li>
-    </ul>
+          <AccordionContent>
+            <div class="mt-3 space-y-5 border-l border-primary/50 px-4">
 
-  </div>
+              <div
+                v-for="prop in component.props"
+                :key="prop.name"
+                class="space-y-1 border border-border p-4 rounded-2xl relative hover:bg-accent/30 transition"
+              >
+                <h4 class="text-lg font-semibold">
+                  {{ prop.name }}
+                  <span class="text-xs text-muted-foreground font-normal">
+                    ({{ prop.type }})
+                  </span>
+                </h4>
+
+                <p class="text-xs text-muted-foreground">{{ prop.description }}</p>
+
+                <div class="flex gap-2 pt-2 text-xs absolute right-2 top-2">
+                  <Badge :variant="prop.required ? 'destructive' : 'positive'">
+                    {{ prop.required ? "Required" : "Optional" }}
+                  </Badge>
+
+                  <Badge variant="informative">
+                    Default: {{ prop.default }}
+                  </Badge>
+                </div>
+              </div>
+
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+
+    </section>
+
+  </main>
 </template>

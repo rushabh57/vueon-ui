@@ -1,0 +1,50 @@
+<script setup>
+import {
+  Menubar,
+  MenubarMenu,
+  MenubarTrigger,
+  MenubarContent,
+  MenubarItem,
+  MenubarLabel,
+  MenubarSeparator,
+  MenubarCheckboxItem,
+  MenubarItemIndicator,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarSub,
+  MenubarSubTrigger,
+  MenubarSubContent,
+  MenubarArrow
+} from "@/components/ui/Menubar"
+
+import { Check, Circle, ChevronRight } from "lucide-vue-next"
+import { ref } from "vue"
+
+const toolbar = ref(true)
+const theme = ref("light")
+</script>
+
+<template>
+  <Menubar>
+    <MenubarMenu>
+      <MenubarTrigger>File</MenubarTrigger>
+      <MenubarContent>
+        <MenubarLabel>File</MenubarLabel>
+        <MenubarItem>New File</MenubarItem>
+        <MenubarItem>Open...</MenubarItem>
+        <MenubarSeparator />
+        <MenubarSub>
+          <MenubarSubTrigger>
+            Export
+            <ChevronRight class="ml-auto h-4 w-4" />
+          </MenubarSubTrigger>
+          <MenubarSubContent>
+            <MenubarItem>PDF</MenubarItem>
+            <MenubarItem>DOCX</MenubarItem>
+            <MenubarItem>TXT</MenubarItem>
+          </MenubarSubContent>
+        </MenubarSub>
+      </MenubarContent>
+    </MenubarMenu>
+  </Menubar>
+</template>

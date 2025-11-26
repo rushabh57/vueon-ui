@@ -2,75 +2,153 @@
 import { CloverIcon } from "lucide-vue-next";
 import CodeBlock from "../../CodeBlock.vue";
 import CodeTabs from "../../CodeTabs.vue";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../../ui/Accordion";
 import Badge from "../../ui/Badge/Badge.vue";
 
-// installation tabs
+import { ref } from "vue";
+
+// Installation tabs
 const addTabs = [
   { label: "npm", code: `npx vueon-ui add Badge` },
   { label: "pnpm", code: `pnpm dlx vueon-ui add Badge` },
   { label: "yarn", code: `yarn dlx vueon-ui add Badge` },
   { label: "bun", code: `bunx vueon-ui add Badge` },
-]
+];
 
-
+// Usage example
 import usageRaw from "./usage.txt?raw";
-import { ref } from "vue";
 const usageExample = ref(usageRaw);
 
+// Props
+const badgePropsData = [
+  {
+    component: "Badge",
+    props: [
+      {
+        name: "variant",
+        type: `"default" | "secondary" | "outline" | "destructive"`,
+        required: false,
+        default: `"default"`,
+        description: "Badge visual style."
+      },
+    ]
+  }
+];
 </script>
 
 <template>
-  <div class="space-y-4">
+  <main class="space-y-10">
 
-    <!-- Preview -->
-    <section class="border border-input h-52 w-full rounded-lg flex items-center justify-center">
-      <Badge>Normal</Badge>
+    <!-- PREVIEW -->
+    <section >
+      <section class="border border-border rounded-t-md h-52 flex items-center justify-center bg-background">
+        <Badge>
+          Normal
+        </Badge>
+      </section>
+
+      <section class="border border-border border-t-0 rounded-b-md">
+        <CodeBlock
+          class="rounded-none border-0"
+          :hideheading="true"
+          :code="`<Badge></Badge>`"
+        />
+      </section>
     </section>
 
-    <h2 class="text-2xl font-bold">Installation</h2>
-    <CodeTabs :tabs="addTabs" />
+    <!-- INSTALLATION -->
+    <section>
+      <h2 class="text-2xl font-bold mb-0.5">Installation</h2>
+      <CodeTabs :tabs="addTabs" />
+    </section>
 
-    <h2 class="text-2xl font-bold">Usage</h2>
-    <CodeBlock :highlight-lines="[5]" filename="src/App.vue" :code="usageExample" />
+    <!-- USAGE -->
+    <section>
+      <h2 class="text-2xl font-bold mb-0.5">Usage</h2>
+      <CodeBlock :highlight-lines="[5]" filename="src/App.vue" :code="usageExample" />
+    </section>
 
-    <div class="space-y-6">
+    <!-- VARIANTS -->
+    <section>
+      <h2 id="variants" class="text-2xl font-bold mb-0.5">Variants</h2>
 
-    
+      <section class="border border-border rounded-t-md h-fit p-10 flex flex-col gap-8 items-center">
 
-      <div>
-        <h3 class="text-xl font-bold">badge variant: secondary</h3>
-        <section class="border border-input h-40 w-full rounded-lg flex items-center justify-center gap-4">
-          <Badge variant="secondary">secondary</Badge>
-        </section>
-      </div>
-
-      <div>
-        <h3 class="text-xl font-bold">outline badge</h3>
-
-        <section class="border border-input h-40 w-full rounded-lg flex items-center justify-center gap-4">
+        <div class="flex gap-3 flex-wrap justify-center">
+          <Badge>Default</Badge>
+          <Badge variant="secondary">Secondary</Badge>
           <Badge variant="outline">Outline</Badge>
-        </section>
-      </div>
-
-      <div>
-        <h3 class="text-xl font-bold">destructive badge </h3>
-   
-        <section class="border border-input h-40 w-full rounded-lg flex items-center justify-center gap-4">
           <Badge variant="destructive">Destructive</Badge>
-        </section>
-      </div>
 
-      <div>
-        <h3 class="text-xl font-bold">with icon badge</h3>
-
-        <section class="border border-input h-40 w-full rounded-lg flex items-center justify-center gap-4">
-          <Badge variant="default"> 
-            <CloverIcon class="mr-1 h-4 w-4"  />
-            Destructive
+          <Badge variant="default">
+            <CloverIcon class="mr-1 h-4 w-4" />
+            With Icon
           </Badge>
-        </section>
-      </div>
+        </div>
 
-    </div>
-  </div>
+      </section>
+
+      <section class="border border-border border-t-0 rounded-b-md">
+        <CodeBlock
+          class="rounded-none border-0"
+          :hideheading="true"
+          :code="`<Badge>Default</Badge>
+<Badge variant='secondary'>Secondary</Badge>
+<Badge variant='outline'>Outline</Badge>
+<Badge variant='destructive'>Destructive</Badge>
+<Badge variant='default'>
+  <CloverIcon class='mr-1 h-4 w-4' /> With Icon
+</Badge>`"
+        />
+      </section>
+    </section>
+
+    <!-- PROPS -->
+    <section>
+      <h2 id="props" class="text-2xl font-bold mb-0.5">Props</h2>
+
+      <Accordion type="single" collapsible>
+        <AccordionItem
+          v-for="component in badgePropsData"
+          :key="component.component"
+          :value="component.component"
+        >
+          <AccordionTrigger>
+            &lt;{{ component.component }} /&gt; Props
+          </AccordionTrigger>
+
+          <AccordionContent>
+            <div class="mt-3 space-y-5 border-l border-primary/50 px-4">
+              <div
+                v-for="prop in component.props"
+                :key="prop.name"
+                class="space-y-1 border border-border p-4 rounded-2xl relative hover:bg-accent/30 transition"
+              >
+
+                <h4 class="text-lg font-semibold">
+                  {{ prop.name }}
+                  <span class="text-xs text-muted-foreground font-normal">
+                    ({{ prop.type }})
+                  </span>
+                </h4>
+
+                <p class="text-xs text-muted-foreground">
+                  {{ prop.description }}
+                </p>
+
+                <div class="flex gap-2 pt-2 text-xs absolute right-2 top-2">
+                  <Badge variant="positive">Optional</Badge>
+                  <Badge variant="informative">Default: {{ prop.default }}</Badge>
+                </div>
+
+              </div>
+            </div>
+          </AccordionContent>
+
+        </AccordionItem>
+      </Accordion>
+
+    </section>
+
+  </main>
 </template>

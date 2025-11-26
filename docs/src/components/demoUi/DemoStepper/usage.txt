@@ -1,0 +1,53 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+import {
+  Stepper,
+  StepperItem,
+  StepperTrigger,
+  StepperIndicator,
+  StepperTitle,
+  StepperDescription,
+  StepperSeparator
+} from "@components/ui/Stepper"
+import { Truck, CreditCard, CheckCircle } from 'lucide-vue-next'
+
+</script>
+
+<template>
+        <Stepper orientation="horizontal" :default-value="2" class="flex flex-row gap-1 w-full max-w-3xl">
+          <StepperItem
+            v-for="item in steps"
+            :key="item.step"
+            :step="item.step"
+            class="flex items-center !gap-1 cursor-pointer group relative flex-1"
+          >
+            <!-- Step circle with icon -->
+            <StepperTrigger class="w-14">
+              <StepperIndicator>
+                <component
+                    :is="item.icon"
+                    class="w-4 h-4 text-primary group-data-[state=active]:text-white group-data-[state=completed]:text-white"
+                    />            
+                </StepperIndicator>
+            </StepperTrigger>
+
+            <!-- Step text -->
+            <div class="flex flex-col items-start w-full">
+              <StepperTitle
+                class="text-sm font-semibold transition-colors group-data-[state=active]:text-primary"
+              >
+                {{ item.title }}
+              </StepperTitle>
+              <StepperDescription class="text-xs w-full text-muted-foreground">
+                {{ item.description }}
+              </StepperDescription>
+            </div>
+
+            <!-- Separator -->
+            <StepperSeparator
+              v-if="item.step !== steps[steps.length - 1].step"
+              class="w-12 h-[1px] bg-border mx-3"
+            />
+          </StepperItem>
+        </Stepper>
+</template>

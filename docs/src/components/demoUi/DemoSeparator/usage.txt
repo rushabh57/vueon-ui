@@ -1,0 +1,19 @@
+<script setup lang="ts">
+import Separator from "@/components/ui/Separator";
+</script>
+
+<template>
+  <div class="p-4 w-fit">
+    <div class="flex gap-4 items-center h-10">
+      <p>Veni</p>
+      <Separator orientation="vertical" />
+      <p>Vedi</p>
+      <Separator orientation="vertical" />
+      <p>Veci</p>
+    </div>
+
+    <Separator class="my-3" />
+
+    <p>Above is the example of the separator.</p>
+  </div>
+</template>

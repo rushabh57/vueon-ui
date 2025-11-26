@@ -14,6 +14,16 @@ export const variants = cva("", {
       ghost:
         "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
       link: "text-primary underline-offset-4 hover:underline",
+
+       /* NEW VARIANTS */
+       informative:
+       "bg-informative text-white shadow-xs hover:bg-informative/90 focus-visible:ring-informative/20 dark:focus-visible:ring-informative/40 dark:bg-informative/60",
+
+     positive:
+       "bg-positive text-white shadow-xs hover:bg-positive/90 focus-visible:ring-positive/20 dark:focus-visible:ring-positive/40 dark:bg-positive/60",
+
+     caution:
+       "bg-caution text-white shadow-xs hover:bg-caution/90 focus-visible:ring-caution/20 dark:focus-visible:ring-caution/40 dark:bg-caution/60",
     },
   },
   defaultVariants: {

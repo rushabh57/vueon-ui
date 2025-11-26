@@ -1,0 +1,41 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+import { 
+Sheet, 
+SheetTrigger, 
+SheetContent, 
+SheetHeader, 
+SheetTitle, 
+SheetDescription, 
+SheetFooter, 
+SheetClose } from '@components/ui/Sheet'
+import { Button } from '@components/ui/Button'
+import Input from '@components/ui/Input'
+
+</script>
+
+<template>
+    <Sheet>
+        <SheetTrigger>
+          <Button class="btn btn-primary">Open Sheet</Button>
+        </SheetTrigger>
+
+        <SheetContent side="right">
+          <SheetHeader>
+            <SheetTitle>Account</SheetTitle>
+            <SheetDescription>Here's an your account details</SheetDescription>
+          </SheetHeader>
+
+          <div class="pt-4 space-y-1">
+            <Input placeholder="username" />
+            <Input placeholder="password" />
+          </div>
+
+          <SheetFooter>
+            <Button variant="link">Save</Button>
+          </SheetFooter>
+
+          <SheetClose />
+        </SheetContent>
+    </Sheet>
+</template>

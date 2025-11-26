@@ -120,10 +120,22 @@
       "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/HoverCard/HoverCard.vue",
       "status": "experimental"
     },
+    "Highlighter": {
+      "path": "src/components/Highlighter/Highlighter.vue",
+      "description": "Highlighter is a design-system-ready text emphasis component that upgrades the native <mark> tag. It supports variants, custom colors, and filled/bordered/subtle modes for flexible highlighting.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Highlighter/Highlighter.vue",
+      "status": "experimental"
+    },
     "Input": {
       "path": "src/components/Input/Input.vue",
       "description": "Text input field component.",
       "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Input/Input.vue",
+      "status": "stable"
+    },
+    "Indicator": {
+      "path": "src/components/Indicator/Indicator.vue",
+      "description": "A small badge or marker over a component to show status, count, or notifications.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Indicator/Indicator.vue",
       "status": "stable"
     },
     "Kbd": {
@@ -228,6 +240,12 @@
       "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Splitter/Splitter.vue",
       "status": "stable"
     },
+    "SpeedDial": {
+      "path": "src/components/SpeedDial/SpeedDial.vue",
+      "description": "A circular button that floats above content to represent the primary action of a page or interface.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/SpeedDial/SpeedDial.vue",
+      "status": "stable"
+    },
     "Stepper": {
       "path": "src/components/Stepper/Stepper.vue",
       "description": "Step-by-step navigation component.",
@@ -289,7 +307,7 @@
       "status": "experimental"
     }
   },
-  "countComponents": 47,
+  "countComponents": 51,
   "theme": {
     "path": "src/theme/variant.ts",
     "description": "Globalized theme variant utilities used by all components.",

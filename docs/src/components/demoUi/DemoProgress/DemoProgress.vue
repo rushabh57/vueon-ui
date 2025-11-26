@@ -1,65 +1,140 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Progress } from "../../ui/Progress"
-import CodeTabs from '../../CodeTabs.vue'
+import { ref } from "vue";
+import CodeBlock from "../../CodeBlock.vue";
+import CodeTabs from "../../CodeTabs.vue";
 
-// Installation tabs
+import { Progress } from "../../ui/Progress";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../../ui/Accordion";
+import { Badge } from "../../ui/Badge";
+
+// INSTALL TABS
 const installTabs = [
-  { label: 'npm', code: `npx vueon-ui add Progress` },
-  { label: 'yarn', code: `yarn vueon-ui add Progress` },
-  { label: 'pnpm', code: `pnpx vueon-ui add Progress` },
-  { label: 'bun', code: `bun vueon-ui add Progress` },
-]
+  { label: "npm", code: `npx vueon-ui add Progress` },
+  { label: "pnpm", code: `pnpm dlx vueon-ui add Progress` },
+  { label: "yarn", code: `yarn dlx vueon-ui add Progress` },
+  { label: "bun", code: `bunx vueon-ui add Progress` },
+];
 
-// Animated progress example
-const animatedValue = ref(20) // start at 20
-const targetValue = 60        // stop at 60
+// Animated progress
+const animatedValue = ref(20);
+const targetValue = 60;
 
 const interval = setInterval(() => {
   if (animatedValue.value < targetValue) {
-    animatedValue.value += 1
+    animatedValue.value += 1;
   } else {
-    clearInterval(interval) // stop at 60
+    clearInterval(interval);
   }
-}, 60)
+}, 60);
+
+// Usage example
+import usageRaw from "./usage.txt?raw";
+const usageExample = ref(usageRaw);
+
+// Props data
+const progressProps = [
+  {
+    component: "Progress",
+    props: [
+      {
+        name: "value",
+        type: "number",
+        required: true,
+        default: "0",
+        description: "The current progress value (0–100)."
+      },
+      {
+        name: "class",
+        type: "string",
+        required: false,
+        default: "—",
+        description: "Optional classes for styling the progress bar."
+      }
+    ]
+  }
+];
 </script>
 
 <template>
-  <div class="space-y-6">
+  <main class="space-y-10">
 
-    <!-- Preview -->
-    <section class="border border-input h-40 w-full rounded-lg flex flex-col items-center justify-center p-6 gap-4">
-    
+    <!-- PREVIEW -->
+    <div>
+      <section class="h-54 border border-border rounded-t-md min-h-auto p-6 flex items-center justify-center bg-background">
+        <div class="w-64 h">
+          <Progress :value="animatedValue" class="transition-all duration-300" />
+        </div>
+      </section>
 
-      <div class="w-60">
-        <Progress :value="animatedValue" class="mt-2 transition-all duration-300" />
-      </div>
-    </section>
+      <section class="border border-border border-t-0 rounded-b-md">
+        <CodeBlock
+          class="rounded-none border-0"
+          :hideheading="true"
+          :code="`<Progress :value='60' />`"
+        />
+      </section>
+    </div>
 
-    <!-- Installation -->
+    <!-- INSTALLATION -->
     <section>
-      <h2 class="text-2xl font-bold mb-2">Installation</h2>
+      <h2 id="installation" class="text-2xl font-bold mb-0.5">Installation</h2>
       <CodeTabs :tabs="installTabs" />
     </section>
 
-    <!-- Props -->
+    <!-- USAGE -->
     <section>
-      <h2 class="text-2xl font-bold mb-2">Props</h2>
-      <ul class="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
-        <li><strong>value</strong> — Number (0–100), percentage of progress completed.</li>
-        <li><strong>class</strong> — Optional, custom classes for styling the progress bar container.</li>
-      </ul>
+      <h2 id="usage" class="text-2xl font-bold mb-0.5">Usage</h2>
+      <CodeBlock filename="src/App.vue" :code="usageExample" />
     </section>
 
-    <!-- Notes -->
+    <!-- PROPS -->
     <section>
-      <h2 class="text-2xl font-bold mb-2">Notes</h2>
-      <ul class="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
-        <li>Progress components visually indicate completion or loading percentage.</li>
-        <li>Animated progress helps show dynamic loading or real-time updates.</li>
-        <li>You can style the bar using classes or themes to match your UI.</li>
-      </ul>
+      <h2 id="props" class="text-2xl font-bold mb-0.5">Props</h2>
+
+      <Accordion type="single" collapsible>
+        <AccordionItem
+          v-for="component in progressProps"
+          :key="component.component"
+          :value="component.component"
+        >
+          <AccordionTrigger>
+            &lt;{{ component.component }} /&gt; Props
+          </AccordionTrigger>
+
+          <AccordionContent>
+            <div class="mt-3 space-y-5 border-l border-primary/50 px-4">
+              <div
+                v-for="prop in component.props"
+                :key="prop.name"
+                class="space-y-1 border border-border p-4 rounded-2xl relative hover:bg-accent/30 transition"
+              >
+                <h4 class="text-lg font-semibold">
+                  {{ prop.name }}
+                  <span class="text-xs text-muted-foreground font-normal">
+                    ({{ prop.type }})
+                  </span>
+                </h4>
+
+                <p class="text-xs text-muted-foreground">
+                  {{ prop.description }}
+                </p>
+
+                <div class="flex gap-2 pt-2 text-xs absolute right-2 top-2">
+                  <Badge :variant="prop.required ? 'destructive' : 'positive'">
+                    {{ prop.required ? "Required" : "Optional" }}
+                  </Badge>
+
+                  <Badge variant="informative">
+                    Default: {{ prop.default }}
+                  </Badge>
+                </div>
+              </div>
+            </div>
+          </AccordionContent>
+
+        </AccordionItem>
+      </Accordion>
     </section>
 
-  </div>
+  </main>
 </template>

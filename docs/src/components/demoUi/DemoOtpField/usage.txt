@@ -1,0 +1,15 @@
+<script>
+import { ref } from "vue";
+import OtpField from "@/components/OtpField";
+const otp = ref("");
+</script>
+
+<template>
+  <h1 class="text-2xl font-semibold mb-6">OTP Verification</h1>
+
+  <OtpField v-model="otp" :length="6" />
+
+  <p class="mt-4 text-sm text-muted-foreground">
+    Entered OTP: <span class="font-medium text-primary">{{ otp }}</span>
+  </p>
+</template>

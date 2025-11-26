@@ -1,0 +1,33 @@
+<script>
+import {
+  ScrollAreaRoot,
+  ScrollAreaViewport,
+  ScrollAreaScrollbar,
+  ScrollAreaThumb,
+  ScrollAreaCorner
+} from "@/components/ui/ScrollArea";
+</script>
+
+<template>
+  <ScrollAreaRoot class="h-[250px] w-[300px] rounded-lg bg-white shadow">
+    <ScrollAreaViewport>
+      <div class="p-4 space-y-2">
+        <p v-for="i in 40" :key="i" class="text-sm text-gray-700">
+          Scrollable content line {{ i }}
+        </p>
+      </div>
+    </ScrollAreaViewport>
+
+    <!-- Vertical scrollbar -->
+    <ScrollAreaScrollbar orientation="vertical">
+      <ScrollAreaThumb />
+    </ScrollAreaScrollbar>
+
+    <!-- Horizontal scrollbar -->
+    <ScrollAreaScrollbar orientation="horizontal">
+      <ScrollAreaThumb />
+    </ScrollAreaScrollbar>
+
+    <ScrollAreaCorner />
+  </ScrollAreaRoot>
+</template>

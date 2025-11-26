@@ -53,6 +53,7 @@ import DemoStepper from "./demoUi/DemoStepper/DemoStepper.vue"
 import DemoCalendar from "./demoUi/DemoCalendar/DemoCalendar.vue"
 import DemoAlert from "./demoUi/DemoAlert/DemoAlert.vue"
 import DemoTree from "./demoUi/DemoTree/DemoTree.vue"
+import DemoToolbar from "./demoUi/DemoToolbar/DemoToolbar.vue"
 
 const demoComponents: Record<string, any> = {
   Accordion: DemoAccordion,
@@ -75,6 +76,7 @@ const demoComponents: Record<string, any> = {
   Switch: DemoSwitch,
   Toggle: DemoToggle,
   Tooltip: DemoTooltip,
+  Toolbar: DemoToolbar,
   Menubar: DemoMenubar,
   NavigationMenu: DemoNavigationMenu,
   Pagination: DemoPagination,

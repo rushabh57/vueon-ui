@@ -1,0 +1,23 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+import { RadioGroup, RadioGroupItem } from '@components/ui/RadioGroup'
+import { Label } from '@components/ui/Label'
+
+const selected = ref('a')
+</script>
+
+<template>
+
+      <RadioGroup v-model="selected">
+        <div class="flex items-center gap-3">
+          <RadioGroupItem id="r1" value="a" />
+          <Label for="r1">Default</Label>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <RadioGroupItem id="r2" value="b" />
+          <Label for="r2">Option B</Label>
+        </div>
+      </RadioGroup>
+
+</template>     

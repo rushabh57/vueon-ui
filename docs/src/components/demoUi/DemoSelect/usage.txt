@@ -1,0 +1,43 @@
+<script setup lang="ts">
+import {
+  SelectRoot,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectSeparator,
+  SelectScrollUpButton,
+  SelectScrollDownButton,
+} from "@/components/ui/Select"
+import { ref } from "vue"
+
+const fruit = ref("")
+</script>
+
+<template>
+        <SelectRoot v-model="advancedFruit">
+  <SelectTrigger class="border rounded-md p-2 w-60 flex items-center justify-between">
+    <SelectValue placeholder="Pick fruit" />
+  </SelectTrigger>
+
+  <SelectContent class="mt-2 border rounded-md shadow-md w-60">
+
+  <SelectViewport class="max-h-[200px]  p-1">
+    <SelectGroup>
+      <SelectItem value="apple">Apple</SelectItem>
+      <SelectItem value="banana">Banana</SelectItem>
+      <SelectItem value="orange">Orange</SelectItem>
+      <SelectSeparator />
+      <SelectItem value="grapes">Grapes</SelectItem>
+      <SelectItem value="pineapple">Pineapple</SelectItem>
+      <SelectItem value="strawberry">Strawberry</SelectItem>
+      <SelectItem value="kiwi">Kiwi</SelectItem>
+    </SelectGroup>
+  </SelectViewport>
+
+</SelectContent>
+
+
+</SelectRoot>
+</template>

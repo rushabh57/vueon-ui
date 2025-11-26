@@ -8,6 +8,7 @@ const props = defineProps<{
   filename?: string;
   highlightLines?: number[];
   laguagelogo?: string;
+  hideheading?: boolean;
 }>()
 
 const copied = ref(false);
@@ -27,7 +28,7 @@ const lines = computed(() => (props.code || '').split("\n"));
   <div class="relative border border-border rounded-lg overflow-hidden bg-secondary text-secondary-foreground shadow-sm">
     <!-- Filename & Copy -->
 
-    <div class="flex justify-between items-center px-3 py-2 border-b border-border bg-secondary text-secondary-foreground">
+    <div  v-if="!props.hideheading" data-heading="code-snippint-heading" class="flex justify-between items-center px-3 py-2 border-b border-border bg-secondary text-secondary-foreground">
       <img v-if="props.laguagelogo" :src="props.laguagelogo" alt="language logo" class="w-4 h-4"/>
       
       <span class="text-sm font-medium">{{ props.filename || "code snippet" }}</span>

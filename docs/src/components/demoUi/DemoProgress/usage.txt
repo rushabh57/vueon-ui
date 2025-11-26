@@ -1,0 +1,9 @@
+ <script setup lang="ts">
+import { Progress } from "../../ui/Progress"
+</script>
+
+<template>
+ <div class="w-60">
+        <Progress :value="animatedValue" class="mt-2 transition-all duration-300" />
+      </div>
+</template>

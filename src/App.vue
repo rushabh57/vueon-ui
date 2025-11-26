@@ -394,6 +394,8 @@ import { TriangleAlert } from "lucide-vue-next"
 
 import Toolbar from "@/components/Toolbar/Toolbar.vue"
 import { TreeRoot, TreeItem, TreeVirtualizer } from "./components/Tree";
+import Highlighter from "./components/Highlighter";
+import SpeedDial from "./components/SpeedDial";
 
 const formatting = ref([])
 const align = ref("left")
@@ -438,13 +440,55 @@ const itemss = [
   { title: 'nuxt.config.ts', icon: 'vscode-icons:file-type-nuxt' },
 ]
 
-
+const actions = [
+  { icon: HomeIcon, label: "Home", onClick: () => alert("Home clicked") },
+  { icon: EditIcon, label: "Edit", onClick: () => alert("Edit clicked"), variant: "informative" },
+  { icon: PlusIcon, label: "Add", onClick: () => alert("Add clicked"), variant: "secondary" }
+];
 
 const defaultExpanded = ['Home']
-
+import { HomeIcon, PlusIcon, EditIcon } from "lucide-vue-next";
+import Indicator from "./components/Indicator";
 </script>
 
 <template>
+  <div class="h-screen flex items-center justify-center  p-4">
+<!-- Notification badge -->
+<Indicator variant="destructive" rounded position="top-right" size="sm">
+  <Button>Messages</Button>
+  <template #indicator>12</template>
+</Indicator>
+
+<!-- Avatar badge -->
+<Indicator variant="positive" rounded position="bottom-center" size="md">
+  <img src="./VUEONUI_LOGO.png" class="w-12 h-12 rounded-full" />
+  <template #indicator>!</template>
+</Indicator>
+
+<!-- Generic block -->
+<Indicator variant="informative" rounded position="center" size="lg">
+  <div class="w-16 h-16 bg-gray-200"></div>
+  <template #indicator>3</template>
+</Indicator>
+
+  
+  </div>
+  <div class="h-screen flex items-center justify-center  p-4">
+   <SpeedDial
+    :mainIcon="PlusIcon"
+    :plusToCross="true"
+    direction="up"
+    variant="default"
+    tooltipPlacement="left"
+    :actions="actions"/>
+  </div>
+  <div class="h-screen flex items-center justify-center  p-4">
+    <Highlighter>Default highlight</Highlighter>
+<Highlighter variant="informative">Info</Highlighter>
+<Highlighter variant="positive" mode="bordered">Success</Highlighter>
+<Highlighter variant="caution" mode="subtle">Warning</Highlighter>
+
+  </div>
   <div class="h-screen flex items-center justify-center bg-gray-100 p-4">
     <TreeRoot title="yay" :items="itemss" :get-key="item => item.title">
   <template v-slot:default="{ flattenItems }">

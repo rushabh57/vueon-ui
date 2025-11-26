@@ -1,0 +1,19 @@
+<script setup>
+import { ref } from "vue";
+import Toolbar from "@/components/Toolbar/Toolbar.vue";
+
+const formatting = ref([]);
+const align = ref("left");
+</script>
+
+<template>
+  <div class="h-screen gap-4 flex flex-col items-center justify-center bg-gray-500">
+    <Toolbar v-model="formatting" v-model:align="align" />
+
+    <p class="mt-4">
+      Formatting active: {{ formatting }}
+      <br />
+      Alignment: {{ align }}
+    </p>
+  </div>
+</template>

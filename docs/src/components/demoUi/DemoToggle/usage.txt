@@ -1,0 +1,16 @@
+<script setup>
+import Toggle from "@/components/ui/Toggle"
+import { Bookmark } from "lucide-vue-next"
+</script>
+
+<template>
+  <Toggle
+    aria-label="Toggle bookmark"
+    class="border data-[state=on]:bg-transparent
+           data-[state=on]:*:[svg]:fill-blue-500
+           data-[state=on]:*:[svg]:stroke-blue-500"
+  >
+    <Bookmark class="mr-2 h-4 w-4" />
+    Bookmark
+  </Toggle>
+</template>

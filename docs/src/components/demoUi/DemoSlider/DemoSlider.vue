@@ -1,84 +1,176 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Slider } from "../../ui/Slider"
-import CodeTabs from '../../CodeTabs.vue'
+import { ref } from "vue";
+import CodeTabs from "../../CodeTabs.vue";
+import CodeBlock from "../../CodeBlock.vue";
+
+import { Slider } from "../../ui/Slider";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger
+} from "../../ui/Accordion";
+import { Badge } from "../../ui/Badge";
 
 // Installation tabs
 const installTabs = [
-  { label: 'npm', code: `npx vueon-ui add Slider` },
-  { label: 'yarn', code: `yarn vueon-ui add Slider` },
-  { label: 'pnpm', code: `pnpx vueon-ui add Slider` },
-  { label: 'bun', code: `bun vueon-ui add Slider` },
-]
+  { label: "npm", code: `npx vueon-ui add Slider` },
+  { label: "pnpm", code: `pnpx vueon-ui add Slider` },
+  { label: "yarn", code: `yarn vueon-ui add Slider` },
+  { label: "bun", code: `bun vueon-ui add Slider` }
+];
 
-const sliderValue = ref(50)
+// Usage example
+import usageRaw from "./usage.txt?raw";
+const usageExample = ref(usageRaw);
+
+// Slider state
+const sliderValue = ref(50);
+
+// Props accordion data
+const sliderPropsData = [
+  {
+    component: "Slider",
+    props: [
+      {
+        name: "v-model",
+        type: "number",
+        required: true,
+        default: "—",
+        description: "The numeric value bound to the slider."
+      },
+      {
+        name: "max",
+        type: "number",
+        required: false,
+        default: "100",
+        description: "Maximum value of the slider."
+      },
+      {
+        name: "step",
+        type: "number",
+        required: false,
+        default: "1",
+        description: "Increment step for changing slider value."
+      },
+      {
+        name: "trackColor",
+        type: "string",
+        required: false,
+        default: `"bg-muted"`,
+        description: "Tailwind class for slider track background."
+      },
+      {
+        name: "rangeColor",
+        type: "string",
+        required: false,
+        default: `"bg-primary"`,
+        description: "Tailwind class for the filled portion."
+      },
+      {
+        name: "thumbClass",
+        type: "string",
+        required: false,
+        default: `"bg-primary border-border"`,
+        description: "Tailwind classes for slider thumb."
+      },
+      {
+        name: "class",
+        type: "string",
+        required: false,
+        default: "—",
+        description: "Custom classes for the slider container."
+      }
+    ]
+  }
+];
 </script>
 
 <template>
-  <div class="space-y-6">
+  <main class="space-y-10">
 
-    <!-- Preview -->
-    <section class="border border-border h-52 justify-center rounded-lg p-6 flex flex-col gap-6 items-center">
-      <!-- Example Usage -->
-      <div class="w-[80%] flex flex-col gap-6">
-        <Slider v-model="sliderValue" :max="100" :step="1" class="w-full" />
+    <!-- PREVIEW -->
+    <div>
+      <section
+        class="border border-border rounded-t-md h-54 p-6 flex items-center justify-center bg-background"
+      >
+        <div class="w-[80%] flex flex-col gap-6">
+          <Slider v-model="sliderValue" :max="100" :step="1" />
+        </div>
+      </section>
 
-      </div>
-    </section>
+      <!-- CODEBLOCK PREVIEW -->
+      <section class="border border-border border-t-0 rounded-b-md">
+        <CodeBlock
+          class="rounded-none border-0"
+          :hideheading="true"
+          :code="`<Slider v-model='value' :max='100' :step='1' />`"
+        />
+      </section>
+    </div>
 
-    <!-- Installation -->
+    <!-- INSTALLATION -->
     <section>
-      <h2 class="text-2xl font-bold mb-2">Installation</h2>
+      <h2 class="text-2xl font-bold mb-0.5">Installation</h2>
       <CodeTabs :tabs="installTabs" />
     </section>
 
-    <!-- Props -->
+    <!-- USAGE -->
     <section>
-      <h2 class="text-2xl font-bold mb-2">Props</h2>
-      <ul class="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
-        <li><strong>v-model</strong> — Numeric value bound to the slider.</li>
-        <li><strong>max</strong> — Maximum value of the slider.</li>
-        <li><strong>step</strong> — Increment step for the slider value.</li>
-        <li><strong>trackColor</strong> — Tailwind class for the slider track background.</li>
-        <li><strong>rangeColor</strong> — Tailwind class for the filled portion of the track.</li>
-        <li><strong>thumbClass</strong> — Tailwind classes for the slider thumb.</li>
-        <li><strong>class</strong> — Optional, custom classes for overall slider styling.</li>
-      </ul>
+      <h2 class="text-2xl font-bold mb-0.5">Usage</h2>
+      <CodeBlock filename="src/App.vue" :code="usageExample" />
     </section>
 
-    <section class="border border-border h-52 justify-center rounded-lg p-6 flex flex-col gap-6 items-center">
-        <!-- Example Usage -->
-      <div class="w-[90%] flex flex-col gap-6">
-        <Slider 
-          v-model="sliderValue"
-          trackColor="bg-gray-200"
-          rangeColor="bg-green-500"
-          thumbClass="bg-yellow-300 border-red-500"
-          class="w-[60%]"
-        />
-      </div>
-    </section>
-    <section class="border border-border h-52 justify-center rounded-lg p-6 flex flex-col gap-6 items-center">
-        <!-- Example Usage -->
-      <div class="w-[90%] flex flex-col gap-6">
-        <Slider 
-          v-model="sliderValue"
-          thumbClass="border-blue-500 bg-blue-300"
-          trackColor="bg-blue-200"
-          rangeColor="bg-blue-600"
-          class="w-full"
-        />
-      </div>
-    </section>
-
-    <!-- Notes -->
+    <!-- PROPS -->
     <section>
-      <h2 class="text-2xl font-bold mb-2">Notes</h2>
-      <ul class="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
-        <li>Sliders are useful for selecting numeric values visually and interactively.</li>
-        <li>Fully customizable using Tailwind classes for track, range, and thumb.</li>
-      </ul>
+      <h2 id="props" class="text-2xl font-bold mb-0.5">Props</h2>
+
+      <Accordion type="single" collapsible>
+        <AccordionItem
+          v-for="component in sliderPropsData"
+          :key="component.component"
+          :value="component.component"
+        >
+          <AccordionTrigger>
+            &lt;{{ component.component }} /&gt; Props
+          </AccordionTrigger>
+
+          <AccordionContent>
+            <div class="mt-3 space-y-5 border-l border-primary/50 px-4">
+              <div
+                v-for="prop in component.props"
+                :key="prop.name"
+                class="space-y-1 border border-border p-4 rounded-2xl relative hover:bg-accent/30 transition"
+              >
+                <!-- Name + Type -->
+                <h4 class="text-lg font-semibold">
+                  {{ prop.name }}
+                  <span class="text-xs text-muted-foreground font-normal">
+                    ({{ prop.type }})
+                  </span>
+                </h4>
+
+                <!-- Description -->
+                <p class="text-xs text-muted-foreground">{{ prop.description }}</p>
+
+                <!-- Badges -->
+                <div
+                  class="flex gap-2 pt-2 text-xs text-muted-foreground absolute right-2 top-2"
+                >
+                  <Badge variant="positive">
+                    {{ prop.required ? "Required" : "Optional" }}
+                  </Badge>
+
+                  <Badge variant="informative">
+                    Default: {{ prop.default }}
+                  </Badge>
+                </div>
+              </div>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </section>
 
-  </div>
+  </main>
 </template>

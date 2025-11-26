@@ -1,0 +1,43 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+import { Slider } from "@components/ui/Slider"
+
+const sliderValue = ref(50)
+</script>
+
+<template>
+    <div class="space-y-6">
+        <!-- example 1 -->
+        <section class="border border-border h-52 justify-center rounded-lg p-6 flex flex-col gap-6 items-center">
+        <!-- Example Usage -->
+        <div class="w-[80%] flex flex-col gap-6">
+            <Slider v-model="sliderValue" :max="100" :step="1" class="w-full" />
+
+        </div>
+        </section>
+
+        <section class="border border-border h-52 justify-center rounded-lg p-6 flex flex-col gap-6 items-center">
+        <!-- example 2 -->
+            <div class="w-[90%] flex flex-col gap-6">
+                <Slider 
+                v-model="sliderValue"
+                trackColor="bg-gray-200"
+                rangeColor="bg-green-500"
+                thumbClass="bg-yellow-300 border-red-500"
+                class="w-[60%]"
+                />
+            </div>
+        </section>
+        <section class="border border-border h-52 justify-center rounded-lg p-6 flex flex-col gap-6 items-center">
+        <!-- example 3 -->
+            <div class="w-[90%] flex flex-col gap-6">
+                <Slider 
+                v-model="sliderValue"
+                thumbClass="border-blue-500 bg-blue-300"
+                trackColor="bg-blue-200"
+                rangeColor="bg-blue-600"
+                class="w-full"
+                />
+            </div>
+        </section>
+</template>

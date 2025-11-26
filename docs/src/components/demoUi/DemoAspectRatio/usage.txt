@@ -3,7 +3,7 @@ import AspectRatio from "@/components/ui/AspectRatio"
 </script>
 
 <template>
-  <AspectRatio :ratio="1">
+  <AspectRatio :ratio="1 | 16/9 | 4/3 | 3/2 | 9/16 | ">
     <img
       class="h-full w-full object-cover"
       src="..."

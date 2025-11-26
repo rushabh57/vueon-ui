@@ -1,0 +1,9 @@
+<script>
+import { NumberField } from "@/components/ui/NumberField";
+</script>
+
+<template>
+  <div class="p-6 flex flex-col gap-6">
+    <NumberField />
+  </div>
+</template>

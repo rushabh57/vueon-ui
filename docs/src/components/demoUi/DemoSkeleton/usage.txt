@@ -1,0 +1,19 @@
+<script setup lang="ts">
+import { 
+Skeleton, 
+SkeletonCircle, 
+SkeletonText 
+} from '@components/ui/Skeleton'
+</script>
+
+<template>
+      <div class="border border-border rounded-xl bg-card p-2 flex gap-1.5 w-[300px]">
+        <div>
+          <SkeletonCircle size="w-12 h-12" class="mx-auto" />
+        </div>
+        <div class="flex-1">
+          <Skeleton class="h-6 w-32 mb-2" />
+          <SkeletonText :lines="2" class="w-full" />
+        </div>
+      </div>
+</template>

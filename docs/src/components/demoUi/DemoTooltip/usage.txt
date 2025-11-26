@@ -1,0 +1,10 @@
+<script setup>
+import { ToolTip } from "@/components/ui/ToolTip"
+import { Button } from "@/components/ui/Button"
+</script>
+
+<template>
+  <ToolTip content="Copied again!" side="bottom">
+    <Button>Hover me</Button>
+  </ToolTip>
+</template>

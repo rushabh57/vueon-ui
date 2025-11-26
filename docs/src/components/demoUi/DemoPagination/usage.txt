@@ -1,0 +1,38 @@
+<script>
+import {
+  PaginationRoot,
+  PaginationList,
+  PaginationListItem,
+  PaginationFirst,
+  PaginationLast,
+  PaginationNext,
+  PaginationPrev,
+  PaginationEllipsis
+} from "@/components/ui/Pagination"
+</script>
+
+<template>
+  <PaginationRoot :total="100" :items-per-page="10" :sibling-count="1" show-edges>
+    <PaginationList v-slot="{ items }" class="flex items-center gap-1">
+      <PaginationFirst />
+      <PaginationPrev />
+
+      <template v-for="(page, index) in items" :key="index">
+        <PaginationListItem
+          v-if="page.type === 'page'"
+          :value="page.value"
+          class="flex h-9 w-9 items-center justify-center rounded-md border text-sm font-medium"
+        >
+          {{ page.value }}
+        </PaginationListItem>
+
+        <PaginationEllipsis v-else :index="index" class="flex h-9 w-9 items-center justify-center">
+          …
+        </PaginationEllipsis>
+      </template>
+
+      <PaginationNext />
+      <PaginationLast />
+    </PaginationList>
+  </PaginationRoot>
+</template>

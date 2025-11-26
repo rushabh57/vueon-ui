@@ -1,180 +1,246 @@
 <script setup lang="ts">
-import { ChevronsUpDown } from "lucide-vue-next";
-
-import CodeBlock from "../../CodeBlock.vue";
+import { ref } from "vue";
 import CodeTabs from "../../CodeTabs.vue";
+import CodeBlock from "../../CodeBlock.vue";
 
 import {
   SelectRoot,
   SelectTrigger,
   SelectValue,
   SelectContent,
-  SelectGroup,
   SelectItem,
   SelectSeparator,
-  SelectScrollUpButton,
-  SelectScrollDownButton,
-  SelectViewport,
 } from "../../ui/Select";
 
-import { ref } from "vue";
-
-// Models
-const fruit = ref("");
-const advancedFruit = ref("");
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../../ui/Accordion";
+import { Badge } from "../../ui/Badge";
 
 // Installation tabs
-const addTabs = [
+const installTabs = [
   { label: "npm", code: `npx vueon-ui add Select` },
-  { label: "pnpm", code: `pnpm dlx vueon-ui add Select` },
-  { label: "yarn", code: `yarn dlx vueon-ui add Select` },
+  { label: "pnpm", code: `pnpx vueon-ui add Select` },
+  { label: "yarn", code: `yarn vueon-ui add Select` },
   { label: "bun", code: `bunx vueon-ui add Select` },
 ];
 
-const options = ['Apple', 'Banana', 'Blueberry', 'Grapes', 'Pineapple']
-const vegetables = ['Aubergine', 'Broccoli', 'Carrot', 'Courgette', 'Leek']
+// Usage
+import usageRaw from "./usage.txt?raw";
+const usageExample = ref(usageRaw);
 
+// Values
+const basicValue = ref("");
+const advancedValue = ref("");
 
-// Basic Usage — example code
-const usageExample =
-`<scr` + `ipt setup lang="ts">
-import {
-  SelectRoot,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-} from "@/components/ui/Select"
-import { ref } from "vue"
-
-const fruit = ref("")
-</scr` + `ipt>
-
-<template>
-  <SelectRoot v-model="fruit">
-    <SelectTrigger class="border rounded-md p-2 w-60">
-      <SelectValue placeholder="Select a fruit" />
-    </SelectTrigger>
-
-    <SelectContent class="mt-2 border rounded-md bg-white shadow-md w-60">
-      <SelectGroup>
-        <SelectItem value="apple">Apple</SelectItem>
-        <SelectItem value="banana">Banana</SelectItem>
-        <SelectItem value="blueberry">Blueberry</SelectItem>
-        <SelectItem value="grapes">Grapes</SelectItem>
-        <SelectItem value="pineapple">Pineapple</SelectItem>
-      </SelectGroup>
-    </SelectContent>
-  </SelectRoot>
-</template>`;
-
-// Full Select — example code
-const advancedUsage =
-`<scr` + `ipt setup lang="ts">
-import {
-  SelectRoot,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectSeparator,
-  SelectScrollUpButton,
-  SelectScrollDownButton,
-} from "@/components/ui/Select"
-import { ref } from "vue"
-
-const fruit = ref("")
-</scr` + `ipt>
-
-<template>
-        <SelectRoot v-model="advancedFruit">
-  <SelectTrigger class="border rounded-md p-2 w-60 flex items-center justify-between">
-    <SelectValue placeholder="Pick fruit" />
-  </SelectTrigger>
-
-  <SelectContent class="mt-2 border rounded-md shadow-md w-60">
-
-  <SelectViewport class="max-h-[200px]  p-1">
-    <SelectGroup>
-      <SelectItem value="apple">Apple</SelectItem>
-      <SelectItem value="banana">Banana</SelectItem>
-      <SelectItem value="orange">Orange</SelectItem>
-      <SelectSeparator />
-      <SelectItem value="grapes">Grapes</SelectItem>
-      <SelectItem value="pineapple">Pineapple</SelectItem>
-      <SelectItem value="strawberry">Strawberry</SelectItem>
-      <SelectItem value="kiwi">Kiwi</SelectItem>
-    </SelectGroup>
-  </SelectViewport>
-
-</SelectContent>
-
-
-</SelectRoot>
-</template>`;
+// Props Accordion
+const selectPropsData = [
+  {
+    component: "Select",
+    props: [
+      {
+        name: "v-model",
+        type: "string",
+        required: true,
+        default: "—",
+        description: "The selected value."
+      }
+    ]
+  },
+  {
+    component: "SelectTrigger",
+    props: [
+      {
+        name: "placeholder",
+        type: "string",
+        required: false,
+        default: `"Select an option"`,
+        description: "The placeholder text before selecting."
+      }
+    ]
+  },
+  {
+    component: "SelectItem",
+    props: [
+      {
+        name: "value",
+        type: "string",
+        required: true,
+        default: "—",
+        description: "The value assigned to the item."
+      }
+    ]
+  },
+  {
+    component: "SelectContent",
+    props: [
+      {
+        name: "class",
+        type: "string",
+        required: false,
+        default: "—",
+        description: "Custom classes for dropdown panel."
+      }
+    ]
+  },
+];
 </script>
 
 <template>
-  <div class="space-y-14">
+  <main class="space-y-10">
 
-    <!-- SECTION 1: BASIC SELECT -->
-    <h3 class="text-xl font-bold">Basic Select</h3>
-    <section class="border border-input w-full rounded-lg p-10 flex items-center justify-center bg-background">
-      <SelectRoot v-model="fruit">
-        <SelectTrigger class="border rounded-md p-2 w-60 flex items-center justify-between">
-          <SelectValue placeholder="Select a fruit" />
-        </SelectTrigger>
+    <!-- BASIC PREVIEW -->
+    <div>
+      <section class="h-54 border border-border rounded-t-md flex items-center justify-center bg-background">
+        <div class="w-[80%] flex items-center justify-center">
+          <SelectRoot v-model="basicValue">
+            <SelectTrigger>
+              <SelectValue placeholder="Select a fruit" />
+            </SelectTrigger>
 
-        <SelectContent class="mt-2 border rounded-md bg-white shadow-md w-60">
-          <SelectGroup>
-            <SelectItem value="apple">Apple</SelectItem>
-            <SelectItem value="banana">Banana</SelectItem>
-            <SelectItem value="blueberry">Blueberry</SelectItem>
-            <SelectItem value="grapes">Grapes</SelectItem>
-            <SelectItem value="pineapple">Pineapple</SelectItem>
-          </SelectGroup>
-        </SelectContent>
-      </SelectRoot>
-    </section>
-    <CodeBlock filename="src/App.vue" :code="usageExample" />
+            <SelectContent>
+              <SelectItem value="apple">Apple</SelectItem>
+              <SelectItem value="banana">Banana</SelectItem>
+              <SelectItem value="mango">Mango</SelectItem>
+            </SelectContent>
+          </SelectRoot>
+        </div>
+      </section>
 
-    <!-- SECTION 2: FULL SELECT WITH SEPARATOR + SCROLL -->
-    <h3 class="text-xl font-bold">Advanced Select (Separator + Scroll)</h3>
-    <section class="border border-input w-full rounded-lg p-10 flex items-center justify-center bg-background">
-
-        <SelectRoot v-model="advancedFruit">
-  <SelectTrigger class="border rounded-md p-2 w-60 flex items-center justify-between">
-    <SelectValue placeholder="Pick fruit" />
+      <!-- CODE PREVIEW -->
+      <section class="border border-border border-t-0 rounded-b-md">
+        <CodeBlock
+          class="rounded-none border-0"
+          :hideheading="true"
+          :code="`<SelectRoot v-model='value'>
+  <SelectTrigger>
+    <SelectValue placeholder='Select a fruit' />
   </SelectTrigger>
 
-  <SelectContent class="mt-2 border rounded-md shadow-md w-60">
+  <SelectContent>
+    <SelectItem value='apple'>Apple</SelectItem>
+    <SelectItem value='banana'>Banana</SelectItem>
+    <SelectItem value='mango'>Mango</SelectItem>
+  </SelectContent>
+</SelectRoot>`"
+        />
+      </section>
+    </div>
 
-  <SelectViewport class="max-h-[200px]  p-1">
-    <SelectGroup>
-      <SelectItem value="apple">Apple</SelectItem>
-      <SelectItem value="banana">Banana</SelectItem>
-      <SelectItem value="orange">Orange</SelectItem>
-      <SelectSeparator />
-      <SelectItem value="grapes">Grapes</SelectItem>
-      <SelectItem value="pineapple">Pineapple</SelectItem>
-      <SelectItem value="strawberry">Strawberry</SelectItem>
-      <SelectItem value="kiwi">Kiwi</SelectItem>
-    </SelectGroup>
-  </SelectViewport>
-
-</SelectContent>
-
-
-</SelectRoot>
-
-
-    </section>
-    <CodeBlock filename="src/App.vue" :code="advancedUsage" />
 
     <!-- INSTALLATION -->
-    <h2 class="text-2xl font-bold">Installation</h2>
-    <CodeTabs :tabs="addTabs" />
-  </div>
+    <section>
+      <h2 id="installation" class="text-2xl font-bold mb-0.5">Installation</h2>
+      <CodeTabs :tabs="installTabs" />
+    </section>
+
+    <!-- USAGE -->
+    <section>
+      <h2 id="usage" class="text-2xl font-bold mb-0.5">Usage</h2>
+      <CodeBlock filename="src/App.vue" :code="usageExample" />
+    </section>
+    
+    <!-- ADVANCED PREVIEW -->
+    <div>
+      <section class="h-54 border border-border rounded-t-md p-6 flex items-center justify-center bg-background">
+        <div class="w-[80%] flex items-center justify-center">
+          <SelectRoot v-model="advancedValue">
+            <SelectTrigger>
+              <SelectValue placeholder="Select an option" />
+            </SelectTrigger>
+
+            <SelectContent class="max-h-40 overflow-y-auto">
+
+              <span class="px-3 text-xs text-muted-foreground">Fruits</span>
+              <SelectItem value="apple">Apple</SelectItem>
+              <SelectItem value="banana">Banana</SelectItem>
+              <SelectItem value="grapes">Grapes</SelectItem>
+
+              <SelectSeparator />
+
+              <span class="px-3 text-xs text-muted-foreground">Vegetables</span>
+              <SelectItem value="carrot">Carrot</SelectItem>
+              <SelectItem value="broccoli">Broccoli</SelectItem>
+              <SelectItem value="spinach">Spinach</SelectItem>
+
+            </SelectContent>
+          </SelectRoot>
+        </div>
+      </section>
+
+      <!-- CODE PREVIEW -->
+      <section class="border border-border border-t-0 rounded-b-md">
+        <CodeBlock
+          class="rounded-none border-0"
+          :hideheading="true"
+          :code="`<SelectRoot v-model='value'>
+  <SelectTrigger>
+    <SelectValue placeholder='Select an option' />
+  </SelectTrigger>
+
+  <SelectContent class='max-h-40 overflow-y-auto'>
+    <SelectItem></SelectItem>
+    <SelectItem></SelectItem>
+
+    <SelectSeparator />
+
+    <SelectItem></SelectItem>
+    <SelectItem></SelectItem>
+  </SelectContent>
+</SelectRoot>`"
+        />
+      </section>
+    </div>
+
+    <!-- PROPS -->
+    <section>
+      <h2 id="props" class="text-2xl font-bold mb-0.5">Props</h2>
+
+      <Accordion type="single" collapsible>
+        <AccordionItem
+          v-for="component in selectPropsData"
+          :key="component.component"
+          :value="component.component"
+        >
+          <AccordionTrigger>
+            &lt;{{ component.component }} /&gt; Props
+          </AccordionTrigger>
+
+          <AccordionContent>
+            <div class="mt-3 space-y-5 border-l border-primary/50 px-4">
+              <div
+                v-for="prop in component.props"
+                :key="prop.name"
+                class="space-y-1 border border-border p-4 rounded-2xl relative hover:bg-accent/30 transition"
+              >
+
+                <!-- Name + Type -->
+                <h4 class="text-lg font-semibold">
+                  {{ prop.name }}
+                  <span class="text-xs text-muted-foreground font-normal">
+                    ({{ prop.type }})
+                  </span>
+                </h4>
+
+                <!-- Description -->
+                <p class="text-xs text-muted-foreground">
+                  {{ prop.description }}
+                </p>
+
+                <!-- Badges -->
+                <div class="flex gap-2 pt-2 text-xs absolute right-2 top-2">
+                  <Badge variant="positive">
+                    {{ prop.required ? "Required" : "Optional" }}
+                  </Badge>
+                  <Badge variant="informative">
+                    Default: {{ prop.default }}
+                  </Badge>
+                </div>
+
+              </div>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+
+      </Accordion>
+    </section>
+  </main>
 </template>

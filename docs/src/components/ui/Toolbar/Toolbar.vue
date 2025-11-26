@@ -37,7 +37,7 @@ const toolbarClass = computed(() => "h-10")
 
 <template>
   <ToolbarRoot
-    :class="`flex w-full max-w-[610px] items-center p-2 border rounded-lg shadow-sm bg-card ${toolbarClass}`"
+    :class="`flex w-full max-w-[620px] items-center p-2 border border-border rounded-lg shadow-sm bg-card ${toolbarClass}`"
     aria-label="Formatting Options"
   >
     <!-- Formatting -->
@@ -115,12 +115,13 @@ const toolbarClass = computed(() => "h-10")
 
     <ToolbarSeparator class="w-px bg-border mx-3" />
 
-    <ToolbarLink class="text-xs text-muted-foreground ml-2">
+    <ToolbarLink class="text-xs text-muted-foreground mr-2">
       Edited 2 hours ago
     </ToolbarLink>
 
     <ToolbarButton
-      class="ml-auto h-7 px-3 rounded text-xs bg-primary text-primary-foreground hover:bg-primary/90"
+
+      class=" ml-auto h-7 px-3 rounded text-xs bg-primary text-primary-foreground hover:bg-primary/90"
     >
       Share
     </ToolbarButton>

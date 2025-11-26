@@ -1,69 +1,155 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { RadioGroup, RadioGroupItem } from '../../ui/RadioGroup'
-import { Label } from '../../ui/Label'
-import CodeTabs from '../../CodeTabs.vue'
+import { ref } from "vue";
+import CodeBlock from "../../CodeBlock.vue";
+import CodeTabs from "../../CodeTabs.vue";
 
-// Installation tabs
+import { RadioGroup, RadioGroupItem } from "../../ui/RadioGroup";
+import { Label } from "../../ui/Label";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../../ui/Accordion";
+import { Badge } from "../../ui/Badge";
+
+// Install tabs
 const installTabs = [
-  { label: 'npm', code: `npx vueon-ui add RadioGroup` },
-  { label: 'yarn', code: `yarn vueon-ui add RadioGroup` },
-  { label: 'pnpm', code: `pnpx vueon-ui add RadioGroup` },
-  { label: 'bun', code: `bun vueon-ui add RadioGroup` },
-]
+  { label: "npm", code: `npx vueon-ui add RadioGroup` },
+  { label: "pnpm", code: `pnpm dlx vueon-ui add RadioGroup` },
+  { label: "yarn", code: `yarn dlx vueon-ui add RadioGroup` },
+  { label: "bun", code: `bunx vueon-ui add RadioGroup` }
+];
 
-const selected = ref('a')
+const selected = ref("a");
+
+// Usage file
+import usageRaw from "./usage.txt?raw";
+const usageExample = ref(usageRaw);
+
+// Props accordion data
+const radioProps = [
+  {
+    component: "RadioGroup",
+    props: [
+      {
+        name: "v-model",
+        type: "string",
+        required: true,
+        default: "—",
+        description: "Controls the currently selected radio option."
+      }
+    ]
+  },
+  {
+    component: "RadioGroupItem",
+    props: [
+      {
+        name: "id",
+        type: "string",
+        required: true,
+        default: "—",
+        description: "A unique identifier required for accessibility."
+      },
+      {
+        name: "value",
+        type: "string",
+        required: true,
+        default: "—",
+        description: "The value emitted when this radio option is selected."
+      }
+    ]
+  }
+];
 </script>
 
 <template>
-  <div class="space-y-6">
+  <main class="space-y-10">
 
-    <!-- Preview -->
-    <section class="border border-input h-40 w-full rounded-lg flex flex-col items-center justify-center p-6 gap-4">
-      <RadioGroup v-model="selected">
-        <div class="flex items-center gap-3">
-          <RadioGroupItem id="r1" value="a" />
-          <Label for="r1">Default</Label>
-        </div>
+    <!-- PREVIEW -->
+    <div>
+      <section
+        class="border border-border rounded-t-md h-auto p-6 flex items-center justify-center bg-background"
+      >
+        <RadioGroup v-model="selected" class="space-y-3">
+          <div class="flex items-center gap-3">
+            <RadioGroupItem id="r1" value="a" />
+            <Label for="r1">Default</Label>
+          </div>
 
-        <div class="flex items-center gap-3">
-          <RadioGroupItem id="r2" value="b" />
-          <Label for="r2">Option B</Label>
-        </div>
-      </RadioGroup>
-    </section>
+          <div class="flex items-center gap-3">
+            <RadioGroupItem id="r2" value="b" />
+            <Label for="r2">Option B</Label>
+          </div>
+        </RadioGroup>
+      </section>
 
-    <!-- Installation -->
+      <section class="border border-border border-t-0 rounded-b-md">
+        <CodeBlock
+          class="rounded-none border-0"
+          :hideheading="true"
+          :code="`<RadioGroup>
+  <RadioGroupItem />
+</RadioGroup>`"
+        />
+      </section>
+    </div>
+
+    <!-- INSTALLATION -->
     <section>
-      <h2 class="text-2xl font-bold mb-2">Installation</h2>
+      <h2 id="installation" class="text-2xl font-bold mb-0.5">Installation</h2>
       <CodeTabs :tabs="installTabs" />
     </section>
 
-    <!-- Props -->
+    <!-- USAGE -->
     <section>
-      <h2 class="text-2xl font-bold mb-2">Props</h2>
-      <ul class="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
-        <li><strong>v-model</strong> — Current selected value (string)</li>
-        <li><strong>RadioGroupItem</strong> — Individual radio option. Props: <strong>id</strong>, <strong>value</strong></li>
-      </ul>
+      <h2 id="usage" class="text-2xl font-bold mb-0.5">Usage</h2>
+      <CodeBlock filename="src/App.vue" :code="usageExample" />
     </section>
 
-    <!-- Notes -->
+    <!-- PROPS -->
     <section>
-      <h2 class="text-2xl font-bold mb-2">Notes</h2>
-      <ul class="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
-        <li>RadioGroup ensures only one option can be selected at a time.</li>
-        <li>Works well with labels for accessibility.</li>
-      </ul>
+      <h2 id="props" class="text-2xl font-bold mb-0.5">Props</h2>
+
+      <Accordion type="single" collapsible>
+        <AccordionItem
+          v-for="component in radioProps"
+          :key="component.component"
+          :value="component.component"
+        >
+          <AccordionTrigger>
+            &lt;{{ component.component }} /&gt; Props
+          </AccordionTrigger>
+
+          <AccordionContent>
+            <div class="mt-3 space-y-5 border-l border-primary/50 px-4">
+              <div
+                v-for="prop in component.props"
+                :key="prop.name"
+                class="space-y-1 border border-border p-4 rounded-2xl relative hover:bg-accent/30 transition"
+              >
+                <h4 class="text-lg font-semibold">
+                  {{ prop.name }}
+                  <span class="text-xs text-muted-foreground font-normal">
+                    ({{ prop.type }})
+                  </span>
+                </h4>
+
+                <p class="text-xs text-muted-foreground">
+                  {{ prop.description }}
+                </p>
+
+                <div class="flex gap-2 pt-2 text-xs absolute right-2 top-2">
+                  <Badge :variant="prop.required ? 'destructive' : 'positive'">
+                    {{ prop.required ? "Required" : "Optional" }}
+                  </Badge>
+
+                  <Badge variant="informative">
+                    Default: {{ prop.default }}
+                  </Badge>
+                </div>
+              </div>
+            </div>
+          </AccordionContent>
+
+        </AccordionItem>
+      </Accordion>
     </section>
 
-    <!-- Short Meaning -->
-    <section>
-      <h2 class="text-2xl font-bold mb-2">What it does</h2>
-      <p class="text-sm text-muted-foreground">
-        RadioGroup lets users select one option from a set of mutually exclusive choices.
-      </p>
-    </section>
-
-  </div>
+  </main>
 </template>

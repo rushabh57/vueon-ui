@@ -1,0 +1,10 @@
+<script setup lang="ts">
+import Avatar from "@/component/ui/Avatar";
+</script>
+
+<template>
+<section class="border border-border rounded-t-md h-52 flex items-center justify-center gap-6">
+        <Avatar src="https://www.svgrepo.com/show/452130/vue.svg" fallbackText="Vue" size="sm" />
+        <Avatar src="https://www.svgrepo.com/show/452130/vue.svg" fallbackText="Vue" size="md" />
+        <Avatar src="https://www.svgrepo.com/show/452130/vue.svg" fallbackText="Vue" size="lg" />
+</section>

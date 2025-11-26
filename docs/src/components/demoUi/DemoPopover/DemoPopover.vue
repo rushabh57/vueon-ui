@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import { ref } from "vue";
+
 import CodeBlock from "../../CodeBlock.vue";
 import CodeTabs from "../../CodeTabs.vue";
 import Avatar from "../../ui/Avatar";
 import { Button } from "../../ui/Button";
 
-// Import Popover components from library (monorepo alias)
 import {
   Popover,
   PopoverTrigger,
@@ -14,112 +15,219 @@ import {
   PopoverArrow,
 } from "../../ui/Popover";
 
-// Installation tabs
-const addTabs = [
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../../ui/Accordion";
+import { Badge } from "../../ui/Badge";
+
+// INSTALL TABS
+const installTabs = [
   { label: "npm", code: `npx vueon-ui add Popover` },
   { label: "pnpm", code: `pnpm dlx vueon-ui add Popover` },
   { label: "yarn", code: `yarn dlx vueon-ui add Popover` },
   { label: "bun", code: `bunx vueon-ui add Popover` },
 ];
 
-// Usage example
-const usageExample = `<script>
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverPortal,
-  PopoverContent,
-  PopoverClose,
-  PopoverArrow,
-} from "@vueon/components/Popover";
-</scr` + `ipt>
+// Usage
+import usageRaw from "./usage.txt?raw";
+const usageExample = ref(usageRaw);
 
-<template>
-  <Popover>
-    <PopoverTrigger>
-      <button
-        class="px-4 py-2 rounded-md border text-sm font-medium hover:bg-accent hover:text-accent-foreground"
-      >
-        Open Popover
-      </button>
-    </PopoverTrigger>
-
-    <PopoverPortal>
-      <PopoverContent class="relative flex flex-col space-y-2">
-        <h3 class="text-sm font-semibold">Popover Title</h3>
-        <p class="text-sm text-muted-foreground">
-          This is a Shadcn-style Popover built with Vueon-UI.
-        </p>
-        <PopoverClose>
-          <button
-            class="self-end mt-2 px-3 py-1 text-sm rounded-md border hover:bg-accent hover:text-accent-foreground"
-          >
-            Close
-          </button>
-        </PopoverClose>
-        <PopoverArrow />
-      </PopoverContent>
-    </PopoverPortal>
-  </Popover>
-</template>`;
+// PROPS DATA
+const popoverProps = [
+  {
+    component: "Popover",
+    props: [
+      {
+        name: "default",
+        type: "component",
+        required: true,
+        default: "—",
+        description: "Root wrapper that manages popover state."
+      }
+    ]
+  },
+  {
+    component: "PopoverTrigger",
+    props: [
+      {
+        name: "default",
+        type: "slot",
+        required: true,
+        default: "—",
+        description: "Element that toggles the popover."
+      }
+    ]
+  },
+  {
+    component: "PopoverContent",
+    props: [
+      {
+        name: "side",
+        type: "string",
+        required: false,
+        default: "bottom",
+        description: "Controls which side the popover appears from."
+      },
+      {
+        name: "align",
+        type: "string",
+        required: false,
+        default: "center",
+        description: "Aligns popover relative to the trigger."
+      },
+      {
+        name: "class",
+        type: "string",
+        required: false,
+        default: "—",
+        description: "Styling classes for the popover content."
+      }
+    ]
+  },
+  {
+    component: "PopoverClose",
+    props: [
+      {
+        name: "default",
+        type: "slot",
+        required: false,
+        default: "—",
+        description: "An element that closes the popover."
+      }
+    ]
+  },
+  {
+    component: "PopoverArrow",
+    props: [
+      {
+        name: "width",
+        type: "number",
+        required: false,
+        default: "10",
+        description: "Width of the arrow pointer."
+      },
+      {
+        name: "height",
+        type: "number",
+        required: false,
+        default: "5",
+        description: "Height of the arrow pointer."
+      }
+    ]
+  }
+];
 </script>
 
 <template>
-  <div class="space-y-4">
+  <main class="space-y-10">
 
-    <!-- Preview -->
-    <section class="border border-input h-52 w-full rounded-lg flex items-center justify-center">
-      <Popover>
-        <PopoverTrigger>
-          <Button
-           
-          >
-            Open Popover
-          </Button>
-        </PopoverTrigger>
+    <!-- PREVIEW -->
+    <div>
+      <section
+        class="border border-border rounded-t-md min-h-[200px] p-6 flex items-center justify-center bg-background"
+      >
+        <Popover>
+          <PopoverTrigger>
+            <Button>Open Popover</Button>
+          </PopoverTrigger>
 
-        <PopoverPortal>
-          <PopoverContent class="relative flex gap-2 space-y-2">
-            <Avatar  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpJ2EP_GBW4ZVdO1Rnnq1MPhkQ-b0oJjxydw&s" ring />
-            <div class="flex-1">
+          <PopoverPortal>
+            <PopoverContent class="relative flex items-center gap-3 p-4 rounded-xl shadow-md bg-popover">
+              <Avatar
+                src="/logo.png"
+                ring
+              />
+              <div class="flex-1">
                 <h3 class="text-sm font-semibold">@vueon</h3>
-                <p class="text-sm text-muted-foreground">
-                    Sub paragraph of popover
-                </p>
-            </div>
-            <PopoverClose>
-              <Button>
-                Follow
-              </Button>
-            </PopoverClose>
-            <PopoverArrow />
-          </PopoverContent>
-        </PopoverPortal>
-      </Popover>
+                <p class="text-sm text-muted-foreground">Sub paragraph of popover</p>
+              </div>
+
+              <PopoverClose>
+                <Button>Follow</Button>
+              </PopoverClose>
+
+              <PopoverArrow />
+            </PopoverContent>
+          </PopoverPortal>
+        </Popover>
+      </section>
+
+      <section class="border border-border border-t-0 rounded-b-md">
+        <CodeBlock
+          class="rounded-none border-0"
+          :hideheading="true"
+          :code="`<Popover>
+<PopoverTrigger> </PopoverTrigger>
+  <PopoverPortal>
+    <PopoverContent>
+      <PopoverClose>
+      </PopoverClose>
+      <PopoverArrow/>
+    </PopoverContent>
+  </PopoverPortal>
+</Popover>`"
+        />
+      </section>
+    </div>
+
+    <!-- INSTALLATION -->
+    <section>
+      <h2 id="installation" class="text-2xl font-bold mb-0.5">Installation</h2>
+      <CodeTabs :tabs="installTabs" />
     </section>
 
-    <!-- Installation -->
-    <h2 class="text-2xl font-bold">Installation</h2>
-    <CodeTabs :tabs="addTabs" />
+    <!-- USAGE -->
+    <section>
+      <h2 id="usage" class="text-2xl font-bold mb-0.5">Usage</h2>
+      <CodeBlock filename="src/App.vue" :code="usageExample" />
+    </section>
 
-    <!-- Usage -->
-    <h2 class="text-2xl font-bold">Usage</h2>
-    <CodeBlock
-      filename="src/App.vue"
-      :code="usageExample"
-      :indent="[[9,22],[11,180]]"
-    />
+    <!-- PROPS -->
+    <section>
+      <h2 id="props" class="text-2xl font-bold mb-0.5">Props</h2>
 
-    <!-- Props -->
-    <h2 class="text-2xl font-bold">Props</h2>
-    <ul class="list-disc pl-5 space-y-1 text-sm">
-      <li><b>Popover</b> — wrapper component</li>
-      <li><b>PopoverTrigger</b> — element that opens the popover</li>
-      <li><b>PopoverPortal</b> — portal for rendering content in body</li>
-      <li><b>PopoverContent</b> — main popover content</li>
-      <li><b>PopoverClose</b> — button/element to close popover</li>
-      <li><b>PopoverArrow</b> — arrow pointing to trigger</li>
-    </ul>
+      <Accordion type="single" collapsible>
+        <AccordionItem
+          v-for="component in popoverProps"
+          :key="component.component"
+          :value="component.component"
+        >
+          <AccordionTrigger>
+            &lt;{{ component.component }} /&gt; Props
+          </AccordionTrigger>
 
-  </div>
+          <AccordionContent>
+            <div class="mt-3 space-y-5 border-l border-primary/50 px-4">
+
+              <div
+                v-for="prop in component.props"
+                :key="prop.name"
+                class="space-y-1 border border-border p-4 rounded-2xl relative hover:bg-accent/30 transition"
+              >
+                <h4 class="text-lg font-semibold">
+                  {{ prop.name }}
+                  <span class="text-xs text-muted-foreground font-normal">
+                    ({{ prop.type }})
+                  </span>
+                </h4>
+
+                <p class="text-xs text-muted-foreground">{{ prop.description }}</p>
+
+                <div class="flex gap-2 pt-2 text-xs absolute right-2 top-2">
+                  <Badge :variant="prop.required ? 'destructive' : 'positive'">
+                    {{ prop.required ? "Required" : "Optional" }}
+                  </Badge>
+
+                  <Badge variant="informative">
+                    Default: {{ prop.default }}
+                  </Badge>
+                </div>
+              </div>
+
+            </div>
+          </AccordionContent>
+
+        </AccordionItem>
+      </Accordion>
+    </section>
+
+  </main>
 </template>

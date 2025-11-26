@@ -1,0 +1,39 @@
+<script>
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverPortal,
+  PopoverContent,
+  PopoverClose,
+  PopoverArrow,
+} from "@/components/Popover";
+</script>
+
+<template>
+  <Popover>
+    <PopoverTrigger>
+      <button
+        class="px-4 py-2 rounded-md border text-sm font-medium hover:bg-accent hover:text-accent-foreground"
+      >
+        Open Popover
+      </button>
+    </PopoverTrigger>
+
+    <PopoverPortal>
+      <PopoverContent class="relative flex flex-col space-y-2">
+        <h3 class="text-sm font-semibold">Popover Title</h3>
+        <p class="text-sm text-muted-foreground">
+          This is a Shadcn-style Popover built with Vueon-UI.
+        </p>
+        <PopoverClose>
+          <button
+            class="self-end mt-2 px-3 py-1 text-sm rounded-md border hover:bg-accent hover:text-accent-foreground"
+          >
+            Close
+          </button>
+        </PopoverClose>
+        <PopoverArrow />
+      </PopoverContent>
+    </PopoverPortal>
+  </Popover>
+</template>
