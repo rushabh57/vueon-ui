@@ -108,6 +108,12 @@
       "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Dropdown/Dropdown.vue",
       "status": "stable"
     },
+    "Drift": {
+      "path": "src/components/Drift/Drift.vue",
+      "description": "A draggable component for free, vertical, or horizontal movement with smooth animation, optional grid snapping, and block stacking support.",
+      "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Drift/Drift.vue",
+      "status": "stable"
+    },
     "GroupDateField": {
       "path": "src/components/GroupDateField/GroupDateField.vue",
       "description": "nput for selecting grouped dates or ranges.",
