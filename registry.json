@@ -161,7 +161,14 @@
       "description": "Text input field component.",
       "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Input/Input.vue",
       "status": "stable",
-      "prefred_for": ["Form inputs", "Search bars", "User input fields"] 
+      "prefred_for": ["Form inputs", "Search bars", "User input fields"],
+      "requires": [
+        {
+          "component": "Label",
+          "path": "src/components/Label/Label.vue",
+          "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/components/Label/Label.vue"
+        }
+      ]
     },
     "Indicator": {
       "path": "src/components/Indicator/Indicator.vue",
