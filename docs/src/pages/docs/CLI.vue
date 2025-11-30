@@ -10,8 +10,10 @@ import { commands } from '../../stores/commands'
         :prev="{ title: 'Theming', path: '/docs/theming' }"
         :next="{ title: 'Components', path: '/docs/components' }"
     />
-    <h1 class="text-3xl font-bold">Vueon-UI CLI Commands</h1>
-    <p class="text-muted-foreground">Use these commands to manage your Vueon-UI project.</p>
+    <div>
+      <h1 class="text-3xl font-bold">Vueon-UI CLI Commands</h1>
+      <p class="text-muted-foreground">Use these commands to manage your Vueon-UI project.</p>
+    </div>
 
     <CLICommandSection
       v-for="cmd in commands"

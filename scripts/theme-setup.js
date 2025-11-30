@@ -73,8 +73,19 @@ ${toCSSVars(darkVars)}
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-informative: var(--informative);             
+  --color-informative-foreground:var(--informative-foreground);
+
+  --color-positive: var(-positive);               
+  --color-positive-foreground: var(--positive-foreground);
+
+  --color-caution: var(-caution);                  
+  --color-caution-foreground: var(--caution-foreground);
+
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import { variants } from '../../theme/variants';
+import { variants } from '../theme/variants';
 import { Tooltip } from "@/components/Tooltip";
 
 const props = defineProps<{

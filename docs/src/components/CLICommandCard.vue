@@ -18,8 +18,8 @@ const props = defineProps<{
 }>()
 
 const tabs = [
-  { label: 'npm', code: props.command.usage.npm || '' },
-  { label: 'pnpm', code: props.command.usage.pnpm || '' },
+  { label: 'npx', code: props.command.usage.npm || '' },
+  { label: 'pnpx', code: props.command.usage.pnpm || '' },
   { label: 'yarn', code: props.command.usage.yarn || '' },
   { label: 'bun', code: props.command.usage.bun || '' },
 ].filter(tab => tab.code) // only show tabs that have code
@@ -27,8 +27,10 @@ const tabs = [
 
 <template>
   <div class="rounded-lg p-5 hover:shadow transition space-y-4">
-    <h2 class="text-xl font-semibold">{{ command.title }}</h2>
-    <p class="text-muted-foreground">{{ command.description }}</p>
+    <div>
+      <h2 :id="command.title" class="text-xl font-semibold">{{ command.title }}</h2>
+      <p class="text-muted-foreground">{{ command.description }}</p>
+    </div>
 
     <!-- Code tabs -->
     <CodeTabs :tabs="tabs" />

@@ -1,0 +1,24 @@
+<DriftArea 
+    :bounds="{ width: 300, height: 400 }" 
+    direction="vertical" 
+    drag-style="smooth">
+    
+    <Gridsnap class="bg-green-200 h-full w-full" direction="vertical">
+        <Drift :x="0" :y="0">
+          <div class="w-full h-[100px] bg-red-200 rounded shadow flex items-center justify-center">
+            Item 1
+          </div>
+        </Drift>
+        <Drift :x="0" :y="100">
+          <div class="w-full h-[100px] bg-red-700 rounded shadow flex items-center justify-center">
+            Item 2
+          </div>
+        </Drift>
+        <Drift :x="0" :y="200">
+          <div class="w-full h-[100px] bg-red-500 rounded shadow flex items-center justify-center">
+            Item 3
+          </div>
+        </Drift>
+    </Gridsnap>
+
+</DriftArea>

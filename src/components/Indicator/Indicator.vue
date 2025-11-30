@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useAttrs } from "vue";
-import { variants } from "../../theme/variants";
+import { variants } from "../theme/variants";
 
 const $attrs = useAttrs();
 

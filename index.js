@@ -68,10 +68,7 @@
       const reset = "\x1b[0m";
       const success = (msg) => console.log(`${green}✓ ${msg}${reset}`);
 
-      // await configureProject(answers, success);
-        // Pass detected framework explicitly
-        // await configureProject({ ...answers, framework }, success);
-        await configureProject(answers.theme, { ...answers, framework }, success);
+      await configureProject(answers.theme, { ...answers, framework }, success);
 
       // Tip about Vite
       const yellow = "\x1b[33m";

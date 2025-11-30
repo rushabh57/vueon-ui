@@ -14,6 +14,11 @@ import CLI from './pages/docs/CLI.vue'
 import ComponentsList from './pages/docs/ComponentsList.vue'
 import ComponentsDetail from './components/ComponentsDetail.vue'
 import Indicator from './pages/docs/Indicator.vue'
+import llmstxt from '/llms.txt'
+import Blocks from './pages/docs/Blocks.vue'
+import Changelog from './pages/docs/Changelog.vue'
+import Schema from './pages/docs/Schema.vue'
+import Registry from './pages/docs/Registry.vue'
 
 const routes = [
   {
@@ -26,6 +31,11 @@ const routes = [
     name: 'features',
     component: Features
   },
+  {
+    path: '/llms.txt',
+    name: 'llm text',
+    component: llmstxt
+  },
 
   // --- Docs with sidebar & right-side section tracker ---
   {
@@ -36,6 +46,26 @@ const routes = [
         path: 'components-indicators',
         name: 'components-indicators',
         component: Indicator
+      },
+      {
+        path: 'blocks',
+        name: 'blocks',
+        component: Blocks
+      },
+      {
+        path: 'changelog',
+        name: 'changelog',
+        component: Changelog
+      },
+      {
+        path: 'registry',
+        name: 'registry',
+        component: Registry
+      },
+      {
+        path: 'schema',
+        name: 'schema',
+        component: Schema
       },
       {
         path: '',

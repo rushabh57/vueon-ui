@@ -1,0 +1,23 @@
+<script setup lang="ts">
+import { DriftArea, Gridsnap, Drift } from "@/components/ui/Drift";
+</script>
+
+<template>
+  <div class="space-y-10">
+
+    <!-- Free + Smooth Drift -->
+    <DriftArea :bounds="{ width: 800, height: 300 }" direction="free" stack="overlay" drag-style="smooth" :grid="10" class="shadow-lg">
+      <Drift :x="40" :y="50" class="w-fit">
+        <div class="p-4 rounded-radius w-[200px] bg-card border border-border">
+          Drag Me (Smooth)
+        </div>
+      </Drift>
+
+      <Drift :x="200" :y="100" class="w-fit">
+        <button class="px-4 py-2 bg-primary text-primary-foreground rounded-radius">
+          Button Floating
+        </button>
+      </Drift>
+    </DriftArea>
+  </div>
+</template>

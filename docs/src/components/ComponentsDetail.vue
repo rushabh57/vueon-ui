@@ -57,6 +57,7 @@ import DemoToolbar from "./demoUi/DemoToolbar/DemoToolbar.vue"
 import DemoSpeedDial from "./demoUi/DemoSpeedDial/DemoSpeedDial.vue"
 import DemoIndicator from "./demoUi/DemoIndicator/Indicator.vue"
 import DemoHighlighter from "./demoUi/DemoHighlighter/DemoHighlighter.vue"
+import DemoDrift from "./demoUi/DemoDrift/DemoDrift.vue"
 
 const demoComponents: Record<string, any> = {
   Accordion: DemoAccordion,
@@ -108,7 +109,8 @@ const demoComponents: Record<string, any> = {
   Tree: DemoTree,
   SpeedDial: DemoSpeedDial,
   Indicator: DemoIndicator,
-  Highlighter: DemoHighlighter
+  Highlighter: DemoHighlighter,
+  Drift: DemoDrift
 }
 
 const route = useRoute()
@@ -151,7 +153,7 @@ watch(() => route.params.items, updateData, { immediate: true })
 </script>
 
 <template>
-  <div class="max-w-5xl mx-auto p-6 space-y-8">
+  <div class="max-w-5xl mx-auto bg-red-500 space-y-8">
     <div v-if="componentData">
       <h1 class="text-3xl font-bold">{{ componentName }}  </h1>
       <!-- <span :class="['px-2 py-1 rounded-full text-sm', statusColor]">
@@ -170,7 +172,7 @@ watch(() => route.params.items, updateData, { immediate: true })
     </div>
 
     <div v-else>
-      <p class="text-red-600">Component not found.</p>
+      <p class="text-red-300">Component not found.</p>
     </div>
   </div>
 </template>

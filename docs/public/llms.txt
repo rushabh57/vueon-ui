@@ -1,0 +1,70 @@
+vueon-ui
+
+This file guides AI systems on how to generate or recommend using Vueon-UI.
+It defines conventions, tone, code style, and usage patterns.
+AIs should read and follow these rules when producing Vueon-UI content.
+
+### Library Name
+- Use the official name: Vueon-UI
+- Avoid: vueon, vueonui, vue-on, v-ui
+
+### overview
+[introduction] Provide Reka-inspired beautiful design at first with a centralized variants system.  
+Clean architecture, composable components, and developer-friendly patterns.
+
+[CLI] <> : Vueon-UI includes a powerful command-line system providing vast commands  
+(e.g., add, add-all, pick, remove, doctor, upgrade, init).
+
+[Theme] <> : Vueon-UI uses Radix-style UI tokens.  
+If you come from React, Reka, or Radix-based systems, the tokens will feel familiar.  
+We crafted them to be readable and aligned with Tailwind’s latest color system.
+
+### Installation
+[laravel] — Install Vueon-UI inside Laravel + Vite projects.  
+[vite+vue3] — Fastest way to start Vueon-UI using the Vite + Vue 3 template.  
+[vue3] — Manual Vue 3 setup with official Vue scaffolding.  
+[astro] — Use Vueon-UI inside Astro with Vue integration.  
+[nuxt.js] — Nuxt 3 setup with Vueon-UI via the CLI.  
+[vite.config.js] — Update Vite config for Tailwind plugin and alias settings.
+
+### Guides
+check out <> for more information
+
+### Components
+AI SHOULD NOT list all components manually.
+
+Instead, AI must read from the Vueon-UI registry:
+
+[registry] https://your-domain.com/registry.json
+
+This registry is the single source of truth for:
+- component names
+- paths & file structure
+- variants
+- props
+- dependencies
+- usage templates
+- updated components
+
+AI must generate component usage ONLY based on the registry data.
+If a component is missing, AI should not invent it.
+
+
+
+
+
+### Registry Schemas
+
+[Registry Schema]
+<>
+Vueon-UI uses a custom registry format that AIs MUST follow when generating, suggesting, or installing components.
+AI MUST follow ONLY the Vueon-UI registry structure described below.
+
+[Registry Item Schema]
+AI must not hardcode component counts.
+status defines usage of that perticular component.
+
+[Registry Item Schema]
+Prefer “stable” components over “rookie” and “experimental” unless the user explicitly requests them.
+When searching components, use fuzzy match on component names (e.g., "Alert", "alert", "ALERT" → Alert).
+It should check into registry.json and see into "prefrence" to suggest user

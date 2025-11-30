@@ -29,7 +29,7 @@ export async function configureProject(theme = "zinc" , answers, success) {
       : "tailwindcss@latest";
   console.log("⬢ Installing dependencies...");
   execSync(
-      `npm install -D vueon-ui@latest typescript @tailwindcss/vite ${tailwindPkg} autoprefixer reka-ui class-variance-authority lucide-vue-next tw-animate tw-animate-css --no-audit --no-fund`,
+      `npm install -D typescript @tailwindcss/vite ${tailwindPkg} autoprefixer reka-ui class-variance-authority lucide-vue-next tw-animate tw-animate-css --no-audit --no-fund`,
     { stdio: "inherit" }
   );
 

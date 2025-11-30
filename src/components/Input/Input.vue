@@ -41,7 +41,7 @@
 <script setup lang="ts">
 import { ref, computed, watch, defineEmits } from "vue";
 import Label from "../Label/Label.vue";
-import { variants, stages } from "@/theme";
+import { variants, stages } from "@/components/theme"
 
 const props = defineProps<{
   variant?: keyof typeof variants;

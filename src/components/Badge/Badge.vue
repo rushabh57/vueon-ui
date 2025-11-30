@@ -1,7 +1,7 @@
 <!-- src/components/Badge/Badge.vue -->
 <script lang="ts" setup>
 import { defineProps, computed } from "vue";
-import { variants } from "../../theme/variants"; // centralized variants
+import { variants } from "../theme/variants"; // centralized variants
 
 interface BadgeProps {
   variant?: "default" | "destructive"  | "secondary"  | "outline";

@@ -4,17 +4,6 @@ import { getPaths } from "../src/utils/paths"; // framework-aware paths
 import { red, green, yellow, blue, cyan, reset } from "./tokens/colors.js";
 
 const { themePath } = getPaths();
-// const themePath = path.resolve("src/theme");
-// const themePath = fs.existsSync("resources/js")
-//   ? path.resolve("resources/js/theme")
-//   : path.resolve("src/theme");
-
-
-// const cwd = process.cwd();
-// const laravelPath = path.join(cwd, "resources/js");
-// const themePath = fs.existsSync(laravelPath)
-//   ? path.join(laravelPath, "theme")
-//   : path.join(cwd, "src/theme");
 
 if (!fs.existsSync(themePath)) {
   fs.mkdirSync(themePath, { recursive: true });
@@ -31,6 +20,12 @@ export const variants = cva("", {
         "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
       destructive:
         "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+      informative:
+        "bg-informative text-white shadow-xs hover:bg-informative/90 focus-visible:ring-informative/20 dark:focus-visible:ring-informative/40 dark:bg-informative/60",
+      positive:
+        "bg-positive text-white shadow-xs hover:bg-positive/90 focus-visible:ring-positive/20 dark:focus-visible:ring-positive/40 dark:bg-positive/60",
+      caution:
+        "bg-caution text-white shadow-xs hover:bg-caution/90 focus-visible:ring-caution/20 dark:focus-visible:ring-caution/40 dark:bg-caution/60",
       outline:
         "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
       secondary:
@@ -57,8 +52,8 @@ const stagesContent = `import { CheckIcon, LucideAlertTriangle, XIcon } from "lu
 
 export const stages = {
   error: {
-    border: "border-red-500",
-    text: "text-red-500",
+    border: "border-destructive",
+    text: "text-destructive",
     icon: XIcon,
     message: "Something went wrong",
   },
