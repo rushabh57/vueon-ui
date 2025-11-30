@@ -371,7 +371,7 @@
   },
   "countComponents": 52,
   "theme": {
-    "path": "src/theme/variant.ts",
+    "path": "src/components/theme/variant.ts",
     "description": "Globalized theme variant utilities used by all components.",
     "url": "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/src/theme/variant.ts",
     "status": "stable"
