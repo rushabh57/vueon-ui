@@ -13,7 +13,7 @@ import {
 import Badge from "../../ui/Badge";
 
 // Drift components
-import { DriftArea, Gridsnap, Drift } from "../../ui/Drift";
+import { DriftArea, Gridsnap, Drift, DriftImage } from "../../ui/Drift";
 
 // Installation tabs
 const addTabs = [
@@ -73,8 +73,8 @@ const driftProps = [
       <section class="h-96 border border-border rounded-t-md min-h-fit p-10 flex items-center justify-center">
         <DriftArea :bounds="{ width: 300, height: 300 }" direction="free" stack="overlay" drag-style="smooth" :grid="10" class="shadow-lg">
           <Drift :x="40" :y="50" class="w-fit">
-            <div class="p-4 rounded-radius w-[200px] bg-card border border-border">
-              Drag Me (Smooth)
+            <div class="p-4 rounded-radius text-center w-[200px] bg-card border border-border">
+              Drag Me 
             </div>
           </Drift>
 
@@ -117,8 +117,8 @@ const driftProps = [
     <DriftArea :bounds="{ width: 300, height: 400 }" direction="vertical" drag-style="smooth">
       <Gridsnap class="bg-secondary h-full min-w-full w-[300px]" direction="vertical">
         <Drift :x="0" :y="0" class=" min-w-full">
-          <div class="w-full h-[100px] border-border bg-card rounded shadow flex items-center justify-center">
-                <img src="/logo.png " class="pointer-events-none h-[100px] w-[100px] object-contain" />
+          <div class="w-full h-[100px] border-border bg-card rounded shadow flex gap-2 items-center justify-center">
+            <DriftImage src="/logo.png" class="h-[100px] w-[100px] object-contain" />
                 <div>
                     <h2>Vueon ui</h2>
                     <p>design system for your vue</p>
@@ -126,13 +126,21 @@ const driftProps = [
           </div>
         </Drift>
         <Drift :x="0" :y="100" class="min-w-full">
-          <div class="w-full h-[100px] border-border bg-card  rounded shadow flex items-center justify-center">
-            
+          <div class="w-full h-[100px] border-border bg-card rounded shadow flex gap-2 items-center justify-center">
+            <DriftImage src="/logos/logo_astro.svg" class="h-[50px] aspect-square object-contain" />
+                <div>
+                    <h2>Vueon ui</h2>
+                    <p>design system for your vue</p>
+                </div>
           </div>
         </Drift>
         <Drift :x="0" :y="200" class=" min-w-full">
-          <div class="w-full h-[100px] bg-card rounded shadow flex items-center justify-center">
-            Item 3
+          <div class="w-full h-[100px] border-border bg-card rounded shadow flex gap-2 items-center justify-center">
+            <DriftImage src="/logos/logo_vite.svg" class="h-[50px] aspect-square object-contain" />
+                <div>
+                    <h2>Vueon ui</h2>
+                    <p>design system for your vue</p>
+                </div>
           </div>
         </Drift>
       </Gridsnap>
@@ -164,21 +172,21 @@ const driftProps = [
         
         <Drift :x="0" :y="0">
           <div class="w-[100px] h-[100px]  rounded shadow flex items-center justify-center flex-col">
-            <img class="h-14 aspect-square" src="/avatar_imgs/avatar_1.jpg" alt="joe" />
+            <DriftImage class="h-14 aspect-square" src="/avatar_imgs/avatar_1.jpg" alt="joe" />
             <p class="text-xs">joe</p>
           </div>
         </Drift>
 
         <Drift :x="0" :y="100">
           <div class="w-[100px] h-[100px]  rounded shadow flex items-center justify-center flex-col">
-            <img class="h-14 aspect-square" src="/avatar_imgs/avatar_2.jpg" alt="joe" />
+            <DriftImage class="h-14 aspect-square" src="/avatar_imgs/avatar_2.jpg" alt="joe" />
             <p class="text-xs">leo</p>
           </div>
         </Drift>
 
         <Drift :x="0" :y="200" class="border-border">
           <div class="w-[100px] h-[100px]   rounded shadow flex items-center justify-center flex-col">
-            <img class="h-14 aspect-square" src="/avatar_imgs/avatar_3.jpg" alt="joe" />
+            <DriftImage class="h-14 aspect-square" src="/avatar_imgs/avatar_3.jpg" alt="joe" />
             <p class="text-xs">mac</p>
           </div>
         </Drift>
