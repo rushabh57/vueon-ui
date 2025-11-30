@@ -153,7 +153,7 @@ watch(() => route.params.items, updateData, { immediate: true })
 </script>
 
 <template>
-  <div class="max-w-5xl mx-auto bg-red-500 space-y-8">
+  <div class="max-w-5xl mx-auto  space-y-8">
     <div v-if="componentData">
       <h1 class="text-3xl font-bold">{{ componentName }}  </h1>
       <!-- <span :class="['px-2 py-1 rounded-full text-sm', statusColor]">

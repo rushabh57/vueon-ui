@@ -25,11 +25,11 @@
       <div
         v-if="computedMessage"
         class="p-1 flex items-center text-xs mt-1"
-        :class="messageColor"
+        :class="stage?.text"
       >
         <component
-          v-if="computedIcon"
-          :is="computedIcon"
+          v-if="stage?.icon"
+          :is="stage.icon"
           class="w-3 h-3 mt-0.5 mr-1"
         />
         <span>{{ computedMessage }}</span>
@@ -41,7 +41,7 @@
 <script setup lang="ts">
 import { ref, computed, watch, defineEmits } from "vue";
 import Label from "../Label/Label.vue";
-import { variants, stages } from "@/components/theme"
+import { variants, stages } from "@/components/theme";
 
 const props = defineProps<{
   variant?: keyof typeof variants;
@@ -52,14 +52,14 @@ const props = defineProps<{
   type?: string;
   stageMessage?: string;
   stageMessageIcon?: any;
-  validator?: (value: string) => keyof typeof stages | null; // optional live validator
+  validator?: (value: string) => keyof typeof stages | null;
 }>();
 
 const emit = defineEmits(["update:modelValue"]);
 const innerValue = ref("");
 
 // Watch innerValue and emit for v-model
-watch(innerValue, (val) => emit("update:modelValue", val));
+watch(innerValue, val => emit("update:modelValue", val));
 
 // Sizes
 const sizes = {
@@ -75,50 +75,27 @@ placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-
 disabled:cursor-not-allowed disabled:opacity-50
 `;
 
-// Border & text for stages
-const stageBorderClasses = {
-  error: "border-red-500",
-  success: "border-green-500",
-  warning: "border-yellow-500",
-};
-const stageTextClasses = {
-  error: "text-red-500",
-  success: "text-green-600",
-  warning: "text-yellow-600",
-};
-
 // Computed stage: live via validator or prop
 const computedStage = computed(() => {
   if (props.validator) return props.validator(innerValue.value);
   return props.stage ?? null;
 });
 
-// Message
-const computedMessage = computed(() => {
-  if (props.stageMessage) return props.stageMessage;
-  if (computedStage.value) return stages[computedStage.value]?.text ?? "";
-  return "";
+// Current stage object
+const stage = computed(() => {
+  if (!computedStage.value) return null;
+  return stages[computedStage.value];
 });
 
-// Icon
-const computedIcon = computed(() => {
-  if (props.stageMessageIcon) return props.stageMessageIcon;
-  if (computedStage.value) return stages[computedStage.value]?.icon ?? null;
-  return null;
-});
+// Message
+const computedMessage = computed(() => props.stageMessage ?? stage.value?.message ?? "");
 
 // Input classes
 const inputClasses = computed(() => {
   const sizeClass = sizes[props.size ?? "md"];
   const variantClass = variants[props.variant ?? "outline"];
-  const stageClass = computedStage.value ? stageBorderClasses[computedStage.value] : "";
+  const stageClass = stage.value?.border ?? "";
   return `${baseClass} ${variantClass} ${sizeClass} ${stageClass}`;
-});
-
-// Message color
-const messageColor = computed(() => {
-  if (!computedStage.value) return "";
-  return stageTextClasses[computedStage.value];
 });
 
 // Handle manual input if needed

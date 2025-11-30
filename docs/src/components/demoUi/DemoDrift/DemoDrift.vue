@@ -115,10 +115,10 @@ const driftProps = [
 
             <!-- Vertical GridSnap -->
     <DriftArea :bounds="{ width: 300, height: 400 }" direction="vertical" drag-style="smooth">
-      <Gridsnap class="bg-green-200 h-full min-w-full w-[300px]" direction="vertical">
+      <Gridsnap class="bg-secondary h-full min-w-full w-[300px]" direction="vertical">
         <Drift :x="0" :y="0" class=" min-w-full">
           <div class="w-full h-[100px] border-border bg-card rounded shadow flex items-center justify-center">
-                <img src="/logo.png " class="pointer-events-auto h-[100px] w-[100px] object-contain" />
+                <img src="/logo.png " class="pointer-events-none h-[100px] w-[100px] object-contain" />
                 <div>
                     <h2>Vueon ui</h2>
                     <p>design system for your vue</p>
@@ -131,7 +131,7 @@ const driftProps = [
           </div>
         </Drift>
         <Drift :x="0" :y="200" class=" min-w-full">
-          <div class="w-full h-[100px] bg-red-500 rounded shadow flex items-center justify-center">
+          <div class="w-full h-[100px] bg-card rounded shadow flex items-center justify-center">
             Item 3
           </div>
         </Drift>
@@ -206,17 +206,17 @@ const driftProps = [
         <DriftArea :bounds="{ width: 300, height: 500 }" 
         direction="free" drag-style="smooth" stack="block">
       <Drift :x="0" :y="0">
-        <div class="w-[100px] h-[100px] bg-red-200 rounded shadow flex items-center justify-center">
+        <div class="w-[100px] h-[100px] bg-primary text-primary-foreground rounded shadow flex items-center justify-center">
           Item 1
         </div>
       </Drift>
       <Drift :x="0" :y="100">
-        <div class="w-[100px] h-[100px] bg-red-700 rounded shadow flex items-center justify-center">
+        <div class="w-[100px] h-[100px] bg-primary text-primary-foreground rounded shadow flex items-center justify-center">
           Item 2
         </div>
       </Drift>
       <Drift :x="0" :y="200">
-        <div class="w-[100px] h-[100px] bg-red-500 rounded shadow flex items-center justify-center">
+        <div class="w-[100px] h-[100px] bg-primary text-primary-foreground rounded shadow flex items-center justify-center">
           Item 3
         </div>
       </Drift>

@@ -62,9 +62,7 @@
     </main>
 
 <aside
-v-if="!(
-  route.path.startsWith('/docs/components')
-)"
+v-if="route.path !== '/docs/components' && route.path !== '/docs/components/'"
   class="hidden xl:block w-64 border-l border-border sticky top-0 h-screen overflow-y-auto bg-background/60 backdrop-blur-sm"
 >
   <h2 class="font-semibold text-sm text-muted-foreground border-b border-border px-5 py-4 uppercase tracking-wide">

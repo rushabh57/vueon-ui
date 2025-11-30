@@ -58,14 +58,14 @@ export const stages = {
     message: "Something went wrong",
   },
   warning: {
-    border: "border-yellow-500",
-    text: "text-yellow-600",
+    border: "border-caution",
+    text: "text-caution",
     icon: LucideAlertTriangle,
     message: "Warning!",
   },
   success: {
-    border: "border-green-500",
-    text: "text-green-600",
+    border: "border-positive",
+    text: "text-positive",
     icon: CheckIcon,
     message: "Success!",
   },
