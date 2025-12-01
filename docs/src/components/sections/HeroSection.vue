@@ -28,9 +28,9 @@
         </Button>
   
         <Button variant="link" >
-          <a href="https://github.com/vueon/ui.vueon" target="_blank">
-            GitHub →
-          </a>
+          <RouterLink to="/doc" target="_blank" class="flex gap-1 items-center">
+            GitHub <ChevronRight/>
+          </RouterLink>
         </Button>
       </div>
     </section>
@@ -38,5 +38,7 @@
   
   <script setup lang="ts">
   import { Button } from "@/components/ui/Button"
+import { ChevronRight } from "lucide-vue-next";
+import { RouterLink } from "vue-router";
   </script>
   

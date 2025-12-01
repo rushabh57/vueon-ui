@@ -113,6 +113,8 @@ const links = [
   { label: "changelog", to: "/docs/changelog" },
   { label: "blocks", to: "/docs/blocks" },
   { label: "schema", to: "/docs/schema" },
+  { label: "darkmode", to: "/docs/darkmode" },
+  { label: "variants", to: "/docs/variants" },
 ]
 
 // Right sidebar headings

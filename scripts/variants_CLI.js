@@ -82,5 +82,4 @@ export * from "./stages";
 `;
 fs.writeFileSync(path.join(themePath, "index.ts"), indexContent);
 console.log(`${green}├─ ✔ Created index.ts ${reset}`);
-// console.log(`${green}✔ Created src/theme/index.ts ${reset}`);
 

@@ -19,6 +19,9 @@ import Blocks from './pages/docs/Blocks.vue'
 import Changelog from './pages/docs/Changelog.vue'
 import Schema from './pages/docs/Schema.vue'
 import Registry from './pages/docs/Registry.vue'
+import AllBlocks from './pages/AllBlocks.vue'
+import DarkMode from './pages/docs/DarkMode.vue'
+import Variants from './pages/docs/Variants.vue'
 
 const routes = [
   {
@@ -30,6 +33,11 @@ const routes = [
     path: '/features',
     name: 'features',
     component: Features
+  },
+  {
+    path: '/blocks',
+    name: 'all blocks',
+    component: AllBlocks
   },
   {
     path: '/llms.txt',
@@ -58,6 +66,11 @@ const routes = [
         component: Changelog
       },
       {
+        path: 'darkmode',
+        name: 'darkmode',
+        component: DarkMode
+      },
+      {
         path: 'registry',
         name: 'registry',
         component: Registry
@@ -82,7 +95,12 @@ const routes = [
         path: 'installation/:framework',
         name: 'docs-installation-framework',
         component: Installationframework,
-        props: true // <-- passes the param as a prop
+        props: true 
+      },
+      {
+        path: 'variants',
+        name: 'variants',
+        component: Variants,
       },
       {
         path: 'components',

@@ -141,7 +141,7 @@ const updateData = () => {
   prevComponent.value =
     index > 0
       ? { title: componentKeys[index - 1], path: `/docs/components/${componentKeys[index - 1]}` }
-      : { title: "CLI", path: "/docs/cli" }
+      : { title: "components", path: "/docs/components" }
 
   nextComponent.value =
     index < componentKeys.length - 1

@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader } from "../../components/ui/Card";
 import Separator from "../../components/ui/Separator";
 
 const schemaRaw = `{
-  "$schema": "https://ui.vueon.com/schema.json",
+  "$schema": "https://vueonui.com/schema.json",
   "framework": "vue-vite",
   "paths": {
     "components": "path to your components",
@@ -35,7 +35,7 @@ const schemaExample = ref(schemaRaw);
     />
     <div>
 
-        <h1 class="text-3xl font-bold">Vueon-UI Project Schema</h1>
+        <h1 id="schema" class="text-3xl font-bold">Vueon-UI Project Schema</h1>
         <p class="text-muted-foreground mb-4">
             Define metadata for your project to help CLI and Vueon-UI components work seamlessly.
         </p>
@@ -51,7 +51,7 @@ const schemaExample = ref(schemaRaw);
 
     <!-- Field explanations -->
     <div>
-      <h4 class="mb-3">Schema fields</h4>
+      <h4 id="schemafields" class="mb-3">Schema fields</h4>
       <Separator />
 
       <p class="text-md mt-4">"theme"</p>

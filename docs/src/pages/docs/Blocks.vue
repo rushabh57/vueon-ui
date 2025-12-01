@@ -6,12 +6,12 @@ import Separator from "../../components/ui/Separator";
 
 // Example list of blocks
 const blocks = [
-  { name: "Form", description: "Input fields, validation, and submission components.", path: "/blocks/form" },
-  { name: "Sidebar", description: "Collapsible and fixed side navigation menus.", path: "/blocks/sidebar" },
-  { name: "Modal", description: "Popup dialogs and alert boxes.", path: "/blocks/modal" },
-  { name: "Tabs", description: "Switchable content containers for organization.", path: "/blocks/tabs" },
-  { name: "calander", description: "Collapsible sections for FAQs or side content.", path: "/blocks/accordion" },
-  { name: "error page", description: "Collapsible sections for FAQs or side content.", path: "/blocks/accordion" },
+  { name: "Form", description: "Input fields, validation, and submission components.", path: "/blocks" },
+  { name: "Sidebar", description: "Collapsible and fixed side navigation menus.", path: "/blocks" },
+  { name: "Modal", description: "Popup dialogs and alert boxes.", path: "/blocks" },
+  { name: "Tabs", description: "Switchable content containers for organization.", path: "/blocks" },
+  { name: "calander", description: "Collapsible sections for FAQs or side content.", path: "/blocks" },
+  { name: "error page", description: "Collapsible sections for FAQs or side content.", path: "/blocks" },
 ];
 </script>
 

@@ -1,10 +1,10 @@
 {
   "name": "vueon-ui",
-  "version": "0.0.28.23",
+  "version": "0.0.28.29",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "esbuild index.js --bundle --platform=node --format=esm --external:node:* --external:inquirer --external:commander --external:yoctocolors-cjs --outfile=dist/index.js",
+    "build": "esbuild index.js --bundle --platform=node --format=esm --external:node:* --external:inquirer  --external:commander  --external:yoctocolors-cjs --outfile=dist/index.js",
     "preview": "vite preview"
   },
   "dependencies": {

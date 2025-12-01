@@ -35,7 +35,7 @@ export async function configureProject(theme = "zinc" , answers, success) {
 
   // components.json
   const config = {
-    $schema: "https://ui.vueon.com/schema.json",
+    $schema: "https://vueonui.com/schema.json",
     framework,
     paths: {
       components: componentPath,

@@ -4,7 +4,9 @@
       
       <!-- Logo -->
       <div class="text-2xl font-bold text-primary h-full w-22">
-        <img src="/logo.png" class="h-full w-full object-contain" alt="Logo">
+        <RouterLink to="/">
+          <img src="/logo.png" class="h-full w-full object-contain" alt="Logo">
+        </RouterLink>
       </div>
 
       <!-- Desktop links (hidden on mobile) -->
@@ -65,7 +67,7 @@ const route = useRoute()
 const links = [
   { label: 'Home', to: '/' },
   { label: 'Components', to: '/docs/components' },
-  { label: 'Features', to: '/features' },
+  { label: 'Blocks', to: '/blocks' },
   { label: 'Docs', to: '/docs' },
 ]
 </script>
