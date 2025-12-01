@@ -118,26 +118,24 @@
 //     });
 // }
 
-
-
 import inquirer from "inquirer";
 import fs from "fs";
 import path from "path";
-import chalk from "chalk";
 import { getPaths, templatesDir } from "../../src/utils/paths.js";
 import { red, green, yellow, blue, cyan, cyanBright, reset } from "../tokens/colors.js";
 import registry from "../../registry.json" assert { type: "json" };
 
-const GITHUB_API_URL = "https://api.github.com/repos/rushabh57/vueon-ui/contents/src/components";
+const GITHUB_API_URL =
+  "https://api.github.com/repos/rushabh57/vueon-ui/contents/src/components";
 
-// --- Recursive copier ---
+// Copy folder recursive
 function copyRecursive(src, dest) {
   const stats = fs.statSync(src);
   if (stats.isDirectory()) {
     fs.mkdirSync(dest, { recursive: true });
-    fs.readdirSync(src).forEach(child => {
-      copyRecursive(path.join(src, child), path.join(dest, child));
-    });
+    fs.readdirSync(src).forEach((child) =>
+      copyRecursive(path.join(src, child), path.join(dest, child))
+    );
   } else {
     fs.copyFileSync(src, dest);
   }
@@ -148,11 +146,12 @@ export default function registerAddCommand(program) {
     .command("add [components...]")
     .description("Add one or more Vueon UI components")
     .action(async (components) => {
+      const { componentPath: uiRoot } = getPaths();
 
-      const { framework, componentPath: uiRoot, cssPath, themePath } = getPaths();
-
-      // Capitalize first letter
-      components = components.map(name => name.charAt(0).toUpperCase() + name.slice(1));
+      // Normalize (Input → Input, input → Input)
+      components = components.map(
+        (n) => n.charAt(0).toUpperCase() + n.slice(1)
+      );
 
       let available = [];
 
@@ -160,23 +159,26 @@ export default function registerAddCommand(program) {
       if (fs.existsSync(templatesDir)) {
         available = fs
           .readdirSync(templatesDir)
-          .filter(f => fs.lstatSync(path.join(templatesDir, f)).isDirectory());
+          .filter((f) =>
+            fs.lstatSync(path.join(templatesDir, f)).isDirectory()
+          );
       }
 
       // Remote fallback
       if (available.length === 0) {
         try {
           const response = await fetch(GITHUB_API_URL);
-          if (!response.ok) throw new Error();
           const data = await response.json();
-          available = data.filter(item => item.type === "dir").map(item => item.name);
+          available = data
+            .filter((item) => item.type === "dir")
+            .map((item) => item.name);
         } catch {
           console.log(`${red}✘ No components found.${reset}`);
           return;
         }
       }
 
-      // Prompt if empty
+      // If user didn't pass args → ask them
       if (components.length === 0) {
         const { selected } = await inquirer.prompt([
           {
@@ -194,73 +196,104 @@ export default function registerAddCommand(program) {
         return;
       }
 
-      // ---------------------------------------------------
-      // 🔥 Resolve dependencies (registry.json → requires[])
-      // ---------------------------------------------------
+      // -------------------------------------------------------------------
+      // 🔥 DEPENDENCY RESOLVER
+      // -------------------------------------------------------------------
+      console.log(`${blue}\n🔎 Resolving dependencies...${reset}`);
+
       const finalSet = new Set();
 
       function addWithDependencies(name) {
         const key = name.charAt(0).toUpperCase() + name.slice(1);
 
-        if (finalSet.has(key)) return;
-        finalSet.add(key);
+        console.log(`${cyan}→ Resolving: ${key}${reset}`);
 
-        const reqs = registry[key]?.requires || [];
-        reqs.forEach(req => {
-          if (req.component) addWithDependencies(req.component);
-        });
+        if (finalSet.has(key)) {
+          console.log(`${yellow}   • Already added: ${key}${reset}`);
+          return;
+        }
+
+        finalSet.add(key);
+        console.log(`${green}   ✔ Added to install list: ${key}${reset}`);
+
+        const entry = registry[key];
+        if (!entry) {
+          console.log(`${yellow}   • No registry entry for ${key}${reset}`);
+          return;
+        }
+
+        const deps = entry.requires || [];
+
+        if (deps.length === 0) {
+          console.log(`${cyan}   • No dependencies for ${key}${reset}`);
+          return;
+        }
+
+        console.log(
+          `${yellow}   • ${key} requires → ${deps
+            .map((d) => d.component)
+            .join(", ")}${reset}`
+        );
+
+        deps.forEach((dep) => addWithDependencies(dep.component));
       }
 
       components.forEach(addWithDependencies);
 
       const installList = [...finalSet];
 
-      console.log(blue(`\nInstalling (with dependencies): ${installList.join(", ")}`));
+      console.log(`${blue}\n📦 Final install list:${reset}`);
+      console.log(`${green}   ${installList.join(", ")}${reset}\n`);
 
-      // ---------------------------------------------------
-      // 🔥 Install each component (local → remote fallback)
-      // ---------------------------------------------------
+      // -------------------------------------------------------------------
+      // 🔥 INSTALL COMPONENTS
+      // -------------------------------------------------------------------
       for (const component of installList) {
-
         if (!available.includes(component)) {
-          console.log(`${yellow}⚠ Skipped unknown component: ${component}${reset}`);
+          console.log(
+            `${yellow}⚠ Skipped unknown component: ${component}${reset}`
+          );
           continue;
         }
 
         const destDir = path.join(uiRoot, component);
 
-        // Skip if exists
         if (fs.existsSync(destDir)) {
-          console.log(`${yellow}⚠ Component "${component}" already exists in project.${reset}`);
+          console.log(
+            `${yellow}⚠ Component "${component}" already exists.${reset}`
+          );
           continue;
         }
 
         fs.mkdirSync(destDir, { recursive: true });
 
-        // LOCAL
+        // Local first
         const srcDir = path.join(templatesDir, component);
-
         if (fs.existsSync(srcDir)) {
           copyRecursive(srcDir, destDir);
           console.log(`${green}✔ Added ${component}${reset}`);
           continue;
         }
 
-        // REMOTE
+        // Remote fallback
         try {
           const response = await fetch(`${GITHUB_API_URL}/${component}`);
           const files = await response.json();
 
           for (const file of files) {
             if (file.type === "file") {
-              const content = await fetch(file.download_url).then(r => r.text());
-              fs.writeFileSync(path.join(destDir, file.name), content);
+              const content = await fetch(file.download_url).then((r) =>
+                r.text()
+              );
+              fs.writeFileSync(
+                path.join(destDir, file.name),
+                content
+              );
             }
           }
 
           console.log(`${green}✔ Added ${component}${reset}`);
-
-        } catch (err) {
+        } catch {
           console.log(`${red}✘ Failed to add ${component}${reset}`);
         }
       }
