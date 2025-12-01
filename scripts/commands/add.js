@@ -123,7 +123,12 @@ import fs from "fs";
 import path from "path";
 import { getPaths, templatesDir } from "../../src/utils/paths.js";
 import { red, green, yellow, blue, cyan, cyanBright, reset } from "../tokens/colors.js";
-import registry from "../../registry.json" assert { type: "json" };
+
+const registryPath = path.resolve(
+  path.dirname(new URL(import.meta.url).pathname),
+  "../../registry.json"
+);
+const registry = JSON.parse(fs.readFileSync(registryPath, "utf8"));
 
 const GITHUB_API_URL =
   "https://api.github.com/repos/rushabh57/vueon-ui/contents/src/components";
