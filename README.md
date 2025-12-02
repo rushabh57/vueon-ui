@@ -1,5 +1,5 @@
-# 🚀 Vueon-UI  
-### *(Not Stable — Still Growing)*
+# Vueon-UI  
+### *(Still Growing)*
 
 Vueon-UI is a developer-friendly CLI and component library built for **Vue 3 + TypeScript + Vite**.  
 It helps you quickly scaffold and add modern, prebuilt UI components to your Vue projects with a single command.
