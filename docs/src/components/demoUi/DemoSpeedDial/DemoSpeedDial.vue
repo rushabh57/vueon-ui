@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { Button } from "../../ui/Button";
 import { PlusIcon } from "lucide-vue-next";
 import { SpeedDial } from "../../ui/SpeedDial";
 import CodeBlock from "../../CodeBlock.vue";
@@ -49,7 +48,7 @@ const speedDialProps = [
           direction="up"
           variant="default"
           tooltipPlacement="left"
-          :actions="[{ icon: PlusIcon, label: 'Add' }]"
+          :actions="[{ icon: PlusIcon, label: 'Add' , onClick: () => console.log('Action clicked!')}]"
         />
       </section>
 

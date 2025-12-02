@@ -152,7 +152,7 @@ const isUnavailable = (date: Date) => {
   if (!props.unavailableDates) return false;
   return props.unavailableDates.some(d => d.toDateString() === date.toDateString());
 };
-const isDisabled = (date: Date) => false;
+const isDisabled = (_date: Date) => false;
 
 const isFocused = (date: Date) =>
   focusedDate.value && focusedDate.value.toDateString() === date.toDateString();

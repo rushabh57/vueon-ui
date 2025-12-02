@@ -22,7 +22,6 @@ import {
   DrawerTitle,
   DrawerDescription,
   DrawerClose,
-  DrawerOverlay
 } from "../../ui/Drawer";
 
 import { Button } from "../../ui/Button";

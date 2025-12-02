@@ -1,6 +1,5 @@
 <script setup>
 import DocsNavigation from '../../components/DocsNavigation.vue';
-import ExpandableCode from '../../components/ExpandableCode.vue';
 
 import { THEMES_OKLCH, SHARED_TOKENS, SHADOW_TOKENS } from '../../stores/themes';
 
@@ -31,7 +30,6 @@ const externalLinks = [
     <p>
       Colors, radii, spacing, and typography are controlled using CSS custom properties:
     </p>
-    <ExpandableCode :code="`/* Shared tokens */\n${JSON.stringify(SHARED_TOKENS, null, 2)}\n\n/* Shadows */\n${JSON.stringify(SHADOW_TOKENS, null, 2)}`"/>
 
     <h2 id="themes" class="text-xl font-semibold mt-10">Themes</h2>
     <p>Vueon UI supports the following themes (light & dark) with OKLCH values:</p>
@@ -39,7 +37,6 @@ const externalLinks = [
     <div class="space-y-4">
       <div v-for="(theme, name) in THEMES_OKLCH" :key="name">
         <h3 class="text-lg font-medium mt-4 capitalize">{{ name }}</h3>
-        <ExpandableCode :code="JSON.stringify(theme, null, 2)"/>
       </div>
     </div>
 

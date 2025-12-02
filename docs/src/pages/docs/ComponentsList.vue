@@ -28,7 +28,7 @@ const components = Object.entries(registry.components) as [string, ComponentItem
 <template>
     <DocsNavigation
     :prev="{ title: 'Cli', path: '/docs/cli' }"
-    :next="{ title: undefined, path: undefined }"
+    :next="{ title: '', path: '' }"
     /> 
   <div class="">
     <h1 class="text-3xl font-bold mb-6">UI Components</h1>

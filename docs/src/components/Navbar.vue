@@ -5,11 +5,11 @@
       <!-- Logo -->
       <div class="text-2xl font-bold text-primary h-full w-22">
         <RouterLink to="/">
-          <img src="/logo.png" class="h-full w-full object-contain" alt="Logo">
+          <img src="/logo.png" class="h-full w-full object-contain" alt="Logo" />
         </RouterLink>
       </div>
 
-      <!-- Desktop links (hidden on mobile) -->
+      <!-- Desktop -->
       <ul class="hidden md:flex gap-2 items-center">
         <li v-for="link in links" :key="link.to">
           <router-link
@@ -22,8 +22,8 @@
         </li>
       </ul>
 
-      <!-- Mobile Sheet (hidden on desktop) -->
-      <Sheet >
+      <!-- Mobile -->
+      <Sheet v-model:open="isOpen">
         <SheetTrigger class="block md:hidden">
           <Button variant="ghost" size="icon">
             <MenuIcon />
@@ -42,27 +42,29 @@
               :to="link.to"
               class="px-2 py-1 rounded hover:bg-muted block"
               :class="route.path === link.to ? 'bg-muted font-semibold text-primary' : ''"
-              @click="$refs.sheetClose?.click()"
+              @click="isOpen = false"
             >
               {{ link.label }}
             </router-link>
           </div>
 
-          <SheetClose ref="sheetClose"/>
+          <SheetClose />
         </SheetContent>
       </Sheet>
-
     </div>
   </nav>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { Button } from '@/components/ui/Button'
-import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetClose } from '@/components/ui/Sheet'
+import { Button } from '../components/ui/Button'
+import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetClose } from '../components/ui/Sheet'
 import { MenuIcon } from 'lucide-vue-next'
 
 const route = useRoute()
+
+const isOpen = ref(false)
 
 const links = [
   { label: 'Home', to: '/' },

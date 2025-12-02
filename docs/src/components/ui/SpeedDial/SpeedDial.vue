@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { variants } from '../../theme/variants';
-import { Tooltip } from "@/components/ui/Tooltip";
+import { Tooltip } from "../Tooltip";
 
 const props = defineProps<{
   mainIcon: any;
@@ -55,7 +55,7 @@ const actionsContainerClasses = computed(() => {
       style="gap: 12px;"
     >
 
-    <template v-for="(action, i) in props.actions" :key="i">
+    <template v-for="(action, _i) in props.actions" :key="i">
   <Transition
     enter-active-class="transition transform duration-300 ease-out"
     enter-from-class="scale-0 opacity-0"

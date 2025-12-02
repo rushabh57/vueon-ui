@@ -30,9 +30,14 @@ const installTabs = [
   { label: "yarn", code: `yarn dlx vueon-ui add Stepper` },
   { label: "bun", code: `bunx vueon-ui add Stepper` }
 ];
-
+type Step = {
+  step: number
+  title: string
+  description: string
+  icon: any
+}
 // Steps preview
-const steps = [
+const steps: Step[] = [
   { step: 2, title: "Shipping", description: "Provide shipping info", icon: Truck },
   { step: 3, title: "Payment", description: "Confirm payment method", icon: CreditCard },
   { step: 4, title: "Finish", description: "Complete your order", icon: CheckCircle }
@@ -96,6 +101,9 @@ const stepperPropsData = [
     props: []
   }
 ];
+
+const lastStep = steps?.[steps.length - 1]?.step;
+
 </script>
 
 <template>
@@ -140,7 +148,7 @@ const stepperPropsData = [
 
             <!-- Separator -->
             <StepperSeparator
-              v-if="item.step !== steps[steps.length - 1].step"
+              v-if="item.step !== lastStep"
               class="w-12 h-[1px] bg-border mx-3"
             />
           </StepperItem>

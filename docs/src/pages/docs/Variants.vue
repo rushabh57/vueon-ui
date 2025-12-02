@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import DocsNavigation from "../../components/DocsNavigation.vue";
-import { Card, CardContent } from "../../components/ui/Card";
 import Separator from "../../components/ui/Separator";
 import CodeBlock from "../../components/CodeBlock.vue";
 
@@ -49,7 +48,7 @@ const variantsExample2 = ref(variantsRaw2);
   <section class="space-y-6">
     <DocsNavigation
       :prev="{ title: 'darkmode', path: '/docs/darkmode' }"
-      :next="{ title: null, path: null }"
+      :next="{ title: '', path: '' }"
     />
 
     <div>

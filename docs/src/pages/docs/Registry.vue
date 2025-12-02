@@ -2,7 +2,7 @@
 import registry from "../../../../registry.json"
 import CodeBlock from "../../components/CodeBlock.vue";
 import DocsNavigation from "../../components/DocsNavigation.vue";
-import { Card, CardContent, CardHeader } from "../../components/ui/Card";
+import { Card, CardHeader } from "../../components/ui/Card";
 import Separator from "../../components/ui/Separator";
 
 

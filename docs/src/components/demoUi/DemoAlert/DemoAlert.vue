@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { TriangleAlert } from "lucide-vue-next";
-import { Alert, AlertTitle, AlertDescription } from "@/components/ui/Alert";
+import { Alert, AlertTitle, AlertDescription } from "../../ui/Alert";
 
 import CodeBlock from "../../CodeBlock.vue";
 import CodeTabs from "../../CodeTabs.vue";

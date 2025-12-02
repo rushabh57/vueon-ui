@@ -2,7 +2,6 @@
 import { PopoverContent as Content } from "reka-ui"
 
 defineProps({
-  align: { type: String, default: "center" },
   sideOffset: { type: Number, default: 4 },
   className: { type: String, default: "" }
 })
@@ -10,7 +9,7 @@ defineProps({
 
 <template>
   <Content
-    :align="align"
+    align="start"
     :sideOffset="sideOffset"
     :class="[
       'z-50 w-72 rounded-md border border-input bg-popover p-4 text-popover-foreground shadow-md outline-none',

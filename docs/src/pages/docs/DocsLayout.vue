@@ -76,11 +76,12 @@ v-if="route.path !== '/docs/components' && route.path !== '/docs/components/'"
         :class="activeHeading === h.id
           ? 'text-primary'
           : 'text-muted-foreground'"
-  @click.prevent="document.getElementById(h.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })"
+          @click.prevent="scrollToSection(h.id)"
 
 
       >
         {{ h.text }}
+        
       </button>
     </li>
   </ul>
@@ -94,13 +95,19 @@ import { ref, onMounted, watch } from "vue"
 import { useRoute } from "vue-router"
 
 // VueON UI Components
-import { Button } from "@/components/ui/Button"
-import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetClose } from "@/components/ui/Sheet"
+import { Button } from "../../components/ui/Button"
+import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetClose } from "../../components/ui/Sheet"
 import { MenuIcon } from "lucide-vue-next"
 
 const route = useRoute()
 
 
+function scrollToSection(id: string) {
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
 
 // Sidebar links
 const links = [
@@ -125,7 +132,9 @@ const scanHeadings = () => {
   const h2Elements = document.querySelectorAll("main h2")
   headings.value = Array.from(h2Elements).map(h => ({
     id: h.id,
-    text: h.innerText
+    // text: h.innerText
+    text: (h as HTMLElement).innerText
+
   }))
 }
 

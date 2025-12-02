@@ -50,7 +50,7 @@ onMounted(() => {
     <div class="flex space-x-2  relative">
       <Button
         variant="ghost"
-        v-for="(tab, index) in tabs"
+        v-for="(tab) in tabs"
         :key="tab.label"
         @click="activeTab = tab.label"
         ref="el => tabRefs.value[index] = el"

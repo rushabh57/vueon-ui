@@ -4,7 +4,7 @@ import CodeTabs from "../../CodeTabs.vue";
 import CodeBlock from "../../CodeBlock.vue";
 
 import { Spinner } from "../../ui/Spinner";
-import { RabbitIcon, CircleIcon, Loader2Icon } from "lucide-vue-next";
+import { RabbitIcon, CircleIcon } from "lucide-vue-next";
 import {
   Accordion,
   AccordionContent,

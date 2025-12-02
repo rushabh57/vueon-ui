@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import DocsNavigation from '../../components/DocsNavigation.vue';
-import { Card, CardContent, CardHeader } from '../../components/ui/Card';
+import { Card, CardContent } from '../../components/ui/Card';
 import { Kbd } from '../../components/ui/Kbd';
 import Separator from '../../components/ui/Separator';
 </script>
 
 <template>
   <DocsNavigation
-      :prev="{ title: undefined, path: undefined }"
+      :prev="{ title: '', path: '' }"
       :next="{ title: 'Installation', path: '/docs/installation' }"
   />
 

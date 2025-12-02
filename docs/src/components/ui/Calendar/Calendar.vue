@@ -69,6 +69,7 @@ function pagingFunc(date: DateValue, sign: -1 | 1) {
   return date.add({ years: 1 });
 }
 </script>
+      <!-- :default-value="defaultDate" -->
 
 <template>
   <div class="flex items-start justify-center p-6">
@@ -76,7 +77,8 @@ function pagingFunc(date: DateValue, sign: -1 | 1) {
     <RangeCalendarRoot
       v-if="mode === 'range'"
       v-slot="{ weekDays, grid }"
-      :default-value="defaultDate"
+      :default-value="{ start: defaultDate, end: defaultDate }"
+
       :is-date-unavailable="isDateUnavailable"
       :fixed-weeks="fixedWeeks"
       :number-of-months="numberOfMonths"

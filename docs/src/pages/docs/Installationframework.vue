@@ -8,7 +8,25 @@ import { Kbd } from "../../components/ui/Kbd"
 
 // Dynamic route: /docs/installation/:framework
 const route = useRoute()
-const framework = route.params.framework
+// const framework = route.params.framework
+
+// const framework = computed(() => {
+//   const param = route.params.framework
+//   if (Array.isArray(param)) return param[0]
+//   return param ?? ""
+// })
+type FrameworkKey = keyof typeof frameworks;
+
+
+const framework = computed<FrameworkKey | null>(() => {
+  const param = route.params.framework
+
+  if (!param) return null
+
+  const key = Array.isArray(param) ? param[0] : param
+
+  return (key as FrameworkKey) in frameworks ? (key as FrameworkKey) : null
+})
 
 // Framework data with vite flag
 const frameworks = {
@@ -109,7 +127,12 @@ const addTabs = [
   { label: "bun", code: `bunx vueon-ui add Button` },
 ]
 // Selected framework info
-const info = computed(() => frameworks[framework] ?? null)
+// const info = computed(() => frameworks[framework] ?? null)
+
+const info = computed(() => {
+  return framework.value ? frameworks[framework.value] : null
+})
+
 
 const viteDetectionCode = `import path from "path"
 import tailwindcss from "@tailwindcss/vite"
@@ -149,14 +172,14 @@ const usageExample = part0 + "\n" + part05 + "\n" + part1 + "\n" + part2 + "\n" 
     <div class="mt-3" v-if="info?.create?.length || framework === 'laravel'">
       <h2 class="text-xl font-bold">Create Project</h2>
       <p class=" text-secondary-foreground mb-3">{{ info?.subparagraph }}</p>
-      <div v-if="!info.createTab && framework === 'laravel'">
+      <div v-if="!info?.createTab && framework === 'laravel'">
         <pre class="bg-muted p-4 rounded">
 laravel new example-app
 cd example-app</pre>
       </div>
 
       <!-- CodeTabs for other frameworks -->
-      <CodeTabs v-else :tabs="info.create" />
+      <CodeTabs v-else :tabs="info?.create ?? []" />
     </div>
 
     <div class="mt-3" v-if="info?.vite">
@@ -177,7 +200,7 @@ cd example-app</pre>
       <p class=" text-secondary-foreground mb-3">
         Initialize vueon in your project with below command
       </p>
-      <CodeTabs :tabs="info.init" />
+      <CodeTabs :tabs="info?.init ?? []" />
     </div>
 
     <div class="mt-3">

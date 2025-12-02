@@ -207,12 +207,7 @@
             <p class="text-sm">Enter the 6-digit code sent to your Gmail.</p>
 
             <div class="flex gap-2 justify-between">
-              <Input
-                v-for="i in 6"
-                :key="i"
-                class="w-12 text-center text-lg"
-                maxlength="1"
-              />
+              <OtpField v-model='otp' :length='6' />
             </div>
 
             <Button class="w-full mt-3">Verify</Button>
@@ -243,7 +238,6 @@
         <div class="flex-1 w-full">
           <Label>Age</Label>
           <NumberField
-            v-model="age"
             placeholder="Enter age"
             class="w-full"
             :min="1"
@@ -254,7 +248,6 @@
         <!-- BIRTHDAY FIELD -->
         <div class="flex-1">
           <DateField
-            v-model="birthday"
             withPopup
             :is-date-unavailable="date => date.day === 19"
             placeholder="Select date"
@@ -265,7 +258,7 @@
 
       </div>
 
-      <Button class="w-full mt-4" @click="saveProfile">
+      <Button class="w-full mt-4" >
         Save Changes
       </Button>
     </CardContent>
@@ -373,24 +366,24 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/Card";
-import { Skeleton, SkeletonCircle, SkeletonText } from "@/components/ui/Skeleton";
-import { Switch } from "@/components/ui/Switch";
-import { Label } from "@/components/ui/Label";
-import Toggle from "@/components/ui/Toggle";
-import NumberField from "@/components/ui/NumberField";
-import Indicator from "@/components/ui/Indicator";
+import { Button } from "../../components/ui/Button";
+import { Input } from "../../components/ui/Input";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "../../components/ui/Card";
+import { Skeleton, SkeletonCircle, SkeletonText } from "../../components/ui/Skeleton";
+import { Switch } from "../../components/ui/Switch";
+import { Label } from "../../components/ui/Label";
+import Toggle from "../../components/ui/Toggle";
+import NumberField from "../../components/ui/NumberField";
+import Indicator from "../../components/ui/Indicator";
 
 import {
   DropdownMenu,
   DropdownTrigger,
   DropdownContent,
   DropdownItem,
-} from "@/components/ui/Dropdown";
+} from "../../components/ui/Dropdown";
 
 // Icons
 import {
@@ -399,7 +392,6 @@ import {
   Heart,
   SearchIcon,
   SendHorizontal,
-  GripVertical,
   PlaneLandingIcon,
   PlaneTakeoffIcon,
   ChevronDown,
@@ -411,26 +403,30 @@ import {
 } from "lucide-vue-next";
 
 // REAL DRIFT SYSTEM
-import { DriftArea, Gridsnap, Drift, DriftImage } from "@/components/ui/Drift";
+import { DriftArea, Gridsnap, Drift, DriftImage } from "../../components/ui/Drift";
 import Separator from "../ui/Separator";
 import Avatar from "../ui/Avatar";
-import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "../ui/Drawer";
+import { Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "../ui/Drawer";
 import DateField from "../ui/DateField";
 import { SelectContent, SelectItem, SelectRoot, SelectTrigger, SelectValue } from "../ui/Select";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "../ui/HoverCard";
 import { Spinner } from "../ui/Spinner";
+import OtpField from "../ui/OtpField";
 
 const aiQuery = ref("");
 const airplaneMode = ref(false);
 const unread = ref(2);
 
 const timer = ref(30);
+let interval: number;
 onMounted(() => {
-  setInterval(() => {
+  interval = setInterval(() => {
     if (timer.value > 0) timer.value--;
   }, 1000);
 });
 
+onUnmounted(() => {
+  clearInterval(interval);
+});
 
 
 const frequency = ref("");
@@ -450,4 +446,6 @@ function addNotification() {
     loading.value = false;
   }, 1000);
 }
+
+const otp = ref("");
 </script>

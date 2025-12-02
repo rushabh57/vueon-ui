@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SheetPortal , SheetOverlay } from "./index"
+import { SheetPortal } from "./index"
 import { DialogContent, DialogOverlay } from "reka-ui"
 
 const props = defineProps<{

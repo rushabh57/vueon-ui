@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { ScrollAreaScrollbar as Scrollbar, ScrollAreaThumb } from "reka-ui"
 
-defineProps({
-  orientation: { type: String, default: "vertical" },
-  className: { type: String, default: "" }
-})
+const props = defineProps<{
+  orientation?: "vertical" | "horizontal";
+  className?: string;
+}>();
+// Set default values
+const orientation = props.orientation ?? "vertical";
+const className = props.className ?? "";
+
 </script>
 
 <template>

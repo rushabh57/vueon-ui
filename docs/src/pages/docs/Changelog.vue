@@ -95,13 +95,31 @@ import {
   SelectItem
 } from "../../components/ui/Select"
 
+
+interface ChangeItem {
+  description: string
+  updated?: string
+}
+
+
 // Parse registry into usable changelog entries
+// const rawItems = Object.entries(registry.components)
+//   .map(([name, data]) => ({
+//     name,
+//     description: data.description,
+//     updated: data.updated || "" // some have no date
+//   }))
+//   .filter(i => i.updated.trim() !== "")
 const rawItems = Object.entries(registry.components)
-  .map(([name, data]) => ({
-    name,
-    description: data.description,
-    updated: data.updated || "" // some have no date
-  }))
+  .map(([name, data]) => {
+    const d = data as ChangeItem
+
+    return {
+      name,
+      description: d.description,
+      updated: d.updated ?? ""
+    }
+  })
   .filter(i => i.updated.trim() !== "")
 
 // Convert DD/MM/YYYY to a sortable ISO format YYYY-MM-DD
@@ -111,9 +129,15 @@ const normalize = (d: string) => {
 }
 
 // Sort newest → oldest
-const items = rawItems.sort(
-  (a, b) => new Date(normalize(b.updated)) - new Date(normalize(a.updated))
-)
+// const items = rawItems.sort(
+//   (a, b) => new Date(normalize(b.updated)) - new Date(normalize(a.updated))
+// )
+
+const items = rawItems.sort((a, b) => {
+  const tA = new Date(normalize(a.updated)).getTime();
+  const tB = new Date(normalize(b.updated)).getTime();
+  return tB - tA;
+});
 
 // Extract month + year lists from registry
 const months = [...new Set(items.map(i => i.updated.split("/")[1]))]
@@ -129,7 +153,7 @@ const selectedYear = ref("all")
 // Apply search + filters
 const filteredItems = computed(() => {
   return items.filter(item => {
-    const [dd, mm, yyyy] = item.updated.split("/")
+    const [_dd, mm, yyyy] = item.updated.split("/")
 
     const matchSearch =
       item.name.toLowerCase().includes(search.value.toLowerCase()) ||

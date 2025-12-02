@@ -1,12 +1,12 @@
 <template>
-    <nav aria-label="breadcrumb" :class="className">
+    <nav aria-label="breadcrumb" :class="class">
       <slot />
     </nav>
   </template>
   
   <script setup>
   const props = defineProps({
-    className: { type: String, default: '' }
+    class: { type: String, default: '' }
   })
   </script>
   

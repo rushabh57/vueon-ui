@@ -30,7 +30,6 @@ const addTabs = [
 
 // Usage example
 import usageRaw from "./usage.txt?raw";
-import Home from "../../../pages/Home.vue";
 const usageExample = ref(usageRaw);
 
 // Props data

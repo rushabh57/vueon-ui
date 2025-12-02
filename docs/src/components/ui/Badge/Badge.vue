@@ -4,7 +4,7 @@ import { defineProps, computed } from "vue";
 import { variants } from "../../theme/variants"; // centralized variants
 
 interface BadgeProps {
-  variant?: "default" | "destructive"  | "secondary"  | "outline";
+  variant?: "default" | "destructive"  | "secondary"  | "outline" | "informative" | "positive" | "caution";
   class?: string;
 }
 

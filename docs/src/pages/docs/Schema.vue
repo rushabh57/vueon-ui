@@ -2,7 +2,6 @@
 import { ref } from "vue";
 import CodeBlock from "../../components/CodeBlock.vue";
 import DocsNavigation from "../../components/DocsNavigation.vue";
-import { Card, CardContent, CardHeader } from "../../components/ui/Card";
 import Separator from "../../components/ui/Separator";
 
 const schemaRaw = `{
@@ -31,7 +30,7 @@ const schemaExample = ref(schemaRaw);
   <section class="space-y-6">
     <DocsNavigation
       :prev="{ title: 'blocks', path: '/docs/blocks' }"
-      :next="{ title: null, path: null }"
+      :next="{ title: '', path: '' }"
     />
     <div>
 

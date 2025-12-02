@@ -7,7 +7,7 @@ import {
   HoverCardPortal,
   HoverCardContent,
   HoverCardArrow
-} from "@/components/ui/HoverCard"
+} from "../HoverCard"
 
 defineProps({
   class: { type: String, default: "" },
@@ -28,10 +28,10 @@ defineProps({
     </HoverCardTrigger>
 
     <HoverCardPortal>
-      <HoverCardContent class="flex gap-1 bg-popover text-popover-foreground rounded-md p-2 shadow">
+      <HoverCardContent  align="center" class="flex gap-1 bg-popover text-popover-foreground rounded-md p-2 shadow">
         <button
           v-for="page in hiddenPages"
-          :key="page"
+          :key="String(page)"
           class="h-8 w-8 flex items-center justify-center rounded-md border border-input hover:bg-accent hover:text-accent-foreground text-sm"
         >
           {{ page }}

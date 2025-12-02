@@ -10,7 +10,7 @@ defineProps({
 
 <template>
   <Content
-    :align="align"
+    :align?="align"
     :sideOffset="sideOffset"
     :class="[
       'z-50 w-72 rounded-md border border-input bg-popover p-4 text-popover-foreground shadow-md outline-none',

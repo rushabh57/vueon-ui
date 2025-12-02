@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from 'vue'
+import {  ref } from 'vue'
 import { 
 TreeRoot, 
-TreeItem, 
-TreeVirtualizer } from "@/components/ui/Tree"
+TreeItem } from "../../ui/Tree"
 import CodeTabs from '../../CodeTabs.vue'
 
 // Installation tabs
@@ -122,7 +121,8 @@ const itemss = [
       <template v-slot:default="{ flattenItems }">
         <TreeItem
           v-for="item in flattenItems"
-          :key="item.title"
+          :key="(item as any).title"
+
           :item="item"
           :level="0"
           :style="{ 'padding-left': `${item.level - 0.5}rem` }"

@@ -1,5 +1,6 @@
 <script setup>
 const props = defineProps({ class: String })
+
 </script>
 
 <template>

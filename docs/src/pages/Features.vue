@@ -4,10 +4,3 @@
       <p class="text-lg text-secondary-foreground mb-6">We are working hard to bring you something amazing!</p>
     </div>
   </template>
-  
-  <script setup>
-  </script>
-  
-  <style scoped>
-  </style>
-  

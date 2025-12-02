@@ -22,7 +22,7 @@ import {
   Label
 } from 'reka-ui'
 import { CalendarIcon, ChevronLeft, ChevronRight, Minus } from 'lucide-vue-next'
-import { Button } from '@/components/ui/Button';
+import { Button } from '../Button';
 
 const props = defineProps<{
   label?: string

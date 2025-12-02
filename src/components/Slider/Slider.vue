@@ -16,7 +16,8 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: number[] | number): void
 }>()
 
-const value = ref(props.modelValue ?? [50])
+// const value = ref(props.modelValue ?? [50])
+const value = ref<number[]>([]);
 </script>
 
 <template>

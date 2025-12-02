@@ -13,7 +13,7 @@
       @input="handleInput"
     />
 
-    <!-- Stage message + optional icon with transition -->
+    <!-- Stage message + optional icon -->
     <transition
       enter-active-class="transition-opacity duration-300 ease-in-out"
       enter-from-class="opacity-0"
@@ -25,11 +25,11 @@
       <div
         v-if="computedMessage"
         class="p-1 flex items-center text-xs mt-1"
-        :class="messageColor"
+        :class="stage?.text"
       >
         <component
-          v-if="computedIcon"
-          :is="computedIcon"
+          v-if="stage?.icon"
+          :is="stage.icon"
           class="w-3 h-3 mt-0.5 mr-1"
         />
         <span>{{ computedMessage }}</span>
@@ -39,27 +39,34 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, defineEmits } from "vue";
-import Label from "../Label/Label.vue";
-import { variants, stages } from "../../theme";
 
+// @ts-ignore
+import { variants, stages } from "@/components/theme";
+import { ref, computed, watch } from "vue";
+import Label from "../Label/Label.vue";
+
+// Define types for keys
+type VariantKey = keyof typeof variants;
+type StageKey = keyof typeof stages;
+
+// Props
 const props = defineProps<{
-  variant?: keyof typeof variants;
+  modelValue?: string;
+  variant?: VariantKey;
   disabled?: boolean;
-  stage?: keyof typeof stages;
+  stage?: StageKey;
   size?: "sm" | "md" | "lg";
   label?: string;
   type?: string;
   stageMessage?: string;
-  stageMessageIcon?: any;
-  validator?: (value: string) => keyof typeof stages | null; // optional live validator
+  validator?: (value: string) => StageKey | null;
 }>();
 
 const emit = defineEmits(["update:modelValue"]);
-const innerValue = ref("");
 
-// Watch innerValue and emit for v-model
-watch(innerValue, (val) => emit("update:modelValue", val));
+// v-model binding
+const innerValue = ref(props.modelValue ?? "");
+watch(innerValue, val => emit("update:modelValue", val));
 
 // Sizes
 const sizes = {
@@ -68,65 +75,42 @@ const sizes = {
   lg: "h-12 px-5 py-3 text-lg",
 };
 
+// Base classes
 const baseClass = `
-flex w-full rounded-md border border-input bg-background px-3 py-2 text-base
-ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground
-placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
+flex w-full rounded-md border border-input bg-background
+ring-offset-background file:border-0 file:bg-transparent
+file:text-sm file:font-medium file:text-foreground
+placeholder:text-muted-foreground focus-visible:outline-none
+focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
 disabled:cursor-not-allowed disabled:opacity-50
 `;
 
-// Border & text for stages
-const stageBorderClasses = {
-  error: "border-red-500",
-  success: "border-green-500",
-  warning: "border-yellow-500",
-};
-const stageTextClasses = {
-  error: "text-red-500",
-  success: "text-green-600",
-  warning: "text-yellow-600",
-};
-
-// Computed stage: live via validator or prop
-const computedStage = computed(() => {
+// Computed stage: validator > prop > null
+const computedStage = computed<StageKey | null>(() => {
   if (props.validator) return props.validator(innerValue.value);
   return props.stage ?? null;
 });
 
-// Message
-const computedMessage = computed(() => {
-  if (props.stageMessage) return props.stageMessage;
-  if (computedStage.value) return stages[computedStage.value]?.text ?? "";
-  return "";
-});
+// Stage object
+const stage = computed(() => (computedStage.value ? stages[computedStage.value] : null));
 
-// Icon
-const computedIcon = computed(() => {
-  if (props.stageMessageIcon) return props.stageMessageIcon;
-  if (computedStage.value) return stages[computedStage.value]?.icon ?? null;
-  return null;
-});
+// Stage message
+const computedMessage = computed(() => props.stageMessage ?? stage.value?.message ?? "");
 
 // Input classes
 const inputClasses = computed(() => {
   const sizeClass = sizes[props.size ?? "md"];
   const variantClass = variants[props.variant ?? "outline"];
-  const stageClass = computedStage.value ? stageBorderClasses[computedStage.value] : "";
+  const stageClass = stage.value?.border ?? "";
   return `${baseClass} ${variantClass} ${sizeClass} ${stageClass}`;
 });
 
-// Message color
-const messageColor = computed(() => {
-  if (!computedStage.value) return "";
-  return stageTextClasses[computedStage.value];
-});
-
-// Handle manual input if needed
+// Handle manual input
 const handleInput = (e: Event) => {
   innerValue.value = (e.target as HTMLInputElement).value;
 };
 </script>
 
-<style>
-/* Optional additional custom styles */
+<style scoped>
+/* Optional extra styles */
 </style>

@@ -37,7 +37,7 @@
   </template>
   
   <script setup lang="ts">
-  import { Button } from "@/components/ui/Button"
+  import { Button } from "../../components/ui/Button"
 import { ChevronRight } from "lucide-vue-next";
 import { RouterLink } from "vue-router";
   </script>

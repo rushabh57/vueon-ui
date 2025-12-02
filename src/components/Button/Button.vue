@@ -22,7 +22,7 @@ import { variants } from '@/components/theme';
 const $attrs = useAttrs();
 
 const props = defineProps<{
-  variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link";
+  variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | "informative" | "positive" | "caution";
   size?: "sm" | "md" | "lg" | "icon";
 }>();
 

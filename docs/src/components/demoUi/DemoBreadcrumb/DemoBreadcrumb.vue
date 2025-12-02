@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Link } from "lucide-vue-next";
 import CodeBlock from "../../CodeBlock.vue";
 import CodeTabs from "../../CodeTabs.vue";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../../ui/Accordion";
@@ -12,7 +11,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/Breadcrumb";
+} from "../../ui/Breadcrumb";
 
 import { ref } from "vue";
 

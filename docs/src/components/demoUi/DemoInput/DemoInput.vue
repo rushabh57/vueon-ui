@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { Keyboard } from "lucide-vue-next";
 
 import CodeBlock from "../../CodeBlock.vue";
 import CodeTabs from "../../CodeTabs.vue";
@@ -38,14 +37,12 @@ const inputProps = [
         name: "label",
         type: "string",
         required: false,
-        default: `" "`,
         description: "Label text shown above the input."
       },
       {
         name: "placeholder",
         type: "string",
         required: false,
-        default: `" "`,
         description: "Placeholder text when no value is provided."
       },
       {
@@ -57,16 +54,14 @@ const inputProps = [
       },
       {
         name: "stage",
-        type: `"default" | "error" | "success"`,
+        type: `"warning" | "error" | "success"`,
         required: false,
-        default: `"default"`,
         description: "Shows validation styling."
       },
       {
         name: "stageMessage",
         type: "string",
         required: false,
-        default: `" "`,
         description: "Message displayed below the input."
       }
     ]
@@ -76,14 +71,20 @@ const inputProps = [
 // Form state for preview
 const email = ref("");
 const password = ref("");
-const emailStage = ref("default");
-const passwordStage = ref("default");
+// const emailStage = ref("default");
+// const passwordStage = ref("default");
+const emailStage = ref<"error" | "warning" | "success" | undefined>(undefined);
+const passwordStage = ref<"error" | "warning" | "success" | undefined>(undefined);
+
 const emailMessage = ref("");
 const passwordMessage = ref("");
 
 const validateForm = () => {
-  emailStage.value = passwordStage.value = "default";
-  emailMessage.value = passwordMessage.value = "";
+  // emailStage.value = passwordStage.value = "default";
+  // emailMessage.value = passwordMessage.value = "";
+  emailStage.value = passwordStage.value = undefined;
+emailMessage.value = passwordMessage.value = "";
+
 
   if (!email.value.includes("@")) {
     emailStage.value = "error";
@@ -170,7 +171,7 @@ const validateForm = () => {
         class="border border-border rounded-t-md p-10 flex flex-col gap-8 items-center"
       >
         <!-- Default -->
-        <Input placeholder="Default" />
+        <Input placeholder="normal" />
 
         <!-- Error -->
         <Input
@@ -191,7 +192,7 @@ const validateForm = () => {
         <CodeBlock
           class="rounded-none border-0"
           :hideheading="true"
-          :code="`<Input placeholder='Default' />
+          :code="`<Input placeholder='normal' />
 
 <Input
   placeholder='Error input'
@@ -213,7 +214,7 @@ const validateForm = () => {
       <CodeBlock
         :highlight-lines="[5,6,10,12]"
         filename="src/App.vue"
-        :code="`<Input placeholder='Default' />
+        :code="`<Input placeholder='normal' />
 
 <Input
   placeholder='Error input'
@@ -307,7 +308,7 @@ const validateForm = () => {
                   <Badge :variant="prop.required ? 'destructive' : 'positive'">
                     {{ prop.required ? "Required" : "Optional" }}
                   </Badge>
-                  <Badge variant="informative">Default: {{ prop.default }}</Badge>
+                  <Badge variant="informative">: {{ prop.default }}</Badge>
                 </div>
               </div>
             </div>

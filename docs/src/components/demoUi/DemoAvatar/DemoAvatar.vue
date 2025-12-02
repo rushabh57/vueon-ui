@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { User } from "lucide-vue-next";
 import CodeBlock from "../../CodeBlock.vue";
 import CodeTabs from "../../CodeTabs.vue";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../../ui/Accordion";

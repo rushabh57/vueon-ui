@@ -2,11 +2,10 @@
 import { SelectContent, SelectViewport, SelectPortal } from "reka-ui"
 import SelectScrollUpButton from "./SelectScrollUpButton.vue"
 import SelectScrollDownButton from "./SelectScrollDownButton.vue"
-import { transform } from "typescript"
 
-const fixOffset = (pos: any) => {
-  return { ...pos, x: 0 }
-}
+// const _fixOffset = (pos: any) => {
+//   return { ...pos, x: 0 }
+// }
 </script>
 
 <template>

@@ -4,6 +4,8 @@ import { FileIcon, FolderIcon, FolderOpenIcon } from 'lucide-vue-next'
 import { computed } from 'vue'
 import { Transition } from 'vue'
 
+
+
 const props = defineProps({
   item: { type: Object, required: true },
   level: { type: Number, default: 0 }
@@ -21,7 +23,7 @@ const itemClasses = computed(() =>
 
 <template>
   
-  <RekaTreeItem v-bind="props.item.bind ?? {}" v-slot="{ isExpanded }" :class="itemClasses">
+  <RekaTreeItem v-bind="props.item.bind ?? {}" v-slot="{ isExpanded }" :class="itemClasses" >
     <div class="flex items-center space-x-2 py-1" :style="indentStyle">
     
       <component
@@ -33,7 +35,7 @@ const itemClasses = computed(() =>
         <FileIcon class="h-5 w-5 stroke-1.5" />
       </template>
 
-      <div>{{ props.item.value?.title || props.item.title }}</div>
+      <div>{{ props.item.value?.title ?? props.item.title ?? 'Untitled'  }}</div>
     </div>
 
     <Transition

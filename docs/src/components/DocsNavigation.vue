@@ -2,7 +2,7 @@
 import { defineProps } from 'vue'
 import { useRouter } from 'vue-router'
 import { Button } from './ui/Button';
-import { ChevronLast, ChevronLeft, ChevronRight } from 'lucide-vue-next';
+import { ChevronLeft, ChevronRight } from 'lucide-vue-next';
 
 const props = defineProps<{
   prev?: { title: string; path: string }

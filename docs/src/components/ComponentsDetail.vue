@@ -4,8 +4,6 @@ import { useRoute } from "vue-router"
 import registry from "../../../registry.json"
 import DocsNavigation from "./DocsNavigation.vue"
 
-import CodeTabs from "../components/CodeTabs.vue"
-
 // Demo Components
 import DemoBadge from "./demoUi/DemoBadge/DemoBadge.vue"
 import DemoAccordion from "./demoUi/DemoAccordion/DemoAccordion.vue"
@@ -19,7 +17,7 @@ import DemoCollapsible from "./demoUi/DemoCollapsible/DemoCollapsible.vue"
 import DemoCarousel from "./demoUi/DemoCarousel/DemoCarousel.vue"
 import DemoCard from "./demoUi/DemoCard/DemoCard.vue"
 import DemoDialog from "./demoUi/DemoDialog/DemoDialog.vue"
-import DemoDropdown from "./demoUi/DemoDropDown/DemoDropdown.vue"
+import DemoDropdown from "./demoUi/DemoDropdown/DemoDropdown.vue"
 import DemoInput from "./demoUi/DemoInput/DemoInput.vue"
 import DemoLabel from "./demoUi/DemoLabel/DemoLabel.vue"
 import DemoSelect from "./demoUi/DemoSelect/DemoSelect.vue"
@@ -115,38 +113,54 @@ const demoComponents: Record<string, any> = {
 
 const route = useRoute()
 const componentName = ref(route.params.items as string)
-const componentData = ref(registry.components[componentName.value])
+const componentData = ref(registry.components[componentName.value as keyof typeof registry.components])
+// const componentData = ref(registry.components[componentName.value])
 
 const componentKeys = Object.keys(registry.components)
-const prevComponent = ref({})
-const nextComponent = ref({})
+const prevComponent = ref<{ title: string; path: string } | null>(null)
+const nextComponent = ref<{ title: string; path: string } | null>(null)
+
 // f({}) 
 
 // Demo component
 const ActiveDemo = computed(() => demoComponents[componentName.value] ?? null)
 
-// Dynamic usage example
-const usageCode = computed(() => `<${componentName.value}>Default</${componentName.value}>`)
-
-// Install command
-const installCode = computed(() => `npx vueon-ui add ${componentName.value}`)
 
 const updateData = () => {
   componentName.value = route.params.items as string
-  componentData.value = registry.components[componentName.value]
+  componentData.value = registry.components[componentName.value as keyof typeof registry.components]
+
+  // componentData.value = registry.components[componentName.value]
   // Map status to badge colors
 
   const index = componentKeys.indexOf(componentName.value)
 
-  prevComponent.value =
-    index > 0
-      ? { title: componentKeys[index - 1], path: `/docs/components/${componentKeys[index - 1]}` }
-      : { title: "components", path: "/docs/components" }
+  // prevComponent.value =
+  //   index > 0
+  //     ? { title: componentKeys[index - 1], path: `/docs/components/${componentKeys[index - 1]}` }
+  //     : { title: "components", path: "/docs/components" }
 
-  nextComponent.value =
-    index < componentKeys.length - 1
-      ? { title: componentKeys[index + 1], path: `/docs/components/${componentKeys[index + 1]}` }
-      : { title: undefined, path: undefined }
+  // nextComponent.value =
+  //   index < componentKeys.length - 1
+  //     ? { title: componentKeys[index + 1], path: `/docs/components/${componentKeys[index + 1]}` }
+  //     : { title: undefined, path: undefined }
+
+  prevComponent.value =
+  index > 0
+    ? {
+        title: componentKeys[index - 1] as string,
+        path: `/docs/components/${componentKeys[index - 1] as string}`,
+      }
+    : null
+
+nextComponent.value =
+  index < componentKeys.length - 1
+    ? {
+        title: componentKeys[index + 1] as string,
+        path: `/docs/components/${componentKeys[index + 1] as string}`,
+      }
+    : null
+
 }
 
 watch(() => route.params.items, updateData, { immediate: true })
@@ -167,8 +181,11 @@ watch(() => route.params.items, updateData, { immediate: true })
       </div>
 
    
-
-      <DocsNavigation :prev="prevComponent" :next="nextComponent" />
+      <DocsNavigation
+  :prev="prevComponent || undefined"
+  :next="nextComponent || undefined"
+/>
+      <!-- <DocsNavigation  :prev="prevComponent" :next="nextComponent" /> -->
     </div>
 
     <div v-else>

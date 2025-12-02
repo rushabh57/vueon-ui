@@ -107,39 +107,40 @@ const paginationProps = [
       <section
         class="border border-border rounded-t-md min-h-[200px] p-6 flex items-center justify-center bg-background"
       >
-        <PaginationRoot
-          :total="100"
-          :items-per-page="10"
-          :sibling-count="1"
-          show-edges
-        >
-          <PaginationList v-slot="{ items }" class="flex items-center gap-1">
-            <PaginationFirst />
-            <PaginationPrev />
+          <PaginationRoot
+            :total="100"
+            :items-per-page="10"
+            :sibling-count="1"
+            show-edges
+          >
+            
+            <PaginationList class="flex items-center gap-1"  v-slot="{ items }">
+              <PaginationFirst />
+              <PaginationPrev />
 
-            <template v-for="(page, index) in items" :key="index">
-              <PaginationListItem
-                v-if="page.type === 'page'"
-                :value="page.value"
-                class="cursor-pointer"
-              >
-                {{ page.value }}
-              </PaginationListItem>
+              <template v-for="(page, index) in items" :key="index">
+                <PaginationListItem
+                  v-if="page.type === 'page'"
+                  :value="page.value"
+                  class="cursor-pointer"
+                >
+                  {{ page.value }}
+                </PaginationListItem>
 
-              <PaginationEllipsis
-                v-else
-                :index="index"
-                class="flex h-9 w-9 items-center justify-center"
-                :hidden-pages="[4,5,6,7,8,9]"
-              >
-                …
-              </PaginationEllipsis>
-            </template>
+                <PaginationEllipsis
+                  v-else
+                  :index="index"
+                  class="flex h-9 w-9 items-center justify-center"
+                  :hidden-pages="[4,5,6,7,8,9]"
+                >
+                  …
+                </PaginationEllipsis>
+              </template>
 
-            <PaginationNext />
-            <PaginationLast />
-          </PaginationList>
-        </PaginationRoot>
+              <PaginationNext />
+              <PaginationLast />
+            </PaginationList>
+          </PaginationRoot>
       </section>
 
       <section class="border border-border border-t-0 rounded-b-md">

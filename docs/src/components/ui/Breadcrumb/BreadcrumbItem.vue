@@ -1,10 +1,10 @@
 <template>
-    <li class="inline-flex items-center gap-1.5" :class="className">
+    <li class="inline-flex items-center gap-1.5" :class="class">
       <slot />
     </li>
   </template>
   
   <script setup>
-  const props = defineProps({ className: { type: String, default: '' } })
+  const props = defineProps({ class: { type: String, default: '' } })
   </script>
   
