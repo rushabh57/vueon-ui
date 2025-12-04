@@ -5,8 +5,8 @@ import { getPaths, templatesDir } from "../../src/utils/paths.js";
 import { red, green, yellow, blue, cyan, cyanBright, reset } from "../tokens/colors.js";
 import { startLoader, stopLoader } from "../../src/utils/terminal_loader.js";
 
-const REGISTRY_URL = "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/registry.json";
-const GITHUB_API_URL = "https://api.github.com/repos/rushabh57/vueon-ui/contents/src/components";
+const REGISTRY_URL = "https://raw.githubusercontent.com/strangekit/vueon-ui/main/registry.json";
+const GITHUB_API_URL = "https://api.github.com/repos/strangekit/vueon-ui/contents/src/components";
 
 // Recursive copy function
 function copyRecursive(src, dest) {

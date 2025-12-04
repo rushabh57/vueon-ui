@@ -4,7 +4,7 @@ import { getPaths, templatesDir } from "../../src/utils/paths.js";
 import { red, green, yellow, blue, cyan,  cyanBright, reset } from "../tokens/colors.js";
 
 
-const REGISTRY_URL = "https://raw.githubusercontent.com/rushabh57/vueon-ui/main/registry.json";
+const REGISTRY_URL = "https://raw.githubusercontent.com/strangekit/vueon-ui/main/registry.json";
 
 export default function registerListCommand(program) {
   program

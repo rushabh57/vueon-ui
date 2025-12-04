@@ -1,6 +1,6 @@
 # License
 
-MIT License © 2025 [rushabh57](https://github.com/rushabh57/vueon-ui)
+MIT License © 2025 [strangekit](https://github.com/strangekit/vueon-ui)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the “Software”), to deal

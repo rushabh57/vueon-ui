@@ -46,7 +46,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rushabh57/vueon-ui.git"
+    "url": "git+https://github.com/strangekit/vueon-ui.git"
   },
   "keywords": [
     "vue",
@@ -60,7 +60,7 @@
   "description": "Vueon-UI — A growing Vue 3 component library and CLI toolkit. (still growing)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rushabh57/vueon-ui/issues"
+    "url": "https://github.com/strangekit/vueon-ui/issues"
   },
   "homepage": "https://vueon-ui.vercel.app/"
 }

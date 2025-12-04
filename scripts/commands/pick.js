@@ -4,7 +4,7 @@ import path from "path";
 import { getPaths, templatesDir } from "../../src/utils/paths.js";
 import { red, green, yellow, blue, cyan,  cyanBright, reset } from "../tokens/colors.js";
 
-const GITHUB_API_URL = "https://api.github.com/repos/rushabh57/vueon-ui/contents/src/components";
+const GITHUB_API_URL = "https://api.github.com/repos/strangekit/vueon-ui/contents/src/components";
 
 export default function registerPickCommand(program) {
   program
