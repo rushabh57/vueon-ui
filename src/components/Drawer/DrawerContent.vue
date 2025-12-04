@@ -15,11 +15,11 @@
         'fixed inset-x-0 bottom-0 z-50 mt-24 flex flex-col bg-background rounded-t-xl border border-border shadow-xl select-none transform transition-transform duration-300 ease-in-out',
         drawer.state.isOpen ? 'translate-y-0' : 'translate-y-full'
       ]"
-      @mousedown="onDragStart"
+    @mousedown="onDragStart"
       @touchstart="onDragStart"
     >
       <!-- Drag Handle -->
-      <div class="mx-auto mt-4 h-2 w-24 rounded-full bg-secondary cursor-grab"></div>
+      <div class="mx-auto mt-4 h-2 w-24 rounded-full bg-secondary cursor-grab"   ></div>
       <slot />
     </div>
   </div>
@@ -35,6 +35,7 @@ const vertical = computed(() => drawer.state.direction === 'bottom')
 const overlayOpacity = ref(0)
 const dragging = ref(false)
 let start = 0
+
 
 watch(() => drawer.state.isOpen, (val) => {
   overlayOpacity.value = val ? 1 : 0
@@ -83,13 +84,15 @@ function onDragMove(e) {
   overlayOpacity.value = Math.max(0, 1 - delta / (size * 0.6))
 }
 
+
+
 function onDragEnd() {
   const currentRect = contentRef.value.getBoundingClientRect()
   const distanceDragged = vertical.value
     ? currentRect.top - (window.innerHeight - currentRect.height)
     : currentRect.left
 
-  const threshold = (vertical.value ? contentRef.value.offsetHeight : contentRef.value.offsetWidth) * 0.3 // 30% threshold
+  const threshold = (vertical.value ? contentRef.value.offsetHeight : contentRef.value.offsetWidth) * 0.15 // 30% threshold
 
   if (distanceDragged > threshold) {
     closeDrawerSmooth()

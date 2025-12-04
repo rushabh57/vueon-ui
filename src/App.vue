@@ -1,4 +1,6 @@
-<script setup lang="ts">
+
+
+<!-- <script setup lang="ts">
 import { DriftArea , Gridsnap ,Drift } from "./components/Drift";
 </script>
 
@@ -36,7 +38,6 @@ import { DriftArea , Gridsnap ,Drift } from "./components/Drift";
       direction="vertical"
       dragStyle="smooth"
     >
-      <!-- Grid snap wrapper -->
       <Gridsnap class="bg-green-200 h-full w-full" direction="vertical">
         
         <Drift :x="0" :y="0">
@@ -69,7 +70,6 @@ import { DriftArea , Gridsnap ,Drift } from "./components/Drift";
       direction="horizontal"
       dragStyle="smooth"
     >
-      <!-- Grid snap wrapper -->
       <Gridsnap class="bg-green-200 h-full w-full" direction="horizontal">
         
         <Drift :x="0" :y="0">
@@ -128,4 +128,64 @@ import { DriftArea , Gridsnap ,Drift } from "./components/Drift";
 
 
   
+</template> -->
+
+<script setup lang="ts">
+import {
+  ContextMenu,
+  ContextMenuTrigger,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuLabel,
+  ContextMenuCheckboxItem,
+  ContextMenuRadioItem,
+  ContextMenuRadioGroup,
+  ContextMenuSub,
+  ContextMenuSeparator
+} from '@/components/ContextMenu' // your wrapper index.ts
+</script>
+
+<template>
+  <div class="h-screen flex items-center justify-center">
+    <ContextMenu>
+      <ContextMenuTrigger>
+        Open Menu
+      </ContextMenuTrigger>
+
+      <ContextMenuContent>
+        <ContextMenuLabel>Actions</ContextMenuLabel>
+
+        <!-- Regular items -->
+        <ContextMenuItem>First Item</ContextMenuItem>
+        <ContextMenuItem>Second Item</ContextMenuItem>
+
+        <!-- Checkbox -->
+        <ContextMenuCheckboxItem>Enable Option</ContextMenuCheckboxItem>
+
+        <!-- Radio Group -->
+        <ContextMenuRadioGroup value="1">
+          <ContextMenuRadioItem value="1">Radio Option 1</ContextMenuRadioItem>
+          <ContextMenuRadioItem value="2">Radio Option 2</ContextMenuRadioItem>
+        </ContextMenuRadioGroup>
+
+        <!-- Submenu -->
+        <ContextMenuSub>
+          <template #trigger>Submenu</template>
+          <template #content>
+            <ContextMenuItem>Sub Item 1</ContextMenuItem>
+            <ContextMenuItem>Sub Item 2</ContextMenuItem>
+          </template>
+        </ContextMenuSub>
+
+        <ContextMenuSeparator />
+
+        <!-- Another item -->
+        <ContextMenuItem>Last Item</ContextMenuItem>
+      </ContextMenuContent>
+    </ContextMenu>
+  </div>
 </template>
+
+<style>
+
+</style>
