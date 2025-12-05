@@ -1,5 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}",
+  ],
+  experimental: {
+    oxide: false,
+    lightningcss: true, 
+  },
     theme: {
       extend: {
         colors: {

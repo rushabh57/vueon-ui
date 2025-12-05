@@ -7,8 +7,15 @@ export default defineConfig({
   plugins: [vue(), tailwindcss()],
   resolve: { 
     alias: { 
-      '@': path.resolve(__dirname, './src') ,  
+      '@': path.resolve(__dirname, './src'),  
       '@docs': path.resolve(__dirname, './docs/src'),
     } 
+  },
+  optimizeDeps: {
+    exclude: [
+      '@tailwindcss/oxide-win32-x64-msvc',
+      'lightningcss',
+      '@vitejs/plugin-vue'
+    ]
   }
 })
