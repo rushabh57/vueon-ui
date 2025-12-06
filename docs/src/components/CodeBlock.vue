@@ -39,24 +39,24 @@ const lines = computed(() => (props.code || '').split("\n"));
     </div>
 
 
-    <div class="flex overflow-auto text-sm flex-col bg-secondary/50">
+    <div class="flex codeviewer overflow-auto scrollbar-thin text-sm flex-col bg-secondary/50 relative" >
   <div
     v-for="(line, idx) in lines"
     :key="idx"
     class="flex items-center"
-    :class="props.highlightLines?.includes(idx + 1) ? 'border-l border-r border-r-border/50 bg-transperent' : ''"
+    :class="props.highlightLines?.includes(idx + 1) ? 'border-l border-r border-border/50 bg-muted/50' : ''"
   >
     <!-- Line number -->
-    <div class="w-10 text-left pr-3 pl-1 select-none" style="line-height: 2;">
+    <div class="w-10   text-left pr-3 pl-1 select-none" style="line-height: 2;">
       {{ idx + 1 }}
     </div>
 
     <!-- Code line -->
-    <pre class="flex-1 flex items-center m-0 whitespace-pre" style="line-height: 2;">
+    <pre class="flex-1  flex items-center m-0 whitespace-pre" style="line-height: 2;">
       <code class="">{{ line }}</code>
     </pre>
   </div>
-</div>
+    </div>
 
 
  
@@ -65,4 +65,9 @@ const lines = computed(() => (props.code || '').split("\n"));
 </template>
 
 
-
+<style>
+.codeviewer::-webkit-scrollbar{
+  display: none;
+  scroll-behavior: smooth;
+}
+</style>

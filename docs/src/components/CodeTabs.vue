@@ -60,7 +60,6 @@ onMounted(() => {
         {{ tab.label }}
       </Button>
 
-      <!-- Sliding indicator -->
       <div
         class="absolute bottom-0 h-0.5 bg-primary transition-all duration-300"
         :style="indicatorStyle"
@@ -68,7 +67,7 @@ onMounted(() => {
     </div>
 
     <!-- Tab content -->
-    <div class="bg-muted p-4 rounded-b-md font-mono text-sm overflow-auto">
+    <div class="bg-secondary/50 p-4 rounded-b-md font-mono text-sm overflow-auto">
       <pre>{{ tabs.find(t => t.label === activeTab)?.code }}</pre>
     </div>
   </div>

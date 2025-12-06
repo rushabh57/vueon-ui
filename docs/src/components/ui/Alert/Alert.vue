@@ -24,7 +24,7 @@
   
   /* base classes */
   const baseClasses =
-    "relative w-full rounded-lg border border-border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 bg-secondary"
+    "relative w-full rounded-lg border border-border/50 p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 "
   
   /* Alert-specific variants (no hover state) */
   const alertVariants = cva("", {

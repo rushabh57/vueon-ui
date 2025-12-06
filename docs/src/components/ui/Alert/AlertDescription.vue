@@ -1,5 +1,5 @@
 <template>
-    <div :class="['text-sm [&_p]:leading-relaxed', attrsClass]">
+    <div :class="['text-sm [&_p]:leading-relaxed text-primary/50', attrsClass]">
       <slot />
     </div>
   </template>

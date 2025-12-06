@@ -69,6 +69,7 @@ function pagingFunc(date: DateValue, sign: -1 | 1) {
   return date.add({ years: 1 });
 }
 </script>
+      <!-- :default-value="defaultDate" -->
 
 <template>
   <div class="flex items-start justify-center p-6">
@@ -76,12 +77,13 @@ function pagingFunc(date: DateValue, sign: -1 | 1) {
     <RangeCalendarRoot
       v-if="mode === 'range'"
       v-slot="{ weekDays, grid }"
-      :default-value="defaultDate"
+      :default-value="{ start: defaultDate, end: defaultDate }"
+
       :is-date-unavailable="isDateUnavailable"
       :fixed-weeks="fixedWeeks"
       :number-of-months="numberOfMonths"
       class="
-        rounded-xl bg-background p-4 shadow-sm border 
+        rounded-xl bg-background p-4 shadow-sm border border-border
         transition-all 
         data-[readonly]:opacity-50 data-[readonly]:cursor-not-allowed data-[readonly]:text-muted-foreground
         data-[disabled]:opacity-40 data-[disabled]:cursor-not-allowed
@@ -98,7 +100,7 @@ function pagingFunc(date: DateValue, sign: -1 | 1) {
         <RangeCalendarPrev class="inline-flex items-center justify-center text-primary rounded-md p-2 w-8 h-8 hover:bg-muted">
           <ChevronLeft />
         </RangeCalendarPrev>
-        <RangeCalendarHeading class="text-sm text-black font-medium" />
+        <RangeCalendarHeading class="text-sm text-primary font-medium" />
         <RangeCalendarNext class="inline-flex items-center justify-center text-primary rounded-md p-2 w-8 h-8 hover:bg-muted">
           <ChevronRight />
         </RangeCalendarNext>
@@ -133,14 +135,14 @@ function pagingFunc(date: DateValue, sign: -1 | 1) {
       :is-date-unavailable="isDateUnavailable"
       :fixed-weeks="fixedWeeks"
       :number-of-months="numberOfMonths"
-      class="rounded-xl bg-white p-4 shadow-sm border"
+      class="rounded-xl bg-background p-4 shadow-sm border border-border"
     >
       <CalendarHeader class="flex items-center justify-between">
-        <CalendarPrev class="inline-flex items-center justify-center text-black rounded-md w-8 h-8 hover:bg-stone-50">
+        <CalendarPrev class="inline-flex items-center justify-center text-primary rounded-md w-8 h-8 hover:bg-primary/10">
           <ChevronLeft />
         </CalendarPrev>
-        <CalendarHeading class="text-sm text-black font-medium" />
-        <CalendarNext class="inline-flex items-center justify-center text-black rounded-md w-8 h-8 hover:bg-stone-50">
+        <CalendarHeading class="text-sm text-primary font-medium" />
+        <CalendarNext class="inline-flex items-center justify-center text-primary rounded-md w-8 h-8 hover:bg-primary/10">
           <ChevronRight />
         </CalendarNext>
       </CalendarHeader>

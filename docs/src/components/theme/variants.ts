@@ -6,7 +6,7 @@ export const variants = cva("", {
       default:
         "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
       destructive:
-        "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+        "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive",
       outline:
         "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
       secondary:
@@ -17,13 +17,13 @@ export const variants = cva("", {
 
        /* NEW VARIANTS */
        informative:
-       "bg-informative text-white shadow-xs hover:bg-informative/90 focus-visible:ring-informative/20 dark:focus-visible:ring-informative/40 dark:bg-informative/60",
+       "bg-informative text-white shadow-xs hover:bg-informative/90 focus-visible:ring-informative/20 dark:focus-visible:ring-informative/40 dark:bg-informative",
 
      positive:
-       "bg-positive text-white shadow-xs hover:bg-positive/90 focus-visible:ring-positive/20 dark:focus-visible:ring-positive/40 dark:bg-positive/60",
+       "bg-positive text-white shadow-xs hover:bg-positive/90 focus-visible:ring-positive/20 dark:focus-visible:ring-positive/40 dark:bg-positive",
 
      caution:
-       "bg-caution text-white shadow-xs hover:bg-caution/90 focus-visible:ring-caution/20 dark:focus-visible:ring-caution/40 dark:bg-caution/60",
+       "bg-caution text-white shadow-xs hover:bg-caution/90 focus-visible:ring-caution/20 dark:focus-visible:ring-caution/40 dark:bg-caution",
     },
   },
   defaultVariants: {
