@@ -59,14 +59,14 @@ watch(selectedDate, () => {
     >
       <DatePickerField
         v-slot="{ segments }"
-        class="flex items-center justify-between rounded-lg border border-border bg-card w-fit px-1 py-1.5 shadow-sm text-foreground dark:text-card-foreground focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 transition-colors duration-200 h-10 "
+        class=" flex items-center justify-between rounded-lg border border-border/50 bg-card w-fit px-1 py-1.5 shadow-sm text-foreground dark:text-card-foreground focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 transition-colors duration-200 h-10 "
       >
         <div class="flex gap-1">
           <template v-for="segment in segments" :key="segment.part">
             <DatePickerInput
               v-if="segment.part === 'literal'"
               :part="segment.part"
-              class="text-foreground dark:text-card-foreground px-1 select-none"
+              class="text-foreground outline-0 dark:text-card-foreground px-1 select-none"
             >
               {{ segment.value }}
             </DatePickerInput>
@@ -74,7 +74,7 @@ watch(selectedDate, () => {
             <DatePickerInput
               v-else
               :part="segment.part"
-              class="p-0.75  rounded focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1 placeholder:text-muted-foreground dark:placeholder:text-muted-foreground text-foreground dark:text-card-foreground transition-shadow duration-150"
+              class="p-0.75 outline-0  rounded focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1 placeholder:text-muted-foreground dark:placeholder:text-muted-foreground text-foreground dark:text-card-foreground transition-shadow duration-150"
             >
               {{ segment.value }}
             </DatePickerInput>
@@ -82,10 +82,10 @@ watch(selectedDate, () => {
         </div>
 
         <!-- Calendar Icon Trigger -->
-         <Button variant="ghost" class="ml-1">
+         <Button   v-if="props.withPopup" variant="ghost" class="ml-1">
 
         <DatePickerTrigger
-          v-if="props.withPopup"
+        
         >
           <CalendarIcon class="w-5 h-5" />
         </DatePickerTrigger>

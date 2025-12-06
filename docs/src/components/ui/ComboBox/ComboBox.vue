@@ -40,7 +40,7 @@ const onSelect = (value: string) => {
     class="w-full inline-flex items-center justify-between rounded-lg border border-input px-3 text-xs leading-none h-[35px] gap-2 bg-card text-primary hover:bg-muted shadow-sm  focus:shadow-md outline-none "
   >
     <ComboboxInput
-      class="!bg-transparent outline-none text-primary h-full selection:bg-muted placeholder-muted w-full"
+      class="!bg-transparent  outline-none text-primary h-full selection:bg-muted placeholder-muted w-full placeholder:text-muted-foreground "
       :placeholder="props.placeholder || 'Select...'"
     />
     <ComboboxTrigger>

@@ -5,11 +5,11 @@ import { ChevronsUpDown } from "lucide-vue-next"
 
 <template>
   <RekaTrigger
-    class="flex items-center justify-between w-full text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+    class="data-[state=open]:text-primary   flex items-center justify-between w-full text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
   >
     <slot />
     <ChevronsUpDown
-      class="h-4 w-4 ml-1 text-muted-foreground transition-transform duration-200"
+      class=" h-4 w-4 ml-1 text-muted-foreground transition-transform duration-200"
     />
   </RekaTrigger>
 </template>

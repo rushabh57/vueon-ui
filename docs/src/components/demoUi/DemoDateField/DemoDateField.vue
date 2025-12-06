@@ -65,10 +65,15 @@ const dateFieldProps = [
     <div>
       <!-- Preview -->
       <section
-        class="h-54 border border-border rounded-t-md min-h-fit p-10 flex items-center justify-center"
+        class="h-54 border border-border rounded-t-md min-h-fit p-10 flex items-center flex-col gap-6 justify-center"
       >
         <DateField
           withPopup
+          label="Birthday"
+          :is-date-unavailable="date => date.day === 19"
+        />
+
+        <DateField
           label="Birthday"
           :is-date-unavailable="date => date.day === 19"
         />
