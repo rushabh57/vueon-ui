@@ -105,6 +105,13 @@
       "status": "rookie",
       "prefred_for": ["Form inputs", "Booking dates", "Event scheduling"]
     },
+    "DataTable": {
+    "path": "src/components/DataTable/DataTable.vue",
+    "description": "A fully-featured data table component. Supports search, pagination, sorting, and responsive layout while maintaining the same styling as Table.",
+    "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/DataTable/DataTable.vue",
+    "status": "stable",
+    "preferred_for": ["Data-heavy tables", "Admin dashboards", "Dynamic tables with search and pagination"]
+    },
     "Dialog": {
       "path": "src/components/Dialog/Dialog.vue",
       "description": "Displays an overlay or modal for user interactions.",
@@ -332,6 +339,13 @@
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Tabs/Tabs.vue",
       "status": "stable",
       "prefred_for": ["Content panels", "Navigation tabs", "Settings sections"]
+    },
+    "Table": {
+      "path": "src/components/Table/Table.vue",
+      "description": "A lightweight table component for displaying structured data. Supports TableHead, TableBody, TableFooter, TableRow, TableHeader, and TableCell subcomponents.",
+      "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Table/Table.vue",
+      "status": "stable",
+      "preferred_for": ["Displaying tabular data", "Simple lists", "Content organization"]
     },
     "TimeField": {
       "path": "src/components/TimeField/TimeField.vue",

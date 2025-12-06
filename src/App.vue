@@ -1,136 +1,4 @@
-
-
 <!-- <script setup lang="ts">
-import { DriftArea , Gridsnap ,Drift } from "./components/Drift";
-</script>
-
-<template>
-
-  <div class="mx-auto w-[800px]">
-    <h1 class="text-2xl font-semibold mb-4">Vueon Drift Demo</h1>
-    <DriftArea
-      :bounds="{ width: 800, height: 300 }"
-      direction="free"
-      stack="overlay"
-      drag-style="smooth"
-      :grid="10"
-      class="shadow-lg"
-    >
-      <Drift :x="40" :y="50" class="w-fit">
-        <div class="p-4 rounded-radius w-[200px] bg-card border border-border">
-          Drag Me (Smooth)
-        </div>
-      </Drift>
-
-      <Drift :x="200" :y="100" class="w-fit">
-        <button class="px-4 py-2 bg-primary text-primary-foreground rounded-radius">
-          Button Floating
-        </button>
-      </Drift>
-    </DriftArea>
-  </div>
-
-  
-
-  <div class="w-full h-screen border-green-500 flex items-center justify-center bg-neutral-100 p-10">
-    <DriftArea
-      :bounds="{ width: 300, height: 400 }"
-      direction="vertical"
-      dragStyle="smooth"
-    >
-      <Gridsnap class="bg-green-200 h-full w-full" direction="vertical">
-        
-        <Drift :x="0" :y="0">
-          <div class="w-full h-[100px] bg-red-200 rounded shadow flex items-center justify-center">
-            Item 1
-          </div>
-        </Drift>
-
-        <Drift :x="0" :y="100">
-          <div class="w-full h-[100px] bg-red-700 rounded shadow flex items-center justify-center">
-            Item 2
-          </div>
-        </Drift>
-
-        <Drift :x="0" :y="200">
-          <div class="w-full h-[100px] bg-red-500 rounded shadow flex items-center justify-center">
-            Item 3
-          </div>
-        </Drift>
-
-      </Gridsnap>
-    </DriftArea>
-
-  </div>
-
-
-  <div class="w-full h-screen border-green-500 flex items-center justify-center bg-neutral-100 p-10">
-    <DriftArea
-      :bounds="{ width: 300, height: 100 }"
-      direction="horizontal"
-      dragStyle="smooth"
-    >
-      <Gridsnap class="bg-green-200 h-full w-full" direction="horizontal">
-        
-        <Drift :x="0" :y="0">
-          <div class="w-[100px] h-[100px] bg-red-200 rounded shadow flex items-center justify-center">
-            Item 1
-          </div>
-        </Drift>
-
-        <Drift :x="0" :y="100">
-          <div class="w-[100px] h-[100px] bg-red-700 rounded shadow flex items-center justify-center">
-            Item 2
-          </div>
-        </Drift>
-
-        <Drift :x="0" :y="200">
-          <div class="w-[100px] h-[100px] bg-red-500 rounded shadow flex items-center justify-center">
-            Item 3
-          </div>
-        </Drift>
-
-      </Gridsnap>
-    </DriftArea>
-
-  </div>
-
-
-  <div class="w-full h-screen border-green-500 flex items-center justify-center bg-neutral-100 p-10">
-    <DriftArea
-      :bounds="{ width: 300, height: 500 }"
-      direction="vertical"
-      dragStyle="smooth"
-      stack="block"
-    >
-        
-        <Drift :x="0" :y="0">
-          <div class="w-[100px] h-[100px] bg-red-200 rounded shadow flex items-center justify-center">
-            Item 1
-          </div>
-        </Drift>
-
-        <Drift :x="0" :y="100">
-          <div class="w-[100px] h-[100px] bg-red-700 rounded shadow flex items-center justify-center">
-            Item 2
-          </div>
-        </Drift>
-
-        <Drift :x="0" :y="200">
-          <div class="w-[100px] h-[100px] bg-red-500 rounded shadow flex items-center justify-center">
-            Item 3
-          </div>
-        </Drift>
-
-    </DriftArea>
-
-  </div>
-
-
-  
-</template> -->
-
-<script setup lang="ts">
 import {
   ContextMenu,
   ContextMenuTrigger,
@@ -155,20 +23,16 @@ import {
       <ContextMenuContent>
         <ContextMenuLabel>Actions</ContextMenuLabel>
 
-        <!-- Regular items -->
         <ContextMenuItem>First Item</ContextMenuItem>
         <ContextMenuItem>Second Item</ContextMenuItem>
 
-        <!-- Checkbox -->
         <ContextMenuCheckboxItem>Enable Option</ContextMenuCheckboxItem>
 
-        <!-- Radio Group -->
         <ContextMenuRadioGroup value="1">
           <ContextMenuRadioItem value="1">Radio Option 1</ContextMenuRadioItem>
           <ContextMenuRadioItem value="2">Radio Option 2</ContextMenuRadioItem>
         </ContextMenuRadioGroup>
 
-        <!-- Submenu -->
         <ContextMenuSub>
           <template #trigger>Submenu</template>
           <template #content>
@@ -179,7 +43,6 @@ import {
 
         <ContextMenuSeparator />
 
-        <!-- Another item -->
         <ContextMenuItem>Last Item</ContextMenuItem>
       </ContextMenuContent>
     </ContextMenu>
@@ -188,4 +51,142 @@ import {
 
 <style>
 
-</style>
+</style> -->
+
+
+<!-- table -->
+<!--   
+  <template>
+    <div class="p-10 space-y-6">
+      <DataTable
+        :columns="columns"
+        :rows="rows"
+        searchable
+        paginated
+        :per-page="2"
+      />
+    </div>
+  </template>
+  
+<script setup>
+  import {
+    Table,
+    TableBody,
+    TableCaption,
+    TableCell,
+    TableEmpty,
+    TableFooter,
+    TableHead,
+    TableHeader,
+    TableRow,
+    TableHeading,
+  } from "@/components/Table";
+  
+  const rows = [
+    { id: 1, name: "Vueon UI", status: "Stable", version: "0.0.1" },
+    { id: 2, name: "Table Component", status: "Completed", version: "1.0.0" },
+    { id: 3, name: "Design Tokens", status: "Ready", version: "v4" },
+  ];
+  </script>
+  
+  <template>
+    <div class="min-h-screen bg-background p-10 text-foreground space-y-6">
+  
+      
+      <div class="rounded-lg bg-card  border border-border p-6 animate-fade-in">
+        <Table>
+          <TableHeading>
+            Table Heading
+          </TableHeading>
+          <TableCaption> Component preview table </TableCaption>
+  
+          <TableHead>
+            <TableRow>
+              <TableHeader>ID</TableHeader>
+              <TableHeader>Name</TableHeader>
+              <TableHeader>Status</TableHeader>
+              <TableHeader>Version</TableHeader>
+            </TableRow>
+          </TableHead>
+  
+          <TableBody>
+            <template v-if="rows.length">
+              <TableRow
+                v-for="r in rows"
+                :key="r.id"
+                class="animate-slide-in-from-bottom"
+              >
+                <TableCell>{{ r.id }}</TableCell>
+                <TableCell>{{ r.name }}</TableCell>
+                <TableCell>{{ r.status }}</TableCell>
+                <TableCell>{{ r.version }}</TableCell>
+              </TableRow>
+            </template>
+  
+            <TableEmpty v-else />
+          </TableBody>
+  
+          <TableFooter>
+            <TableRow>
+              <TableCell colspan="4">Total: {{ rows.length }} items</TableCell>
+            </TableRow>
+          </TableFooter>
+        </Table>
+      </div>
+  
+      <button
+        class="px-4 py-2 bg-primary text-primary-foreground rounded-md shadow hover:opacity-90 transition"
+        @click="document.documentElement.classList.toggle('dark')"
+      >
+        Toggle Theme
+      </button>
+    </div>
+  </template>
+   -->
+
+
+
+   <script setup lang="ts">
+    import { ref } from "vue"
+    import { DataTable } from "@/components/DataTable"
+    
+    // Table columns
+    const columns = [
+      { key: "id", label: "ID", sortable: false },
+      { key: "name", label: "Name", sortable: true },
+      { key: "status", label: "Status", sortable: true },
+      { key: "version", label: "Version", sortable: true },
+    ]
+    
+    // Table rows
+    const rows = ref([
+      { id: 1, name: "Button", status: "Stable", version: "1.0.2" },
+      { id: 2, name: "Card", status: "Beta", version: "0.8.4" },
+      { id: 3, name: "Modal", status: "Alpha", version: "0.3.1" },
+      { id: 4, name: "Input", status: "Stable", version: "1.1.0" },
+      { id: 5, name: "Dropdown", status: "Beta", version: "0.9.5" },
+      { id: 6, name: "Checkbox", status: "Stable", version: "1.0.0" },
+    ])
+    </script>
+    
+    <template>
+      <div class="min-h-screen p-6 md:p-10 bg-background text-foreground space-y-6">
+        <h1 class="text-2xl font-semibold">Vueon UI – DataTable Demo</h1>
+        <p class="text-sm opacity-70">
+          Fully featured responsive DataTable with search, pagination, sorting, and sleek Tailwind styling.
+        </p>
+    
+        <div class="rounded-lg shadow-md border border-border bg-card p-4">
+          <DataTable
+            :columns="columns"
+            :rows="rows"
+            searchable
+            paginated
+            :per-page="3"
+          />
+        </div>
+    
+    
+      </div>
+    </template>
+    
