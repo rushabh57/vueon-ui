@@ -8,13 +8,11 @@
         <span class="text-primary">Vueon UI</span>
       </h1>
   
-      <!-- Subtitle -->
       <p class="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
         A fast, elegant component system designed for Vue developers.  
         Minimal, accessible, and fully customizable.
       </p>
   
-      <!-- CTA -->
       <div class="mt-8 flex items-center justify-center gap-4 flex-wrap">
         <Button>
           <router-link to="/docs">Get Started</router-link>
