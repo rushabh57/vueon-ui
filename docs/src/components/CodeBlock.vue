@@ -25,10 +25,11 @@ const lines = computed(() => (props.code || '').split("\n"));
 </script>
 
 <template>
-  <div class="relative border border-border rounded-lg overflow-hidden bg-secondary text-secondary-foreground shadow-sm">
+  <div class="relative border border-border/50 rounded-lg overflow-hidden  text-secondary-foreground shadow-sm">
     <!-- Filename & Copy -->
 
-    <div  v-if="!props.hideheading" data-heading="code-snippint-heading" class="flex justify-between items-center px-3 py-2 border-b border-border bg-secondary text-secondary-foreground">
+    <div  v-if="!props.hideheading" data-heading="code-snippint-heading" class="flex justify-between items-center px-3 py-2 border-b border-border/50 
+    bg-accent/10 text-secondary-foreground">
       <img v-if="props.laguagelogo" :src="props.laguagelogo" alt="language logo" class="w-4 h-4"/>
       
       <span class="text-sm font-medium">{{ props.filename || "code snippet" }}</span>
@@ -38,12 +39,12 @@ const lines = computed(() => (props.code || '').split("\n"));
     </div>
 
 
-    <div class="flex overflow-auto text-sm flex-col">
+    <div class="flex overflow-auto text-sm flex-col bg-secondary/50">
   <div
     v-for="(line, idx) in lines"
     :key="idx"
     class="flex items-center"
-    :class="props.highlightLines?.includes(idx + 1) ? 'border-l border-r border-primary/50 bg-primary/10' : ''"
+    :class="props.highlightLines?.includes(idx + 1) ? 'border-l border-r border-r-border/50 bg-transperent' : ''"
   >
     <!-- Line number -->
     <div class="w-10 text-left pr-3 pl-1 select-none" style="line-height: 2;">

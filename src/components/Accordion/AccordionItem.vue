@@ -5,7 +5,7 @@ const props = defineProps<{ value: string }>();
 </script>
 
 <template>
-  <AccordionItem :value="props.value" class="border-b border-gray-200  ">
+  <AccordionItem :value="props.value" class="border-b border-border/50  ">
     <slot />
   </AccordionItem>
 </template>

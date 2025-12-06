@@ -20,6 +20,11 @@
             {{ link.label }}
           </router-link>
         </li>
+        <Button variant="ghost" class="justify-start" @click="toggleTheme">
+        <span v-if="isDark"><MoonIcon /></span>
+        <span v-else><SunIcon/></span>
+      </Button>
+
       </ul>
 
       <!-- Mobile -->
@@ -35,7 +40,7 @@
             <SheetTitle class="border-b border-input p-4">Menu</SheetTitle>
           </SheetHeader>
 
-          <div class="mt-5 flex flex-col gap-2 p-4">
+          <div class="mt-5 flex flex-col gap-2 p-4 text-primary">
             <router-link
               v-for="link in links"
               :key="link.to"
@@ -57,10 +62,42 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { onMounted } from 'vue'
+
 import { useRoute } from 'vue-router'
 import { Button } from '../components/ui/Button'
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetClose } from '../components/ui/Sheet'
-import { MenuIcon } from 'lucide-vue-next'
+import { MenuIcon, MoonIcon, SunIcon } from 'lucide-vue-next'
+
+
+const isDark = ref(false)
+
+const applyTheme = () => {
+  const html = document.documentElement
+  if (isDark.value) {
+    html.classList.add('dark')
+    localStorage.setItem('theme', 'dark')
+  } else {
+    html.classList.remove('dark')
+    localStorage.setItem('theme', 'light')
+  }
+}
+
+const toggleTheme = () => {
+  isDark.value = !isDark.value
+  applyTheme()
+}
+
+onMounted(() => {
+  const stored = localStorage.getItem('theme')
+  isDark.value =
+    stored === 'dark' ||
+    (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)
+
+  applyTheme()
+})
+
+
 
 const route = useRoute()
 

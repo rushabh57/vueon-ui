@@ -7,7 +7,7 @@ import "./style.css"
 <template>
 <AccordionHeader>
   <AccordionTrigger
-    class="group flex w-full items-center justify-between py-4 text-left text-sm font-medium hover:bg-gray-50 cursor-pointer transition-all"
+    class="group flex w-full items-center justify-between py-4 text-left text-sm font-medium hover:bg-primary-foreground cursor-pointer transition-all focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 outline-0 rounded "
   >
     <slot />
 
