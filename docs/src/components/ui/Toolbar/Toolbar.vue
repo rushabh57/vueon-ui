@@ -31,13 +31,12 @@ const toggleAlign = ref(props.align ?? "center")
 watch(toggleFormatting, v => emit("update:modelValue", v))
 watch(toggleAlign, v => emit("update:align", v))
 
-// ⬇️ toolbar height here
 const toolbarClass = computed(() => "h-10")
 </script>
 
 <template>
   <ToolbarRoot
-    :class="`flex w-full max-w-[620px] items-center p-2 border border-border rounded-lg shadow-sm bg-card ${toolbarClass}`"
+    :class="`flex w-full max-w-[620px] items-center p-2 border border-border/50 rounded-lg shadow-sm bg-border ${toolbarClass}`"
     aria-label="Formatting Options"
   >
     <!-- Formatting -->
@@ -59,7 +58,7 @@ const toolbarClass = computed(() => "h-10")
         class="h-7 w-7 rounded flex items-center justify-center text-muted-foreground
          hover:bg-muted hover:text-foreground
          data-[state=on]:bg-primary data-[state=on]:text-primary-foreground
-         focus-visible:ring-2 focus-visible:ring-ring"
+         focus-visible:ring-2 focus-visible:ring-ring transition-all"
       >
         <ItalicIcon class="size-4" />
       </ToolbarToggleItem>
@@ -70,7 +69,7 @@ const toolbarClass = computed(() => "h-10")
         class="h-7 w-7 rounded flex items-center justify-center text-muted-foreground
          hover:bg-muted hover:text-foreground
          data-[state=on]:bg-primary data-[state=on]:text-primary-foreground
-         focus-visible:ring-2 focus-visible:ring-ring"
+         focus-visible:ring-2 focus-visible:ring-ring transition-all"
       >
         <UnderlineIcon class="size-4" />
       </ToolbarToggleItem>
@@ -81,7 +80,7 @@ const toolbarClass = computed(() => "h-10")
         class="h-7 w-7 rounded flex items-center justify-center text-muted-foreground
          hover:bg-muted hover:text-foreground
          data-[state=on]:bg-primary data-[state=on]:text-primary-foreground
-         focus-visible:ring-2 focus-visible:ring-ring"
+         focus-visible:ring-2 focus-visible:ring-ring transition-all"
       >
         <StrikethroughIcon class="size-4" />
       </ToolbarToggleItem>
@@ -91,21 +90,21 @@ const toolbarClass = computed(() => "h-10")
 
     <!-- Alignment -->
     <ToolbarToggleGroup v-model="toggleAlign" type="single" class="flex gap-1">
-      <ToolbarToggleItem value="left" aria-label="Align Left" class="h-7 w-7 rounded flex items-center justify-center text-muted-foreground
+      <ToolbarToggleItem value="left" aria-label="Align Left" class=" transition-all h-7 w-7 rounded flex items-center justify-center text-muted-foreground
          hover:bg-muted hover:text-foreground
          data-[state=on]:bg-primary data-[state=on]:text-primary-foreground
          focus-visible:ring-2 focus-visible:ring-ring">
         <AlignLeftIcon class="size-4" />
       </ToolbarToggleItem>
 
-      <ToolbarToggleItem value="center" aria-label="Align Center" class="h-7 w-7 rounded flex items-center justify-center text-muted-foreground
+      <ToolbarToggleItem value="center" aria-label="Align Center" class="transition-all h-7 w-7 rounded flex items-center justify-center text-muted-foreground
          hover:bg-muted hover:text-foreground
          data-[state=on]:bg-primary data-[state=on]:text-primary-foreground
          focus-visible:ring-2 focus-visible:ring-ring">
         <AlignCenterIcon class="size-4" />
       </ToolbarToggleItem>
 
-      <ToolbarToggleItem value="right" aria-label="Align Right" class="h-7 w-7 rounded flex items-center justify-center text-muted-foreground
+      <ToolbarToggleItem value="right" aria-label="Align Right" class="transition-all h-7 w-7 rounded flex items-center justify-center text-muted-foreground
          hover:bg-muted hover:text-foreground
          data-[state=on]:bg-primary data-[state=on]:text-primary-foreground
          focus-visible:ring-2 focus-visible:ring-ring">

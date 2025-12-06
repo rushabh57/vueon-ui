@@ -31,7 +31,7 @@ const defaultGetKey = (item: TreeItem) =>
     <template v-slot="{ flattenItems }">
       <!-- Header -->
       <slot name="header">
-        <h2 class="font-semibold text-sm text-muted-foreground px-2 pt-1 pb-3">
+        <h2 class="font-semibold text-sm text-muted-foreground  px-2 pt-1 pb-3 h-fit transition-all">
           {{ title }}
         </h2>
       </slot>

@@ -110,69 +110,43 @@ const tabsPropsData = [
       <section
         class="border border-border rounded-t-md h-fit p-10 flex justify-center"
       >
-        <Tabs default-value="account" class="w-[400px]">
-          <TabsList>
-            <TabsIndicator />
-            <TabsTrigger value="account">Account</TabsTrigger>
-            <TabsTrigger value="followers">Followers</TabsTrigger>
-          </TabsList>
+      
+      <Tabs default-value="news" class="w-[400px]">
+      <TabsList class="relative">
+        <TabsIndicator  />
+        <TabsTrigger value="news">News</TabsTrigger>
+        <TabsTrigger value="sports">Sports</TabsTrigger>
+        <TabsTrigger value="entertainment">Entertainment</TabsTrigger>
+      </TabsList>
 
-          <TabsContent
-            class="p-2 bg-popover border border-input h-52 w-52 rounded-lg"
-            value="account"
-          >
-            <div class="space-y-4">
-              <!-- Dark Mode Toggle -->
-              <div class="flex items-center justify-between">
-                <Checkbox id="darkMode" />
-                <Label for="darkMode" class="text-sm font-medium">
-                  Dark Mode
-                </Label>
-              </div>
+      <TabsContent value="news" class="border-border border rounded-md p-2">
+        <h3>Today's Headlines</h3>
+        <ul>
+          <li>Global markets rise on economic optimism.</li>
+          <li>Local elections results announced.</li>
+          <li>New tech innovations unveiled at conference.</li>
+        </ul>
+      </TabsContent>
 
-              <Separator />
+      <TabsContent value="sports" class="border-border border rounded-md p-2">
+        <h3>Sports Updates</h3>
+        <ul>
+          <li>Team A wins the championship.</li>
+          <li>Player X breaks scoring record.</li>
+          <li>Upcoming match schedule released.</li>
+        </ul>
+      </TabsContent>
 
-              <!-- Username -->
-              <div class="flex flex-col space-y-1">
-                <Input id="username" type="text" placeholder="Change username" />
-              </div>
+      <TabsContent value="entertainment" class="border-border border rounded-md p-2">
+        <h3>Entertainment Buzz</h3>
+        <ul>
+          <li>New blockbuster movie hits theaters.</li>
+          <li>Popular singer releases new album.</li>
+          <li>TV series season finale airs tonight.</li>
+        </ul>
+      </TabsContent>
+    </Tabs>
 
-              <!-- Logout -->
-              <Button variant="destructive">Logout</Button>
-            </div>
-          </TabsContent>
-
-          <TabsContent
-            value="followers"
-            class="p-2 bg-popover border border-input h-52 w-52 rounded-lg"
-          >
-            <div class="mt-2 space-y-2">
-              <div class="flex items-center space-x-2">
-                <img
-                  src="https://randomuser.me/api/portraits/men/32.jpg"
-                  class="h-8 w-8 rounded-full"
-                />
-                <span class="text-sm font-medium">@john_doe</span>
-              </div>
-
-              <div class="flex items-center space-x-2">
-                <img
-                  src="https://randomuser.me/api/portraits/women/45.jpg"
-                  class="h-8 w-8 rounded-full"
-                />
-                <span class="text-sm font-medium">@jane_smith</span>
-              </div>
-
-              <div class="flex items-center space-x-2">
-                <img
-                  src="https://randomuser.me/api/portraits/men/76.jpg"
-                  class="h-8 w-8 rounded-full"
-                />
-                <span class="text-sm font-medium">@mike_ross</span>
-              </div>
-            </div>
-          </TabsContent>
-        </Tabs>
       </section>
 
       <section class="border border-border border-t-0 rounded-b-md">

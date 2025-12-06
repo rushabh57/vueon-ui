@@ -23,7 +23,7 @@ const offset = props.sideOffset ?? 6;
 
 
 const contentClasses = computed(() => [
-  "z-50 overflow-hidden rounded-md border border-input bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md",
+  "z-50 overflow-hidden rounded-md border border-border/50 bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md",
   isActive.value
     ? "animate-in fade-in-0 zoom-in-95"
     : "animate-out fade-out-0 zoom-out-95",
@@ -60,9 +60,7 @@ function closeTooltip() {
         @focus="openTooltip"
         @blur="closeTooltip"
       >
-          <!-- named slot "trigger" if provided -->
           <slot name="trigger">
-            <!-- fallback to default slot if no named slot -->
             <slot />
           </slot>
 

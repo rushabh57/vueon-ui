@@ -25,7 +25,7 @@ const sizeMap: Record<string, string> = {
 const sizeClasses = computed(() => sizeMap[runtimeSize.value])
 
 const baseClasses =
-  `inline-flex items-center justify-center border-input whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors
+  `inline-flex items-center justify-center border-border/50 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors
    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
    disabled:pointer-events-none disabled:opacity-50
    data-[state=on]:bg-accent data-[state=on]:text-accent-foreground
@@ -46,6 +46,7 @@ const attrsClass = computed(() =>
     ]"
   >
     <slot />
+    
   </RekaToggle>
 </template>
 

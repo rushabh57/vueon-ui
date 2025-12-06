@@ -5,7 +5,9 @@ import { TabsList as RekaTabsList } from "reka-ui";
 <template>
   <RekaTabsList
     v-bind="$attrs"
-    class="inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground"
+    class="inline-flex  items-center justify-center 
+    rounded 
+    bg-muted p-0.5 text-muted-foreground"
   >
     <slot />
   </RekaTabsList>
