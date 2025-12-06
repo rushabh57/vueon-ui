@@ -13,7 +13,6 @@ import Installationframework from '@/pages/docs/Installationframework.vue'
 import CLI from '@/pages/docs/CLI.vue'
 import ComponentsList from '@/pages/docs/ComponentsList.vue'
 import ComponentsDetail from '@/components/ComponentsDetail.vue'
-import Indicator from '@/pages/docs/Indicator.vue'
 // import llmstxt from './llms.txt'
 import Blocks from '@/pages/docs/Blocks.vue'
 import Changelog from '@/pages/docs/Changelog.vue'
@@ -39,7 +38,7 @@ const routes: Array<RouteRecordRaw> = [
       { path: 'installation/:framework', name: 'docs-installation-framework', component: Installationframework, props: true },
       { path: 'components', name: 'doc-components-list', component: ComponentsList },
       { path: 'components/:items', name: 'doc-components-list-items', component: ComponentsDetail, props: true },
-      { path: 'components-indicators', name: 'components-indicators', component: Indicator },
+
       { path: 'blocks', name: 'blocks', component: Blocks },
       { path: 'changelog', name: 'changelog', component: Changelog },
       { path: 'darkmode', name: 'darkmode', component: DarkMode },

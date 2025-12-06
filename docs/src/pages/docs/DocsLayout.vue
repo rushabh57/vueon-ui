@@ -25,7 +25,7 @@
               v-for="item in links"
               :key="item.to"
               :to="item.to"
-              class="px-2 py-1 rounded hover:bg-muted text-sm"
+              class="px-2 py-3 rounded hover:bg-muted text-sm"
               :class="route.path === item.to ? 'bg-muted font-semibold' : ''"
             >
               {{ item.label }}
@@ -46,12 +46,10 @@
           v-for="item in links"
           :key="item.to"
           :to="item.to"
-          class="px-2 py-1 rounded hover:bg-muted text-sm"
+          class="px-2 py-3 rounded hover:bg-muted text-sm"
           :class="route.path === item.to ? 'bg-muted font-semibold' : ''"
         >
-          <Button variant="ghost">
             {{ item.label }}
-          </Button>
         </router-link>
       </nav>
     </aside>

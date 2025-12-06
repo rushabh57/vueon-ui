@@ -185,15 +185,14 @@
               <div class="h-20 items-center flex">
 
                 
-              <Indicator  variant="default" rounded position="top-right" size="sm" >
+              <Indicator  variant="default" relativeMode rounded position="top-right" size="sm" value="1" >
                 <Avatar class="" size="lg" src="/avatar_imgs/avatar_1.jpg" alt="img1" />
-                <template #indicator>3</template>
               </Indicator>
             </div>
 
               <div>
-                <p>zoroturo</p>
-                <p class="text-secondary-foreground text-xs">anime-fan</p>
+                <p>@jonTheDon</p>
+                <p class="text-secondary-foreground text-xs">joe due</p>
               </div>
             </div>
 
@@ -294,7 +293,7 @@
 
       <div class="flex gap-2">
 
-        <div class="space-y-1.5">
+        <div class="space-y-1.5 flex flex-wrap gap-1">
           <Button ><Bell/> we have blocks to remain  </Button>
           <Button ><Bell/> few patch to update </Button>
           <Button ><Bell/> we can done it! </Button>

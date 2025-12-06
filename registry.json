@@ -374,6 +374,13 @@
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Tree/Tree.vue",
       "status": "experimental",
       "prefred_for": ["Hierarchical lists", "File explorers", "Nested menus"]
+    },
+    "ThemeSwitcher": {
+      "path": "src/components/ThemeSwitcher/ThemeSwitcher.vue",
+      "description": "used this component as light & dark & system mode default provide 3 mode's.",
+      "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/ThemeSwitcher/ThemeSwitcher.vue",
+      "status": "stable",
+      "prefred_for": ["modes", "user prefrences", "light & dark mode"]
     }
   },
   "countComponents": 52,
