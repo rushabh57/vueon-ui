@@ -13,7 +13,7 @@ const sideOffset = props.sideOffset ?? 4;
   <Content
     :align="align"
     :sideOffset="sideOffset"
-    class="z-50 w-64 rounded-md border border-input bg-popover p-4 text-popover-foreground shadow-md outline-none
+    class="z-50 w-64 rounded-md border border-border/50 bg-popover p-4 text-popover-foreground shadow-md outline-none
            data-[state=open]:animate-in data-[state=closed]:animate-out
            data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0
            data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95

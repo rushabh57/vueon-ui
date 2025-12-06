@@ -21,7 +21,7 @@ provide("drift-area", {
 
 <template>
   <div
-    class="relative border border-border rounded-lg bg-card overflow-hidden"
+    class="relative border border-border/50 rounded-lg bg-backround overflow-hidden"
     :style="{
       width: props.bounds?.width ? props.bounds.width + 'px' : '100%',
       height: props.bounds?.height ? props.bounds.height + 'px' : '100%',

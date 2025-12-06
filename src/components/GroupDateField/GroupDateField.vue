@@ -22,7 +22,7 @@ import {
   Label
 } from 'reka-ui'
 import { CalendarIcon, ChevronLeft, ChevronRight, Minus } from 'lucide-vue-next'
-import { Button } from '@/components/Button';
+import { Button } from '../Button';
 
 const props = defineProps<{
   label?: string
@@ -44,7 +44,7 @@ watch(selectedRange, (range) => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-2 w-full relative">
+  <div class="flex flex-col gap-2 w-fit relative">
     <!-- Label -->
     <Label
       v-if="props.label"
@@ -61,7 +61,7 @@ watch(selectedRange, (range) => {
       <!-- Field -->
       <DateRangePickerField
         v-slot="{ segments }"
-        class="h-10 flex items-center justify-between rounded-lg border border-border bg-card w-full px-2 py-1.5 shadow-sm text-foreground dark:text-card-foreground focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 transition-colors duration-200"
+        class="h-10 flex items-center justify-between rounded-lg border border-input bg-card w-full px-2 py-1.5 shadow-sm text-foreground dark:text-card-foreground focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 transition-colors duration-200"
       >
         <div class="flex gap-1">
           <!-- Start Segment -->
@@ -75,7 +75,8 @@ watch(selectedRange, (range) => {
               focus:outline-none 
               focus:ring-2 
               focus:ring-ring 
-              focus:ring-offset-1 placeholder:text-muted-foreground dark:placeholder:text-muted-foreground text-foreground 
+              focus:ring-offset-1 placeholder:text-muted dark:placeholder:text-muted 
+              text-foreground 
               dark:text-card-foreground 
               leading-7.5
               transition-shadow duration-150"
@@ -101,10 +102,10 @@ watch(selectedRange, (range) => {
           </template>
         </div>
 
-        <Button variant="ghost" class="ml-1">
+        <Button v-if="props.withPopup" variant="ghost" class="ml-1">
 
             <!-- Optional Trigger -->
-            <DateRangePickerTrigger v-if="props.withPopup" >
+            <DateRangePickerTrigger  >
                 <CalendarIcon class="w-5 h-5" />
             </DateRangePickerTrigger>
         </Button>
@@ -114,10 +115,10 @@ watch(selectedRange, (range) => {
       <DateRangePickerContent
         v-if="props.withPopup"
         :side-offset="4"
-        class="         data-[state=open]:animate-in data-[state=closed]:animate-out
+        class=" data-[state=open]:animate-in data-[state=closed]:animate-out
          data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0
          data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95
-         mt-1 rounded-xl border border-input bg-card shadow-lg will-change-[transform,opacity] data-[state=open]:animate-slideDownAndFade"
+         mt-1 rounded-xl border border-border/50 bg-card shadow-lg will-change-[transform,opacity] data-[state=open]:animate-slideDownAndFade"
       >
         <DateRangePickerArrow class="fill-card stroke-border" />
         <DateRangePickerCalendar v-slot="{ weekDays, grid }" class="p-4">

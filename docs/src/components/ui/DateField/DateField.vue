@@ -101,7 +101,7 @@ watch(selectedDate, () => {
          data-[state=open]:animate-in data-[state=closed]:animate-out
          data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0
          data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95
-         mt-1 rounded-xl border border-input bg-card shadow-lg will-change-[transform,opacity] data-[state=open]:animate-slideDownAndFade"
+         mt-1 rounded-xl border border-border/50 bg-card shadow-lg will-change-[transform,opacity] data-[state=open]:animate-slideDownAndFade"
       >
         <DatePickerArrow class="fill-card stroke-border" />
         <DatePickerCalendar v-slot="{ weekDays, grid }" class="p-4">

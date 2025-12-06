@@ -41,22 +41,22 @@ const indicatorProps = [
     <section>
       <!-- Preview UI -->
       <section class="border border-border rounded-t-md h-52 flex items-center justify-center gap-10 p-4">
-        <Indicator variant="destructive" position="top-right"  size="sm" >
-        <Button >
-          Messages
-        </Button>
-        <template #indicator>12</template>
+        <Indicator relativeMode size="sm" position="top-right" value="3">
+        <button>Inbox</button>
       </Indicator>
 
-        <Indicator variant="positive" rounded position="top-right" size="md">
-          <img src="/avatar_imgs/avatar_1.jpg" class="w-14 h-14 rounded-full object-cover" />
-          <template #indicator>1</template>
-        </Indicator>
 
-        <Indicator variant="informative" rounded position="center" size="lg">
-          <div class="w-16 h-16 "></div>
-          <template #indicator>3</template>
-        </Indicator>
+  <Button>
+    Messages update
+    <Indicator variant="destructive" position="top-right" size="sm" value="12" />
+  </Button>
+
+<Indicator variant="positive" relativeMode rounded position="top-right" size="md" value="1">
+  <img src="/avatar_imgs/avatar_1.jpg" class="w-14 h-14 rounded-full object-cover" />
+</Indicator>
+
+
+
       </section>
 
       <!-- Preview Code -->

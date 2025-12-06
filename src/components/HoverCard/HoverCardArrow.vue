@@ -3,5 +3,5 @@ import { HoverCardArrow as Arrow } from "reka-ui"
 </script>
 
 <template>
-  <Arrow class="fill-background" />
+  <Arrow class="fill-popover" />
 </template>

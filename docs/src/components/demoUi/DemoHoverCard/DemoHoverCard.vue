@@ -82,7 +82,7 @@ const hoverCardPropsData = [
           </HoverCardTrigger>
 
           <HoverCardPortal>
-            <HoverCardContent :sideOffset="4" align="start" class="flex flex-col gap-3 w-60">
+            <HoverCardContent :sideOffset="4" align="center" class="flex flex-col gap-3 w-60">
               <div class="flex items-center gap-3">
                 <img
                   src="https://avatars.githubusercontent.com/u/000000?v=4"
