@@ -2,7 +2,6 @@
     <section class="mx-auto max-w-4xl py-20 border-b border-input text-center">
     
   
-      <!-- Main Title -->
       <h1 class="mt-15 text-5xl font-bold tracking-tight text-foreground sm:text-6xl">
         <span class="text-primary"> Dream </span> you Vue with 
         <span class="text-primary">Vueon UI</span>
