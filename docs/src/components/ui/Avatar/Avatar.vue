@@ -40,12 +40,10 @@ const sizeClasses = computed(() => ({
 // computed color pair
 const pair = computed(() => getColorPair(props.fallbackText));
 
-// ring class: developer color > fallback to text color
 const ringClass = computed(() => {
   if (!props.ring) return "";
-  if (props.ringColor) return `ring-2 ${props.ringColor}`;
-  // fallback: match text color of avatar
-  const textColor = pair.value.text.replace("text-", "ring-"); // e.g., text-red-500 → ring-red-500
+  if (props.ringColor) return `ring-2 ${props.ringColor || 'bg-background'} `;
+  const textColor = pair.value.text.replace("text-", "ring-");
   return `ring-2 ${textColor}`;
 });
 

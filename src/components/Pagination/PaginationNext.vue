@@ -11,7 +11,7 @@ defineProps({
   <PaginationNext
     aria-label="Go to next page"
     :class="[
-      'flex h-9 items-center justify-center rounded-md border border-input px-3 text-sm font-medium gap-1 hover:bg-accent hover:text-accent-foreground',
+      'flex h-9 items-center justify-center rounded-md border border-border/50 px-2.5 text-sm font-medium gap-1 hover:bg-accent hover:text-accent-foreground',
       $props.class
     ]"
   >

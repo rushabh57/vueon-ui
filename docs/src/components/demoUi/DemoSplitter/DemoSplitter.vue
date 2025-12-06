@@ -66,7 +66,7 @@ const splitterPropsData = [
         <SplitterGroup id="splitter-group-1" direction="horizontal" class="w-full h-64">
           <SplitterPanel
             id="splitter-group-1-panel-1"
-            class="bg-muted flex items-center justify-center"
+            class=" flex items-center justify-center"
           >
             Panel A
           </SplitterPanel>
@@ -80,19 +80,20 @@ const splitterPropsData = [
             <SplitterGroup id="splitter-group-2" direction="vertical" class="flex-1">
               <SplitterPanel
                 id="splitter-group-2-panel-1"
-                class="bg-muted flex items-center justify-center"
+            class=" flex items-center justify-center"
+
               >
                 Panel B
               </SplitterPanel>
 
               <SplitterResizeHandle
                 id="splitter-group-2-resize-handle-1"
-                class="h-0.5 bg-border"
               />
 
               <SplitterPanel
                 id="splitter-group-2-panel-2"
-                class="bg-muted flex items-center justify-center"
+            class=" flex items-center justify-center"
+
               >
                 Panel C
               </SplitterPanel>

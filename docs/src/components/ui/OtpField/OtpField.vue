@@ -8,6 +8,7 @@
         v-for="index in length"
         :key="index"
         :index="index - 1"
+        
         class="
           w-10 h-10
           text-center 
@@ -46,7 +47,4 @@ const props = defineProps({
 
 const otp = ref<string[]>(Array(props.length).fill(""));
 
-// function handleComplete(value: string[]) {
-//   console.log("OTP complete:", value.join(""));
-// }
 </script>

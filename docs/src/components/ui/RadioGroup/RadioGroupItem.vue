@@ -14,16 +14,20 @@ const props = defineProps<{
     :id="props.id"
     :value="props.value"
     :class="[
-      'aspect-square h-4 w-4 rounded-full border border-primary text-primary',
-      'ring-offset-background focus:outline-none focus-visible:ring-2',
-      'focus-visible:ring-ring focus-visible:ring-offset-2',
-      'disabled:cursor-not-allowed disabled:opacity-50',
+      // Base styles
+      'h-4 w-4 rounded-full border border-input text-primary',
+      'transition-colors ease-out',
+      
+      // Focus
+      'focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+      
+      // Misc
+      'ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed',
       props.class
     ]"
   >
-    <RadioGroupIndicator class="flex items-center justify-center">
-      <!-- The filled circle -->
-      <div class="h-2.5 w-2.5 rounded-full bg-current"></div>
+    <RadioGroupIndicator class="flex items-center justify-center transition-all ease-out">
+      <div class="h-2.5 w-2.5 rounded-full bg-current transition-all ease-out"></div>
     </RadioGroupIndicator>
   </RadioGroupItem>
 </template>

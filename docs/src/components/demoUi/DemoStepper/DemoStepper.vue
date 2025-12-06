@@ -123,18 +123,19 @@ const lastStep = steps?.[steps.length - 1]?.step;
             v-for="item in steps"
             :key="item.step"
             :step="item.step"
-            class="flex items-center gap-1 cursor-pointer group  flex-1"
+            class="relative "
           >
             <!-- Icon Circle -->
             <StepperTrigger class="w-14 aspect-square">
               <StepperIndicator>
                 <component
                   :is="item.icon"
-                  class="w-4 h-4 text-primary group-data-[state=active]:text-white group-data-[state=completed]:text-white"
+                  class="w-4 h-4 "
                 />
               </StepperIndicator>
             </StepperTrigger>
 
+       
             <!-- Text -->
             <div class="flex flex-col w-full">
               <StepperTitle class="text-sm font-semibold group-data-[state=active]:text-primary">
@@ -146,10 +147,9 @@ const lastStep = steps?.[steps.length - 1]?.step;
               </StepperDescription>
             </div>
 
-            <!-- Separator -->
             <StepperSeparator
               v-if="item.step !== lastStep"
-              class="w-12 h-[1px] bg-border mx-3"
+              class="w-26 h-full rotate-90 bg-border mx-3"
             />
           </StepperItem>
         </Stepper>
