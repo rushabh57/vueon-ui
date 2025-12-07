@@ -7,8 +7,6 @@
     filter?: string
     sort?: "normal" | "multi" | "swap"
     orientation?: "horizontal" | "vertical"
-    modelValue?: string[] // reactive order
-
   }>()
   
   const area = inject<any>("drift-area")
@@ -17,12 +15,8 @@
   const listRef = ref<HTMLElement | null>(null)
   let sortable: Sortable | null = null
   
-  // const emit = defineEmits(["update:order"])
-  const emit = defineEmits<{
-    (e: 'update:modelValue', value: string[]): void
-    (e: 'update:order', value: string[]): void
-  }>()
-
+  const emit = defineEmits(["update:order"])
+  
   mountSortablePlugins()
   
   onMounted(() => {
@@ -50,7 +44,6 @@
       const ids = Array.from(listRef.value!.children).map(
         (el: any) => el.dataset.id
       )
-      emit('update:modelValue', ids)
       emit("update:order", ids)
     })
   })

@@ -1,22 +1,27 @@
 <script setup lang="ts">
-  import { DriftArea , GridSnap , GridDrift, Drift } from "./components/Drift";
+  import { ref } from "vue";
+import { DriftArea , GridSnap , GridDrift, Drift } from "./components/Drift";
+import { watch } from "vue";
+  
+const defaultList = ['1','2','3','4','5','6'];
+const savedList = localStorage.getItem('myList');
+const myList = ref(savedList ? JSON.parse(savedList) : defaultList);
+
+watch(myList, (val) => {
+  localStorage.setItem('myList', JSON.stringify(val));
+}, { deep: true });
   </script>
   
   <template>
         <div class="min-h-screen flex items-center justify-center bg-gray-50 p-8">
       <DriftArea class="w-[400px] h-[300px] border relative">
-  <GridSnap
-    sort="multi"
-    orientation="horizontal"
-    filter=".filtered"
-    @update:order="list => console.log('New order is:', list)"
-  >
-    <GridDrift v-for="i in 6" :key="i" :data-id="i" :class="i === 3 ? 'filtered' : ''">
-      <div class="w-24 h-24 bg-green-300 flex items-center justify-center m-2">
-        Item {{ i }}
-      </div>
-    </GridDrift>
-  </GridSnap>
+        <GridSnap v-model:modelValue="myList"  orientation="horizontal">
+          <GridDrift v-for="id in myList" :key="id" :data-id="id">
+            <div class="w-24 h-24 bg-green-300 flex items-center justify-center m-2">
+              Item {{ id }}
+            </div>
+          </GridDrift>
+        </GridSnap>
 </DriftArea>
 
 
