@@ -1,3 +1,86 @@
+<script setup lang="ts">
+  import { DriftArea , GridSnap , GridDrift, Drift } from "./components/Drift";
+  </script>
+  
+  <template>
+        <div class="min-h-screen flex items-center justify-center bg-gray-50 p-8">
+      <DriftArea class="w-[400px] h-[300px] border relative">
+  <GridSnap
+    sort="multi"
+    orientation="horizontal"
+    filter=".filtered"
+    @update:order="list => console.log('New order is:', list)"
+  >
+    <GridDrift v-for="i in 6" :key="i" :data-id="i" :class="i === 3 ? 'filtered' : ''">
+      <div class="w-24 h-24 bg-green-300 flex items-center justify-center m-2">
+        Item {{ i }}
+      </div>
+    </GridDrift>
+  </GridSnap>
+</DriftArea>
+
+
+  </div>
+    <div class="min-h-screen flex items-center justify-center bg-gray-50 p-8">
+      <DriftArea class="w-[400px] h-[300px] border relative">
+  <GridSnap
+    sort="multi"
+    orientation="horizontal"
+    filter=".filtered"
+    @update:order="list => console.log('New order is:', list)"
+  >
+    <GridDrift v-for="i in 6" :key="i" :data-id="i" :class="i === 3 ? 'filtered' : ''">
+      <div class="w-24 h-24 bg-green-300 flex items-center justify-center m-2">
+        Item {{ i }}
+      </div>
+    </GridDrift>
+  </GridSnap>
+</DriftArea>
+
+
+  </div>
+  <div class="min-h-screen flex items-center justify-center bg-gray-50 p-8">
+      <DriftArea class="w-[400px] h-[300px] border relative">
+  <GridSnap
+    sort="swap"
+    orientation="horizontal"
+    filter=".filtered"
+    @update:order="list => console.log('New order is:', list)"
+  >
+    <GridDrift v-for="i in 6" :key="i" :data-id="i" :class="i === 3 ? 'filtered' : ''">
+      <div class="w-24 h-24 bg-green-300 flex items-center justify-center m-2">
+        Item {{ i }}
+      </div>
+    </GridDrift>
+  </GridSnap>
+</DriftArea>
+
+
+  </div>
+
+    
+    <div class="min-h-screen flex items-center justify-center bg-background text-foreground">
+     
+    <!-- Free Drag Elements -->
+      <h2 class="text-lg font-semibold mb-2">Free Drag</h2>
+      <DriftArea class="w-[400px] h-52 border border-gray-400 relative">
+        <Drift class="w-24 h-24 bg-blue-300 flex items-center justify-center">
+          a
+          <!-- <div class="w-24 h-24 bg-blue-300 flex items-center justify-center">A</div> -->
+        </Drift>
+        <Drift>
+          <div class="w-24 h-24 bg-red-300 flex items-center justify-center">B</div>
+        </Drift>
+      </DriftArea>
+
+  
+
+
+    </div>
+
+  </template>
+  
+
 <!-- <script setup lang="ts">
 import {
   ContextMenu,
@@ -190,47 +273,4 @@ import {
       </div>
     </template>
      -->
-
-     <script setup lang="ts">
-      import { ref } from "vue"
-      import DataTable from "@/components/DataTable/DataTable.vue"
-      
-      // 🔥 Columns MUST be reactive so v-model works
-      const columns = ref([
-        { key: "id", label: "ID", sortable: false, visible: false },
-        { key: "name", label: "Name", sortable: true, visible: true },
-        { key: "status", label: "Status", sortable: true, visible: true },
-        { key: "version", label: "Version", sortable: true, visible: true },
-      ])
-      
-      // Rows reactive also
-      const rows = ref([
-        { id: 1, name: "Button", status: "Stable", version: "1.0.2" },
-        { id: 2, name: "Card", status: "Beta", version: "0.8.4" },
-        { id: 3, name: "Modal", status: "Alpha", version: "0.3.1" },
-        { id: 4, name: "Input", status: "Stable", version: "1.1.0" },
-        { id: 5, name: "Dropdown", status: "Beta", version: "0.9.5" },
-        { id: 6, name: "Checkbox", status: "Stable", version: "1.0.0" },
-        { id: 7, name: "Dropdown", status: "Beta", version: "0.9.5" },
-        { id: 8, name: "Checkbox", status: "Stable", version: "1.0.0" },
-        { id: 9, name: "Dropdown", status: "Beta", version: "0.9.5" },
-        { id: 10, name: "Checkbox", status: "Stable", version: "1.0.0" },
-        { id: 11, name: "Dropdown", status: "Beta", version: "0.9.5" },
-        { id: 12, name: "Checkbox", status: "Stable", version: "1.0.0" },
-      ])
-      </script>
-      
-      <template>
-        <div class="p-6 max-w-5xl mx-auto">
-      
-          <DataTable
-            v-model:columns="columns"
-            :rows="rows"
-            searchable
-            paginated
-            :per-page="6"
-          />
-      
-        </div>
-      </template>
-      
+   
