@@ -1,5 +1,5 @@
 <template>
-    <thead class="bg-muted/40">
+    <thead class="bg-muted/50">
       <slot />
     </thead>
   </template>

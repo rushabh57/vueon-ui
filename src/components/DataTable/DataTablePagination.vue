@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import {Button} from "../Button"
-import { ChevronLeftIcon, ChevronRightIcon, type ChevronRight } from 'lucide-vue-next';
+import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-vue-next';
 
     const props = defineProps<{
       page: number
@@ -29,7 +29,7 @@ import { ChevronLeftIcon, ChevronRightIcon, type ChevronRight } from 'lucide-vue
           <ChevronLeftIcon/>
         </Button>
     
-        <span class="border-y border-border/50  h-9 px-1 flex flex-col items-center justify-center">Page {{ page }} of {{ totalPages }}</span>
+        <span class="border-y border-border/50 text-muted-foreground h-9 px-1 flex flex-col items-center justify-center">Page {{ page }} of {{ totalPages }}</span>
     
         <Button
           class="rounded-l-none"

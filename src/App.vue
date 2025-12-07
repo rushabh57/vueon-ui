@@ -144,7 +144,7 @@ import {
   </template>
    -->
 
-
+<!-- 
 
    <script setup lang="ts">
     import { ref } from "vue"
@@ -152,7 +152,7 @@ import {
     
     // Table columns
     const columns = [
-      { key: "id", label: "ID", sortable: false },
+      { key: "id", label: "ID", sortable: false,  },
       { key: "name", label: "Name", sortable: true },
       { key: "status", label: "Status", sortable: true },
       { key: "version", label: "Version", sortable: true },
@@ -189,4 +189,48 @@ import {
     
       </div>
     </template>
-    
+     -->
+
+     <script setup lang="ts">
+      import { ref } from "vue"
+      import DataTable from "@/components/DataTable/DataTable.vue"
+      
+      // 🔥 Columns MUST be reactive so v-model works
+      const columns = ref([
+        { key: "id", label: "ID", sortable: false, visible: false },
+        { key: "name", label: "Name", sortable: true, visible: true },
+        { key: "status", label: "Status", sortable: true, visible: true },
+        { key: "version", label: "Version", sortable: true, visible: true },
+      ])
+      
+      // Rows reactive also
+      const rows = ref([
+        { id: 1, name: "Button", status: "Stable", version: "1.0.2" },
+        { id: 2, name: "Card", status: "Beta", version: "0.8.4" },
+        { id: 3, name: "Modal", status: "Alpha", version: "0.3.1" },
+        { id: 4, name: "Input", status: "Stable", version: "1.1.0" },
+        { id: 5, name: "Dropdown", status: "Beta", version: "0.9.5" },
+        { id: 6, name: "Checkbox", status: "Stable", version: "1.0.0" },
+        { id: 7, name: "Dropdown", status: "Beta", version: "0.9.5" },
+        { id: 8, name: "Checkbox", status: "Stable", version: "1.0.0" },
+        { id: 9, name: "Dropdown", status: "Beta", version: "0.9.5" },
+        { id: 10, name: "Checkbox", status: "Stable", version: "1.0.0" },
+        { id: 11, name: "Dropdown", status: "Beta", version: "0.9.5" },
+        { id: 12, name: "Checkbox", status: "Stable", version: "1.0.0" },
+      ])
+      </script>
+      
+      <template>
+        <div class="p-6 max-w-5xl mx-auto">
+      
+          <DataTable
+            v-model:columns="columns"
+            :rows="rows"
+            searchable
+            paginated
+            :per-page="6"
+          />
+      
+        </div>
+      </template>
+      

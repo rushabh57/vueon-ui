@@ -62,14 +62,17 @@
         return sortAsc.value ? result : -result
       })
     }
+    
     </script>
     
     <template>
       <div class="space-y-4">
     
           <!-- Responsive Table Wrapper -->
-          <div class="w-full overflow-x-auto rounded-lg shadow-md border border-border bg-card">
+          <div class="w-full overflow-x-auto bg-background">
             <div class="flex w-full p-1  items-center justify-end">
+
+                <!-- column visibliy dropdown -->
 
                 <DataTableSearch v-if="searchable" v-model="query" placeholder="Search..." class="w-fit max-w-52" />
                 

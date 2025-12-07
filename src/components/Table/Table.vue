@@ -1,7 +1,7 @@
 <template>
     <div class="overflow-x-auto w-full scroll-hidden">
       <table
-        class="w-full min-w-max border-collapse text-sm bg-card text-card-foreground"
+        class="w-full min-w-max border-collapse text-sm bg-background text-prymary-foreground rounded-md"
       >
         <slot />
       </table>
