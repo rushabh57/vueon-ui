@@ -18,7 +18,7 @@ export async function configureProject(theme = "zinc" , answers, success) {
   await import("./variants_CLI.js"); 
 
     console.log(`\nframework:${blue}${awesomeName.toLowerCase()} ${reset}\n`);
-  // console.log(`\nDetected framework: ${green} ${framework.toLowerCase()}${reset}\n`);
+  console.log(`\nDetected framework: ${green} ${framework.toLowerCase()}${reset}\n`);
   // Tailwind detection
   const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
   const tailwindVersion =
@@ -60,17 +60,7 @@ export async function configureProject(theme = "zinc" , answers, success) {
 
   writeThemeCSS(theme,success);
 
-    // vite.config.js
-    // // Vite config detection
-    // const viteJsPath = path.join(process.cwd(), "vite.config.js");
-    // const viteTsPath = path.join(process.cwd(), "vite.config.ts");
-
-    // if (fs.existsSync(viteJsPath) || fs.existsSync(viteTsPath)) {
-    //   console.log(`${yellow}⚠ Vite config detected — please update it manually following the docs.${reset}`);
-    // } else {
-    //   console.log(`${yellow}⚠ No Vite config detected. If your framework uses Vite, create vite.config.js manually as per the docs.${reset}`);
-    // }
-  // jsconfig.json
+     // jsconfig.json
   fs.writeFileSync(
     "jsconfig.json",
     JSON.stringify(
