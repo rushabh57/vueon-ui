@@ -1,110 +1,72 @@
-<template>
-  <div>
-
-    <div
-      v-show="drawer.state.isOpen || dragging"
-      class="fixed inset-0 bg-black/50  z-50 transition-opacity duration-300"
-      :style="{ opacity: overlayOpacity }"
-      @click="closeDrawerSmooth"
-    ></div>
-
-
-    <div
-      ref="contentRef"
-      :class="[
-        'fixed inset-x-0 bottom-0 z-50 mt-24 flex flex-col bg-background rounded-t-xl border border-border shadow-xl select-none transform transition-transform duration-300 ease-in-out',
-        drawer.state.isOpen ? 'translate-y-0' : 'translate-y-full'
-      ]"
-      @mousedown="onDragStart"
-      @touchstart="onDragStart"
-    >
-      <!-- Drag Handle -->
-      <div class="mx-auto mt-4 h-2 w-24 rounded-full bg-secondary cursor-grab"></div>
-      <slot />
-    </div>
-  </div>
-</template>
-
-<script setup>
-import { ref, computed, inject, watch } from 'vue'
-
-const drawer = inject('drawer')
-const contentRef = ref(null)
-const vertical = computed(() => drawer.state.direction === 'bottom')
-
-const overlayOpacity = ref(0)
-const dragging = ref(false)
-let start = 0
-
-watch(() => drawer.state.isOpen, (val) => {
-  overlayOpacity.value = val ? 1 : 0
-})
-
-// Smooth drag-close
-function closeDrawerSmooth() {
-  if (!contentRef.value) return
-
-  dragging.value = false
-  overlayOpacity.value = 0
-
-  contentRef.value.style.transition = 'transform 0.3s ease-in-out'
-  contentRef.value.style.transform = 'translateY(100%)'
-
-  setTimeout(() => {
-    drawer.closeDrawer()
-    contentRef.value.style.transition = ''
-    contentRef.value.style.transform = ''
-  }, 300)
-}
-
-// Drag functions
-function onDragStart(e) {
-  dragging.value = true
-  start = vertical.value ? e.clientY || e.touches[0].clientY : e.clientX || e.touches[0].clientX
-
-  window.addEventListener('mousemove', onDragMove)
-  window.addEventListener('touchmove', onDragMove)
-  window.addEventListener('mouseup', onDragEnd)
-  window.addEventListener('touchend', onDragEnd)
-}
-
-function onDragMove(e) {
-  const current = vertical.value ? e.clientY || e.touches[0].clientY : e.clientX || e.touches[0].clientX
-  let delta = current - start
-  if (delta < 0) delta = 0
-
-  // Make small drag translate proportional
-  const size = contentRef.value.offsetHeight
-  const maxDelta = size * 0.6 // scale a bit for smoother feel
-  const translate = Math.min(delta, maxDelta)
-  contentRef.value.style.transform = `translate3d(0, ${translate}px, 0)`
-
-  // Sync overlay opacity smoothly
-  overlayOpacity.value = Math.max(0, 1 - delta / (size * 0.6))
-}
-
-function onDragEnd() {
-  const currentRect = contentRef.value.getBoundingClientRect()
-  const distanceDragged = vertical.value
-    ? currentRect.top - (window.innerHeight - currentRect.height)
-    : currentRect.left
-
-  const threshold = (vertical.value ? contentRef.value.offsetHeight : contentRef.value.offsetWidth) * 0.3 // 30% threshold
-
-  if (distanceDragged > threshold) {
-    closeDrawerSmooth()
-  } else {
-    // Snap back smoothly
-    contentRef.value.style.transition = 'transform 0.25s ease-in-out'
-    contentRef.value.style.transform = 'translateY(0)'
-    overlayOpacity.value = 1
-    setTimeout(() => contentRef.value.style.transition = '', 250)
-  }
-
-  dragging.value = false
-  window.removeEventListener('mousemove', onDragMove)
-  window.removeEventListener('touchmove', onDragMove)
-  window.removeEventListener('mouseup', onDragEnd)
-  window.removeEventListener('touchend', onDragEnd)
-}
-</script>
+<script lang="ts" setup>
+  import type { DialogContentEmits, DialogContentProps } from "reka-ui"
+  import type { HTMLAttributes } from "vue"
+  import { useForwardPropsEmits } from "reka-ui"
+  import { DrawerContent, DrawerPortal } from "vaul-vue"
+  import DrawerOverlay from "./DrawerOverlay.vue"
+  import { computed } from "vue"
+  
+  defineOptions({
+    inheritAttrs: false,
+  })
+  
+  const props = defineProps<
+    DialogContentProps & { class?: HTMLAttributes["class"] }
+  >()
+  const emits = defineEmits<DialogContentEmits>()
+  
+  const forwarded = useForwardPropsEmits(props, emits)
+  
+  /* base classes */
+  const baseClasses = `
+    group/drawer-content bg-background fixed z-50 flex h-auto flex-col
+  
+    data-[vaul-drawer-direction=top]:inset-x-0
+    data-[vaul-drawer-direction=top]:top-0
+    data-[vaul-drawer-direction=top]:mb-24
+    data-[vaul-drawer-direction=top]:max-h-[80vh]
+    data-[vaul-drawer-direction=top]:rounded-b-lg
+  
+    data-[vaul-drawer-direction=bottom]:inset-x-0
+    data-[vaul-drawer-direction=bottom]:bottom-0
+    data-[vaul-drawer-direction=bottom]:mt-24
+    data-[vaul-drawer-direction=bottom]:max-h-[80vh]
+    data-[vaul-drawer-direction=bottom]:rounded-t-lg
+  
+    data-[vaul-drawer-direction=right]:inset-y-0
+    data-[vaul-drawer-direction=right]:right-0
+    data-[vaul-drawer-direction=right]:w-3/4
+    data-[vaul-drawer-direction=right]:sm:max-w-sm
+  
+    data-[vaul-drawer-direction=left]:inset-y-0
+    data-[vaul-drawer-direction=left]:left-0
+    data-[vaul-drawer-direction=left]:w-3/4
+    data-[vaul-drawer-direction=left]:sm:max-w-sm
+  `
+  
+  /* user class */
+  const attrsClass = computed(() =>
+    typeof props.class === "string" ? props.class : ""
+  )
+  </script>
+  
+  <template>
+    <DrawerPortal>
+      <DrawerOverlay />
+  
+      <DrawerContent
+        data-slot="drawer-content"
+        v-bind="{ ...$attrs, ...forwarded }"
+        :class="[baseClasses, attrsClass]"
+      >
+        <!-- handle bar -->
+        <div
+          class="bg-muted mx-auto mt-4 hidden h-2 w-[100px] shrink-0 rounded-full
+                 group-data-[vaul-drawer-direction=bottom]/drawer-content:block"
+        />
+  
+        <slot />
+      </DrawerContent>
+    </DrawerPortal>
+  </template>
+  

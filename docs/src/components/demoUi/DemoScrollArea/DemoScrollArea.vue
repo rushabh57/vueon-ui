@@ -105,10 +105,10 @@ const scrollAreaPropsData = [
       <section
         class="border border-border rounded-t-md h-fit p-6 flex items-center justify-center bg-background"
       >
-        <ScrollAreaRoot class="h-[250px] w-[300px] rounded-lg bg-white shadow">
+        <ScrollAreaRoot class="h-[250px] w-[300px] rounded-lg  shadow">
           <ScrollAreaViewport>
             <div class="p-4 space-y-2">
-              <p v-for="i in 40" :key="i" class="text-sm text-gray-700">
+              <p v-for="i in 40" :key="i" class="text-sm text-primary">
                 Scrollable content line {{ i }}
               </p>
             </div>
@@ -156,7 +156,7 @@ const scrollAreaPropsData = [
           <ScrollAreaRoot class="h-[200px] mx-auto w-[250px] rounded-lg border border-input">
             <ScrollAreaViewport>
               <div class="p-4 space-y-2">
-                <p v-for="i in 30" :key="i" class="text-sm text-gray-700">
+                <p v-for="i in 30" :key="i" class="text-sm ">
                   Line {{ i }}
                 </p>
               </div>
@@ -198,7 +198,7 @@ const scrollAreaPropsData = [
                 <div
                   v-for="i in 20"
                   :key="i"
-                  class="w-32 h-16 bg-gray-200 flex items-center justify-center text-sm"
+                  class="w-32 h-16  flex items-center justify-center text-sm"
                 >
                   Item {{ i }}
                 </div>

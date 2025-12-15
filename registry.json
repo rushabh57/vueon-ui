@@ -98,6 +98,13 @@
       "status": "experimental",
       "prefred_for": ["Select options", "Autocomplete inputs", "Searchable dropdowns"]
     },
+    "ContextMenu": {
+      "path": "src/components/ContextMenu/ContextMenu.vue",
+      "description": "ContextMenu allows users to select a single value from a list of options. It supports v-model binding.",
+      "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/ContextMenu/ContextMenu.vue",
+      "status": "experimental",
+      "prefred_for": ["Select options", "Autocomplete inputs", "Searchable dropdowns"]
+    },
     "DateField": {
       "path": "src/components/DateField/DateField.vue",
       "description": "Input for selecting a single date.",

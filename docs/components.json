@@ -1,5 +1,5 @@
 {
-  "$schema": "https://ui.vueon.com/schema.json",
+  "$schema": "https://vueonui.com/schema.json",
   "framework": "vue-vite",
   "paths": {
     "components": "C:\\Users\\ppbha\\OneDrive\\Desktop\\vueon-ui-parent\\vueon-ui\\docs\\src\\components\\ui",

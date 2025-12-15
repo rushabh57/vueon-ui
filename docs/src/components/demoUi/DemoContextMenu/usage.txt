@@ -1,0 +1,50 @@
+<script setup lang="ts">
+import {
+  ContextMenu,
+  ContextMenuTrigger,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuLabel,
+  ContextMenuCheckboxItem,
+  ContextMenuRadioItem,
+  ContextMenuRadioGroup,
+  ContextMenuSub,
+  ContextMenuSeparator
+} from '@/components/ui/ContextMenu' 
+</script>
+
+<template>
+  <div class="h-screen flex items-center justify-center">
+    <ContextMenu>
+      <ContextMenuTrigger>
+        Open Menu
+      </ContextMenuTrigger>
+
+      <ContextMenuContent>
+        <ContextMenuLabel>Actions</ContextMenuLabel>
+
+        <ContextMenuItem>First Item</ContextMenuItem>
+        <ContextMenuItem>Second Item</ContextMenuItem>
+
+        <ContextMenuCheckboxItem>Enable Option</ContextMenuCheckboxItem>
+
+        <ContextMenuRadioGroup value="1">
+          <ContextMenuRadioItem value="1">Radio Option 1</ContextMenuRadioItem>
+          <ContextMenuRadioItem value="2">Radio Option 2</ContextMenuRadioItem>
+        </ContextMenuRadioGroup>
+
+        <ContextMenuSub>
+          <template #trigger>Submenu</template>
+          <template #content>
+            <ContextMenuItem>Sub Item 1</ContextMenuItem>
+            <ContextMenuItem>Sub Item 2</ContextMenuItem>
+          </template>
+        </ContextMenuSub>
+
+        <ContextMenuSeparator />
+
+        <ContextMenuItem>Last Item</ContextMenuItem>
+      </ContextMenuContent>
+    </ContextMenu>
+  </div>
+</template>

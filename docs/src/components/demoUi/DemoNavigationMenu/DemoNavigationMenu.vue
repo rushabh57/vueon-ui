@@ -91,10 +91,11 @@ const navigationMenuProps = [
     <!-- PREVIEW -->
     <div>
       <section
-        class="border border-border rounded-t-md min-h-[250px] p-6 flex items-center justify-center bg-background"
+        class="border border-border/50 rounded-t-md min-h-[250px] h-82 p-6 flex items-start justify-center bg-background"
       >
-        <NavigationMenuRoot>
-          <NavigationMenuList>
+      <div class="relative h-full mx-auto ">
+        <NavigationMenuRoot class="absolute top-0 ">
+          <NavigationMenuList >
 
             <!-- Learn -->
             <NavigationMenuItem>
@@ -149,6 +150,8 @@ const navigationMenuProps = [
 
           <NavigationMenuViewport />
         </NavigationMenuRoot>
+      </div>
+
       </section>
 
       <section class="border border-border border-t-0 rounded-b-md">

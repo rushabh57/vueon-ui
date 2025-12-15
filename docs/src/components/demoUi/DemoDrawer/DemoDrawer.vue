@@ -36,6 +36,8 @@ const installTabs = [
 
 // Raw usage
 import usageRaw from "./usage.txt?raw";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/Alert";
+import { StarsIcon } from "lucide-vue-next";
 const usageExample = ref(usageRaw);
 
 // Props
@@ -220,6 +222,14 @@ const drawerProps = [
           </AccordionContent>
         </AccordionItem>
       </Accordion>
+    </section>
+
+    <section>
+      <Alert>
+  <StarsIcon class='size-4' />
+  <AlertTitle>Credits</AlertTitle>
+  <AlertDescription>This component based on <a href="https://vaul.unovue.com/" class="underline text-foreground hover:text-foreground visited:text-foreground">vaul-vue</a></AlertDescription>
+      </Alert>
     </section>
   </main>
 </template>

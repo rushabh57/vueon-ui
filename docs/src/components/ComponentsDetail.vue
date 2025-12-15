@@ -56,6 +56,9 @@ import DemoSpeedDial from "./demoUi/DemoSpeedDial/DemoSpeedDial.vue"
 import DemoIndicator from "./demoUi/DemoIndicator/Indicator.vue"
 import DemoHighlighter from "./demoUi/DemoHighlighter/DemoHighlighter.vue"
 import DemoDrift from "./demoUi/DemoDrift/DemoDrift.vue"
+import DemoTable from "./demoUi/DemoTable/DemoTable.vue"
+import DemoDataTable from "./demoUi/DemoDataTable/DemoDataTable.vue"
+import DemoContextMenu from "./demoUi/DemoContextMenu/DemoContextMenu.vue"
 
 const demoComponents: Record<string, any> = {
   Accordion: DemoAccordion,
@@ -108,7 +111,10 @@ const demoComponents: Record<string, any> = {
   SpeedDial: DemoSpeedDial,
   Indicator: DemoIndicator,
   Highlighter: DemoHighlighter,
-  Drift: DemoDrift
+  Drift: DemoDrift,
+  Table: DemoTable,
+  DataTable: DemoDataTable,
+  ContextMenu : DemoContextMenu
 }
 
 const route = useRoute()

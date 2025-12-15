@@ -1,25 +1,25 @@
-<template>
-    <slot />
-  </template>
+<script lang="ts" setup>
+  import type { DrawerRootEmits, DrawerRootProps } from "vaul-vue"
+  import { useForwardPropsEmits } from "reka-ui"
+  import { DrawerRoot } from "vaul-vue"
   
-  <script setup>
-  import { reactive, provide } from 'vue';
+  const props = withDefaults(defineProps<DrawerRootProps>(), {
+    shouldScaleBackground: true,
+  })
   
-  const state = reactive({
-    isOpen: false,
-    direction: 'bottom', // or 'left'
-    activeSnapPoint: null,
-    snapPoints: [0.25, 0.5, 0.75, 1],
-  });
+  const emits = defineEmits<DrawerRootEmits>()
   
-  function openDrawer() {
-    state.isOpen = true;
-  }
-  
-  function closeDrawer() {
-    state.isOpen = false;
-  }
-  
-  provide('drawer', { state, openDrawer, closeDrawer });
+  /* forward props + emits to vaul */
+  const forwarded = useForwardPropsEmits(props, emits)
   </script>
+  
+  <template>
+    <DrawerRoot
+      data-slot="drawer"
+      v-bind="forwarded"
+      v-slot="slotProps"
+    >
+      <slot v-bind="slotProps" />
+    </DrawerRoot>
+  </template>
   

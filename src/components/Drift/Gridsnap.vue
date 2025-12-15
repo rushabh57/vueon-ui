@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { ref, onMounted, onBeforeUnmount, inject } from "vue"
   import Sortable from "sortablejs"
-  import { mountSortablePlugins } from '@/components/Drift/sortable-plugins' // import your helper
+  import { mountSortablePlugins } from './sortable-plugins' // import your helper
   
   const props = defineProps<{
     filter?: string
@@ -70,12 +70,14 @@
 
   <style>
     .selected > *{
-      background: pink;
+      opacity: .7;
+      filter: invert(.9);
     }
     .filtered > *{
-      background-color: red;
+      opacity: 0.5;
+      filter: invert(1) grayscale(1);
     }
     .highlight > *{
-      background-color: green;
+      filter: brightness(110%);
     }
   </style> 

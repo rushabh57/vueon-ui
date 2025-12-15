@@ -33,6 +33,7 @@ export async function configureProject(theme = "zinc" , answers, success) {
     { stdio: "inherit" }
   );
 
+  
   // components.json
   const config = {
     $schema: "https://vueonui.com/schema.json",

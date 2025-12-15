@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, ref, watch } from "vue";
 import CodeBlock from "../../CodeBlock.vue";
 import CodeTabs from "../../CodeTabs.vue";
 
@@ -13,7 +13,58 @@ import {
 import Badge from "../../ui/Badge";
 
 // Drift components
-import { DriftArea, Gridsnap, Drift, DriftImage } from "../../ui/Drift";
+import { DriftArea, GridSnap, Drift, DriftImage, GridDrift } from "../../ui/Drift";
+
+// const defaultList = ['1','2','3','4','5','6'];
+const defaultList = [
+  { id: "1", src: "/avatar_imgs/avatar_1.jpg", name: "Alex", role: "Designer" },
+  { id: "2", src: "/avatar_imgs/avatar_2.jpg", name: "Sarah", role: "Developer" },
+  { id: "3", src: "/avatar_imgs/avatar_3.jpg", name: "John", role: "Manager" },
+  { id: "4", name: "Luna", role: "Marketing" },
+  { id: "5", name: "Mia", role: "Writer" },
+  { id: "6", name: "Ryan", role: "Editor" }
+];
+
+const savedList = localStorage.getItem('myList');
+// const myList = ref(savedList ? JSON.parse(savedList) : defaultList);
+
+const myList = ref(savedList ? JSON.parse(savedList) : defaultList);
+
+const ids = computed({
+  get: () => {
+    // console.log("GET → myList:", myList.value);
+    const result = myList.value.map(i => {
+      // console.log("Mapping item:", i);   // <-- log each item
+      return i?.id;
+    });
+    // console.log("GET → ids:", result);
+    return result;
+  },
+
+  set: (newOrder) => {
+    // console.log("SET → newOrder:", newOrder);
+    // console.log("Before reorder → myList:", myList.value);
+
+    const reordered = newOrder.map(id => {
+      const found = myList.value.find(i => {
+        // console.log("Finding id:", id, "in item:", i);
+        return i?.id === id;
+      });
+      // console.log("Matched:", found);
+      return found;  // this is probably NULL right now
+    });
+
+    // console.log("After reorder → reordered:", reordered);
+
+    myList.value = reordered;
+// 
+    // localStorage.setItem("myList", JSON.stringify(myList.value));
+  }
+});
+
+// watch(myList, (val) => {
+//   localStorage.setItem('myList', JSON.stringify(val));
+// }, { deep: true });
 
 // Installation tabs
 const addTabs = [
@@ -31,6 +82,10 @@ const verticalGapExample = ref(verticalGap);
 import horizontalGap from "./horizontalGap.txt?raw"
 const horizontalGapExample = ref(horizontalGap)
 import stackvariant from "./Stack.txt?raw"
+import Avatar from "@/components/ui/Avatar";
+import { AlertDescription, AlertTitle, Alert} from "@/components/ui/Alert";
+import type AlertDescriptionVue from "@/components/ui/Alert/AlertDescription.vue";
+import { StarsIcon, type StarIcon } from "lucide-vue-next";
 const stackExample = ref(stackvariant)
 
 // Props data
@@ -38,30 +93,36 @@ const driftProps = [
   {
     component: "DriftArea",
     props: [
-      { name: "bounds", type: "{ width:number, height:number }", required: false, default: "undefined", description: "Container bounds for dragging." },
-      { name: "direction", type: `"free" | "vertical" | "horizontal" | "custom"`, required: false, default: `"free"`, description: "Direction in which items can be dragged." },
-      { name: "dragStyle", type: `"default" | "smooth"`, required: false, default: `"default"`, description: "Drag animation style." },
-      { name: "grid", type: "number", required: false, default: "0", description: "Snap distance in pixels." },
-      { name: "stack", type: `"block" | "overlay"`, required: false, default: `"overlay"`, description: "Stacking mode for child items." },
-      { name: "customPath", type: "(x:number,y:number)=>{x:number,y:number}", required: false, default: "undefined", description: "Custom path function for free movement." }
+      { name: "bounds", type: "{ width:number, height:number }", required: false, default: "undefined", description: "Container bounds for drag limits." },
+      { name: "direction", type: `"free" | "vertical" | "horizontal" | "custom"`, required: false, default: `"free"`, description: "Movement direction allowed for children." },
+      { name: "dragStyle", type: `"default" | "smooth"`, required: false, default: `"default"`, description: "Drag movement style." },
+      { name: "grid", type: "number", required: false, default: "0", description: "Grid snap size when not using GridSnap." },
+      { name: "stack", type: `"block" | "overlay"`, required: false, default: `"overlay"`, description: "Stacking strategy for children." },
+      { name: "customPath", type: "(x:number, y:number)=>{x:number,y:number}", required: false, default: "undefined", description: "Custom movement path function." }
     ]
   },
+
   {
     component: "Drift",
     props: [
-      { name: "x", type: "number", required: true, default: "0", description: "Initial x position." },
-      { name: "y", type: "number", required: true, default: "0", description: "Initial y position." },
+      { name: "x", type: "number", required: true, default: "0", description: "Initial X position." },
+      { name: "y", type: "number", required: true, default: "0", description: "Initial Y position." },
       { name: "width", type: "number", required: false, default: "auto", description: "Optional fixed width." },
       { name: "height", type: "number", required: false, default: "auto", description: "Optional fixed height." }
     ]
   },
+
   {
-    component: "Gridsnap",
+    component: "GridSnap",
     props: [
-      { name: "direction", type: `"horizontal" | "vertical"`, required: false, default: `"vertical"`, description: "Direction of snapping." }
+      { name: "sort", type: `"multi" | "swap"`, required: false, default: `"multi"`, description: "Sorting algorithm used for reordering." },
+      { name: "orientation", type: `"horizontal" | "vertical"`, required: false, default: `"vertical"`, description: "Layout direction of the snapping grid." },
+      { name: "filter", type: "string (CSS selector)", required: false, default: "undefined", description: "Drift items matching this selector cannot be dragged." },
+      { name: "onUpdate:order", type: "(newOrder:number[]) => void", required: false, default: "undefined", description: "Emits the updated order of items." }
     ]
   }
 ];
+
 </script>
 
 <template>
@@ -71,25 +132,33 @@ const driftProps = [
     <div>
       <!-- Preview -->
       <section class="h-96 border border-border rounded-t-md min-h-fit p-10 flex items-center justify-center">
-        <DriftArea :bounds="{ width: 300, height: 300 }" direction="free" stack="overlay" drag-style="smooth" :grid="10" class="shadow-lg">
-          <Drift :x="40" :y="50" class="w-fit">
-            <div class="p-4 rounded-radius text-center w-[200px] bg-card border border-border">
-              Drag Me 
-            </div>
-          </Drift>
+      
+      <DriftArea>
 
-          <Drift :x="150" :y="100" class="w-fit">
-            <button class="px-4 py-2 bg-primary text-primary-foreground rounded-radius">
-              Button Floating
-            </button>
-          </Drift>
-        </DriftArea>
+        <GridSnap v-model:modelValue="ids" orientation="horizontal">
+          <GridDrift v-for="item in myList" :key="item.id" :data-id="item.id" class="">
+            <div class="m-1 w-[150px] bg-background border-border/50 border flex items-center gap-1 p-2 rounded-xl">
+              <Avatar :fallbackText="item.name" size="lg" :src="item.src" :alt="item.id" />
+              <div class="">
+                <h3 class="-my-1">{{ item.name }}</h3>
+                <p class="mt-0 text-sm">{{ item.role }}</p>
+              </div>
+              <!-- <div class="w-24 h-24 bg-green-300 flex items-center justify-center m-2">
+                {{ item.id }}
+              </div> -->
+            </div>
+          </GridDrift>
+        </GridSnap>
+      </DriftArea>
+
       </section>
 
       <!-- Code Preview -->
       <section class="border border-border border-t-0 rounded-b-md">
         <CodeBlock class="rounded-none border-0" :hideheading="true" :code="`<DriftArea>
-  <Drift></Drift>
+  <GridSnap>
+    <GridDrift></GridDrift>
+  </GridSnap>
 </DriftArea>`" />
       </section>
     </div>
@@ -109,129 +178,109 @@ const driftProps = [
 
       <!-- verticals + CODE -->
       <div>
-        <h2 id="withgridsnapvertical" class="text-2xl font-bold mb-1">vertical only</h2>
+        <h2 id="withGridSnapvertical" class="text-2xl font-bold mb-1">with filterd</h2>
       <!-- Preview -->
       <section class="h-96 border border-border rounded-t-md min-h-fit p-10 flex items-center justify-center">
+       
+<DriftArea>
+  <GridSnap  filter=".filtered" v-model:modelValue="ids" orientation="horizontal">
+    <GridDrift   
+    v-for="item in myList"
+   :key="item.id"
+   :data-id="item.id"
+   :class="[
+  item.id === '3' && 'opacity-50 grayscale cursor-not-allowed'
+]"
+>
+      <div class="m-1 w-[150px] bg-background border-border/50 border flex items-center gap-1 p-2 rounded-xl">
+        <Avatar :fallbackText="item.name" size="lg" :src="item.src" :alt="item.id" />
+        <div class="">
+          <h3 class="-my-1">{{ item.name }}</h3>
+          <p class="mt-0 text-sm">{{ item.role }}</p>
+        </div>
+        <!-- <div class="w-24 h-24 bg-green-300 flex items-center justify-center m-2">
+          {{ item.id }}
+        </div> -->
+      </div>
+    </GridDrift>
+  </GridSnap>
+</DriftArea>
+ 
+</section>
 
-            <!-- Vertical GridSnap -->
-    <DriftArea :bounds="{ width: 300, height: 400 }" direction="vertical" drag-style="smooth">
-      <Gridsnap class="bg-secondary h-full min-w-full w-[300px]" direction="vertical">
-        <Drift :x="0" :y="0" class=" min-w-full">
-          <div class="w-full h-[100px] border-border bg-card rounded shadow flex gap-2 items-center justify-center">
-            <DriftImage src="/logo.png" class="h-[100px] w-[100px] object-contain" />
-                <div>
-                    <h2>Vueon ui</h2>
-                    <p>design system for your vue</p>
-                </div>
-          </div>
-        </Drift>
-        <Drift :x="0" :y="100" class="min-w-full">
-          <div class="w-full h-[100px] border-border bg-card rounded shadow flex gap-2 items-center justify-center">
-            <DriftImage src="/logos/logo_astro.svg" class="h-[50px] aspect-square object-contain" />
-                <div>
-                    <h2>Vueon ui</h2>
-                    <p>design system for your vue</p>
-                </div>
-          </div>
-        </Drift>
-        <Drift :x="0" :y="200" class=" min-w-full">
-          <div class="w-full h-[100px] border-border bg-card rounded shadow flex gap-2 items-center justify-center">
-            <DriftImage src="/logos/logo_vite.svg" class="h-[50px] aspect-square object-contain" />
-                <div>
-                    <h2>Vueon ui</h2>
-                    <p>design system for your vue</p>
-                </div>
-          </div>
-        </Drift>
-      </Gridsnap>
-    </DriftArea>
-      </section>
 
       <!-- Code Preview -->
       <section class="border border-border border-t-0 rounded-b-md">
         <CodeBlock class="rounded-none border-0" 
         :hideheading="true" 
-        :code="verticalGapExample" />
+        :code="verticalGapExample" :highlight-lines="[3,4,5]" />
       </section>
     </div>
 
           <!-- horizontal + CODE -->
     <div>
-        <h2 id="withgridsnaphorizontal" class="text-2xl font-bold mb-1">horizontal only</h2>
+        <h2 id="withGridSnaphorizontal" class="text-2xl font-bold mb-1">swap only</h2>
       <!-- Preview -->
       <section class="h-96 border border-border rounded-t-md min-h-fit p-10 flex items-center justify-center">
-
-       
-    <DriftArea
-      :bounds="{ width: 300, height: 100 }"
-      direction="horizontal"
-      dragStyle="smooth"
-    >
-      <!-- Grid snap wrapper -->
-      <Gridsnap class="bg-card h-full w-full" direction="horizontal">
         
-        <Drift :x="0" :y="0">
-          <div class="w-[100px] h-[100px]  rounded shadow flex items-center justify-center flex-col">
-            <DriftImage class="h-14 aspect-square" src="/avatar_imgs/avatar_1.jpg" alt="joe" />
-            <p class="text-xs">joe</p>
-          </div>
-        </Drift>
-
-        <Drift :x="0" :y="100">
-          <div class="w-[100px] h-[100px]  rounded shadow flex items-center justify-center flex-col">
-            <DriftImage class="h-14 aspect-square" src="/avatar_imgs/avatar_2.jpg" alt="joe" />
-            <p class="text-xs">leo</p>
-          </div>
-        </Drift>
-
-        <Drift :x="0" :y="200" class="border-border">
-          <div class="w-[100px] h-[100px]   rounded shadow flex items-center justify-center flex-col">
-            <DriftImage class="h-14 aspect-square" src="/avatar_imgs/avatar_3.jpg" alt="joe" />
-            <p class="text-xs">mac</p>
-          </div>
-        </Drift>
-
-      </Gridsnap>
-    </DriftArea>
-
-
+      <DriftArea>
+        <GridSnap sort="swap"  filter=".filtered" v-model:modelValue="ids" orientation="horizontal">
+          <GridDrift   
+          v-for="item in myList"
+        :key="item.id"
+        :data-id="item.id"
+        :class="[
+        item.id === '3' && 'opacity-50 grayscale cursor-not-allowed'
+      ]"
+      >
+            <div class="m-1 w-[150px] bg-background border-border/50 border flex items-center gap-1 p-2 rounded-xl">
+              <Avatar :fallbackText="item.name" size="lg" :src="item.src" :alt="item.id" />
+              <div class="">
+                <h3 class="-my-1">{{ item.name }}</h3>
+                <p class="mt-0 text-sm">{{ item.role }}</p>
+              </div>
+              <!-- <div class="w-24 h-24 bg-green-300 flex items-center justify-center m-2">
+                {{ item.id }}
+              </div> -->
+            </div>
+          </GridDrift>
+        </GridSnap>
+      </DriftArea>
       </section>
+
 
       <!-- Code Preview -->
       <section class="border border-border border-t-0 rounded-b-md">
         <CodeBlock class="rounded-none border-0" 
         :hideheading="true" 
-        :code="horizontalGapExample" />
+        :code="horizontalGapExample" :highlight-lines="[4,5]" />
       </section>
     </div>
 
     <div>
-        <h2 id="withgridsnapmess" class="text-2xl font-bold mb-1">Random only</h2>
+        <h2 id="withGridSnapmess" class="text-2xl font-bold mb-1">Drift only</h2>
       <!-- Preview -->
       <section class="h-96 border border-border rounded-t-md min-h-fit p-10 flex items-center justify-center">
-
-       
-        <DriftArea :bounds="{ width: 300, height: 500 }" 
-        direction="free" drag-style="smooth" stack="block">
-      <Drift :x="0" :y="0">
-        <div class="w-[100px] h-[100px] bg-primary text-primary-foreground rounded shadow flex items-center justify-center">
-          Item 1
-        </div>
-      </Drift>
-      <Drift :x="0" :y="100">
-        <div class="w-[100px] h-[100px] bg-primary text-primary-foreground rounded shadow flex items-center justify-center">
-          Item 2
-        </div>
-      </Drift>
-      <Drift :x="0" :y="200">
-        <div class="w-[100px] h-[100px] bg-primary text-primary-foreground rounded shadow flex items-center justify-center">
-          Item 3
-        </div>
-      </Drift>
-        </DriftArea>
+  <div class="flex flex-col gap-4">
 
 
-      </section>
+    <DriftArea class="w-[400px] h-52 border border-border/50 relative">
+
+      <Drift class="w-24 h-24 bg-blue-300 flex items-center justify-center">
+        A
+      </Drift>
+
+      <Drift>
+        <div class="w-24 h-24 bg-red-300 flex items-center justify-center">
+          B
+        </div>
+      </Drift>
+
+    </DriftArea>
+
+  </div>
+</section>
+
 
       <!-- Code Preview -->
       <section class="border border-border border-t-0 rounded-b-md">
@@ -241,6 +290,7 @@ const driftProps = [
         :code="stackExample" />
       </section>
     </div>
+
 
     <!-- PROPS -->
     <section>
@@ -297,6 +347,14 @@ const driftProps = [
           </AccordionContent>
         </AccordionItem>
       </Accordion>
+    </section>
+
+    <section>
+      <Alert>
+  <StarsIcon class='size-4' />
+  <AlertTitle>Credits</AlertTitle>
+  <AlertDescription>This component based on <a href="https://sortablejs.github.io/Sortable/" class="underline text-foreground hover:text-foreground visited:text-foreground">Sortabble.js.</a></AlertDescription>
+      </Alert>
     </section>
   </main>
 </template>

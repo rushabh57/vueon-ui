@@ -1,0 +1,74 @@
+<script setup>
+  import {
+    Table,
+    TableBody,
+    TableCaption,
+    TableCell,
+    TableEmpty,
+    TableFooter,
+    TableHead,
+    TableHeader,
+    TableRow,
+    TableHeading,
+  } from "@/components/ui/Table";
+  
+  const rows = [
+    { id: 1, name: "Vueon UI", status: "Stable", version: "0.0.1" },
+    { id: 2, name: "Table Component", status: "Completed", version: "1.0.0" },
+    { id: 3, name: "Design Tokens", status: "Ready", version: "v4" },
+  ];
+  </script>
+  
+  <template>
+    <div class="min-h-screen bg-background p-10 text-foreground space-y-6">
+  
+      
+      <div class="rounded-lg bg-card  border border-border p-6 animate-fade-in">
+        <Table>
+          <TableHeading>
+            Table Heading
+          </TableHeading>
+          <TableCaption> Component preview table </TableCaption>
+  
+          <TableHead>
+            <TableRow>
+              <TableHeader>ID</TableHeader>
+              <TableHeader>Name</TableHeader>
+              <TableHeader>Status</TableHeader>
+              <TableHeader>Version</TableHeader>
+            </TableRow>
+          </TableHead>
+  
+          <TableBody>
+            <template v-if="rows.length">
+              <TableRow
+                v-for="r in rows"
+                :key="r.id"
+                class="animate-slide-in-from-bottom"
+              >
+                <TableCell>{{ r.id }}</TableCell>
+                <TableCell>{{ r.name }}</TableCell>
+                <TableCell>{{ r.status }}</TableCell>
+                <TableCell>{{ r.version }}</TableCell>
+              </TableRow>
+            </template>
+  
+            <TableEmpty v-else />
+          </TableBody>
+  
+          <TableFooter>
+            <TableRow>
+              <TableCell colspan="4">Total: {{ rows.length }} items</TableCell>
+            </TableRow>
+          </TableFooter>
+        </Table>
+      </div>
+  
+      <button
+        class="px-4 py-2 bg-primary text-primary-foreground rounded-md shadow hover:opacity-90 transition"
+        @click="document.documentElement.classList.toggle('dark')"
+      >
+        Toggle Theme
+      </button>
+    </div>
+  </template>

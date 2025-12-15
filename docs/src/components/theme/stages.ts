@@ -2,20 +2,20 @@ import { CheckIcon, LucideAlertTriangle, XIcon } from "lucide-vue-next";
 
 export const stages = {
   error: {
-    border: "border-red-500",
-    text: "text-red-500",
+    border: "border-destructive",
+    text: "text-destructive",
     icon: XIcon,
     message: "Something went wrong",
   },
   warning: {
-    border: "border-yellow-500",
-    text: "text-yellow-600",
+    border: "border-caution",
+    text: "text-caution",
     icon: LucideAlertTriangle,
     message: "Warning!",
   },
   success: {
-    border: "border-green-500",
-    text: "text-green-600",
+    border: "border-positive",
+    text: "text-positive",
     icon: CheckIcon,
     message: "Success!",
   },

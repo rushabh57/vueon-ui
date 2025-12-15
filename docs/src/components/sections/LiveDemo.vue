@@ -323,8 +323,8 @@
 
     </CardContent>
   </Card>
-          <DriftArea :bounds="{ width: 360, height: 400 }" direction="vertical" drag-style="smooth">
-      <Gridsnap class="bg-secondary h-full min-w-full w-[300px]" direction="vertical">
+          <!-- <DriftArea :bounds="{ width: 360, height: 400 }" direction="vertical" drag-style="smooth">
+      <GridSnap class="bg-secondary h-full min-w-full w-[300px]" direction="vertical">
         <Drift :x="0" :y="0" class=" min-w-full">
           <div class="w-full h-[100px] border-border bg-card rounded shadow flex gap-2 items-center justify-center">
             <DriftImage src="/logo.png" class="h-[100px] w-[100px] object-contain" />
@@ -352,8 +352,8 @@
                 </div>
           </div>
         </Drift>
-      </Gridsnap>
-        </DriftArea>
+      </GridSnap>
+        </DriftArea> -->
 
        
       </div>
@@ -402,7 +402,7 @@ import {
 } from "lucide-vue-next";
 
 // REAL DRIFT SYSTEM
-import { DriftArea, Gridsnap, Drift, DriftImage } from "../../components/ui/Drift";
+// import { DriftArea, Gridsnap, Drift, DriftImage } from "../../components/ui/Drift";
 import Separator from "../ui/Separator";
 import Avatar from "../ui/Avatar";
 import { Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "../ui/Drawer";

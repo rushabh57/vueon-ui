@@ -61,7 +61,7 @@ watch(selectedRange, (range) => {
       <!-- Field -->
       <DateRangePickerField
         v-slot="{ segments }"
-        class="h-10 flex items-center justify-between rounded-lg border border-border bg-card w-full px-2 py-1.5 shadow-sm text-foreground dark:text-card-foreground focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 transition-colors duration-200"
+        class="h-10 flex items-center justify-between rounded-lg border border-border/50 bg-card w-full px-2 py-1.5 shadow-sm text-foreground dark:text-card-foreground focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 transition-colors duration-200"
       >
         <div class="flex gap-1">
           <!-- Start Segment -->
@@ -115,10 +115,22 @@ watch(selectedRange, (range) => {
       <DateRangePickerContent
         v-if="props.withPopup"
         :side-offset="4"
-        class=" data-[state=open]:animate-in data-[state=closed]:animate-out
-         data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0
-         data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95
-         mt-1 rounded-xl border border-border/50 bg-card shadow-lg will-change-[transform,opacity] data-[state=open]:animate-slideDownAndFade"
+        class="   data-[state=open]:animate-in
+data-[state=closed]:animate-out
+
+data-[state=open]:fade-in
+data-[state=closed]:fade-out
+
+data-[state=open]:slide-in-from-top-0.25
+data-[state=closed]:slide-out-to-top-0.25
+
+mt-1 rounded-xl border border-border/50 bg-card shadow-lg will-change-[transform,opacity]
+
+data-[state=open]:duration-260
+data-[state=closed]:duration-200
+
+data-[state=open]:ease-[cubic-bezier(0.32,0,0.35,1)]
+data-[state=closed]:ease-[cubic-bezier(0.32,0,0.35,1)]"
       >
         <DateRangePickerArrow class="fill-card stroke-border" />
         <DateRangePickerCalendar v-slot="{ weekDays, grid }" class="p-4">

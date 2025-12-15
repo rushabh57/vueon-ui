@@ -1,21 +1,13 @@
-    <DriftArea 
-    :bounds="{ width: 300, height: 500 }" 
-    drag-style="smooth"
-    direction="free" 
-    stack="block">
-      <Drift :x="0" :y="0">
-        <div class="w-[100px] h-[100px] bg-red-200 rounded shadow flex items-center justify-center">
-          Item 1
-        </div>
-      </Drift>
-      <Drift :x="0" :y="100">
-        <div class="w-[100px] h-[100px] bg-red-700 rounded shadow flex items-center justify-center">
-          Item 2
-        </div>
-      </Drift>
-      <Drift :x="0" :y="200">
-        <div class="w-[100px] h-[100px] bg-red-500 rounded shadow flex items-center justify-center">
-          Item 3
-        </div>
-      </Drift>
-    </DriftArea>
+<DriftArea class="w-[400px] h-52 border border-gray-400 relative">
+
+  <Drift class="w-24 h-24 bg-blue-300 flex items-center justify-center">
+    A
+  </Drift>
+
+  <Drift>
+    <div class="w-24 h-24 bg-red-300 flex items-center justify-center">
+      B
+    </div>
+  </Drift>
+
+</DriftArea>

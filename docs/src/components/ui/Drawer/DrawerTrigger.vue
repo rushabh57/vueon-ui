@@ -1,15 +1,20 @@
-<template>
-    <div
-      class=""
-      @click="drawer.openDrawer"
-    >
-      <slot>Open Drawer</slot>
-    </div>
-  </template>
+<script lang="ts" setup>
+  import type { DrawerTriggerProps } from "vaul-vue"
+  import { DrawerTrigger } from "vaul-vue"
   
-  <script setup>
-  import { inject } from 'vue';
-  const drawer = inject('drawer');
-  if (!drawer) throw new Error('DrawerTrigger must be used inside a Drawer provider');
+  defineOptions({
+    inheritAttrs: false
+  })
+  
+  const props = defineProps<DrawerTriggerProps>()
   </script>
+  
+  <template>
+    <DrawerTrigger
+      data-slot="drawer-trigger"
+      v-bind="{ ...$attrs, ...props }"
+    >
+      <slot />
+    </DrawerTrigger>
+  </template>
   
