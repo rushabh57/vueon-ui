@@ -15,7 +15,7 @@
         :class="[
           'relative pl-10 pb-8',
     
-          /* vertical line */
+          /* vertical line used beforec */
           `before:absolute 
           before:left-[6px] 
           before:top-0 

@@ -14,7 +14,8 @@
     "prismjs": "^1.30.0",
     "shiki": "^3.15.0",
     "vue": "^3.3.5",
-    "vue-live": "^2.5.4"
+    "vue-live": "^2.5.4",
+    "vue-router": "^4.6.4"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.17",
