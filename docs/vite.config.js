@@ -8,7 +8,7 @@ export default defineConfig({
   resolve: { 
     alias: { 
       '@': path.resolve(__dirname, './src'),  
-      '@docs': path.resolve(__dirname, './docs/src'),
+      // '@docs': path.resolve(__dirname, './docs/src'),
     } 
   },
   optimizeDeps: {
