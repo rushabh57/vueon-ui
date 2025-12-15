@@ -22,6 +22,9 @@ const installTabs = [
 
 // Usage example
 import usageRaw from "./usage.txt?raw";
+import Alert from "@/components/ui/Alert/Alert.vue";
+import { StarsIcon } from "lucide-vue-next";
+import { AlertDescription, AlertTitle } from "@/components/ui/Alert";
 const usageExample = ref(usageRaw);
 
 // Slider state
@@ -172,5 +175,12 @@ const sliderPropsData = [
       </Accordion>
     </section>
 
+    <section>
+      <Alert>
+  <StarsIcon class='size-4' />
+  <AlertTitle>Credits</AlertTitle>
+  <AlertDescription>This component based on <a href="https://www.embla-carousel.com/get-started/vue/" class="underline text-foreground hover:text-foreground visited:text-foreground">embla-carousel</a></AlertDescription>
+      </Alert>
+    </section>
   </main>
 </template>
