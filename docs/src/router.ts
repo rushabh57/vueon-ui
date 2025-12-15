@@ -1,6 +1,8 @@
 // src/router.ts
-import { createRouter, createWebHistory } from 'vue-router'
+// import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from "vue-router"
 import type { RouteRecordRaw } from 'vue-router'
+
 
 // Pages
 import Home from '@/pages/Home.vue'
