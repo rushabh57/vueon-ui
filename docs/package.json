@@ -14,12 +14,12 @@
     "postcss": "^8.5.6",
     "prismjs": "^1.30.0",
     "shiki": "^3.15.0",
+    "sortablejs": "^1.15.6",
     "vaul-vue": "^0.4.1",
     "vue": "^3.5.13",
     "vue-live": "^2.5.4",
     "vue-router": "^4.6.4"
   },
-  
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.17",
     "@types/node": "^24.10.0",
