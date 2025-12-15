@@ -59,9 +59,25 @@
 // })
 
 
+// import { createRouter, createWebHistory } from "vue-router"
+
+// import Home from "../src/pages/Home.vue"
+
+// const routes = [
+//   { path: "/", component: Home }
+// ]
+
+// const router = createRouter({
+//   history: createWebHistory(),
+//   routes: []
+// })
+
+// export default router
+
 
 import { createRouter, createWebHistory } from "vue-router"
-import Home from "@/pages/Home.vue"
+// import Home from "./pages/Home.vue"
+import Home from "../src/pages/Home.vue"
 
 const routes = [
   { path: "/", component: Home }
