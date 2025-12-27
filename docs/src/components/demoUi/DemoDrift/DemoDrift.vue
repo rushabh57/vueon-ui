@@ -48,6 +48,7 @@ const ids = computed({
     const reordered = newOrder.map(id => {
       const found = myList.value.find(i => {
         // console.log("Finding id:", id, "in item:", i);
+        
         return i?.id === id;
       });
       // console.log("Matched:", found);

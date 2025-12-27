@@ -4,7 +4,7 @@ const carousel = inject('carousel')
 </script>
 
 <template>
-  <div ref="carousel.emblaRef" class="flex embla__container">
+  <div ref="carousel.emblaRef" class="flex embla__container ">
     <slot />
   </div>
 </template>

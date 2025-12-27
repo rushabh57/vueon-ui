@@ -3,7 +3,7 @@ import { NavigationMenuItem } from 'reka-ui'
 </script>
 
 <template>
-  <NavigationMenuItem>
+  <NavigationMenuItem >
     <slot />
   </NavigationMenuItem>
 </template>

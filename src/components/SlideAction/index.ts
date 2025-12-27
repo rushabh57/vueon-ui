@@ -1,0 +1,1 @@
+export { default as SlideAction } from './SlideAction.vue'

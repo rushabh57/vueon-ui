@@ -8,6 +8,8 @@ interface CarouselProps {
   loop?: boolean
   autoplay?: boolean
   showDots?: boolean
+  showNavigation?: boolean 
+  orientation?: 'horizontal' | 'vertical'
 }
 const props = defineProps<CarouselProps>()
 
@@ -15,14 +17,17 @@ const props = defineProps<CarouselProps>()
 const carouselContainer = ref<HTMLDivElement | null>(null)
 const slidesCount = ref(0)
 
-const options: any = { loop: props.loop, align: 'start' }
-const plugins: any[] = props.autoplay ? [Autoplay({ delay: 3000 })] : []
-
+const options: any = { 
+  loop: props.loop,
+  align: 'start',
+  axis: props.orientation === 'vertical' ? 'y' : 'x',
+  // axis: props.orientation || 'horizontal',
+ }
+const plugins: any[] = props.autoplay
+  ? [Autoplay({ delay: 3000, stopOnInteraction: false })]
+  : []
 const [emblaRef, emblaApi] = useEmblaCarousel(options, plugins)
-// const options = { loop: props.loop ?? true, align: 'start' }
-// const plugins = props.autoplay ? [Autoplay({ delay: 3000 })] : []
 
-// const [emblaRef, emblaApi] = useEmblaCarousel(options, plugins)
 
 const selectedIndex = ref(0)
 const canScrollPrev = ref(false)
@@ -45,9 +50,19 @@ const update = () => {
   canScrollNext.value = emblaApi.value.canScrollNext()
 }
 
+// const onKeydown = (e: KeyboardEvent) => {
+//   if (e.key === 'ArrowRight') scrollNext()
+//   if (e.key === 'ArrowLeft') scrollPrev()
+// }
+
 const onKeydown = (e: KeyboardEvent) => {
-  if (e.key === 'ArrowRight') scrollNext()
-  if (e.key === 'ArrowLeft') scrollPrev()
+  if (props.orientation === 'vertical') {
+    if (e.key === 'ArrowDown') scrollNext()
+    if (e.key === 'ArrowUp') scrollPrev()
+  } else {
+    if (e.key === 'ArrowRight') scrollNext()
+    if (e.key === 'ArrowLeft') scrollPrev()
+  }
 }
 
 onMounted(() => {
@@ -83,16 +98,20 @@ provide('carousel', {
 </script>
 
 <template>
-  <div class="relative" ref="carouselContainer" tabindex="0">
+  <div class="relative  max-h-fit" ref="carouselContainer" tabindex="0">
     <div ref="emblaRef" class="overflow-hidden">
-      <div class="flex">
-        <slot />
+      <div :class="['flex', props.orientation === 'vertical' ? 'flex-col' : 'flex-row']">
+        <slot />  
       </div>
     </div>
 
     <!-- Prev/Next slots -->
-    <slot name="prev" />
-    <slot name="next" />
+    <template class="" v-if="props.showNavigation">
+  <slot name="prev" />
+  <slot name="next" />
+</template>
+    <!-- <slot name="prev" />
+    <slot name="next" /> -->
 
     <!-- Dots / Indicators -->
     <div v-if="props.showDots" class="flex justify-center mt-4 space-x-2">

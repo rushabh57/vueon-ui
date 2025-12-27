@@ -1,4 +1,3 @@
-
 <script setup lang="ts">
   import { NavigationMenuContent } from 'reka-ui'
   
@@ -20,7 +19,7 @@
      data-[motion=from-start]:slide-in-from-left-52 
      data-[motion=to-end]:slide-out-to-right-52 
      data-[motion=to-start]:slide-out-to-left-52
-  
+        
          md:absolute md:w-auto`,
         $props.class
       ]"

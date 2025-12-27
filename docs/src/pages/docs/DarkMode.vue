@@ -48,7 +48,7 @@ const switchModeCode = `<ThemeSwitcher mode="switch" />`;
       <h2 id="modes" class="text-2xl font-bold mb-0.5">mode's</h2>
       <CodeBlock
       filename="App.vue"
-      :code=" `<ThemeSwitcher mode='default |switch | select' /> `"
+      :code=" `<ThemeSwitcher mode='default | switch | select' /> `"
       />
 </section>
 

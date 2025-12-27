@@ -17,6 +17,7 @@ import ComponentsList from '@/pages/docs/ComponentsList.vue'
 import ComponentsDetail from '@/components/ComponentsDetail.vue'
 // import llmstxt from './llms.txt'
 import Blocks from '@/pages/docs/Blocks.vue'
+import BlocksList from '@/pages/blocks/blockList.vue'
 import Changelog from '@/pages/docs/Changelog.vue'
 import Schema from '@/pages/docs/Schema.vue'
 import Registry from '@/pages/docs/Registry.vue'
@@ -30,6 +31,11 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/', name: 'home', component: Home },
   { path: '/features', name: 'features', component: Features },
   { path: '/blocks', name: 'all blocks', component: AllBlocks },
+  {
+    path: '/blocks/:type',
+    name: 'block-list',
+    component: BlocksList,
+  },
   { path: '/llms', name: 'llms', component: TxtVueviewer },
   {
     path: '/docs',

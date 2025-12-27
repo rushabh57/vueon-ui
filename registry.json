@@ -5,147 +5,244 @@
       "description": "Collapsible content container for organizing sections.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Accordion/Accordion.vue",
       "status": "stable",
-      "prefred_for": ["FAQ sections", "Collapsible content", "Sidebar menus"]
+      "prefred_for": [
+        "FAQ sections",
+        "Collapsible content",
+        "Sidebar menus"
+      ]
     },
     "AlertDialog": {
       "path": "src/components/AlertDialog/AlertDialog.vue",
       "description": "A dialog that interrupts the user with important information.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/AlertDialog/AlertDialog.vue",
       "status": "stable",
-      "prefred_for": ["Critical warnings", "Confirmations", "User interruptions"]
+      "prefred_for": [
+        "Critical warnings",
+        "Confirmations",
+        "User interruptions"
+      ]
     },
     "Alert": {
       "path": "src/components/Alert/Alert.vue",
       "description": "Encapsulates a piece of UI with its structure, style, and behavior for reuse.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Alert/Alert.vue",
       "status": "stable",
-      "prefred_for": ["Notifications", "Error messages", "Success messages"] 
+      "prefred_for": [
+        "Notifications",
+        "Error messages",
+        "Success messages"
+      ]
     },
     "AspectRatio": {
       "path": "src/components/AspectRatio/AspectRatio.vue",
       "description": "Maintains a consistent width-to-height ratio for its content.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/AspectRatio/AspectRatio.vue",
       "status": "stable",
-      "prefred_for": ["Media embedding", "Videos", "Image containers"]
+      "prefred_for": [
+        "Media embedding",
+        "Videos",
+        "Image containers"
+      ]
     },
     "Avatar": {
       "path": "src/components/Avatar/Avatar.vue",
       "description": "Displays user profile image or initials.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Avatar/Avatar.vue",
       "status": "stable",
-      "prefred_for": ["User profiles", "Comments", "Team members display"]
+      "prefred_for": [
+        "User profiles",
+        "Comments",
+        "Team members display"
+      ]
     },
     "Badge": {
       "path": "src/components/Badge/Badge.vue",
       "description": "A small status indicator or tag label.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Badge/Badge.vue",
       "status": "rookie",
-      "prefred_for": ["Status indicators", "Counters", "Labels"]
+      "prefred_for": [
+        "Status indicators",
+        "Counters",
+        "Labels"
+      ]
     },
     "Breadcrumb": {
       "path": "src/components/Breadcrumb/Breadcrumb.vue",
       "description": "A small status indicator or tag label.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Breadcrumb/Breadcrumb.vue",
       "status": "rookie",
-      "prefred_for": ["Navigation hierarchy", "Page trails", "Multilevel menus"]
+      "prefred_for": [
+        "Navigation hierarchy",
+        "Page trails",
+        "Multilevel menus"
+      ]
     },
     "Button": {
       "path": "src/components/Button/Button.vue",
       "description": "Primary button component with variants and sizes.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Button/Button.vue",
       "status": "stable",
-      "prefred_for": ["Primary actions", "Form submission", "Navigation triggers"]
+      "prefred_for": [
+        "Primary actions",
+        "Form submission",
+        "Navigation triggers"
+      ]
     },
     "Calendar": {
       "path": "src/components/Calendar/Calendar.vue",
       "description": "Displays a calendar for date selection.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Calendar/Calendar.vue",
       "status": "experimental",
-      "prefred_for": ["Date selection", "Event scheduling", "Booking interfaces"]
+      "prefred_for": [
+        "Date selection",
+        "Event scheduling",
+        "Booking interfaces"
+      ]
+    },
+    "Chain": {
+      "path": "src/components/Chain/Chain.vue",
+      "description": "Displays a connected sequence of steps or items to represent flows, hierarchies, or relationships in a structured way.",
+      "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Chain/Chain.vue",
+      "status": "stable",
+      "preferred_for": [
+        "Process flows",
+        "Step-by-step navigation",
+        "Dependency visualization",
+        "User journeys",
+        "Linked data representation"
+      ]
     },
     "Card": {
       "path": "src/components/Card/Card.vue",
       "description": "Reveals or hides content with smooth animation.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Card/Card.vue",
       "status": "stable",
-      "prefred_for": ["Content grouping", "Product preview", "Information panels"]
+      "prefred_for": [
+        "Content grouping",
+        "Product preview",
+        "Information panels"
+      ]
     },
     "Carousel": {
       "path": "src/components/Carousel/Carousel.vue",
       "description": "Reveals or hides content with smooth animation.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Carousel/Carousel.vue",
       "status": "experimental",
-      "prefred_for": ["Image sliders", "Feature showcases", "Testimonials"]
+      "prefred_for": [
+        "Image sliders",
+        "Feature showcases",
+        "Testimonials"
+      ]
     },
     "Checkbox": {
       "path": "src/components/Checkbox/Checkbox.vue",
       "description": "Checkbox normal.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Checkbox/Checkbox.vue",
       "status": "stable",
-      "prefred_for": ["Form inputs", "Multi-select options", "Settings toggles"]
+      "prefred_for": [
+        "Form inputs",
+        "Multi-select options",
+        "Settings toggles"
+      ]
     },
     "Collapsible": {
       "path": "src/components/Collapsible/Collapsible.vue",
       "description": "Reveals or hides content with smooth animation.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Collapsible/Collapsible.vue",
       "status": "stable",
-      "prefred_for": ["Hidden content", "Sidebar sections", "Expandable lists"]
+      "prefred_for": [
+        "Hidden content",
+        "Sidebar sections",
+        "Expandable lists"
+      ]
     },
     "ComboBox": {
       "path": "src/components/ComboBox/ComboBox.vue",
       "description": "ComboBox allows users to select a single value from a list of options. It supports v-model binding.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/ComboBox/ComboBox.vue",
       "status": "experimental",
-      "prefred_for": ["Select options", "Autocomplete inputs", "Searchable dropdowns"]
+      "prefred_for": [
+        "Select options",
+        "Autocomplete inputs",
+        "Searchable dropdowns"
+      ]
     },
     "ContextMenu": {
       "path": "src/components/ContextMenu/ContextMenu.vue",
       "description": "ContextMenu allows users to select a single value from a list of options. It supports v-model binding.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/ContextMenu/ContextMenu.vue",
       "status": "experimental",
-      "prefred_for": ["Select options", "Autocomplete inputs", "Searchable dropdowns"]
+      "prefred_for": [
+        "Select options",
+        "Autocomplete inputs",
+        "Searchable dropdowns"
+      ]
     },
     "DateField": {
       "path": "src/components/DateField/DateField.vue",
       "description": "Input for selecting a single date.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/DateField/DateField.vue",
       "status": "rookie",
-      "prefred_for": ["Form inputs", "Booking dates", "Event scheduling"]
+      "prefred_for": [
+        "Form inputs",
+        "Booking dates",
+        "Event scheduling"
+      ]
     },
     "DataTable": {
-    "path": "src/components/DataTable/DataTable.vue",
-    "description": "A fully-featured data table component. Supports search, pagination, sorting, and responsive layout while maintaining the same styling as Table.",
-    "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/DataTable/DataTable.vue",
-    "status": "stable",
-    "preferred_for": ["Data-heavy tables", "Admin dashboards", "Dynamic tables with search and pagination"]
+      "path": "src/components/DataTable/DataTable.vue",
+      "description": "A fully-featured data table component. Supports search, pagination, sorting, and responsive layout while maintaining the same styling as Table.",
+      "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/DataTable/DataTable.vue",
+      "status": "stable",
+      "preferred_for": [
+        "Data-heavy tables",
+        "Admin dashboards",
+        "Dynamic tables with search and pagination"
+      ]
     },
     "Dialog": {
       "path": "src/components/Dialog/Dialog.vue",
       "description": "Displays an overlay or modal for user interactions.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Dialog/Dialog.vue",
       "status": "stable",
-      "prefred_for": ["Modals", "Confirmation dialogs", "User prompts"]
+      "prefred_for": [
+        "Modals",
+        "Confirmation dialogs",
+        "User prompts"
+      ]
     },
     "Drawer": {
       "path": "src/components/Drawer/Drawer.vue",
       "description": "Drawer component allows sliding panels from left, right, top, or bottom. It can contain any content: forms, images, or buttons.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Drawer/Drawer.vue",
       "status": "stable",
-      "prefred_for": ["Side menus", "Mobile navigation", "Extra content panels"]
+      "prefred_for": [
+        "Side menus",
+        "Mobile navigation",
+        "Extra content panels"
+      ]
     },
     "Dropdown": {
       "path": "src/components/Dropdown/Dropdown.vue",
       "description": "Displays an overlay or Dropdown for user interactions.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Dropdown/Dropdown.vue",
       "status": "stable",
-      "prefred_for": ["Navigation menus", "Option selection", "Settings lists"]
+      "prefred_for": [
+        "Navigation menus",
+        "Option selection",
+        "Settings lists"
+      ]
     },
     "Drift": {
       "path": "src/components/Drift/Drift.vue",
       "description": "A draggable component for free, vertical, or horizontal movement with smooth animation, optional grid snapping, and block stacking support.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Drift/Drift.vue",
       "status": "experimental",
-      "prefred_for": ["Draggable items", "Interactive dashboards", "Drag-and-drop UIs"],
+      "prefred_for": [
+        "Draggable items",
+        "Interactive dashboards",
+        "Drag-and-drop UIs"
+      ],
       "updated": "28/11/2025"
     },
     "GroupDateField": {
@@ -153,21 +250,33 @@
       "description": "nput for selecting grouped dates or ranges.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/GroupDateField/GroupDateField.vue",
       "status": "rookie",
-      "prefred_for": ["Date ranges", "Event scheduling", "Filter selections"]
+      "prefred_for": [
+        "Date ranges",
+        "Event scheduling",
+        "Filter selections"
+      ]
     },
     "HoverCard": {
       "path": "src/components/HoverCard/HoverCard.vue",
       "description": "Shows extra info when hovering over content.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/HoverCard/HoverCard.vue",
       "status": "stable",
-      "prefred_for": ["Preview content", "Tooltip replacement", "Extra info on hover"]
+      "prefred_for": [
+        "Preview content",
+        "Tooltip replacement",
+        "Extra info on hover"
+      ]
     },
     "Highlighter": {
       "path": "src/components/Highlighter/Highlighter.vue",
       "description": "Highlighter is a design-system-ready text emphasis component that upgrades the native <mark> tag. It supports variants, custom colors, and filled/bordered/subtle modes for flexible highlighting.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Highlighter/Highlighter.vue",
       "status": "rookie",
-      "prefred_for": ["Text emphasis", "Search results highlighting", "Code highlighting"],
+      "prefred_for": [
+        "Text emphasis",
+        "Search results highlighting",
+        "Code highlighting"
+      ],
       "updated": "28/11/2025"
     },
     "Input": {
@@ -175,7 +284,11 @@
       "description": "Text input field component.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Input/Input.vue",
       "status": "stable",
-      "prefred_for": ["Form inputs", "Search bars", "User input fields"],
+      "prefred_for": [
+        "Form inputs",
+        "Search bars",
+        "User input fields"
+      ],
       "requires": [
         {
           "component": "Label",
@@ -189,134 +302,223 @@
       "description": "A small badge or marker over a component to show status, count, or notifications.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Indicator/Indicator.vue",
       "status": "stable",
-      "prefred_for": ["Notification badges", "Status markers", "Counters"],
-      "updated": "28/11/2025" 
+      "prefred_for": [
+        "Notification badges",
+        "Status markers",
+        "Counters"
+      ],
+      "updated": "28/11/2025"
     },
     "Kbd": {
       "path": "src/components/Kbd/Kbd.vue",
       "description": "Use Kbd to display individual keyboard keys, and KbdGroup to group multiple keys together.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Kbd/Kbd.vue",
       "status": "rookie",
-      "prefred_for": ["Keyboard shortcuts display", "Instructional UI", "Key hints"] 
+      "prefred_for": [
+        "Keyboard shortcuts display",
+        "Instructional UI",
+        "Key hints"
+      ]
     },
     "Label": {
       "path": "src/components/Label/Label.vue",
       "description": "Accessible label for input fields.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Label/Label.vue",
       "status": "stable",
-      "prefred_for": ["Form labeling", "Accessibility", "Input association"]
+      "prefred_for": [
+        "Form labeling",
+        "Accessibility",
+        "Input association"
+      ]
     },
     "Menubar": {
       "path": "src/components/Menubar/Menubar.vue",
       "description": "Horizontal menu for navigation.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Menubar/Menubar.vue",
       "status": "experimental",
-      "prefred_for": ["Top navigation", "Main menus", "Global actions"]
+      "prefred_for": [
+        "Top navigation",
+        "Main menus",
+        "Global actions"
+      ]
     },
     "NavigationMenu": {
       "path": "src/components/NavigationMenu/NavigationMenu.vue",
       "description": "Multi-level or dropdown navigation menu.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/NavigationMenu/NavigationMenu.vue",
       "status": "stable",
-      "prefred_for": ["Dropdown menus", "Multi-level navigation", "Mega menus"]
+      "prefred_for": [
+        "Dropdown menus",
+        "Multi-level navigation",
+        "Mega menus"
+      ]
     },
     "NumberField": {
       "path": "src/components/NumberField/NumberField.vue",
       "description": "Input for numeric values.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/NumberField/NumberField.vue",
       "status": "rookie",
-      "prefred_for": ["Numeric inputs", "Quantity selectors", "Form fields"]
+      "prefred_for": [
+        "Numeric inputs",
+        "Quantity selectors",
+        "Form fields"
+      ]
     },
     "OtpField": {
       "path": "src/components/OtpField/OtpField.vue",
       "description": "Input for one-time password (OTP) codes.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/OtpField/OtpField.vue",
       "status": "rookie",
-      "prefred_for": ["OTP verification", "Authentication forms", "Security inputs"]
+      "prefred_for": [
+        "OTP verification",
+        "Authentication forms",
+        "Security inputs"
+      ]
     },
     "Pagination": {
       "path": "src/components/Pagination/Pagination.vue",
       "description": "Navigate through pages of content.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Pagination/Pagination.vue",
       "status": "stable",
-      "prefred_for": ["Content navigation", "Lists", "Tables with multiple pages"]
+      "prefred_for": [
+        "Content navigation",
+        "Lists",
+        "Tables with multiple pages"
+      ]
     },
     "Popover": {
       "path": "src/components/Popover/Popover.vue",
       "description": "Displays a floating content box on click/hover.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Popover/Popover.vue",
       "status": "stable",
-      "prefred_for": ["Tooltip replacement", "Contextual info", "Action menus"]
+      "prefred_for": [
+        "Tooltip replacement",
+        "Contextual info",
+        "Action menus"
+      ]
     },
     "Progress": {
       "path": "src/components/Progress/Progress.vue",
       "description": "Progress components show a horizontal bar representing completion percentage visually.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Progress/Progress.vue",
       "status": "stable",
-      "prefred_for": ["Loading indicators", "Task completion", "Forms progress"]
+      "prefred_for": [
+        "Loading indicators",
+        "Task completion",
+        "Forms progress"
+      ]
     },
     "RadioGroup": {
       "path": "src/components/RadioGroup/RadioGroup.vue",
       "description": "Lets users pick one option from a set of mutually exclusive choices.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/RadioGroup/RadioGroup.vue",
       "status": "stable",
-      "prefred_for": ["Single selection", "Options forms", "Settings toggles"]
+      "prefred_for": [
+        "Single selection",
+        "Options forms",
+        "Settings toggles"
+      ]
     },
     "Separator": {
       "path": "src/components/Separator/Separator.vue",
       "description": "A thin line used to visually divide content or sections within layouts.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Separator/Separator.vue",
       "status": "stable",
-      "prefred_for": ["Visual division", "Section separation", "List dividers"]
+      "prefred_for": [
+        "Visual division",
+        "Section separation",
+        "List dividers"
+      ]
     },
     "Sheet": {
       "path": "src/components/Sheet/Sheet.vue",
       "description": "Sheet components show a sliding panel from a side of the screen to display extra content like menus.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Sheet/Sheet.vue",
       "status": "stable",
-      "prefred_for": ["Side panels", "Mobile menus", "Extra content"]
+      "prefred_for": [
+        "Side panels",
+        "Mobile menus",
+        "Extra content"
+      ]
     },
     "Skeleton": {
       "path": "src/components/Skeleton/Skeleton.vue",
       "description": "Placeholder UI for loading content.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Skeleton/Skeleton.vue",
       "status": "stable",
-      "prefred_for": ["Loading placeholders", "Content skeletons", "Progress feedback"]
+      "prefred_for": [
+        "Loading placeholders",
+        "Content skeletons",
+        "Progress feedback"
+      ]
     },
     "Select": {
       "path": "src/components/Select/Select.vue",
       "description": "Lets users choose a value from a dropdown list.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Select/Select.vue",
       "status": "stable",
-      "prefred_for": ["Dropdown selection", "Form inputs", "Filter lists"]
+      "prefred_for": [
+        "Dropdown selection",
+        "Form inputs",
+        "Filter lists"
+      ]
     },
     "Slider": {
       "path": "src/components/Slider/Slider.vue",
       "description": "Interactive slider for selecting numeric values.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Slider/Slider.vue",
       "status": "stable",
-      "prefred_for": ["Range selection", "Volume controls", "Adjustable values"] 
+      "prefred_for": [
+        "Range selection",
+        "Volume controls",
+        "Adjustable values"
+      ]
+    },
+    "SlideAction": {
+      "path": "src/components/SlideAction/SlideAction.vue",
+      "description": "Provides a slide-to-confirm interaction that requires the user to drag an action handle to complete a deliberate or high-intent action.",
+      "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/SlideAction/SlideAction.vue",
+      "status": "experimental",
+      "preferred_for": [
+        "Destructive action confirmation",
+        "Accidental action prevention",
+        "Mobile-first interactions",
+        "High-intent user actions",
+        "Security-sensitive operations"
+      ]
     },
     "Spinner": {
       "path": "src/components/Spinner/Spinner.vue",
       "description": "Shows loading spinner animation.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Spinner/Spinner.vue",
       "status": "rookie",
-      "prefred_for": ["Loading indicators", "Async operations", "Progress feedback"]
+      "prefred_for": [
+        "Loading indicators",
+        "Async operations",
+        "Progress feedback"
+      ]
     },
     "Splitter": {
       "path": "src/components/Splitter/Splitter.vue",
       "description": "Divides layout into resizable sections.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Splitter/Splitter.vue",
       "status": "stable",
-      "prefred_for": ["Resizable layouts", "Panels division", "Dashboard grids"] 
+      "prefred_for": [
+        "Resizable layouts",
+        "Panels division",
+        "Dashboard grids"
+      ]
     },
     "SpeedDial": {
       "path": "src/components/SpeedDial/SpeedDial.vue",
       "description": "A circular button that floats above content to represent the primary action of a page or interface.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/SpeedDial/SpeedDial.vue",
       "status": "stable",
-      "prefred_for": ["Primary actions", "Floating action buttons", "Quick access commands"],
+      "prefred_for": [
+        "Primary actions",
+        "Floating action buttons",
+        "Quick access commands"
+      ],
       "updated": "28/11/2025"
     },
     "Stepper": {
@@ -324,84 +526,132 @@
       "description": "Step-by-step navigation component.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Stepper/Stepper.vue",
       "status": "experimental",
-      "prefred_for": ["Form steps", "Progressive workflow", "Multi-step actions"]
+      "prefred_for": [
+        "Form steps",
+        "Progressive workflow",
+        "Multi-step actions"
+      ]
     },
     "ScrollArea": {
       "path": "src/components/ScrollArea/ScrollArea.vue",
       "description": "Provides a scrollable container for overflowing content.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/ScrollArea/ScrollArea.vue",
       "status": "experimental",
-      "prefred_for": ["Scrollable content", "Overflow areas", "Custom scroll containers"]
+      "prefred_for": [
+        "Scrollable content",
+        "Overflow areas",
+        "Custom scroll containers"
+      ]
     },
     "Switch": {
       "path": "src/components/Switch/Switch.vue",
       "description": "Toggle switch input component.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Switch/Switch.vue",
       "status": "stable",
-      "prefred_for": ["Toggle states", "Settings", "Feature activation"] 
+      "prefred_for": [
+        "Toggle states",
+        "Settings",
+        "Feature activation"
+      ]
     },
     "Tabs": {
       "path": "src/components/Tabs/Tabs.vue",
       "description": "Switch between multiple content panels.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Tabs/Tabs.vue",
       "status": "stable",
-      "prefred_for": ["Content panels", "Navigation tabs", "Settings sections"]
+      "prefred_for": [
+        "Content panels",
+        "Navigation tabs",
+        "Settings sections"
+      ]
     },
     "Table": {
       "path": "src/components/Table/Table.vue",
       "description": "A lightweight table component for displaying structured data. Supports TableHead, TableBody, TableFooter, TableRow, TableHeader, and TableCell subcomponents.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Table/Table.vue",
       "status": "stable",
-      "preferred_for": ["Displaying tabular data", "Simple lists", "Content organization"]
+      "preferred_for": [
+        "Displaying tabular data",
+        "Simple lists",
+        "Content organization"
+      ]
     },
     "TimeField": {
       "path": "src/components/TimeField/TimeField.vue",
       "description": "Input for selecting time values.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/TimeField/TimeField.vue",
       "status": "rookie",
-      "prefred_for": ["Time selection", "Scheduling", "Event forms"]
+      "prefred_for": [
+        "Time selection",
+        "Scheduling",
+        "Event forms"
+      ]
     },
     "Toaster": {
       "path": "src/components/Toaster/Toaster.vue",
       "description": "Shows a brief, temporary message to inform the user of an action or status.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Toaster/Toaster.vue",
       "status": "experimental",
-      "prefred_for": ["Temporary notifications", "Action feedback", "Alerts"] 
+      "prefred_for": [
+        "Temporary notifications",
+        "Action feedback",
+        "Alerts"
+      ]
     },
     "Toggle": {
       "path": "src/components/Toggle/Toggle.vue",
       "description": "A two-state button that can be pressed or unpressed.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Toggle/Toggle.vue",
       "status": "stable",
-      "prefred_for": ["Feature activation", "Settings toggles", "Binary options"]
+      "prefred_for": [
+        "Feature activation",
+        "Settings toggles",
+        "Binary options"
+      ]
     },
     "Tooltip": {
       "path": "src/components/Tooltip/Tooltip.vue",
       "description": "Displays extra information when hovering.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Tooltip/Tooltip.vue",
       "status": "stable",
-      "prefred_for": ["Extra info", "Hover guidance", "Instruction hints"]
+      "prefred_for": [
+        "Extra info",
+        "Hover guidance",
+        "Instruction hints"
+      ]
     },
     "Toolbar": {
       "path": "src/components/Toolbar/Toolbar.vue",
       "description": "Displays a horizontal bar of buttons or controls for user actions.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Toolbar/Toolbar.vue",
       "status": "stable",
-      "prefred_for": ["Action buttons", "Tools", "Navigation shortcuts"] 
+      "prefred_for": [
+        "Action buttons",
+        "Tools",
+        "Navigation shortcuts"
+      ]
     },
     "Tree": {
       "path": "src/components/Tree/Tree.vue",
       "description": "Displays hierarchical, expandable/collapsible lists.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/Tree/Tree.vue",
       "status": "experimental",
-      "prefred_for": ["Hierarchical lists", "File explorers", "Nested menus"]
+      "prefred_for": [
+        "Hierarchical lists",
+        "File explorers",
+        "Nested menus"
+      ]
     },
     "ThemeSwitcher": {
       "path": "src/components/ThemeSwitcher/ThemeSwitcher.vue",
       "description": "used this component as light & dark & system mode default provide 3 mode's.",
       "url": "https://raw.githubusercontent.com/strangekit/vueon-ui/main/src/components/ThemeSwitcher/ThemeSwitcher.vue",
       "status": "stable",
-      "prefred_for": ["modes", "user prefrences", "light & dark mode"]
+      "prefred_for": [
+        "modes",
+        "user prefrences",
+        "light & dark mode"
+      ]
     }
   },
   "countComponents": 52,

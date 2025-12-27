@@ -59,6 +59,7 @@ import DemoDrift from "./demoUi/DemoDrift/DemoDrift.vue"
 import DemoTable from "./demoUi/DemoTable/DemoTable.vue"
 import DemoDataTable from "./demoUi/DemoDataTable/DemoDataTable.vue"
 import DemoContextMenu from "./demoUi/DemoContextMenu/DemoContextMenu.vue"
+import DemoThemeSwitcher from "./demoUi/DemoThemeSwitcher/DemoThemeSwitcher.vue"
 
 const demoComponents: Record<string, any> = {
   Accordion: DemoAccordion,
@@ -114,7 +115,8 @@ const demoComponents: Record<string, any> = {
   Drift: DemoDrift,
   Table: DemoTable,
   DataTable: DemoDataTable,
-  ContextMenu : DemoContextMenu
+  ContextMenu : DemoContextMenu,
+  ThemeSwitcher: DemoThemeSwitcher
 }
 
 const route = useRoute()

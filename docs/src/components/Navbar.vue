@@ -100,7 +100,7 @@ if (!window.__vueon_theme) {
 const theme = window.__vueon_theme;
 
 // Reactive state for dark mode
-const isDark = ref(theme.value === "dark");
+const isDark = ref(theme.value === "dark" || theme.value === "system");
 
 // Watch for changes in theme
 watch(theme, (newVal) => {

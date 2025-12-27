@@ -19,7 +19,7 @@ const items = [
 </script>
 
 <template>
-  <NavigationMenuRoot>
+  <NavigationMenuRoot class="absolute top-0 ">
     <NavigationMenuList>
 
       <NavigationMenuItem>

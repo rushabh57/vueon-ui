@@ -3,7 +3,7 @@
     </script>
     
     <template>
-      <div :class="['text-xs text-secondary-foreground mt-1 bg-blue-50', className]">
+      <div :class="[' text-xs text-secondary-foreground mt-1 bg-background', className]">
         <slot />
       </div>
     </template>
