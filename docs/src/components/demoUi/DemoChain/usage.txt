@@ -1,0 +1,48 @@
+<script setup lang="ts">
+    import {
+      Chain,
+      ChainContent,
+      ChainDescription,
+      ChainAction,
+      ChainHeader,
+      ChainGroup,
+      ChainMeta
+    } from "@/components/ui/Chain";
+
+    import { Separator } from "@/components/ui/Separator";
+    import { Button } from "@/components/ui/Button";
+    
+    </script>
+    
+    <template>
+      <main class="space-y-10">
+    
+            <ChainGroup>
+              <Chain state="active" dot="top">
+                <ChainMeta>28/11/2025</ChainMeta>
+    
+                <ChainContent>
+                  <ChainHeader>Drift</ChainHeader>
+                  <ChainDescription>
+                    A draggable component for free movement.
+                  </ChainDescription>
+                  <Separator />
+                  <ChainAction>
+                    <Button variant="link">View Docs →</Button>
+                  </ChainAction>
+                </ChainContent>
+              </Chain>
+    
+              <Chain state="active" dot="top">
+                <ChainMeta>29/11/2025</ChainMeta>
+                <ChainContent>
+                  <ChainHeader>Highlighter</ChainHeader>
+                  <ChainDescription>
+                    A design-system-ready text emphasis component.
+                  </ChainDescription>
+                </ChainContent>
+              </Chain>
+            </ChainGroup>
+      </main>
+    </template>
+    

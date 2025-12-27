@@ -1,0 +1,26 @@
+<script setup lang="ts">
+
+    import { BatteryFullIcon, RabbitIcon } from "lucide-vue-next";
+    import { SlideAction } from "@/components/ui/SlideAction";
+
+</script>
+    
+    <template>
+      <main class="space-y-10">
+    
+          <section
+            class="border border-border rounded-t-md p-10 bg-background flex justify-center"
+          >
+            <div class="w-96">
+              <SlideAction
+                :initial-icon="RabbitIcon"
+                :complete-icon="BatteryFullIcon"
+                initial-text="Pay $32"
+                complete-text="Paid"
+              />
+            </div>
+          </section>
+    
+      </main>
+    </template>
+    

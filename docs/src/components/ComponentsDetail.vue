@@ -60,6 +60,8 @@ import DemoTable from "./demoUi/DemoTable/DemoTable.vue"
 import DemoDataTable from "./demoUi/DemoDataTable/DemoDataTable.vue"
 import DemoContextMenu from "./demoUi/DemoContextMenu/DemoContextMenu.vue"
 import DemoThemeSwitcher from "./demoUi/DemoThemeSwitcher/DemoThemeSwitcher.vue"
+import DemoChain from "./demoUi/DemoChain/DemoChain.vue"
+import DemoSlideAction from "./demoUi/DemoSlideAction/DemoSlideAction.vue"
 
 const demoComponents: Record<string, any> = {
   Accordion: DemoAccordion,
@@ -116,7 +118,9 @@ const demoComponents: Record<string, any> = {
   Table: DemoTable,
   DataTable: DemoDataTable,
   ContextMenu : DemoContextMenu,
-  ThemeSwitcher: DemoThemeSwitcher
+  ThemeSwitcher: DemoThemeSwitcher,
+  Chain: DemoChain,
+  SlideAction : DemoSlideAction
 }
 
 const route = useRoute()
